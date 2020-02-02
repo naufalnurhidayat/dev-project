@@ -9,4 +9,8 @@ class CreateKaryawan extends Controller
     public function index() {
         return view('createkaryawan/createkaryawan');
     }
+
+    public function login() {
+        return view('createkaryawan/login');
+    }
 }

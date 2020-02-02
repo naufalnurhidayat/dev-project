@@ -18,3 +18,4 @@
 Route::get('/', 'Home@index');
 Route::get('/absen', 'Absen@index');
 Route::get('/createkaryawan', 'CreateKaryawan@index');
+Route::get('/login', 'CreateKaryawan@login');
