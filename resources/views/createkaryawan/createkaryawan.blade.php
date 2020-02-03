@@ -1,6 +1,6 @@
 @extends('templates.template-dasar')
 
-@section('title', 'Create Karyawan')
+@section('title', 'Registrasi Karyawan')
 
 @section('content')
 
@@ -13,7 +13,7 @@
       <div class="col">
         <div class="p-5">
           <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">Daftar Karyawan</h1>
+            <h1 class="h4 text-gray-900 mb-4">Registrasi Karyawan</h1>
           </div>
           <form class="user">
             <div class="form-group row">

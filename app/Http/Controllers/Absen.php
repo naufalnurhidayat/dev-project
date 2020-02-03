@@ -13,7 +13,7 @@ class Absen extends Controller
      */
     public function index()
     {
-        //
+        return view('absen/index');
     }
 
     /**
@@ -43,9 +43,10 @@ class Absen extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    // public function show($id)
+    public function show()
     {
-        //
+        return view('absen/checkabsen');
     }
 
     /**
