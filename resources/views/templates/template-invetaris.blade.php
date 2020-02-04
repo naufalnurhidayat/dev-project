@@ -54,14 +54,62 @@
         Interface
       </div>
 
+      <!-- Pegawai -->
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+        <i class="far fa-id-card"></i>
+          <span>Pegawai</span></a>
+      </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+      <!-- Master data -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-boxes"></i>
+          <span>Master Barang</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Master Data:</h6>
+            <a class="collapse-item" href="buttons.html"><i class="fas fa-inbox-in"></i><span>Barang Masuk</span></a>
+            <a class="collapse-item" href="cards.html">Barang Keluar </a>
+          </div>
+        </div>
+      </li>
 
+      <!-- Barang Pinjam -->
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+        <i class="fas fa-box-open"></i>
+          <span>Barang Pinjam</span></a>
+      </li>
+
+      <!-- Barang Kembali -->
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+        <i class="fas fa-people-carry"></i>
+          <span>Barang Kembali</span></a>
+      </li>
+
+       <!-- Divider -->
+       <hr class="sidebar-divider d-none d-md-block">
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+      Laporan
       </div>
+
+       <!-- Laporan -->
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapselaporan" aria-expanded="true" aria-controls="collapselaporan">
+        <i class="fas fa-print"></i>
+          <span>Laporan</span>
+        </a>
+        <div id="collapselaporan" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Laporan:</h6>
+            <a class="collapse-item" href="buttons.html"><i class="fas fa-inbox-in"></i><span>Cetak</span></a>
+          </div>
+        </div>
+      </li>
 
 
       <!-- Divider -->
