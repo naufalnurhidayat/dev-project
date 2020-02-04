@@ -31,3 +31,4 @@ Route::get('/izinabsen', 'Absen@izinAbsen');
 //Invetaris
 
 Route::get('/invetaris', 'Invetaris@index');
+Route::get('/home', 'homeInvetaris@index');
