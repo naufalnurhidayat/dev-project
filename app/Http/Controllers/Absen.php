@@ -23,7 +23,7 @@ class Absen extends Controller
      */
     public function create()
     {
-        //
+        return view('absen/absen');
     }
 
     /**
@@ -81,5 +81,10 @@ class Absen extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function izinAbsen()
+    {
+        return view('absen/izinabsen');
     }
 }

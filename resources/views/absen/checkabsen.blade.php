@@ -1,6 +1,6 @@
 @extends('templates/template')
 
-@section('title', 'Cek Absen')
+@section('title', 'Detail Absen')
 
 @section('content')
 
@@ -14,6 +14,7 @@
                 </div>
                 <div class="card-body">
                     <ul>
+                        <li>Role: (Role Karyawan)</li>
                         <li>Masuk pukul: (waktu saat ini)</li>
                         <li>Tanggal: (tanggal saat ini)</li>
                         <li>Keterangan: Masuk</li>
