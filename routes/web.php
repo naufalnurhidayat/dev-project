@@ -27,6 +27,12 @@ Route::get('/tampilabsen', 'Absen@show');
 Route::get('/checkabsen', 'Absen@create');
 Route::get('/izinabsen', 'Absen@izinAbsen');
 
+// -------------------------------------------
+// Cuti
+
+Route::get('/cuti', 'CutiController@index');
+
+
 //--------------------------------------------
 //Invetaris
 
