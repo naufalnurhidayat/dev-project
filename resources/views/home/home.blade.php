@@ -61,7 +61,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                        <a href="#" class="h5 mb-0 font-weight-bold text-gray-800">Inventori</a>
+                        <a href="/invetaris" class="h5 mb-0 font-weight-bold text-gray-800">Inventori</a>
                         </div>
                         <div class="col-auto">
                         <i class="fas fa-clipboard-list fa-2x text-red-300"></i>
