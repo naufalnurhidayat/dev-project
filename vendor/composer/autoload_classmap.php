@@ -18,6 +18,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CreateKaryawan' => $baseDir . '/app/Http/Controllers/CreateKaryawan.php',
     'App\\Http\\Controllers\\Home' => $baseDir . '/app/Http/Controllers/Home.php',
+    'App\\Http\\Controllers\\Invetaris' => $baseDir . '/app/Http/Controllers/Invetaris.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
