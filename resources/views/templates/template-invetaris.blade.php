@@ -68,6 +68,12 @@
           </div>
         </div>
       </li> --}}
+      {{-- Data Barang --}}
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+        <i class="fas fa-boxes"></i>
+          <span>Data Barang</span></a>
+      </li>
 
       <!-- Barang Pinjam -->
       <li class="nav-item">
@@ -165,7 +171,13 @@
               </div>
             </li>
 
-            
+            {{-- Home --}}
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="/">
+                <i class="fas fa-home"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter"></span>
+              </a>
             
 
             <!-- Nav Item - User Information -->
