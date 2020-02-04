@@ -54,7 +54,7 @@
         Interface
       </div>
 
-      <!-- Master data -->
+      {{-- <!-- Master data -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
         <i class="fas fa-boxes"></i>
@@ -67,7 +67,7 @@
             <a class="collapse-item" href="cards.html">Barang Keluar </a>
           </div>
         </div>
-      </li>
+      </li> --}}
 
       <!-- Barang Pinjam -->
       <li class="nav-item">
