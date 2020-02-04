@@ -1,4 +1,4 @@
-@extends('templates.template-dasar')
+@extends('templates.template-login')
 
 @section('title', 'Registrasi Karyawan')
 
