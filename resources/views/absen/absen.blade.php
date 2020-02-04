@@ -1,4 +1,4 @@
-@extends('templates/template')
+@extends('templates/template-home')
 
 @section('title', 'Absen')
 
