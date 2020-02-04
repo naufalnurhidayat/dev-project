@@ -20,3 +20,8 @@ Route::get('/absen', 'Absen@index');
 Route::get('/createkaryawan', 'CreateKaryawan@index');
 Route::get('/login', 'CreateKaryawan@login');
 Route::get('/checkabsen', 'Absen@show');
+
+//--------------------------------------------
+//Invetaris
+
+Route::get('/invetaris', 'Invetaris@index');
