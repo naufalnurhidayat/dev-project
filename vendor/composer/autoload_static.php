@@ -422,6 +422,7 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CreateKaryawan' => __DIR__ . '/../..' . '/app/Http/Controllers/CreateKaryawan.php',
         'App\\Http\\Controllers\\Home' => __DIR__ . '/../..' . '/app/Http/Controllers/Home.php',
+        'App\\Http\\Controllers\\Invetaris' => __DIR__ . '/../..' . '/app/Http/Controllers/Invetaris.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
