@@ -16,10 +16,16 @@
 // });
 
 Route::get('/', 'Home@index');
-Route::get('/absen', 'Absen@index');
 Route::get('/createkaryawan', 'CreateKaryawan@index');
 Route::get('/login', 'CreateKaryawan@login');
-Route::get('/checkabsen', 'Absen@show');
+
+// -------------------------------------------
+// Absen
+
+Route::get('/absen', 'Absen@index');
+Route::get('/tampilabsen', 'Absen@show');
+Route::get('/checkabsen', 'Absen@create');
+Route::get('/izinabsen', 'Absen@izinAbsen');
 
 //--------------------------------------------
 //Invetaris
