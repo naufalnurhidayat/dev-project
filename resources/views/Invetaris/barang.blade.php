@@ -13,7 +13,6 @@
       <table id="MyTable" class="table table-striped table-bordered col" width="100%" cellspacing="12">
         <thead class="thead-dark">
         <tr>
-        <th scope="col">ID Barang</th>
         <th scope="col">Nama Barang</th>
         <th scope="col">Stok</th>
         <th scope="col">Type</th>
@@ -23,7 +22,6 @@
         </thead>
         @foreach( $barang as $tyo)  
         <tbody>
-        <td>{{$tyo->id_barang}}</td>
         <td>{{ $tyo -> nama_barang}}</td>
         <td>{{ $tyo -> stok}}</td>
         <td>{{ $tyo -> type}}</td>
@@ -33,7 +31,7 @@
         </tbody>
         @endforeach
       </table>
-      
+
     </div>
     </div>
     </div>
