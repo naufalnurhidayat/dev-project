@@ -70,14 +70,14 @@
       </li> --}}
       {{-- Data Barang --}}
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="/barang">
         <i class="fas fa-boxes"></i>
           <span>Data Barang</span></a>
       </li>
 
       <!-- Barang Pinjam -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="/pinjam">
         <i class="fas fa-box-open"></i>
           <span>Barang Pinjam</span></a>
       </li>
@@ -86,7 +86,7 @@
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
         <i class="fas fa-people-carry"></i>
-          <span>Barang Kembali</span></a>
+          <span>Pengembalian</span></a>
       </li>
 
        <!-- Divider -->
@@ -208,16 +208,17 @@
         <!-- Begin Page Content -->
         @yield('content')
         
+        
                
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      {{-- <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Your Website 2019</span>
           </div>
         </div>
-      </footer>
+      </footer> --}}
       <!-- End of Footer -->
 
     </div>
