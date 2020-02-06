@@ -9,8 +9,16 @@
       <div class="col">
       <h1 class="mt-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif">Daftar Barang</h1>
     
+      <ul class="list-group">
+        @foreach( $barang as $tyo)
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{$tyo -> nama_barang}}
+        <a href="/jenishow/{{ $tyo->id_jenis }}" class="badge badge-info">detail</a>
+      </li>
+      @endforeach
+    </ul>  
 
-      <table id="MyTable" class="table table-striped table-bordered col" width="100%" cellspacing="12">
+      {{-- <table id="MyTable" class="table table-striped table-bordered col" width="100%" cellspacing="12">
         <thead class="thead-dark">
         <tr>
         <th scope="col">Nama Barang</th>
@@ -30,7 +38,7 @@
         
         </tbody>
         @endforeach
-      </table>
+      </table> --}}
 
     </div>
     </div>
