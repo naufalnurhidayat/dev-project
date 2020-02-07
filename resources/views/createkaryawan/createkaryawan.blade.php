@@ -82,13 +82,13 @@
                 <input type="password" class="form-control form-control-user" id="password2" placeholder="Repeat Password" name="password2">
               </div>
             </div>
-            <a href="/login" class="btn btn-primary btn-user btn-block">
+            <a href="" class="btn btn-primary btn-user btn-block">
               Registrasi
             </a>
           </form>
           <hr>
           <div class="text-center">
-            <a class="small" href="/login">Login</a>
+            <a class="small" href="{{url('/login')}}">Login</a>
           </div>
         </div>
       </div>

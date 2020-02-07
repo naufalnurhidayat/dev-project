@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('home/home');
-// });
+// -------------------------------------------
+// Admin
+Route::get('/admin', 'Admin\HomeController@index');
 
 Route::get('/', 'Home@index');
 Route::get('/createkaryawan', 'CreateKaryawan@index');
