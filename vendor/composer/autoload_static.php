@@ -411,6 +411,7 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Cuti' => __DIR__ . '/../..' . '/app/Cuti.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Absen' => __DIR__ . '/../..' . '/app/Http/Controllers/Absen.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -421,8 +422,10 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CreateKaryawan' => __DIR__ . '/../..' . '/app/Http/Controllers/CreateKaryawan.php',
+        'App\\Http\\Controllers\\CutiController' => __DIR__ . '/../..' . '/app/Http/Controllers/CutiController.php',
         'App\\Http\\Controllers\\Home' => __DIR__ . '/../..' . '/app/Http/Controllers/Home.php',
         'App\\Http\\Controllers\\Invetaris' => __DIR__ . '/../..' . '/app/Http/Controllers/Invetaris.php',
+        'App\\Http\\Controllers\\homeInvetaris' => __DIR__ . '/../..' . '/app/Http/Controllers/homeInvetaris.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',

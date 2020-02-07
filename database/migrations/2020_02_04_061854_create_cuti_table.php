@@ -17,6 +17,7 @@ class CreateCutiTable extends Migration
             $table->increments('id');
             $table->integer('id_karyawan');
             $table->integer('id_jenis_cuti');
+            $table->date('tgl_cuti');
             $table->date('awal_cuti');
             $table->date('akhir_cuti');
             $table->string('alasan_cuti');

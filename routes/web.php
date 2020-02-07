@@ -31,6 +31,7 @@ Route::get('/izinabsen', 'Absen@izinAbsen');
 // Cuti
 
 Route::get('/cuti', 'CutiController@index');
+Route::get('/cuti/create', 'CutiController@create');
 
 
 //--------------------------------------------
