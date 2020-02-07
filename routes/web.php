@@ -14,9 +14,15 @@
 // -------------------------------------------
 // Admin
 Route::get('/admin', 'Admin\HomeController@index');
+Route::get('/karyawan', 'Admin\KaryawanController@index');
+Route::get('/createkaryawan', 'Admin\KaryawanController@create');
+Route::get('/detailkaryawan/{karyawan}', 'Admin\KaryawanController@show');
+
+
+// -------------------------------------------
+// User
 
 Route::get('/', 'Home@index');
-Route::get('/createkaryawan', 'CreateKaryawan@index');
 Route::get('/login', 'CreateKaryawan@login');
 
 // -------------------------------------------

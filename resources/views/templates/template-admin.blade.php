@@ -18,6 +18,9 @@
   <!-- Custom styles for this template-->
   <link href="{{ asset('sbadmin2') }}/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Custom styles for this page -->
+    <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -26,7 +29,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-secondary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
@@ -51,10 +54,10 @@
         </a>
         <div id="admin" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Karyawan</a>
-            <a class="collapse-item" href="#">Role</a>
-            <a class="collapse-item" href="#">Pendidikan</a>
-            <a class="collapse-item" href="#">Agama</a>
+            <a class="collapse-item" href="{{url('/karyawan')}}">Karyawan</a>
+            <a class="collapse-item" href="{{url('/role')}}">Role</a>
+            <a class="collapse-item" href="{{url('/pendidikan')}}">Pendidikan</a>
+            <a class="collapse-item" href="{{url('/agama')}}">Agama</a>
           </div>
         </div>
       </li>
@@ -116,7 +119,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -198,6 +201,13 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script>
   <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('sbadmin2') }}/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
 
 </body>
 

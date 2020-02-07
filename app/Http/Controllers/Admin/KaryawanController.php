@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Karyawan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        //
+        $karyawan = Karyawan::all();
+        return view('admin/karyawan/index', ['karyawan' => $karyawan]);
     }
 
     /**
@@ -24,7 +26,7 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/karyawan/createkaryawan');
     }
 
     /**
@@ -41,21 +43,21 @@ class KaryawanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Karyawan $karyawan)
     {
-        //
+        return view('admin/karyawan/detailkaryawan', compact('karyawan'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Karyawan $karyawan)
     {
         //
     }
@@ -64,10 +66,10 @@ class KaryawanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Karyawan $karyawan)
     {
         //
     }
@@ -75,10 +77,10 @@ class KaryawanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Karyawan $karyawan)
     {
         //
     }
