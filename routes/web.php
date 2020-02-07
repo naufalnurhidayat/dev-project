@@ -17,6 +17,9 @@ Route::get('/admin', 'Admin\HomeController@index');
 Route::get('/karyawan', 'Admin\KaryawanController@index');
 Route::get('/createkaryawan', 'Admin\KaryawanController@create');
 Route::get('/detailkaryawan/{karyawan}', 'Admin\KaryawanController@show');
+Route::get('/pendidikan', 'Admin\pendidikanController@index');
+Route::get('/ubah/{id}', 'Admin\pendidikanController@edit');
+Route::get('/hapus/{id}', 'Admin\pendidikanController@destroy');
 
 
 // -------------------------------------------
