@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\barang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Kategori;
 
 class barangController extends Controller
 {
@@ -46,9 +47,10 @@ class barangController extends Controller
      * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(barang $barang)
+    public function show($id_barang)
     {
-        //
+        $barang = Barang::all();
+        return view('Invetaris.Showbarang', compact('barang'));
     }
 
     /**
