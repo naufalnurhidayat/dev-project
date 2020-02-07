@@ -9,8 +9,9 @@
         <div class="col">
             <div class="card" style="width: 18rem;">
             <div class="card-body">
-            <li>{{$barang->nama_barang}}</li>
+            <li>{{$barang->keterangan}}</li>
             </div>
+            <a href="/barang" class="btn btn-primary">Kembali</a>
         </div>
         </div>
     </div>

@@ -49,7 +49,7 @@ class barangController extends Controller
      */
     public function show($id_barang)
     {
-        $barang = Barang::all();
+        $barang = Barang::find($id_barang);
         return view('Invetaris.Showbarang', compact('barang'));
     }
 
