@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                        <a href="/" class="h5 mb-0 font-weight-bold text-gray-800">Home</a>
+                        <a href="{{url('/')}}" class="h5 mb-0 font-weight-bold text-gray-800">Home</a>
                         </div>
                         <div class="col-auto">
                         <i class="fas fa-home fa-2x text-red-300"></i>
@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                        <a href="/absen" class="h5 mb-0 font-weight-bold text-gray-800">Absen</a>
+                        <a href="{{url('/absen')}}" class="h5 mb-0 font-weight-bold text-gray-800">Absen</a>
                         </div>
                         <div class="col-auto">
                         <i class="far fa-clipboard fa-2x text-red-300"></i>
@@ -61,7 +61,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                        <a href="/invetaris" class="h5 mb-0 font-weight-bold text-gray-800">Inventori</a>
+                        <a href="{{url('/invetaris')}}" class="h5 mb-0 font-weight-bold text-gray-800">Inventori</a>
                         </div>
                         <div class="col-auto">
                         <i class="fas fa-clipboard-list fa-2x text-red-300"></i>
@@ -76,7 +76,7 @@
     <div class="row mt-3">
         <div class="col">
             <div class="jumbotron mx-auto text-center">
-                <h1 class="display-3">Hallo, Nama User!</h1>
+                <h1 class="display-3">Hallo, Nama User!</h1>  
                 <p class="lead">Selamat datang di (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
                 <hr class="my-4">
                 <p>Terima kasih telah menggunakan layanan kami.</p>
@@ -99,7 +99,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="/login">Logout</a>
+          <a class="btn btn-primary" href="{{ url('/login')}}">Logout</a>
         </div>
       </div>
     </div>

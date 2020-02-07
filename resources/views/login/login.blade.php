@@ -29,7 +29,7 @@
           </form>
           <hr>
           <div class="text-center">
-            <a class="small" href="/createkaryawan">Registrasi</a>
+            <a class="small" href="{{url('/createkaryawan')}}">Registrasi</a>
           </div>
         </div>
       </div>

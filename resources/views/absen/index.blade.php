@@ -18,7 +18,7 @@
                 <a href="" class="btn btn-warning btn-circle btn-lg" data-toggle="modal" data-target="#izinmodal">
                     <i class="fas fa-exclamation-triangle"></i>
                 </a>
-                <a href="/" class="btn btn-info btn-circle btn-lg">
+                <a href="{{url('/')}}" class="btn btn-info btn-circle btn-lg">
                     <i class="fas fa-info-circle"></i>
                 </a>
             </div>
@@ -38,7 +38,7 @@
         <div class="modal-body">Klik 'Absen' jika ingin absen.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <a class="btn btn-primary" href="/checkabsen">Absen</a>
+          <a class="btn btn-primary" href="{{url('/checkabsen')}}">Absen</a>
         </div>
       </div>
     </div>
@@ -56,7 +56,7 @@
         <div class="modal-body">Klik 'Izin' jika ingin tidak masuk.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <a class="btn btn-primary" href="/izinabsen">Izin</a>
+          <a class="btn btn-primary" href="{{url('/izinabsen')}}">Izin</a>
         </div>
       </div>
     </div>
