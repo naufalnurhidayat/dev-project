@@ -13,7 +13,7 @@
     </div>
     <div class="row mb-3">
         <div class="col">
-            <a href="{{url('/createkaryawan')}}" class="btn btn-primary">Tambah Pendidikan</a>
+            <a href="{{url('/tambahPendidikan')}}" class="btn btn-primary">Tambah Pendidikan</a>
         </div>
     </div>
             <!-- DataTales Example -->

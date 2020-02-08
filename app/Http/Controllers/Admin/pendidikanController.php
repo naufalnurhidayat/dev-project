@@ -26,7 +26,7 @@ class pendidikanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pendidikan.create', compact('pendidikan'));
     }
 
     /**
@@ -37,7 +37,13 @@ class pendidikanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'pendidikan' => 'required'
+        ]);
+
+
+        Pendidikan::create($request->all());
+        return redirect('/pendidikan')->with('status', 'Data berhasil di Tambah!!');
     }
 
     /**
@@ -72,7 +78,13 @@ class pendidikanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'pendidikan' => 'required'
+        ]);
+        
+        $pendidikan = Pendidikan::find($id);
+        $pendidikan->update($request->all());
+        return redirect('/pendidikan')->with('status', 'Data Berhasil di Edit!!');
     }
 
     /**
