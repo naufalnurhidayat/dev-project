@@ -13,10 +13,28 @@
 
 // -------------------------------------------
 // Admin
+
+// Master
+
+// Home
 Route::get('/admin', 'Admin\HomeController@index');
+
+// Karyawan
 Route::get('/karyawan', 'Admin\KaryawanController@index');
 Route::get('/createkaryawan', 'Admin\KaryawanController@create');
 Route::get('/detailkaryawan/{karyawan}', 'Admin\KaryawanController@show');
+
+// Role
+Route::get('/role', 'Admin\RoleController@index');
+Route::get('/createrole', 'Admin\RoleController@create');
+Route::post('/createrole', 'Admin\RoleController@store');
+Route::delete('/hapusrole/{role}', 'Admin\RoleController@destroy');
+Route::get('/ubahrole/{role}', 'Admin\RoleController@edit');
+Route::patch('/ubahrole/{role}', 'Admin\RoleController@update');
+
+// Pendidikan
+
+// Agama
 
 
 // -------------------------------------------
