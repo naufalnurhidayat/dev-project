@@ -41,16 +41,18 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ url('/cuti/dashboard') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Dashboard</span>
+        </a>
       </li>
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ url('/cuti') }}">
           <i class="fas fa-fw fa-chart-area"></i>
-          <span>Data Cuti</span></a>
+          <span>Data Cuti</span>
+        </a>
       </li>
 
       <!-- Divider -->
@@ -79,7 +81,7 @@
           </button>
           
           <a class="btn btn-primary" href="{{url('/cuti/create')}}">
-            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i><strong>Buat Pengajuan Cuti</strong>
+            <i class="fas fa-calendar-plus"></i> <strong> Buat Pengajuan Cuti</strong>
           </a>
 
           <!-- Topbar Navbar -->

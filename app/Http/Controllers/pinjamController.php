@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Karyawan;
+use App\pinjam;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class KaryawanController extends Controller
+class pinjamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class KaryawanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $karyawan = Karyawan::all();
-        return view('admin/karyawan/index', compact('karyawan'));
+    { 
+        return view('invetaris/index');
     }
 
     /**
@@ -26,7 +25,7 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        return view('admin/karyawan/createkaryawan');
+        //
     }
 
     /**
@@ -43,21 +42,21 @@ class KaryawanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function show(Karyawan $karyawan)
+    public function show(pinjam $pinjam)
     {
-        return view('admin/karyawan/detailkaryawan', compact('karyawan'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function edit(Karyawan $karyawan)
+    public function edit(pinjam $pinjam)
     {
         //
     }
@@ -66,10 +65,10 @@ class KaryawanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Karyawan $karyawan)
+    public function update(Request $request, pinjam $pinjam)
     {
         //
     }
@@ -77,10 +76,10 @@ class KaryawanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Karyawan $karyawan)
+    public function destroy(pinjam $pinjam)
     {
         //
     }

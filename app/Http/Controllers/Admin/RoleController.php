@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Karyawan;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class KaryawanController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan = Karyawan::all();
-        return view('admin/karyawan/index', compact('karyawan'));
+        $role = Role::all();
+        return view('admin/role/index', compact('role'));
     }
 
     /**
@@ -26,7 +26,7 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        return view('admin/karyawan/createkaryawan');
+        return view('admin/role/createrole');
     }
 
     /**
@@ -37,51 +37,68 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'role' => 'required'
+        ]);
+
+        $role = new Role;
+        $role->role = $request->role;
+        $role->save();
+
+        return redirect('/role')->with('status', 'Data role berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Karyawan $karyawan)
+    public function show(Role $role)
     {
-        return view('admin/karyawan/detailkaryawan', compact('karyawan'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Karyawan $karyawan)
+    public function edit(Role $role)
     {
-        //
+        return view('admin/role/ubahrole', compact('role'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Karyawan $karyawan)
+    public function update(Request $request, Role $role)
     {
-        //
+        $request->validate([
+            'role' => 'required'
+        ]);
+
+        Role::where('id', $role->id)->Update([
+            'role' => $request->role
+        ]);
+
+        return redirect('/role')->with('status', 'Role berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Karyawan $karyawan)
+    public function destroy(Role $role)
     {
-        //
+        Role::destroy($role->id);
+        return redirect('/role')->with('status', 'Role berhasil dihapus');
     }
 }

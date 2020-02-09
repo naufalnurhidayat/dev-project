@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\barang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Kategori;
 
-class homeInvetaris extends Controller
+class barangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class homeInvetaris extends Controller
      */
     public function index()
     {
-        return view('home/home');
+        $barang = Barang::all();
+        return view('Invetaris.barang', compact('barang'));
     }
 
     /**
@@ -41,21 +44,22 @@ class homeInvetaris extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_barang)
     {
-        //
+        $barang = Barang::find($id_barang);
+        return view('Invetaris.Showbarang', compact('barang'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(barang $barang)
     {
         //
     }
@@ -64,10 +68,10 @@ class homeInvetaris extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, barang $barang)
     {
         //
     }
@@ -75,10 +79,10 @@ class homeInvetaris extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(barang $barang)
     {
         //
     }

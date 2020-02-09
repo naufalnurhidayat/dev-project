@@ -28,7 +28,8 @@ class CutiController extends Controller
      */
     public function create()
     {
-        return view('cuti/create');
+        $jencut = DB::table('jenis_cuti')->get();
+        return view('cuti/create', ['jencut' => $jencut]);
     }
 
     /**
@@ -39,7 +40,15 @@ class CutiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'karyawan' => 'required',
+            'jencut' => 'required',
+            'awal' => 'required',
+            'akhir' => 'required',
+            'alasan' => 'required'
+        ]);
+        Cuti::create($request->all());
+        return redirect('/cuti')->with('status', 'Success');
     }
 
     /**

@@ -17,6 +17,8 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('sbadmin2/css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <!-- Custom styles for this page -->
+  <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -70,14 +72,14 @@
       </li> --}}
       {{-- Data Barang --}}
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="/barang">
         <i class="fas fa-boxes"></i>
           <span>Data Barang</span></a>
       </li>
 
       <!-- Barang Pinjam -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="/pinjam">
         <i class="fas fa-box-open"></i>
           <span>Barang Pinjam</span></a>
       </li>
@@ -86,7 +88,7 @@
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
         <i class="fas fa-people-carry"></i>
-          <span>Barang Kembali</span></a>
+          <span>Pengembalian</span></a>
       </li>
 
        <!-- Divider -->
@@ -208,16 +210,17 @@
         <!-- Begin Page Content -->
         @yield('content')
         
+        
                
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      {{-- <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; Your Website 2019</span>
           </div>
         </div>
-      </footer>
+      </footer> --}}
       <!-- End of Footer -->
 
     </div>
@@ -267,6 +270,13 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script>
   <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script>
+  <!-- Page level plugins -->
+  <script src="{{ asset('sbadmin2') }}/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
+
 
 </body>
 
