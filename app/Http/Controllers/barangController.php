@@ -16,7 +16,7 @@ class barangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all();
+        $barang = Barang::with('Kategori')->get();
         return view('Invetaris.barang', compact('barang'));
     }
 
