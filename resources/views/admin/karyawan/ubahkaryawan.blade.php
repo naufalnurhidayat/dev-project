@@ -12,42 +12,52 @@
           <div class="col">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Registrasi Karyawan</h1>
+                <h1 class="h4 text-gray-900 mb-4">Ubah Data Karyawan</h1>
               </div>
-              <form method="POST" action="{{ url('/karyawan') }}" class="user">
+              <form method="POST" action="{{ url('/karyawan') }}/{{ $karyawan->id }}" class="user">
+                @method('patch')
                 @csrf
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('nip') is-invalid @enderror" value="{{ old('nip') }}" id="nip" placeholder="NIP" name="nip">
+                    <input type="text" class="form-control form-control-user @error('nip') is-invalid @enderror" value="{{ $karyawan->nip }}" id="nip" placeholder="NIP" name="nip">
                     @error('nip') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror" id="nama" placeholder="Nama" name="nama" value="{{ old('nama') }}">
+                    <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror" id="nama" placeholder="Nama" name="nama" value="{{ $karyawan->nama }}">
                     @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('tmp_lahir') is-invalid @enderror" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="{{ old('tmp_lahir') }}">
+                    <input type="text" class="form-control form-control-user @error('tmp_lahir') is-invalid @enderror" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="{{ $karyawan->tmp_lahir }}">
                     @error('tmp_lahir') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="date" class="form-control form-control-user @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="{{ old('tgl_lahir') }}">
+                    <input type="date" class="form-control form-control-user @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="{{ $karyawan->tgl_lahir }}">
                     @error('tgl_lahir') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ old('email') }}">
+                    <input type="text" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ $karyawan->email }}">
                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="Laki-laki" name="jenkel" value="Laki-laki">
-                    <label for="Laki-laki" class="ml-4">Laki-laki</label>
-                    @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="perempuan" name="jenkel" value="Perempuan">
-                    <label for="perempuan" class="ml-4">Perempuan</label>
-                    @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @if ($karyawan->jenkel == 'Laki-laki')
+                      <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="Laki-laki" name="jenkel" value="Laki-laki" checked>
+                      <label for="Laki-laki" class="ml-4">Laki-laki</label>
+                      @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                      <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="perempuan" name="jenkel" value="Perempuan">
+                      <label for="perempuan" class="ml-4">Perempuan</label>
+                      @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @else
+                      <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="Laki-laki" name="jenkel" value="Laki-laki">
+                      <label for="Laki-laki" class="ml-4">Laki-laki</label>
+                      @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                      <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="perempuan" name="jenkel" value="Perempuan" checked>
+                      <label for="perempuan" class="ml-4">Perempuan</label>
+                      @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @endif
                   </div>
                 </div>
                 <div class="form-group row">
@@ -68,11 +78,11 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('thn_join') is-invalid @enderror" id="thn_join" placeholder="Tahun Join" name="thn_join" value="{{ old('thn_join') }}">
+                    <input type="text" class="form-control form-control-user @error('thn_join') is-invalid @enderror" id="thn_join" placeholder="Tahun Join" name="thn_join" value="{{ $karyawan->thn_join }}">
                     @error('thn_join') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user @error('no_telp') is-invalid @enderror" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="{{ old('no_telp') }}">
+                    <input type="text" class="form-control form-control-user @error('no_telp') is-invalid @enderror" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="{{ $karyawan->no_telp }}">
                     @error('no_telp') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
@@ -85,12 +95,12 @@
                     @error('id_agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <textarea name="alamat" id="alamat" class="@error('alamat') is-invalid @enderror">Alamat</textarea>
+                    <textarea name="alamat" id="alamat" class="@error('alamat') is-invalid @enderror">{{ $karyawan->alamat }}</textarea>
                     @error('alamat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
-                <button type="submit" name="registasi" class="btn btn-primary btn-user btn-block">
-                  Register Account
+                <button type="submit" name="ubah" class="btn btn-primary btn-user btn-block">
+                  Ubah Data
                 </button>
               </form>
             </div>

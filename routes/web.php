@@ -23,12 +23,10 @@ Route::get('/admin', 'Admin\HomeController@index');
 Route::get('/karyawan', 'Admin\KaryawanController@index');
 Route::get('/createkaryawan', 'Admin\KaryawanController@create');
 Route::get('/detailkaryawan/{karyawan}', 'Admin\KaryawanController@show');
-Route::get('/pendidikan', 'Admin\pendidikanController@index');
-Route::get('/ubah/{id}', 'Admin\pendidikanController@edit');
-Route::get('/hapus/{id}', 'Admin\pendidikanController@destroy');
-Route::get('/tambahPendidikan', 'Admin\pendidikanController@create');
-Route::post('/store', 'Admin\pendidikanController@store');
-Route::post('/apdet/{id}', 'Admin\pendidikanController@update');
+Route::post('/karyawan', 'Admin\KaryawanController@store');
+Route::delete('/hapuskaryawan/{karyawan}', 'Admin\KaryawanController@destroy');
+Route::get('/ubahkaryawan/{karyawan}', 'Admin\KaryawanController@edit');
+Route::patch('/karyawan/{karyawan}', 'Admin\KaryawanController@update');
 
 // Role
 Route::get('/role', 'Admin\RoleController@index');
@@ -39,6 +37,12 @@ Route::get('/ubahrole/{role}', 'Admin\RoleController@edit');
 Route::patch('/ubahrole/{role}', 'Admin\RoleController@update');
 
 // Pendidikan
+Route::get('/pendidikan', 'Admin\pendidikanController@index');
+Route::get('/ubah/{id}', 'Admin\pendidikanController@edit');
+Route::get('/hapus/{id}', 'Admin\pendidikanController@destroy');
+Route::get('/tambahPendidikan', 'Admin\pendidikanController@create');
+Route::post('/store', 'Admin\pendidikanController@store');
+Route::post('/apdet/{id}', 'Admin\pendidikanController@update');
 
 // Agama
 
@@ -47,7 +51,7 @@ Route::patch('/ubahrole/{role}', 'Admin\RoleController@update');
 // User
 
 Route::get('/', 'Home@index');
-Route::get('/login', 'CreateKaryawan@login');
+Route::get('/login', 'Login\LoginController@index');
 
 // -------------------------------------------
 // Absen
@@ -68,6 +72,7 @@ Route::get('/cuti/create', 'CutiController@create');
 //Invetaris
 
 Route::get('/invetaris', 'Invetaris@index');
+Route::get('/pinjam', 'pinjamController@index');
 Route::get('/barang', 'barangController@index');
-Route::get('/pinjam/create', 'PinjamController@create');
 Route::get('/show/{id_barang}', 'barangController@show');
+

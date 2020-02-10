@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Home extends Controller
+class LoginController extends Controller
 {
     public function index() {
-        return view('home/home');
+        return view('login/login');
     }
 }
