@@ -39,7 +39,7 @@ Route::patch('/ubahrole/{role}', 'Admin\RoleController@update');
 // Pendidikan
 Route::get('/pendidikan', 'Admin\pendidikanController@index');
 Route::get('/ubah/{id}', 'Admin\pendidikanController@edit');
-Route::get('/hapus/{id}', 'Admin\pendidikanController@destroy');
+Route::delete('/hapus/{id}', 'Admin\pendidikanController@destroy');
 Route::get('/tambahPendidikan', 'Admin\pendidikanController@create');
 Route::post('/store', 'Admin\pendidikanController@store');
 Route::post('/apdet/{id}', 'Admin\pendidikanController@update');
