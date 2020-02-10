@@ -28,7 +28,7 @@ class pinjamController extends Controller
      */
     public function create()
     {
-        //
+        return view('Invetaris.formInvetaris', compact('pinjam'));
     }
 
     /**

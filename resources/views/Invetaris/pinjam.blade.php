@@ -34,14 +34,14 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($user as $use)
+              @foreach($pinjam->all() as $give)
              <tr> 
-             <td>{{$use->nama_barang}}</td> 
-             <td>{{$use->Kategori->nama_kategori}}</td>
-             <td>{{$use->stok}}</td>
-             <td>{{$use->type}}</td>
-             <td>{{$use->status}}</td>
-             <td>{{$use->kondisi}}</td>
+             <td>{{$give->nama_barang}}</td> 
+             <td>{{$give->Kategori->nama_kategori}}</td>
+             <td>{{$give->stok}}</td>
+             <td>{{$give->type}}</td>
+             <td>{{$give->status}}</td>
+             <td>{{$give->kondisi}}</td>
              <td>
              <a href="{{url('/show')}}" class="badge badge-success">Pinjam</a>
              </td>

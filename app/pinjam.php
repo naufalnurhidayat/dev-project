@@ -12,6 +12,6 @@ class pinjam extends Model
     public $timestamps = false;
 
     public function Barang(){
-        return $this->beLongsTo('App\Barang','id_barang');
+        return $this->hasMany(Barang::class);
     }
 }

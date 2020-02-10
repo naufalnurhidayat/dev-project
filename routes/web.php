@@ -62,5 +62,5 @@ Route::get('/izinabsen', 'Absen@izinAbsen');
 
 Route::get('/invetaris', 'Invetaris@index');
 Route::get('/barang', 'barangController@index');
-Route::get('/pinjam', 'barangController@showpinjam');
+Route::get('/pinjam/create', 'PinjamController@create');
 Route::get('/show/{id_barang}', 'barangController@show');

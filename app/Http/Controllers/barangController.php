@@ -6,6 +6,7 @@ use App\barang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Kategori;
+use App\Pinjam;
 
 class barangController extends Controller
 {
@@ -89,8 +90,9 @@ class barangController extends Controller
 
     public function showpinjam()
     {
-        $user = Barang::with('Kategori')->get();
-        dd($user);
-        //return view('Invetaris.pinjam', compact(['barang' => $user]));
+        // $data = ::findOrFail();
+        // $user = Barang::table('barang')->get();
+        $user = Barang::all();
+        return view('Invetaris.pinjam', compact(['Barang'=> $user]));
     }
 }

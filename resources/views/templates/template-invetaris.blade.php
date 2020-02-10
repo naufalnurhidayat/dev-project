@@ -78,12 +78,7 @@
       </li>
 
       <!-- Barang Pinjam -->
-      <li class="nav-item">
-        <a class="nav-link" href="/pinjam">
-        <i class="fas fa-box-open"></i>
-          <span>Barang Pinjam</span></a>
-      </li>
-
+      
       <!-- Barang Kembali -->
       <li class="nav-item">
         <a class="nav-link" href="charts.html">
