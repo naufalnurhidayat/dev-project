@@ -45,7 +45,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                        <a href="#" class="h5 mb-0 font-weight-bold text-gray-800">Cuti</a>
+                        <a href="/cuti" class="h5 mb-0 font-weight-bold text-gray-800">Cuti</a>
                         </div>
                         <div class="col-auto">
                         <i class="far fa-calendar-minus fa-2x text-red-300"></i>

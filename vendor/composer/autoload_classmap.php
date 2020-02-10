@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Cuti' => $baseDir . '/app/Cuti.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Absen' => $baseDir . '/app/Http/Controllers/Absen.php',
     'App\\Http\\Controllers\\Admin\\HomeController' => $baseDir . '/app/Http/Controllers/Admin/HomeController.php',
@@ -20,10 +21,15 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CreateKaryawan' => $baseDir . '/app/Http/Controllers/CreateKaryawan.php',
+    'App\\Http\\Controllers\\CutiController' => $baseDir . '/app/Http/Controllers/CutiController.php',
     'App\\Http\\Controllers\\Home' => $baseDir . '/app/Http/Controllers/Home.php',
     'App\\Http\\Controllers\\Invetaris' => $baseDir . '/app/Http/Controllers/Invetaris.php',
+<<<<<<< HEAD
+    'App\\Http\\Controllers\\homeInvetaris' => $baseDir . '/app/Http/Controllers/homeInvetaris.php',
+=======
     'App\\Http\\Controllers\\barangController' => $baseDir . '/app/Http/Controllers/barangController.php',
     'App\\Http\\Controllers\\pinjamController' => $baseDir . '/app/Http/Controllers/pinjamController.php',
+>>>>>>> 7bfae1c99bde27114795c0395d9e7897249b310c
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
