@@ -411,6 +411,7 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Cuti' => __DIR__ . '/../..' . '/app/Cuti.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Absen' => __DIR__ . '/../..' . '/app/Http/Controllers/Absen.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',
@@ -424,6 +425,7 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CreateKaryawan' => __DIR__ . '/../..' . '/app/Http/Controllers/CreateKaryawan.php',
+        'App\\Http\\Controllers\\CutiController' => __DIR__ . '/../..' . '/app/Http/Controllers/CutiController.php',
         'App\\Http\\Controllers\\Home' => __DIR__ . '/../..' . '/app/Http/Controllers/Home.php',
         'App\\Http\\Controllers\\Invetaris' => __DIR__ . '/../..' . '/app/Http/Controllers/Invetaris.php',
         'App\\Http\\Controllers\\barangController' => __DIR__ . '/../..' . '/app/Http/Controllers/barangController.php',

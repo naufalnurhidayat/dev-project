@@ -68,6 +68,7 @@ class KaryawanController extends Controller
         $karyawan->id_agama = $request->id_agama;
         $karyawan->alamat = $request->alamat;
         $karyawan->foto = 'default.jpg';
+        $karyawan->password = 'user';
 
         $karyawan->save();
 

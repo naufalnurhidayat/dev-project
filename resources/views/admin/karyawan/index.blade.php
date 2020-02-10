@@ -47,7 +47,7 @@
                       <td>{{ $k->nama }}</td>
                       <td>{{ $k->jenkel }}</td>
                       <td>{{ $k->email }}</td>
-                      <td>{{ $k->role }}</td>
+                      <td>{{ $k->id_role }}</td>
                       <td>
                         <a href="{{url('/detailkaryawan')}}/{{$k->id}}" class="badge badge-primary">Detail</a>
                         <a href="{{url('/ubahkaryawan')}}/{{$k->id}}" class="badge badge-success">Ubah</a>

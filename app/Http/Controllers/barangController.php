@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
+use App\barang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Kategori;
+use App\Pinjam;
 
-class Absen extends Controller
+class barangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,8 @@ class Absen extends Controller
      */
     public function index()
     {
-        return view('user/absen/index');
+        $barang = Barang::with('Kategori')->get();
+        return view('Invetaris.barang', compact('barang'));
     }
 
     /**
@@ -24,7 +28,7 @@ class Absen extends Controller
      */
     public function create()
     {
-        return view('user/absen/absen');
+        //
     }
 
     /**
@@ -41,22 +45,22 @@ class Absen extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    public function show()
+    public function show($id_barang)
     {
-        return view('user/absen/checkabsen');
+        $barang = Barang::find($id_barang);
+        return view('user.Invetaris.Showbarang', compact('barang'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(barang $barang)
     {
         //
     }
@@ -65,10 +69,10 @@ class Absen extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, barang $barang)
     {
         //
     }
@@ -76,16 +80,19 @@ class Absen extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(barang $barang)
     {
         //
     }
 
-    public function izinAbsen()
+    public function showpinjam()
     {
-        return view('user/absen/izinabsen');
+        // $data = ::findOrFail();
+        // $user = Barang::table('barang')->get();
+        $user = Barang::all();
+        return view('Invetaris.pinjam', compact(['Barang'=> $user]));
     }
 }

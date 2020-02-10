@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
-use App\barang;
+use App\Cuti;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Kategori;
 
-class barangController extends Controller
+class CutiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,9 @@ class barangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all();
-        return view('user.Invetaris.barang', compact('barang'));
+        // $cuti = Cuti::all();
+        $karyawan = DB::table('karyawan')->get();
+        return view('cuti/index', compact('karyawan'));
     }
 
     /**
@@ -27,7 +28,8 @@ class barangController extends Controller
      */
     public function create()
     {
-        //
+        $jencut = DB::table('jenis_cuti')->get();
+        return view('cuti/create', ['jencut' => $jencut]);
     }
 
     /**
@@ -38,28 +40,35 @@ class barangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'karyawan' => 'required',
+            'jencut' => 'required',
+            'awal' => 'required',
+            'akhir' => 'required',
+            'alasan' => 'required'
+        ]);
+        Cuti::create($request->all());
+        return redirect('/cuti')->with('status', 'Success');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\barang  $barang
+     * @param  \App\Cuti  $cuti
      * @return \Illuminate\Http\Response
      */
-    public function show($id_barang)
+    public function show(Cuti $cuti)
     {
-        $barang = Barang::find($id_barang);
-        return view('user.Invetaris.Showbarang', compact('barang'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\barang  $barang
+     * @param  \App\Cuti  $cuti
      * @return \Illuminate\Http\Response
      */
-    public function edit(barang $barang)
+    public function edit(Cuti $cuti)
     {
         //
     }
@@ -68,10 +77,10 @@ class barangController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\barang  $barang
+     * @param  \App\Cuti  $cuti
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, barang $barang)
+    public function update(Request $request, Cuti $cuti)
     {
         //
     }
@@ -79,10 +88,10 @@ class barangController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\barang  $barang
+     * @param  \App\Cuti  $cuti
      * @return \Illuminate\Http\Response
      */
-    public function destroy(barang $barang)
+    public function destroy(Cuti $cuti)
     {
         //
     }

@@ -50,21 +50,29 @@ Route::post('/apdet/{id}', 'Admin\pendidikanController@update');
 // -------------------------------------------
 // User
 
-Route::get('/', 'User\Home@index');
+Route::get('/', 'Home@index');
 Route::get('/login', 'Login\LoginController@index');
 
 // -------------------------------------------
 // Absen
 
-Route::get('/absen', 'User\Absen@index');
-Route::get('/tampilabsen', 'User\Absen@show');
-Route::get('/checkabsen', 'User\Absen@create');
-Route::get('/izinabsen', 'User\Absen@izinAbsen');
+Route::get('/absen', 'Absen@index');
+Route::get('/tampilabsen', 'Absen@show');
+Route::get('/checkabsen', 'Absen@create');
+Route::get('/izinabsen', 'Absen@izinAbsen');
+
+// -------------------------------------------
+// Cuti
+
+Route::get('/cuti', 'CutiController@index');
+Route::get('/cuti/create', 'CutiController@create');
+
 
 //--------------------------------------------
 //Invetaris
 
-Route::get('/invetaris', 'User\Invetaris@index');
-Route::get('/pinjam', 'User\pinjamController@index');
-Route::get('/barang', 'User\barangController@index');
-Route::get('/show/{id_barang}', 'User\barangController@show');
+Route::get('/invetaris', 'Invetaris@index');
+Route::get('/pinjam', 'pinjamController@index');
+Route::get('/barang', 'barangController@index');
+Route::get('/show/{id_barang}', 'barangController@show');
+
