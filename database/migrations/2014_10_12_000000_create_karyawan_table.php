@@ -27,7 +27,7 @@ class CreateKaryawanTable extends Migration
             $table->integer('id_pendidikan');
             $table->integer('thn_join');
             $table->string('no_telp');
-            $table->string('agama');
+            $table->string('id_agama');
             $table->text('alamat');
             $table->rememberToken();
             $table->timestamps();
