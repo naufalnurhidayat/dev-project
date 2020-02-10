@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\barang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Kategori;
-use App\Pinjam;
 
-class barangController extends Controller
+class KategoriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,7 @@ class barangController extends Controller
      */
     public function index()
     {
-        $kategori = Kategori::all();
-        $barang = Barang::with('Kategori')->get();
-        return view('Invetaris.barang', ['barang' => $barang, 'kategori' => $kategori]);
+       
     }
 
     /**
@@ -46,22 +41,21 @@ class barangController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_barang)
+    public function show($id)
     {
-        $barang = Barang::find($id_barang);
-        return view('Invetaris.Showbarang', compact('barang'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(barang $barang)
+    public function edit($id)
     {
         //
     }
@@ -70,10 +64,10 @@ class barangController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, barang $barang)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -81,19 +75,11 @@ class barangController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(barang $barang)
+    public function destroy($id)
     {
         //
-    }
-
-    public function showpinjam()
-    {
-        // $data = ::findOrFail();
-        // $user = Barang::table('barang')->get();
-        $user = Barang::all();
-        return view('Invetaris.pinjam', compact(['Barang'=> $user]));
     }
 }

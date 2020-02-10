@@ -77,7 +77,7 @@ Route::get('/cuti/create', 'CutiController@create');
 //Invetaris
 
 Route::get('/invetaris', 'Invetaris@index');
-Route::get('/pinjam', 'pinjamController@index');
+Route::get('/pinjam/create', 'pinjamController@create');
 Route::get('/barang', 'barangController@index');
 Route::get('/show/{id_barang}', 'barangController@show');
 

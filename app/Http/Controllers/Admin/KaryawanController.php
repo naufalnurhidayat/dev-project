@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Karyawan;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan = Karyawan::all();
-        // return $karyawan;
-
+        $karyawan = Karyawan::with('Role')->get();
         return view('admin/karyawan/index', compact('karyawan'));
     }
 

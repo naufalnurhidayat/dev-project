@@ -21,9 +21,12 @@
     <div class="card-header py-3">
       Kategori
       <select name="" id="">
-        <option value="">Laptop</option>
-        <option value="">Layar Tv</option>
+        <option value="">--Pilih Kategori--</option>
+        @foreach($kategori as $k)
+      <option value="{{$k->id_kategori}}">{{$k->nama_kategori}}</option>
+        @endforeach
       </select>
+
     </div>
     <div class="card-body">
       <div class="table-responsive">
