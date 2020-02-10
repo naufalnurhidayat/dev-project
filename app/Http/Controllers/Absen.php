@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class Absen extends Controller
@@ -46,7 +47,7 @@ class Absen extends Controller
     // public function show($id)
     public function show()
     {
-        return view('absen/checkabsen');
+        return view('user/absen/checkabsen');
     }
 
     /**

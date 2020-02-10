@@ -6,6 +6,7 @@ use App\barang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Kategori;
+use App\Pinjam;
 
 class barangController extends Controller
 {
@@ -16,7 +17,7 @@ class barangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all();
+        $barang = Barang::with('Kategori')->get();
         return view('Invetaris.barang', compact('barang'));
     }
 
@@ -50,7 +51,7 @@ class barangController extends Controller
     public function show($id_barang)
     {
         $barang = Barang::find($id_barang);
-        return view('Invetaris.Showbarang', compact('barang'));
+        return view('user.Invetaris.Showbarang', compact('barang'));
     }
 
     /**
@@ -85,5 +86,13 @@ class barangController extends Controller
     public function destroy(barang $barang)
     {
         //
+    }
+
+    public function showpinjam()
+    {
+        // $data = ::findOrFail();
+        // $user = Barang::table('barang')->get();
+        $user = Barang::all();
+        return view('Invetaris.pinjam', compact(['Barang'=> $user]));
     }
 }

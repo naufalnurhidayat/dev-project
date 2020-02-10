@@ -15,9 +15,8 @@
     <div class="card-header py-3">
       Kategori
       <select name="" id="">
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
+        <option value="">Laptop</option>
+        <option value="">Layar Tv</option>
       </select>
     </div>
     <div class="card-body">
@@ -37,13 +36,14 @@
           <tbody>
             @foreach($barang as $box)
            <tr> 
-           <td>{{$box->nama_barang}}</td>
-           <td>{{$box->nama_kategori}}</td>
+           <td>{{$box->nama_barang}}</td> 
+           <td>{{$box->Kategori->nama_kategori}}</td>
            <td>{{$box->stok}}</td>
            <td>{{$box->type}}</td>
            <td>{{$box->kondisi}}</td>
            <td>
            <a href="{{url('/show')}}/{{$box->id_barang}}" class="badge badge-primary">Detail</a>
+           <a href="{{url('/pinjam/create')}}" class="badge badge-success">Pinjam</a>
            </td>
            </tr>
            @endforeach
