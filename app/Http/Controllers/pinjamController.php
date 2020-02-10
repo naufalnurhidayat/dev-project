@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\pinjam;
+use App\Pinjam;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Kategori;
+use App\Barang;
 
 class pinjamController extends Controller
 {
@@ -15,7 +17,8 @@ class pinjamController extends Controller
      */
     public function index()
     { 
-        return view('invetaris/index');
+        $barang = Barang::with('Barang')->get();
+        return view('Invetaris.index', compact('barang'));
     }
 
     /**
