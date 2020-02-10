@@ -89,7 +89,7 @@
                     @error('id_agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <textarea name="alamat" id="alamat" class="@error('alamat') is-invalid @enderror" cols="44" placeholder="Alamat"></textarea>
+                    <textarea name="alamat" id="alamat" class=" form-control @error('alamat') is-invalid @enderror" rows="2" placeholder="Alamat"></textarea>
                     @error('alamat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
