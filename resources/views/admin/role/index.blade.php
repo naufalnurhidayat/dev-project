@@ -6,11 +6,6 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h1>Daftar Role</h1>
-        </div>
-    </div>
 
     @if (session('status'))
         <div class="alert alert-success">
@@ -26,13 +21,14 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Role</h6>
+                <h3 class="m-0 font-weight-bold text-primary">Data Role</h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                      <tr>
+                    <tr>
+                      <th>No</th>
                       <th>Role</th>
                       <th>Aksi</th>
                     </tr>
@@ -40,6 +36,7 @@
                   <tbody>
                   @foreach ($role as $r)            
                   <tr>
+                      <td>{{ $loop->iteration }}</td>
                       <td>{{ $r->role }}</td>
                       <td>
                         <a href="{{url('/ubahrole')}}/{{$r->id}}" class="btn btn-success">Ubah</a>

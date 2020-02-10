@@ -6,16 +6,6 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h1>Daftar Karyawan</h1>
-        </div>
-    </div>
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
     <div class="row mb-3">
         <div class="col">
             <a href="{{url('/createkaryawan')}}" class="btn btn-primary">Tambah Karyawan</a>
@@ -24,13 +14,14 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Karyawan</h6>
+                <h3 class="m-0 font-weight-bold text-primary">Data Karyawan</h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                      <tr>
+                    <tr>
+                      <th>No</th>
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
@@ -41,8 +32,8 @@
                   </thead>
                   <tbody>
                   @foreach ($karyawan as $k)
-                      
-                  <tr>
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
                       <td>{{ $k->nip }}</td>
                       <td>{{ $k->nama }}</td>
                       <td>{{ $k->jenkel }}</td>
@@ -57,8 +48,7 @@
                           <button type="submit" class="badge badge-danger">Hapus</button>
                         </form>
                       </td>
-                  </tr>
-
+                    </tr>
                   @endforeach
                 </tbody>
                 </table>

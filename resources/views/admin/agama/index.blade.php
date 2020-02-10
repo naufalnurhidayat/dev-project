@@ -1,10 +1,9 @@
 @extends('templates/template-admin')
 
-@section('title', 'Daftar Pendidikan')
+@section('title', 'Daftar Agama')
 
 @section('content')
-
-<!-- Begin Page Content -->
+    <!-- Begin Page Content -->
 <div class="container-fluid">
 
     @if (session('status'))
@@ -15,13 +14,13 @@
 
     <div class="row mb-3">
         <div class="col">
-            <a href="{{url('/tambahPendidikan')}}" class="btn btn-primary">Tambah Data</a>
+            <a href="{{url('/admin/agama/create')}}" class="btn btn-primary">Tambah Agama</a>
         </div>
     </div>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h3 class="m-0 font-weight-bold text-primary">Data Pendidikan</h3>
+                <h3 class="m-0 font-weight-bold text-primary">Data Agama</h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -29,23 +28,23 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Pendidikan</th>
+                      <th>Agama</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($pendidikan as $education)            
-                  <tr>
-                      <td>{{ $loop->iteration }}</td>
-                      <td>{{ $education->pendidikan }}</td>
-                      <td>
-                        <a href="{{url('/ubah')}}/{{$education->id}}" class="btn btn-success">Ubah</a>
-                        <form action="{{ url('/hapus')}}/{{ $education->id }}" method="POST" class="d-inline">
-                          @method('delete')
-                          @csrf
-                          <button type="submit" class="btn btn-danger" name="hapus">Hapus</button>
-                        </form>
-                      </td>
+                  @foreach ($agama as $a)            
+                  <tr align="center">
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $a->agama }}</td>
+                    <td>
+                      <a href="/admin/agama/edit/{{$a->id}}" class="btn btn-success">Ubah</a>
+                      <form action="{{ url('/admin/agama')}}/{{ $a->id }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-danger" name="hapus">Hapus</button>
+                      </form>
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -58,5 +57,4 @@
         <!-- /.container-fluid -->
 
       </div>
-
 @endsection
