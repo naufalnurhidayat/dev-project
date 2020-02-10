@@ -428,12 +428,8 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
         'App\\Http\\Controllers\\CutiController' => __DIR__ . '/../..' . '/app/Http/Controllers/CutiController.php',
         'App\\Http\\Controllers\\Home' => __DIR__ . '/../..' . '/app/Http/Controllers/Home.php',
         'App\\Http\\Controllers\\Invetaris' => __DIR__ . '/../..' . '/app/Http/Controllers/Invetaris.php',
-<<<<<<< HEAD
-        'App\\Http\\Controllers\\homeInvetaris' => __DIR__ . '/../..' . '/app/Http/Controllers/homeInvetaris.php',
-=======
         'App\\Http\\Controllers\\barangController' => __DIR__ . '/../..' . '/app/Http/Controllers/barangController.php',
         'App\\Http\\Controllers\\pinjamController' => __DIR__ . '/../..' . '/app/Http/Controllers/pinjamController.php',
->>>>>>> 7bfae1c99bde27114795c0395d9e7897249b310c
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
