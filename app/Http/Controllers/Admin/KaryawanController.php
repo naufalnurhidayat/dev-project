@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Karyawan;
 use App\Role;
+use App\Pendidikan;
+use App\Agama;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan = Karyawan::with('Role')->get();
+        $karyawan = Karyawan::all();
         return view('admin/karyawan/index', compact('karyawan'));
     }
 
@@ -27,7 +29,10 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        return view('admin/karyawan/createkaryawan');
+        $role = Role::all();
+        $pendidikan = Pendidikan::all();
+        // $agama = Agama::all();
+        return view('admin/karyawan/createkaryawan', ['role' => $role, 'pendidikan' => $pendidikan]);
     }
 
     /**

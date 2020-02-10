@@ -5,7 +5,7 @@
 @section('content')
 
   <div class="container">
-    <div class="card o-hidden border-0 shadow-lg my-5 col-md-6 mx-auto">
+    <div class="card o-hidden border-0 shadow-lg my-5 col-md-10 mx-auto">
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
@@ -54,14 +54,18 @@
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <select id="id_role" name="id_role" class="form-control @error('id_role') is-invalid @enderror">
                       <option value="">--Pilih Role--</option>
-                      <option value="1">1</option>
+                      @foreach ($role as $r)
+                        <option value="{{ $r->id }}">{{ $r->role }}</option>
+                      @endforeach
                     </select>
                     @error('id_role') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
                     <select id="id_pendidikan" name="id_pendidikan" class="form-control @error('id_pendidikan') is-invalid @enderror">
                       <option value="">--Pilih Pendidikan--</option>
-                      <option value="1">1</option>
+                      @foreach ($pendidikan as $p)
+                        <option value="{{ $p->id }}">{{ $p->pendidikan }}</option>
+                      @endforeach
                     </select>
                     @error('id_pendidikan') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
@@ -85,7 +89,7 @@
                     @error('id_agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <textarea name="alamat" id="alamat" class="@error('alamat') is-invalid @enderror">Alamat</textarea>
+                    <textarea name="alamat" id="alamat" class="@error('alamat') is-invalid @enderror" cols="44" placeholder="Alamat"></textarea>
                     @error('alamat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>

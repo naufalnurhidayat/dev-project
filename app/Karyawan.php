@@ -10,8 +10,8 @@ class Karyawan extends Model
     protected $fillable = ['nip', 'nama', 'tmp_lahir', 'tgl_lahir', 'email', 'jenkel', 'thn_join', 'no_telp', 'agama', 'alamat'];
     protected $primaryKey = 'id';
     
-    public function Role() {
-        return $this->beLongsTo('App/Role','id_role');
+    public function role() {
+        return $this->belongsTo('App/Role', 'id_role');
     }
     
     public function pendidikan() {
