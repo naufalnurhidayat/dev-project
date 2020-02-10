@@ -23,6 +23,7 @@
       <select name="" id="">
         <option value="">Laptop</option>
         <option value="">Layar Tv</option>
+        <option value="">Meja Kerja</option>
       </select>
     </div>
     <div class="card-body">
