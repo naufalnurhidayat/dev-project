@@ -8,38 +8,48 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h1>Daftar Data Pendidikan</h1>
+            <h1>Daftar Pendidikan</h1>
         </div>
     </div>
+
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+
     <div class="row mb-3">
         <div class="col">
-            <a href="{{url('/tambahPendidikan')}}" class="btn btn-primary">Tambah Pendidikan</a>
+            <a href="{{url('/createrole')}}" class="btn btn-primary">Tambah Data</a>
         </div>
     </div>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Pendidikan</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Data Role</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  
+                  <thead>
                       <tr>
-                      <th>Pendidikan</th>
+                      <th>Role</th>
+                      <th>Aksi</th>
                     </tr>
-                  
+                  </thead>
                   <tbody>
-                  @foreach ($pendidikan as $p)
-                      
+                  @foreach ($role as $r)            
                   <tr>
-                      <td>{{$p->pendidikan}}</td>
+                      <td>{{ $r->role }}</td>
                       <td>
-                        <a href="{{url('/ubah')}}/{{$p->id}}" class="badge badge-success">Ubah</a>
-                        <a href="{{url('/hapus')}}/{{$p->id}}" class="badge badge-danger">Hapus</a>
+                        <a href="{{url('/ubahrole')}}/{{$r->id}}" class="btn btn-success">Ubah</a>
+                        <form action="{{ url('/hapusrole')}}/{{ $r->id }}" method="POST" class="d-inline">
+                          @method('delete')
+                          @csrf
+                          <button type="submit" class="btn btn-danger" name="hapus">Hapus</button>
+                        </form>
                       </td>
                   </tr>
-
                   @endforeach
                 </tbody>
                 </table>

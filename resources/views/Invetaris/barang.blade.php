@@ -4,6 +4,12 @@
 
 @section('content')
 
+
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
  <!-- Begin Page Content -->
  <div class="container-fluid">
 

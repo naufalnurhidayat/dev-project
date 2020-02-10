@@ -44,9 +44,17 @@
     </div>
 
     <div class="form-group">
-    <label for="type">Tipe </label>
-    <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" placeholder="" name="type" value="">
-    @error('type')
+    <label for="tgl_pinjam">Tanggal Pinjam </label>
+    <input type="date" class="form-control @error('tgl_pinjam') is-invalid @enderror" id="tgl_pinjam" placeholder="" name="tgl_pinjam" value="{{date('y-m-d')}}">
+    @error('tgl_pinjam')
+    <div class="invalid-feedback">{{$message}}</div>
+    @enderror
+    </div>
+
+    <div class="form-group">
+    <label for="keterangan">Keterangan</label>
+    <textarea class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" placeholder="" name="keterangan" value=""></textarea>
+    @error('keterangan')
     <div class="invalid-feedback">{{$message}}</div>
     @enderror
     </div>
