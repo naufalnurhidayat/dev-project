@@ -16,6 +16,8 @@ class KaryawanController extends Controller
     public function index()
     {
         $karyawan = Karyawan::all();
+        // return $karyawan;
+
         return view('admin/karyawan/index', compact('karyawan'));
     }
 
@@ -37,7 +39,39 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nip' => 'required',
+            'nama' => 'required',
+            'tmp_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'email' => 'required|email',
+            'jenkel' => 'required',
+            'id_role' => 'required',
+            'id_pendidikan' => 'required',
+            'thn_join' => 'required',
+            'no_telp' => 'required',
+            'id_agama' => 'required',
+            'alamat' => 'required'
+        ]);
+
+        $karyawan = new Karyawan;
+        $karyawan->nip = $request->nip;
+        $karyawan->nama = $request->nama;
+        $karyawan->tmp_lahir = $request->tmp_lahir;
+        $karyawan->tgl_lahir = $request->tgl_lahir;
+        $karyawan->email = $request->email;
+        $karyawan->jenkel = $request->jenkel;
+        $karyawan->id_role = $request->id_role;
+        $karyawan->id_pendidikan = $request->id_pendidikan;
+        $karyawan->thn_join = $request->thn_join;
+        $karyawan->no_telp = $request->no_telp;
+        $karyawan->id_agama = $request->id_agama;
+        $karyawan->alamat = $request->alamat;
+        $karyawan->foto = 'default.jpg';
+
+        $karyawan->save();
+
+        return redirect('/karyawan');
     }
 
     /**
@@ -59,7 +93,7 @@ class KaryawanController extends Controller
      */
     public function edit(Karyawan $karyawan)
     {
-        //
+        return view('admin/karyawan/ubahkaryawan', compact('karyawan'));
     }
 
     /**
@@ -71,7 +105,37 @@ class KaryawanController extends Controller
      */
     public function update(Request $request, Karyawan $karyawan)
     {
-        //
+        $request->validate([
+            'nip' => 'required',
+            'nama' => 'required',
+            'tmp_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'email' => 'required|email',
+            'jenkel' => 'required',
+            'id_role' => 'required',
+            'id_pendidikan' => 'required',
+            'thn_join' => 'required',
+            'no_telp' => 'required',
+            'id_agama' => 'required',
+            'alamat' => 'required'
+        ]);
+
+        Karyawan::where('id', $karyawan->id)->Update([
+            'nip' => $request->nip,
+            'nama' => $request->nama,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'email' => $request->email,
+            'jenkel' => $request->jenkel,
+            'id_role' => $request->id_role,
+            'id_pendidikan' => $request->id_pendidikan,
+            'thn_join' => $request->thn_join,
+            'no_telp' => $request->no_telp,
+            'id_agama' => $request->id_agama,
+            'alamat' => $request->alamat
+        ]);
+
+        return redirect('/karyawan')->with('status', 'Data Karyawan berhasil diubah');
     }
 
     /**
@@ -82,6 +146,7 @@ class KaryawanController extends Controller
      */
     public function destroy(Karyawan $karyawan)
     {
-        //
+        Karyawan::destroy($karyawan->id);
+        return redirect('/karyawan')->with('status', 'Karyawan berhasil dihapus');
     }
 }

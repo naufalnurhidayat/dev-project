@@ -7,7 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Pendidikan extends Model
 {
     protected $table = 'pendidikan';
-    public $primarykey = 'id';
-    public $guarded = ['id'];
+    protected $primarykey = 'id';
+    protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function pendidikan() {
+    	return $this->hasMany('App\Pendidikan', 'id');
+    }
 }

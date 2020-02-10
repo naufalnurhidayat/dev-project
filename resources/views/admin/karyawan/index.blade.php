@@ -11,6 +11,11 @@
             <h1>Daftar Karyawan</h1>
         </div>
     </div>
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="row mb-3">
         <div class="col">
             <a href="{{url('/createkaryawan')}}" class="btn btn-primary">Tambah Karyawan</a>
@@ -42,11 +47,15 @@
                       <td>{{ $k->nama }}</td>
                       <td>{{ $k->jenkel }}</td>
                       <td>{{ $k->email }}</td>
-                      <td>{{ $k->id_role }}</td>
+                      <td>{{ $k->role }}</td>
                       <td>
                         <a href="{{url('/detailkaryawan')}}/{{$k->id}}" class="badge badge-primary">Detail</a>
                         <a href="{{url('/ubahkaryawan')}}/{{$k->id}}" class="badge badge-success">Ubah</a>
-                        <a href="{{url('/hapuskaryawan')}}/{{$k->id}}" class="badge badge-danger">Hapus</a>
+                        <form action="{{ url('/hapuskaryawan') }}/{{$k->id}}" method="POST" class="d-inline">
+                          @method('delete')
+                          @csrf
+                          <button type="submit" class="badge badge-danger">Hapus</button>
+                        </form>
                       </td>
                   </tr>
 

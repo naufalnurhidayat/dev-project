@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\barang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Kategori;
 
-class barangController extends Controller
+class Absen extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class barangController extends Controller
      */
     public function index()
     {
-        $barang = Barang::all();
-        return view('Invetaris.barang', compact('barang'));
+        return view('user/absen/index');
     }
 
     /**
@@ -27,7 +24,7 @@ class barangController extends Controller
      */
     public function create()
     {
-        //
+        return view('user/absen/absen');
     }
 
     /**
@@ -44,22 +41,22 @@ class barangController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_barang)
+    // public function show($id)
+    public function show()
     {
-        $barang = Barang::find($id_barang);
-        return view('Invetaris.Showbarang', compact('barang'));
+        return view('user/absen/checkabsen');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(barang $barang)
+    public function edit($id)
     {
         //
     }
@@ -68,10 +65,10 @@ class barangController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, barang $barang)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,11 +76,16 @@ class barangController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\barang  $barang
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(barang $barang)
+    public function destroy($id)
     {
         //
+    }
+
+    public function izinAbsen()
+    {
+        return view('user/absen/izinabsen');
     }
 }

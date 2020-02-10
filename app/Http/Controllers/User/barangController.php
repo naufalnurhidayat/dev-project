@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\pinjam;
+use App\barang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Kategori;
 
-class pinjamController extends Controller
+class barangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,9 @@ class pinjamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { 
-        return view('invetaris/index');
+    {
+        $barang = Barang::all();
+        return view('user.Invetaris.barang', compact('barang'));
     }
 
     /**
@@ -42,21 +44,22 @@ class pinjamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\pinjam  $pinjam
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show(pinjam $pinjam)
+    public function show($id_barang)
     {
-        //
+        $barang = Barang::find($id_barang);
+        return view('user.Invetaris.Showbarang', compact('barang'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\pinjam  $pinjam
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function edit(pinjam $pinjam)
+    public function edit(barang $barang)
     {
         //
     }
@@ -65,10 +68,10 @@ class pinjamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\pinjam  $pinjam
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pinjam $pinjam)
+    public function update(Request $request, barang $barang)
     {
         //
     }
@@ -76,10 +79,10 @@ class pinjamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\pinjam  $pinjam
+     * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pinjam $pinjam)
+    public function destroy(barang $barang)
     {
         //
     }

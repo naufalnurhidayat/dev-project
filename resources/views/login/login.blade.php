@@ -1,4 +1,4 @@
-@extends('templates.template-login')
+@extends('templates.template-dasar')
 
 @section('title', 'Login')
 
@@ -12,9 +12,10 @@
     <div class="row">
       <div class="col">
         <div class="p-5">
-            <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Login</h1>
-            </div>
+          <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Login</h1>
+          </div>
+          <form action="" method="POST">
             <div class="form-group">
               <input type="email" class="form-control form-control-user" id="email" placeholder="Email" name="email">
             </div>
@@ -27,10 +28,6 @@
               Login
             </a>
           </form>
-          <hr>
-          <div class="text-center">
-            <a class="small" href="{{url('/createkaryawan')}}">Registrasi</a>
-          </div>
         </div>
       </div>
     </div>

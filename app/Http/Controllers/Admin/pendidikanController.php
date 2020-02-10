@@ -26,7 +26,7 @@ class pendidikanController extends Controller
      */
     public function create()
     {
-        return view('admin.pendidikan.create', compact('pendidikan'));
+        return view('admin.pendidikan.create');
     }
 
     /**
