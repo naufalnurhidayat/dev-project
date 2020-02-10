@@ -43,6 +43,7 @@
            <td>{{$box->kondisi}}</td>
            <td>
            <a href="{{url('/show')}}/{{$box->id_barang}}" class="badge badge-primary">Detail</a>
+           <a href="{{url('/pinjam/create')}}" class="badge badge-success">Pinjam</a>
            </td>
            </tr>
            @endforeach

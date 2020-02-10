@@ -15,8 +15,8 @@ class Barang extends Model
         return $this->beLongsTo('App\Kategori','id_kategori');
     }
 
-    // public function pinjam(){
-    //     return $this->belongsToMany('App\pinjam');
-    // }
+    public function pinjam(){
+        return $this->belongsTo(Pinjam::class);
+    }
 }
 
