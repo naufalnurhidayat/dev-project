@@ -171,7 +171,7 @@
             {{-- Home --}}
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="/">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-home fa-2x"></i>
                 <!-- Counter - Alerts -->
                 <span class="badge badge-danger badge-counter"></span>
               </a>
