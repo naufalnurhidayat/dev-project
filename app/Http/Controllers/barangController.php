@@ -86,4 +86,11 @@ class barangController extends Controller
     {
         //
     }
+
+    public function showpinjam()
+    {
+        $user = Barang::with('Kategori')->get();
+        dd($user);
+        //return view('Invetaris.pinjam', compact(['barang' => $user]));
+    }
 }
