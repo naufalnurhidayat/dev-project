@@ -31,8 +31,8 @@ class KaryawanController extends Controller
     {
         $role = Role::all();
         $pendidikan = Pendidikan::all();
-        // $agama = Agama::all();
-        return view('admin/karyawan/createkaryawan', ['role' => $role, 'pendidikan' => $pendidikan]);
+        $agama = Agama::all();
+        return view('admin/karyawan/createkaryawan', ['role' => $role, 'pendidikan' => $pendidikan, 'agama' => $agama]);
     }
 
     /**
