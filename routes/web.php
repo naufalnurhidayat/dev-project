@@ -45,7 +45,12 @@ Route::post('/store', 'Admin\pendidikanController@store');
 Route::post('/apdet/{id}', 'Admin\pendidikanController@update');
 
 // Agama
-
+Route::get('/admin/agama', 'Admin\agamaController@index');
+Route::get('/admin/agama/create', 'Admin\agamaController@create');
+Route::post('/admin/agama', 'Admin\agamaController@store');
+Route::delete('/admin/agama/{agama}', 'Admin\agamaController@destroy');
+Route::get('/admin/agama/edit/{agama}', 'Admin\agamaController@edit');
+Route::patch('/admin/agama/{agama}', 'Admin\agamaController@update');
 
 // -------------------------------------------
 // User

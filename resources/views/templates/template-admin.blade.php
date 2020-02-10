@@ -57,7 +57,7 @@
             <a class="collapse-item" href="{{url('/karyawan')}}">Karyawan</a>
             <a class="collapse-item" href="{{url('/role')}}">Role</a>
             <a class="collapse-item" href="{{url('/pendidikan')}}">Pendidikan</a>
-            <a class="collapse-item" href="{{url('/agama')}}">Agama</a>
+            <a class="collapse-item" href="{{url('/admin/agama')}}">Agama</a>
           </div>
         </div>
       </li>
