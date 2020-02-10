@@ -14,11 +14,10 @@
 // -------------------------------------------
 // Admin
 
-// Master
-
 // Home
 Route::get('/admin', 'Admin\HomeController@index');
 
+// Master
 // Karyawan
 Route::get('/karyawan', 'Admin\KaryawanController@index');
 Route::get('/createkaryawan', 'Admin\KaryawanController@create');
