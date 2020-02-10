@@ -27,7 +27,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>ID</th>
+                      <th>No</th>
                       <th>Agama</th>
                       <th>Aksi</th>
                     </tr>
@@ -35,7 +35,7 @@
                   <tbody>
                   @foreach ($agama as $a)            
                   <tr align="center">
-                    <td>{{ $a->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $a->agama }}</td>
                     <td>
                       <a href="/admin/agama/edit/{{$a->id}}" class="btn btn-success">Ubah</a>
