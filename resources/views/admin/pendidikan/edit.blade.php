@@ -1,6 +1,6 @@
 @extends('templates/template-admin')
 
-@section('title', 'Daftar Pendidikan')
+@section('title', 'Edit Pendidikan')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
       <div class="col-8">
-      <h1 class="mt-3">Silahkan Isi Data Pendidikan</h1>
+      <h3 class="mt-3"><i class="fas fa-edit"></i> Edit Pendidikan</h3>
 
       <form method="post" action="/apdet/{{ $pendidikan->id }}">
         {{csrf_field()}}

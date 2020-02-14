@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cuti;
+use App\JenisCuti;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class CutiController extends Controller
      */
     public function create()
     {
-        $jencut = DB::table('jenis_cuti')->get();
+        $jencut = JenisCuti::all();
         return view('cuti/create', ['jencut' => $jencut]);
     }
 
@@ -46,8 +47,7 @@ class CutiController extends Controller
             'awal' => 'required',
             'akhir' => 'required',
             'alasan' => 'required'
-        ]); 
-
+        ]);
         Cuti::create([
             'id_karyawan' => $request->id_karyawan,
             'id_jenis_cuti' => $request->jencut,

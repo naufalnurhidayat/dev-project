@@ -52,6 +52,14 @@ Route::delete('/admin/agama/{agama}', 'Admin\agamaController@destroy');
 Route::get('/admin/agama/edit/{agama}', 'Admin\agamaController@edit');
 Route::patch('/admin/agama/{agama}', 'Admin\agamaController@update');
 
+// Jencut
+Route::get('/admin/jeniscuti', 'Admin\JenisCutiController@index');
+Route::get('/admin/jeniscuti/create', 'Admin\JenisCutiController@create');
+Route::post('/admin/jeniscuti', 'Admin\JenisCutiController@store');
+Route::delete('/admin/jeniscuti/{jenis_cuti}', 'Admin\JenisCutiController@destroy');
+Route::get('/admin/jeniscuti/edit/{jenis_cuti}', 'Admin\JenisCutiController@edit');
+Route::patch('/admin/jeniscuti/{jenis_cuti}', 'Admin\JenisCutiController@update');
+
 // -------------------------------------------
 // User
 

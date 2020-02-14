@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
       <div class="row mx-auto">
-        <div class="col-6">
+        <div class="col">
           <h3 class="mb-4"><i class="fas fa-calendar-week"></i> Form Pengajuan Cuti</h3>
           <form action="{{ url('/cuti') }}" method="post">
             @csrf
@@ -26,12 +26,12 @@
               @error('jencut')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-group row">
-              <div class="col-5">
+              <div class="col-6">
                 <label for="awal">Awal Cuti</label>
                 <input type="date" class="form-control @error('awal') is-invalid @enderror" name="awal" id="awal" value="{{ old('awal') }}">
                 @error('awal')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
-              <div class="col-5">
+              <div class="col-6">
                 <label for="akhir">akhir Cuti</label>
                 <input type="date" class="form-control @error('akhir') is-invalid @enderror" name="akhir" id="akhir" value="{{ old('akhir') }}">
                 @error('akhir')<div class="invalid-feedback">{{ $message }}</div>@enderror

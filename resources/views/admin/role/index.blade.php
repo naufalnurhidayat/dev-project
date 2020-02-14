@@ -15,7 +15,7 @@
 
     <div class="row mb-3">
         <div class="col">
-            <a href="{{url('/createrole')}}" class="btn btn-primary">Tambah Role</a>
+            <a href="{{url('/createrole')}}" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Role</a>
         </div>
     </div>
             <!-- DataTales Example -->
@@ -39,11 +39,11 @@
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $r->role }}</td>
                       <td>
-                        <a href="{{url('/ubahrole')}}/{{$r->id}}" class="btn btn-success">Ubah</a>
+                        <a href="{{url('/ubahrole')}}/{{$r->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> <b>Edit</b></a>
                         <form action="{{ url('/hapusrole')}}/{{ $r->id }}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf
-                          <button type="submit" class="btn btn-danger" name="hapus">Hapus</button>
+                          <button type="submit" class="btn btn-danger btn-sm" name="hapus"><i class="fa fa-trash"></i> <b>Hapus</b></button>
                         </form>
                       </td>
                   </tr>

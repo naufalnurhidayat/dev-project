@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col">
-			<h1>Form Edit Agama</h1>
+			<h3><i class="fas fa-edit"></i> Edit Agama</h3>
 		</div>
 	</div>
   <div class="row">
