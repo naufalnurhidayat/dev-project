@@ -71,6 +71,7 @@ Route::get('/izinabsen', 'Absen@izinAbsen');
 
 Route::get('/cuti', 'CutiController@index');
 Route::get('/cuti/create', 'CutiController@create');
+Route::post('/cuti', 'CutiController@store');
 
 
 //--------------------------------------------

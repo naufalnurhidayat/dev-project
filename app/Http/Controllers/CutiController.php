@@ -46,9 +46,18 @@ class CutiController extends Controller
             'awal' => 'required',
             'akhir' => 'required',
             'alasan' => 'required'
+        ]); 
+
+        Cuti::create([
+            'id_karyawan' => $request->id_karyawan,
+            'id_jenis_cuti' => $request->jencut,
+            'tgl_cuti' => date("Y-m-d"),
+            'awal_cuti' => $request->awal,
+            'akhir_cuti' => $request->akhir,
+            'alasan_cuti' => $request->alasan,
+            'status' => 'Pending'
         ]);
-        Cuti::create($request->all());
-        return redirect('/cuti')->with('status', 'Success');
+        return redirect('/cuti')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
     }
 
     /**
