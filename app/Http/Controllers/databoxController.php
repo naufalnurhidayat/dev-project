@@ -85,7 +85,7 @@ class databoxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_barang)
+    public function update(Request $request, Barang $barang)
     {
         $request->validate([
 
@@ -97,8 +97,14 @@ class databoxController extends Controller
             'keterangan' => 'required'
         ]);
 
-        $barang = Barang::find($id_barang);
-        $barang->update($request->all());
+        Barang::where('id_barang', $barang->id_barang)->Update([
+            'nama_barang' => $request->nama_barang,
+            'id_kategori' => $request->id_kategori,
+            'stok' => $request->stok,
+            'type' => $request->type,
+            'kondisi' => $request->kondisi,
+            'keterangan' => $request->keterangan
+        ]);
         return redirect('/barang/index')->with('status', 'Data Berhasil di Ubah!!!');
     }
 
