@@ -56,8 +56,9 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{url('/karyawan')}}">Karyawan</a>
             <a class="collapse-item" href="{{url('/role')}}">Role</a>
-            <a class="collapse-item" href="{{url('/pendidikan')}}">Pendidikan</a>
+            <a class="collapse-item" href="{{url('/admin/pendidikan')}}">Pendidikan</a>
             <a class="collapse-item" href="{{url('/admin/agama')}}">Agama</a>
+            <a class="collapse-item" href="{{url('/barang/index')}}">Data Barang</a>
           </div>
         </div>
       </li>

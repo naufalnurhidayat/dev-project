@@ -12,4 +12,8 @@ class Kategori extends Model
     public function Barang(){
         return $this->belongsToMany('App\Barang');
     }
+
+    public function pinjam(){
+        return $this->hasMany('App\Pinjam', 'id_kategori');
+    }
 }
