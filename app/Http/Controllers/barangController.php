@@ -29,7 +29,7 @@ class barangController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
