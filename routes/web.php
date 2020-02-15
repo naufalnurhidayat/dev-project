@@ -18,6 +18,11 @@
 Route::get('/admin', 'Admin\HomeController@index');
 
 // Master
+Route::get('/barang/index', 'databoxController@index');
+Route::get('/admin/create', 'databoxController@create');
+Route::post('/barang/store', 'databoxController@store');
+Route::post('/admin/barang/update', 'databoxController@update');
+Route::get('/admin/barang/edit/{id_barang}', 'databoxController@edit');
 // Karyawan
 Route::get('/karyawan', 'Admin\KaryawanController@index');
 Route::get('/createkaryawan', 'Admin\KaryawanController@create');
@@ -36,7 +41,7 @@ Route::get('/ubahrole/{role}', 'Admin\RoleController@edit');
 Route::patch('/ubahrole/{role}', 'Admin\RoleController@update');
 
 // Pendidikan
-Route::get('/pendidikan', 'Admin\pendidikanController@index');
+Route::get('/admin/pendidikan', 'Admin\pendidikanController@index');
 Route::get('/ubah/{id}', 'Admin\pendidikanController@edit');
 Route::delete('/hapus/{id}', 'Admin\pendidikanController@destroy');
 Route::get('/tambahPendidikan', 'Admin\pendidikanController@create');
@@ -76,7 +81,7 @@ Route::get('/cuti/create', 'CutiController@create');
 //Invetaris
 
 Route::get('/invetaris', 'Invetaris@index');
-Route::get('/pinjam/create', 'pinjamController@create');
+Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
 Route::get('/barang', 'barangController@index');
 Route::get('/show/{id_barang}', 'barangController@show');
 

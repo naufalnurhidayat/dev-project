@@ -1,31 +1,30 @@
-@extends('templates/template-invetaris')
+@extends('templates/template-admin')
 
 @section('title', 'Data Barang')
 
 @section('content')
 
-
-@if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
  <!-- Begin Page Content -->
  <div class="container-fluid">
 
   <!-- Page Heading -->
-  <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
- 
+  
+  @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+    
+    <div class="row mb-3">
+        <div class="col">
+            <a href="{{url('/admin/create')}}" class="btn btn-primary">Tambah Barang</a>
+        </div>
+    </div>
+    
+    <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      Kategori
-      <select name="" id="">
-        <option value="">--Pilih Kategori--</option>
-        @foreach($kategori as $k)
-      <option value="{{$k->id_kategori}}">{{$k->nama_kategori}}</option>
-        @endforeach
-      </select>
 
     </div>
     <div class="card-body">
@@ -51,8 +50,8 @@
            <td>{{$box->type}}</td>
            <td>{{$box->kondisi}}</td>
            <td>
-           <a href="{{url('/show')}}/{{$box->id_barang}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
-           <a href="{{url('/pinjam/create')}}/{{$box->id_barang}}" class="btn btn-success btn-sm"><i class="fa fa-book"></i> Pinjam</a>
+           <a href="{{url('/admin/barang/edit')}}/{{$box->id_barang}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+           <a href="{{url('/pinjam/create')}}/{{$box->id_barang}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</a>
            </td>
            </tr>
            @endforeach
