@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Cuti;
 use App\JenisCuti;
+use App\Karyawan;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -17,9 +19,8 @@ class CutiController extends Controller
      */
     public function index()
     {
-        // $cuti = Cuti::all();
-        $karyawan = DB::table('karyawan')->get();
-        return view('cuti/index', compact('karyawan'));
+        $karyawan = Cuti::all();
+        return view('cuti/index', ['karyawan' => $karyawan]);
     }
 
     /**
