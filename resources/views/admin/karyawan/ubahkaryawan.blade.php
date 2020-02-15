@@ -1,6 +1,6 @@
 @extends('templates/template-admin')
 
-@section('title', 'Registrasi Karyawan')
+@section('title', 'Edit Karyawan')
 
 @section('content')
 
@@ -12,7 +12,7 @@
           <div class="col">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Ubah Data Karyawan</h1>
+                <h1 class="h4 text-gray-900 mb-4"><i class="fas fa-edit"></i>Edit Data Karyawan</h1>
               </div>
               <form method="POST" action="{{ url('/karyawan') }}/{{ $karyawan->id }}" class="user">
                 @method('patch')
@@ -99,9 +99,7 @@
                     @error('alamat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
-                <button type="submit" name="ubah" class="btn btn-primary btn-user btn-block">
-                  Ubah Data
-                </button>
+                <button type="submit" name="ubah" class="btn btn-primary btn-user btn-block">Edit Data</button>
               </form>
             </div>
           </div>
