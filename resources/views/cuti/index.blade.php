@@ -49,7 +49,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $k->nama }}</td>
                         <td>{{ $k->jenkel }}</td>
-                        <td>{{ $k->id_role }}</td>
+                        <td>{{ $k->karyawan->role->role }}</td>
                         <td>16-09-2020</td>
                         <td><span class="badge badge-warning">Pending</span></td>
                       </tr>

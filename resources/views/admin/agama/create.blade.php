@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<h1>Form Tambah Agama</h1>
+				<h3>Form Tambah Agama</h3>
 			</div>
 		</div>
 		<div class="row">
