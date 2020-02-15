@@ -11,7 +11,7 @@ class Karyawan extends Model
     protected $primaryKey = 'id';
     
     public function role() {
-        return $this->belongsTo('App/Role');
+        return $this->belongsTo('App/Role', 'id_role');
     }
     
     public function pendidikan() {

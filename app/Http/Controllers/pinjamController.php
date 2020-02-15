@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Pinjam;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Kategori;
 use App\Barang;
+use Illuminate\Http\Request;
+// use App\Http\Controllers\Controller;
 
 class pinjamController extends Controller
 {
@@ -17,7 +17,7 @@ class pinjamController extends Controller
      */
     public function index()
     { 
-        $pinjam = Pinjam::with('Barang')->get();
+        $pinjam = Pinjam::all();
         return view('Invetaris.pinjam', compact('pinjam'));
     }
 
@@ -26,9 +26,11 @@ class pinjamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id_barang)
     {
-        return view('Invetaris.formInvetaris', compact('pinjam'));
+        $barang = Barang::where('id_barang', $id_barang)->first();
+        $kategori = Kategori::where('id_kategori', $barang->id_kategori)->first();
+        return view('Invetaris.formInvetaris', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
     /**
