@@ -6,6 +6,13 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
+
+  @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+  @endif
+
     <div class="row mb-3">
         <div class="col">
             <a href="{{url('/createkaryawan')}}" class="btn btn-primary">Tambah Karyawan</a>
@@ -38,7 +45,7 @@
                       <td>{{ $k->nama }}</td>
                       <td>{{ $k->jenkel }}</td>
                       <td>{{ $k->email }}</td>
-                      <td>{{ $k->id_role }}</td>
+                      <td>{{ $k->Role['role'] }}</td>
                       <td>
                         <a href="{{url('/detailkaryawan')}}/{{$k->id}}" class="badge badge-primary">Detail</a>
                         <a href="{{url('/ubahkaryawan')}}/{{$k->id}}" class="badge badge-success">Ubah</a>
