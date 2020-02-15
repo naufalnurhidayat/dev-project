@@ -6,9 +6,16 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
+
+  @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+  @endif
+
     <div class="row mb-3">
         <div class="col">
-            <a href="{{url('/createkaryawan')}}" class="btn btn-primary">Tambah Karyawan</a>
+            <a href="{{url('/createkaryawan')}}" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Karyawan</a>
         </div>
     </div>
             <!-- DataTales Example -->
@@ -32,20 +39,20 @@
                   </thead>
                   <tbody>
                   @foreach ($karyawan as $k)
-                    <tr>
+                    <tr align="center">
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $k->nip }}</td>
                       <td>{{ $k->nama }}</td>
                       <td>{{ $k->jenkel }}</td>
                       <td>{{ $k->email }}</td>
-                      <td>{{ $k->id_role }}</td>
+                      <td>{{ $k->Role['role'] }}</td>
                       <td>
-                        <a href="{{url('/detailkaryawan')}}/{{$k->id}}" class="badge badge-primary">Detail</a>
-                        <a href="{{url('/ubahkaryawan')}}/{{$k->id}}" class="badge badge-success">Ubah</a>
+                        <a href="{{url('/detailkaryawan')}}/{{$k->id}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
+                        <a href="{{url('/ubahkaryawan')}}/{{$k->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
                         <form action="{{ url('/hapuskaryawan') }}/{{$k->id}}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf
-                          <button type="submit" class="badge badge-danger">Hapus</button>
+                          <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
                         </form>
                       </td>
                     </tr>

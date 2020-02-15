@@ -85,7 +85,7 @@
                     <select id="id_agama" name="id_agama" class="form-control @error('id_agama') is-invalid @enderror">
                       <option value="">--Pilih Agama--</option>
                       @foreach($agama as $a)
-                      <option value="{{$a->id_agama}}">{{$a->agama}}</option>
+                      <option value="{{$a->id}}">{{$a->agama}}</option>
                       @endforeach
                     </select>
                     @error('id_agama') <div class="invalid-feedback">{{ $message }}</div> @enderror

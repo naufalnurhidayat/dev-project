@@ -21,11 +21,11 @@
                             <li>Tanggal Lahir: {{ $karyawan->tgl_lahir }}</li>
                             <li>Email: {{ $karyawan->email }}</li>
                             <li>Jenis Kelamin: {{ $karyawan->jenkel }}</li>
-                            <li>Role: {{ $karyawan->id_role }}</li>
-                            <li>Pendidikan: {{ $karyawan->id_pendidikan }}</li>
+                            <li>Role: {{ $karyawan->Role['role'] }}</li>
+                            <li>Pendidikan: {{ $karyawan->Pendidikan['pendidikan'] }}</li>
                             <li>Tahun Join: {{ $karyawan->thn_join }}</li>
                             <li>No. Telpon: {{ $karyawan->no_telp }}</li>
-                            <li>Agama: {{ $karyawan->id_agama }}</li>
+                            <li>Agama: {{ $karyawan->Agama['agama'] }}</li>
                             <li>Alamat: {{ $karyawan->alamat }}</li>
                         </ul>
                         <a href="{{url('/karyawan')}}" class="btn btn-primary ml-4">Kembali</a>

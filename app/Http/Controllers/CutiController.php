@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Cuti;
+use App\JenisCuti;
+use App\Karyawan;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -16,9 +19,8 @@ class CutiController extends Controller
      */
     public function index()
     {
-        // $cuti = Cuti::all();
-        $karyawan = DB::table('karyawan')->get();
-        return view('cuti/index', compact('karyawan'));
+        $karyawan = Cuti::all();
+        return view('cuti/index', ['karyawan' => $karyawan]);
     }
 
     /**
@@ -28,7 +30,7 @@ class CutiController extends Controller
      */
     public function create()
     {
-        $jencut = DB::table('jenis_cuti')->get();
+        $jencut = JenisCuti::all();
         return view('cuti/create', ['jencut' => $jencut]);
     }
 
@@ -47,8 +49,16 @@ class CutiController extends Controller
             'akhir' => 'required',
             'alasan' => 'required'
         ]);
-        Cuti::create($request->all());
-        return redirect('/cuti')->with('status', 'Success');
+        Cuti::create([
+            'id_karyawan' => $request->id_karyawan,
+            'id_jenis_cuti' => $request->jencut,
+            'tgl_cuti' => date("Y-m-d"),
+            'awal_cuti' => $request->awal,
+            'akhir_cuti' => $request->akhir,
+            'alasan_cuti' => $request->alasan,
+            'status' => 'Pending'
+        ]);
+        return redirect('/cuti')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
     }
 
     /**

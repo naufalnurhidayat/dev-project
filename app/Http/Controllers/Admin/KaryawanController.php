@@ -76,7 +76,7 @@ class KaryawanController extends Controller
 
         $karyawan->save();
 
-        return redirect('/karyawan');
+        return redirect('/karyawan')->with('status', 'Karyawan berhasil ditambahkan!');
     }
 
     /**
