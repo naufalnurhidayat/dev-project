@@ -50,8 +50,14 @@
            <td>{{$box->type}}</td>
            <td>{{$box->kondisi}}</td>
            <td>
-           <a href="{{url('/admin/barang/edit')}}/{{$box->id_barang}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
-           <a href="{{url('/pinjam/create')}}/{{$box->id_barang}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</a>
+           <a href="{{url('/admin/barang/edit')}}/{{$box->id_barang}}" class="btn btn-warning btn-sm mb-2"><i class="fa fa-edit"></i> Edit</a>
+           {{-- <a href="{{url('/admin/destroy')}}/{{$box->id_barang}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</a> --}}
+           <form class="d-inline" method="post" action="{{url('/admin/destroy')}}/{{$box->id_barang}}">
+            {{ method_field('DELETE')}}
+            {{csrf_field()  }}
+            <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm" onClick="return confirm('apakah anda yakin')"><i class="fa fa-trash mr-2"></i>Hapus</button>
+           </form>
+
            </td>
            </tr>
            @endforeach

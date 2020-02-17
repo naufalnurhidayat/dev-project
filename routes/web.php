@@ -23,6 +23,7 @@ Route::get('/admin/create', 'databoxController@create');
 Route::post('/barang/store', 'databoxController@store');
 Route::post('/admin/barang/update', 'databoxController@update');
 Route::get('/admin/barang/edit/{id_barang}', 'databoxController@edit');
+Route::delete('/admin/destroy/{id_barang}', 'databoxController@destroy');
 // Karyawan
 Route::get('/karyawan', 'Admin\KaryawanController@index');
 Route::get('/createkaryawan', 'Admin\KaryawanController@create');

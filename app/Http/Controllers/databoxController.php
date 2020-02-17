@@ -97,7 +97,7 @@ class databoxController extends Controller
             'keterangan' => 'required'
         ]);
 
-        Barang::where('id_barang', $barang->id_barang)->Update([
+        Barang::where('id_barang', $barang->id_barang)->update([
             'nama_barang' => $request->nama_barang,
             'id_kategori' => $request->id_kategori,
             'stok' => $request->stok,
@@ -105,6 +105,8 @@ class databoxController extends Controller
             'kondisi' => $request->kondisi,
             'keterangan' => $request->keterangan
         ]);
+        // $barang = Barang::find($barang);
+        // $barang->update($request->all());
         return redirect('/barang/index')->with('status', 'Data Berhasil di Ubah!!!');
     }
 
@@ -116,6 +118,8 @@ class databoxController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $barang = Barang::find($id);
+        $barang->delete();
+        return redirect('/barang/index')->with('status', 'Data Berhasil di Hapus!!!!');
     }
 }
