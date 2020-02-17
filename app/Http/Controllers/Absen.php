@@ -47,7 +47,7 @@ class Absen extends Controller
     // public function show($id)
     public function show()
     {
-        return view('user/absen/checkabsen');
+        return view('absen/checkabsen');
     }
 
     /**

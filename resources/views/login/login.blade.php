@@ -15,18 +15,19 @@
           <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">Login</h1>
           </div>
-          <form action="" method="POST">
+          <form action="{{ url('/login') }}" method="POST">
+            @csrf
             <div class="form-group">
               <input type="email" class="form-control form-control-user" id="email" placeholder="Email" name="email">
             </div>
             <div class="form-group row">
               <div class="col mb-3 mb-sm-0">
-                <input type="password" class="form-control form-control-user" id="password1" placeholder="Password" name="password1">
+                <input type="password" class="form-control form-control-user" id="password" placeholder="Password" name="password">
               </div>
             </div>
-            <a href="" class="btn btn-primary btn-user btn-block">
+            <button type="submit" name="login" class="btn btn-primary btn-user btn-block">
               Login
-            </a>
+            </button>
           </form>
         </div>
       </div>

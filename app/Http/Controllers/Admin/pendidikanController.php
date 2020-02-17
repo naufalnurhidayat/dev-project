@@ -43,7 +43,7 @@ class pendidikanController extends Controller
 
 
         Pendidikan::create($request->all());
-        return redirect('/pendidikan')->with('status', 'Data berhasil di Tambah!!');
+        return redirect('/admin/pendidikan')->with('status', 'Data berhasil di Tambah!!');
     }
 
     /**
@@ -84,7 +84,7 @@ class pendidikanController extends Controller
         
         $pendidikan = Pendidikan::find($id);
         $pendidikan->update($request->all());
-        return redirect('/pendidikan')->with('status', 'Data Berhasil di Edit');
+        return redirect('/admin/pendidikan')->with('status', 'Data Berhasil di Edit');
     }
 
     /**
@@ -97,6 +97,6 @@ class pendidikanController extends Controller
     {
         $pendidikan = Pendidikan::find($id);
         $pendidikan->delete(); 
-        return redirect('/pendidikan')->with('status', 'Data berhasil di Hapus');
+        return redirect('/admin/pendidikan')->with('status', 'Data berhasil di Hapus');
     }
 }
