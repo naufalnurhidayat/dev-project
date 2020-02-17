@@ -9,7 +9,8 @@
       <div class="col-8">
       <h1 class="mt-3">Data Barang</h1>
       
-      <form method="post" action="{{url('/admin/barang/update')}}">
+      <form method="POST" action="{{url('/admin/barang/update')}}/{{$barang->id_barang}}">
+    {{ method_field('PATCH')}}
     {{csrf_field()}}
     <div class="form-group">
       <label for="nabar">Nama Barang </label>

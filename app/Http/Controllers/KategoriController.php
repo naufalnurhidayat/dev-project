@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Kategori;
+use App\Barang;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-       
+       $kategori = Kategori::all();
+       return view('admin/data_barang/kategori', compact('kategori'));
     }
 
     /**
@@ -24,7 +27,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/data_barang/create_kategori', compact('kategori'));
     }
 
     /**
@@ -35,7 +38,12 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required'
+        ]);
+
+        Kategori::create($request->all());
+        return redirect('/kategori/index')->with('status', 'Data Berhasil Di Tambah!!!');
     }
 
     /**
@@ -57,7 +65,8 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kategori = Kategori::find($id);
+        return view('admin/data_barang/edit_kategori', compact('kategori'));
     }
 
     /**
@@ -69,7 +78,15 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required'
+        ]);
+
+        Kategori::where('id_kategori', $id)
+                ->update([
+                    'nama_kategori' => $request->nama_kategori
+                ]);  
+        return redirect('/kategori/index')->with('status', 'Data Berhasil Di Edit!!!');
     }
 
     /**
@@ -80,6 +97,8 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kategori = Kategori::find($id);
+        $kategori->delete();
+        return redirect('/kategori/index')->with('status', 'Data Berhasil di Hapus!!!!');
     }
 }
