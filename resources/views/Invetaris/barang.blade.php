@@ -1,4 +1,4 @@
-@extends('templates/template-invetaris')
+{{-- @extends('templates/template-invetaris')
 
 @section('title', 'Data Barang')
 
@@ -19,13 +19,6 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      Kategori
-      <select name="" id="">
-        <option value="">--Pilih Kategori--</option>
-        @foreach($kategori as $k)
-      <option value="{{$k->id_kategori}}">{{$k->nama_kategori}}</option>
-        @endforeach
-      </select>
 
     </div>
     <div class="card-body">
@@ -66,4 +59,4 @@
 <!-- /.container-fluid -->
 
 
-@endsection
+@endsection --}}
