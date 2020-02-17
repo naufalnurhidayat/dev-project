@@ -94,3 +94,11 @@ Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
 Route::get('/barang', 'barangController@index');
 Route::get('/show/{id_barang}', 'barangController@show');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -40,17 +40,19 @@
                       <th>Jenis Kelamin</th>
                       <th>Role</th>
                       <th>Tanggal Pengajuan Cuti</th>
+                      <th>Jenis Cuti</th>
                       <th>Status</th>
                     </tr>
                   </thead>
                   <tbody class="table table-bordered">
-                    @foreach ($karyawan as $k)
+                    @foreach ($cuti as $c)
                       <tr align="center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $k->nama }}</td>
-                        <td>{{ $k->jenkel }}</td>
-                        <td>{{ $k->karyawan->role->role }}</td>
+                        <td>{{ $c->Karyawan['nama'] }}</td>
+                        <td>{{ $c->Karyawan['jenkel'] }}</td>
+                        <td>{{ $c->Karyawan['id_role'] }}</td>
                         <td>16-09-2020</td>
+                        <td>{{ $c->JenisCuti['jenis_cuti'] }}</td>
                         <td><span class="badge badge-warning">Pending</span></td>
                       </tr>
                     @endforeach
