@@ -14,7 +14,7 @@ class Invetaris extends Controller
      */
     public function index()
     {
-        return view('Invetaris/index');
+        return view('Invetaris/barang');
     }
 
     /**

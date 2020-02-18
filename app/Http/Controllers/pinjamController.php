@@ -17,8 +17,8 @@ class pinjamController extends Controller
      */
     public function index()
     { 
-        $pinjam = Pinjam::all();
-        return view('Invetaris.index', compact('pinjam'));
+        $barang = Barang::all();
+        return view('Invetaris.index', compact('barang'));
     }
 
     /**
@@ -26,11 +26,11 @@ class pinjamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id_barang)
     {
-        // $barang = Barang::where('id_barang', $id_barang)->first();
-        // $kategori = Kategori::where('id_kategori', $barang->id_kategori)->first();
-        return view('Invetaris.formInvetaris', compact('pinjam'));
+        $barang = Barang::where('id_barang', $id_barang)->first();
+        $kategori = Kategori::where('id_kategori', $barang->id_kategori)->first();
+        return view('Invetaris.formInvetaris', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
     /**

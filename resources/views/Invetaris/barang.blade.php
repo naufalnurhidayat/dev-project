@@ -1,4 +1,4 @@
-{{-- @extends('templates/template-invetaris')
+@extends('templates/template-home')
 
 @section('title', 'Data Barang')
 
@@ -59,4 +59,4 @@
 <!-- /.container-fluid -->
 
 
-@endsection --}}
+@endsection
