@@ -24,6 +24,41 @@
             </div>
         </div>
     </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>NIP</th>
+                <th>Nama</th>
+                <th>Role</th>
+                <th>Pukul</th>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach ($absen as $a)
+              <tr align="center">
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $a->Karyawan['nip'] }}</td>
+                <td>{{ $a->Karyawan['nama'] }}</td>
+                <td>{{ $a->Karyawan->Role['role'] }}</td>
+                <td>{{ $a->jam_masuk }}</td>
+                <td>{{ $a->tanggal }}</td>
+                <td>{{ $a->catatan }}</td>
+              </tr>
+            @endforeach
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal fade" id="absenmodal" tabindex="-1" role="dialog" aria-labelledby="absenmodal" aria-hidden="true">

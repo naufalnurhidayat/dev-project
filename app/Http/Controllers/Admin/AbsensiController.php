@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Absen;
+use App\Karyawan;
 
-class Absen extends Controller
+class AbsensiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class Absen extends Controller
      */
     public function index()
     {
-        return view('absen/index');
+        $data_absen = Absen::all();
+        return view('admin/absen/index', compact('data_absen'));
     }
 
     /**
@@ -24,7 +27,7 @@ class Absen extends Controller
      */
     public function create()
     {
-        return view('absen/absen');
+        //
     }
 
     /**
@@ -44,10 +47,9 @@ class Absen extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function show($id)
-    public function show()
+    public function show($id)
     {
-        return view('absen/checkabsen');
+        //
     }
 
     /**
@@ -82,10 +84,5 @@ class Absen extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function izinAbsen()
-    {
-        return view('absen/izinabsen');
     }
 }

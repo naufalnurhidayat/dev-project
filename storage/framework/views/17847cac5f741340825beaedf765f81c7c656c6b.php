@@ -22,6 +22,41 @@
             </div>
         </div>
     </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>NIP</th>
+                <th>Nama</th>
+                <th>Role</th>
+                <th>Pukul</th>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php $__currentLoopData = $absen; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <tr align="center">
+                <td><?php echo e($loop->iteration); ?></td>
+                <td><?php echo e($a->Karyawan['nip']); ?></td>
+                <td><?php echo e($a->Karyawan['nama']); ?></td>
+                <td><?php echo e($a->Karyawan->Role['role']); ?></td>
+                <td><?php echo e($a->jam_masuk); ?></td>
+                <td><?php echo e($a->tanggal); ?></td>
+                <td><?php echo e($a->catatan); ?></td>
+              </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal fade" id="absenmodal" tabindex="-1" role="dialog" aria-labelledby="absenmodal" aria-hidden="true">

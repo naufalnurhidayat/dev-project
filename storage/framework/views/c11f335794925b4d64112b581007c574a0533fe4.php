@@ -22,6 +22,14 @@
                                 <input type="text" class="form-control" id="role" value="Role Karyawan" readonly name="role">
                             </div>
                             <div class="form-group">
+                                <label for="izin_pukul">Izin Pukul</label>
+                                <input type="text" class="form-control" id="izin_pukul" value="<?php echo e(time()); ?>" readonly name="izin_pukul">
+                            </div>
+                            <div class="form-group">
+                                <label for="tanggal">Tanggal</label>
+                                <input type="text" class="form-control" id="tanggal" value="<?php echo e(date('d-M-Y')); ?>" readonly name="tanggal">
+                            </div>
+                            <div class="form-group">
                                 <label for="keterangan">Keterangan</label>
                                 <input type="text" class="form-control" id="keterangan" name="keterangan">
                             </div>

@@ -22,4 +22,8 @@ class Karyawan extends Model
         return $this->belongsTo('App\Agama', 'id_agama', 'id');
     }
 
+    public function absen() {
+        return $this->hasMany('App\Absen', 'id_absen');
+    }
+
 }
