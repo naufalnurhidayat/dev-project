@@ -65,6 +65,9 @@ Route::delete('/admin/agama/{agama}', 'Admin\agamaController@destroy');
 Route::get('/admin/agama/edit/{agama}', 'Admin\agamaController@edit');
 Route::patch('/admin/agama/{agama}', 'Admin\agamaController@update');
 
+// Absen
+Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
+
 // Jencut
 Route::get('/admin/jeniscuti', 'Admin\JenisCutiController@index');
 Route::get('/admin/jeniscuti/create', 'Admin\JenisCutiController@create');
@@ -82,10 +85,10 @@ Route::get('/login', 'Login\LoginController@index');
 // -------------------------------------------
 // Absen
 
-Route::get('/absen', 'Absen@index');
-Route::get('/tampilabsen', 'Absen@show');
-Route::get('/checkabsen', 'Absen@create');
-Route::get('/izinabsen', 'Absen@izinAbsen');
+Route::get('/absen', 'AbsenController@index');
+Route::get('/tampilabsen', 'AbsenController@show');
+Route::get('/checkabsen', 'AbsenController@create');
+Route::get('/izinabsen', 'AbsenController@izinAbsen');
 
 // -------------------------------------------
 // Cuti
