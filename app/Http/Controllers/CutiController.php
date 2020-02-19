@@ -18,7 +18,7 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $cuti = Cuti::get();
+        $cuti = Cuti::All();
         return view('cuti/index', ['cuti' => $cuti]);
     }
 

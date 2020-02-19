@@ -32,7 +32,7 @@
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
-                      <th>Email</th>
+                      {{-- <th>Email</th> --}}
                       <th>Role</th>
                       <th>Aksi</th>
                     </tr>
@@ -44,8 +44,8 @@
                       <td>{{ $k->nip }}</td>
                       <td>{{ $k->nama }}</td>
                       <td>{{ $k->jenkel }}</td>
-                      <td>{{ $k->email }}</td>
-                      <td>{{ $k->Role['role'] }}</td>
+                      {{-- <td>{{ $k->email }}</td> --}}
+                      {{-- <td>{{ $k->Role['role'] }}</td> --}}
                       <td>
                         <a href="{{url('/detailkaryawan')}}/{{$k->id}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
                         <a href="{{url('/ubahkaryawan')}}/{{$k->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>

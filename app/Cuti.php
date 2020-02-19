@@ -15,6 +15,6 @@ class Cuti extends Model
     }
 
     public function jenis_cuti() {
-        return $this->belongsTo('App\JenisCuti');
+        return $this->belongsTo('App\JenisCuti', 'id_jenis_cuti');
     }
 }

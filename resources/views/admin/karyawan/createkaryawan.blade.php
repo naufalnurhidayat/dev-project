@@ -91,12 +91,22 @@
                     @error('id_agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <textarea name="alamat" id="alamat" class=" form-control @error('alamat') is-invalid @enderror" rows="2" placeholder="Alamat"></textarea>
+                    <textarea name="alamat" id="alamat" class=" form-control @error('alamat') is-invalid @enderror" rows="2" placeholder="Alamat">{{ old('alamat') }}</textarea>
                     @error('alamat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password">
+                    @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control form-control-user @error('password2') is-invalid @enderror" id="password2" placeholder="Konfirmasi Password" name="password2">
+                    @error('password2') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                  </div>
+                </div>
                 <button type="submit" name="registasi" class="btn btn-primary btn-user btn-block">
-                  Register Account
+                  Registrasi Akun
                 </button>
               </form>
             </div>

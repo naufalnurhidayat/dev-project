@@ -8,6 +8,7 @@ class Kategori extends Model
 {
     protected $table = 'kategori_barang';
     public $primaryKey = 'id_kategori';
+    public $fillable = ['nama_kategori'];
 
     public function Barang(){
         return $this->belongsToMany('App\Barang');

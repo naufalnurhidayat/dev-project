@@ -44,37 +44,38 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip' => 'required',
+            'nip' => 'required|numeric',
             'nama' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:karyawan',
             'jenkel' => 'required',
             'id_role' => 'required',
             'id_pendidikan' => 'required',
-            'thn_join' => 'required',
-            'no_telp' => 'required',
+            'thn_join' => 'required|numeric',
+            'no_telp' => 'required|numeric|unique:karyawan',
             'id_agama' => 'required',
-            'alamat' => 'required'
+            'alamat' => 'required',
+            'password' => 'required|min:6|same:password2',
+            'password2' => 'required|min:6|same:password'
         ]);
 
-        $karyawan = new Karyawan;
-        $karyawan->nip = $request->nip;
-        $karyawan->nama = $request->nama;
-        $karyawan->tmp_lahir = $request->tmp_lahir;
-        $karyawan->tgl_lahir = $request->tgl_lahir;
-        $karyawan->email = $request->email;
-        $karyawan->jenkel = $request->jenkel;
-        $karyawan->id_role = $request->id_role;
-        $karyawan->id_pendidikan = $request->id_pendidikan;
-        $karyawan->thn_join = $request->thn_join;
-        $karyawan->no_telp = $request->no_telp;
-        $karyawan->id_agama = $request->id_agama;
-        $karyawan->alamat = $request->alamat;
-        $karyawan->foto = 'default.jpg';
-        $karyawan->password = 'user';
-
-        $karyawan->save();
+        Karyawan::create([
+            'nip' => $request->nip,
+            'nama' => $request->nama,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'email' => $request->email,
+            'jenkel' => $request->jenkel,
+            'id_role' => $request->id_role,
+            'id_pendidikan' => $request->id_pendidikan,
+            'thn_join' => $request->thn_join,
+            'no_telp' => $request->no_telp,
+            'id_agama' => $request->id_agama,
+            'alamat' => $request->alamat,
+            'password' => Hash::make($request->password),
+            'foto' => 'default.jpg'
+        ]);
 
         return redirect('/karyawan')->with('status', 'Karyawan berhasil ditambahkan!');
     }
