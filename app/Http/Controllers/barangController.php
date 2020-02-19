@@ -96,4 +96,10 @@ class barangController extends Controller
         $user = Barang::all();
         return view('Invetaris.pinjam', compact(['Barang'=> $user]));
     }
+
+    public function tampil()
+    {
+        return view('Invetaris.pengajuan', compact(['barang']));
+    }
+
 }

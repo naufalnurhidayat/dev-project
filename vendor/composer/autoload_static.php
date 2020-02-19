@@ -410,12 +410,14 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
     );
 
     public static $classMap = array (
+        'App\\Absen' => __DIR__ . '/../..' . '/app/Absen.php',
         'App\\Agama' => __DIR__ . '/../..' . '/app/Agama.php',
         'App\\Barang' => __DIR__ . '/../..' . '/app/Barang.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Cuti' => __DIR__ . '/../..' . '/app/Cuti.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\Absen' => __DIR__ . '/../..' . '/app/Http/Controllers/Absen.php',
+        'App\\Http\\Controllers\\AbsenController' => __DIR__ . '/../..' . '/app/Http/Controllers/AbsenController.php',
+        'App\\Http\\Controllers\\Admin\\AbsensiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AbsensiController.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',
         'App\\Http\\Controllers\\Admin\\JenisCutiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/JenisCutiController.php',
         'App\\Http\\Controllers\\Admin\\KaryawanController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/KaryawanController.php',
@@ -1760,7 +1762,6 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
         'Illuminate\\Foundation\\Testing\\Constraints\\SoftDeletedInDatabase' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/SoftDeletedInDatabase.php',
         'Illuminate\\Foundation\\Testing\\DatabaseMigrations' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/DatabaseMigrations.php',
         'Illuminate\\Foundation\\Testing\\DatabaseTransactions' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/DatabaseTransactions.php',
-        'Illuminate\\Foundation\\Testing\\MockStream' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/MockStream.php',
         'Illuminate\\Foundation\\Testing\\PendingCommand' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/PendingCommand.php',
         'Illuminate\\Foundation\\Testing\\RefreshDatabase' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/RefreshDatabase.php',
         'Illuminate\\Foundation\\Testing\\RefreshDatabaseState' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/RefreshDatabaseState.php',

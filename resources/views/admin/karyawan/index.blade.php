@@ -18,8 +18,8 @@
             <a href="{{url('/createkaryawan')}}" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Karyawan</a>
         </div>
     </div>
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h3 class="m-0 font-weight-bold text-primary">Data Karyawan</h3>
             </div>
@@ -32,7 +32,6 @@
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
-                      {{-- <th>Email</th> --}}
                       <th>Role</th>
                       <th>Aksi</th>
                     </tr>
@@ -44,8 +43,7 @@
                       <td>{{ $k->nip }}</td>
                       <td>{{ $k->nama }}</td>
                       <td>{{ $k->jenkel }}</td>
-                      {{-- <td>{{ $k->email }}</td> --}}
-                      {{-- <td>{{ $k->Role['role'] }}</td> --}}
+                      <td>{{ $k->Role['role'] }}</td>
                       <td>
                         <a href="{{url('/detailkaryawan')}}/{{$k->id}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
                         <a href="{{url('/ubahkaryawan')}}/{{$k->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>

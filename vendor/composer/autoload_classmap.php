@@ -6,12 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Absen' => $baseDir . '/app/Absen.php',
     'App\\Agama' => $baseDir . '/app/Agama.php',
     'App\\Barang' => $baseDir . '/app/Barang.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Cuti' => $baseDir . '/app/Cuti.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
-    'App\\Http\\Controllers\\Absen' => $baseDir . '/app/Http/Controllers/Absen.php',
+    'App\\Http\\Controllers\\AbsenController' => $baseDir . '/app/Http/Controllers/AbsenController.php',
+    'App\\Http\\Controllers\\Admin\\AbsensiController' => $baseDir . '/app/Http/Controllers/Admin/AbsensiController.php',
     'App\\Http\\Controllers\\Admin\\HomeController' => $baseDir . '/app/Http/Controllers/Admin/HomeController.php',
     'App\\Http\\Controllers\\Admin\\JenisCutiController' => $baseDir . '/app/Http/Controllers/Admin/JenisCutiController.php',
     'App\\Http\\Controllers\\Admin\\KaryawanController' => $baseDir . '/app/Http/Controllers/Admin/KaryawanController.php',
@@ -1356,7 +1358,6 @@ return array(
     'Illuminate\\Foundation\\Testing\\Constraints\\SoftDeletedInDatabase' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Testing/Constraints/SoftDeletedInDatabase.php',
     'Illuminate\\Foundation\\Testing\\DatabaseMigrations' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Testing/DatabaseMigrations.php',
     'Illuminate\\Foundation\\Testing\\DatabaseTransactions' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Testing/DatabaseTransactions.php',
-    'Illuminate\\Foundation\\Testing\\MockStream' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Testing/MockStream.php',
     'Illuminate\\Foundation\\Testing\\PendingCommand' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Testing/PendingCommand.php',
     'Illuminate\\Foundation\\Testing\\RefreshDatabase' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Testing/RefreshDatabase.php',
     'Illuminate\\Foundation\\Testing\\RefreshDatabaseState' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/Testing/RefreshDatabaseState.php',
