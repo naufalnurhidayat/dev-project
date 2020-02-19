@@ -17,8 +17,8 @@ class pinjamController extends Controller
      */
     public function index()
     { 
-        $barang = Barang::all();
-        return view('Invetaris.index', compact('barang'));
+        $pinjam = Pinjam::all();
+        return view('admin.Admin_invetaris.index', compact('pinjam'));
     }
 
     /**
