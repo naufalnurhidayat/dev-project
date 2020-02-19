@@ -4,6 +4,14 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
+
+  <?php if(session('status')): ?>
+    <div class="alert alert-success">
+        <?php echo e(session('status')); ?>
+
+    </div>
+  <?php endif; ?>
+
     <div class="row mb-3">
         <div class="col">
             <a href="<?php echo e(url('/createkaryawan')); ?>" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Karyawan</a>
@@ -23,7 +31,7 @@
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
-                      <th>Email</th>
+                      
                       <th>Role</th>
                       <th>Aksi</th>
                     </tr>
@@ -35,8 +43,8 @@
                       <td><?php echo e($k->nip); ?></td>
                       <td><?php echo e($k->nama); ?></td>
                       <td><?php echo e($k->jenkel); ?></td>
-                      <td><?php echo e($k->email); ?></td>
-                      <td><?php echo e($k->id_role); ?></td>
+                      
+                      <td><?php echo e($k->Role['role']); ?></td>
                       <td>
                         <a href="<?php echo e(url('/detailkaryawan')); ?>/<?php echo e($k->id); ?>" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
                         <a href="<?php echo e(url('/ubahkaryawan')); ?>/<?php echo e($k->id); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>

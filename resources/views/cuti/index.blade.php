@@ -2,26 +2,6 @@
 
 @section('title', 'Halaman Cuti')
 
-{{-- <div class="table-responsive">
-  <table class="table table-hover table-striped table-bordered">
-    <thead class="table-light">
-      <th>No</th>
-      <th>NIP</th>
-      <th>Nama</th>
-      <th>Email</th>
-      <th>Role</th>
-    </thead>
-  @foreach ($karyawan as $k)
-    <tbody>
-      <td>{{ $loop->iteration }}</td>
-      <td>{{ $k->nip }}</td>
-      <td>{{ $k->nama }}</td>
-      <td>{{ $k->email }}</td>
-      <td>{{ $k->id_role }}</td>
-    </tbody>
-    @endforeach
-  </table>
-</div> --}}
 @section('content')
   <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -52,7 +32,7 @@
                         <td>{{ $c->Karyawan['jenkel'] }}</td>
                         <td>{{ $c->Karyawan['id_role'] }}</td>
                         <td>{{ $c->tgl_cuti }}</td>
-                        <td>{{ $c->JenisCuti['jenis_cuti'] }}</td>
+                        <td>{{ $c->id_jenis_cuti }}</td>
                         <td><span class="badge badge-warning">{{ $c->status }}</span></td>
                       </tr>
                     @endforeach
@@ -65,7 +45,3 @@
         </div>
         <!-- /.container-fluid -->
 @endsection
-{{-- <td>{{ $c->id_karyawan }}</td>
-<td>{{ $c->id_jenis_cuti }}</td>
-<td>{{ $c->awal_cuti }}</td>
-<td>{{ $c->akhir_cuti }}</td> --}}

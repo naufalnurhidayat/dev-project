@@ -1,6 +1,5 @@
 <?php $__env->startSection('title', 'Halaman Cuti'); ?>
 
-
 <?php $__env->startSection('content'); ?>
   <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -30,9 +29,9 @@
                         <td><?php echo e($c->Karyawan['nama']); ?></td>
                         <td><?php echo e($c->Karyawan['jenkel']); ?></td>
                         <td><?php echo e($c->Karyawan['id_role']); ?></td>
-                        <td>16-09-2020</td>
-                        <td><?php echo e($c->JenisCuti->jenis_cuti); ?></td>
-                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td><?php echo e($c->tgl_cuti); ?></td>
+                        <td><?php echo e($c->id_jenis_cuti); ?></td>
+                        <td><span class="badge badge-warning"><?php echo e($c->status); ?></span></td>
                       </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </tbody>
@@ -44,5 +43,4 @@
         </div>
         <!-- /.container-fluid -->
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('templates/template-cuti', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Folder_iqbal\Prakerin\projek_pkl\Program_Cuti\dev-project\resources\views/cuti/index.blade.php ENDPATH**/ ?>

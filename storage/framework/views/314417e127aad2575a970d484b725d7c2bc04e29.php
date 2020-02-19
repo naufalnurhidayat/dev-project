@@ -56,9 +56,10 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?php echo e(url('/karyawan')); ?>">Karyawan</a>
             <a class="collapse-item" href="<?php echo e(url('/role')); ?>">Role</a>
-            <a class="collapse-item" href="<?php echo e(url('/pendidikan')); ?>">Pendidikan</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/pendidikan')); ?>">Pendidikan</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/agama')); ?>">Agama</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/jeniscuti')); ?>">Jenis Cuti</a>
+            <a class="collapse-item" href="<?php echo e(url('/barang/index')); ?>">Data Barang</a>
           </div>
         </div>
       </li>
@@ -84,7 +85,7 @@
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Data Cuti</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/cuti')); ?>">Data Cuti</a>
           </div>
         </div>
       </li>

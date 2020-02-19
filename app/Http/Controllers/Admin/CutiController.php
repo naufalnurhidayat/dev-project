@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Cuti;
 use App\JenisCuti;
@@ -19,7 +19,7 @@ class CutiController extends Controller
     public function index()
     {
         $cuti = Cuti::All();
-        return view('cuti/index', ['cuti' => $cuti]);
+        return view('admin/cuti/index', ['cuti' => $cuti]);
     }
 
     /**
@@ -29,8 +29,7 @@ class CutiController extends Controller
      */
     public function create()
     {
-        $jencut = JenisCuti::all();
-        return view('cuti/create', ['jencut' => $jencut]);
+        //
     }
 
     /**
@@ -41,23 +40,7 @@ class CutiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'karyawan' => 'required',
-            'jencut' => 'required',
-            'awal' => 'required',
-            'akhir' => 'required',
-            'alasan' => 'required'
-        ]);
-        Cuti::create([
-            'id_karyawan' => $request->id_karyawan,
-            'id_jenis_cuti' => $request->jencut,
-            'tgl_cuti' => date("Y-m-d"),
-            'awal_cuti' => $request->awal,
-            'akhir_cuti' => $request->akhir,
-            'alasan_cuti' => $request->alasan,
-            'status' => 'Pending'
-        ]);
-        return redirect('/cuti')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
+        //
     }
 
     /**

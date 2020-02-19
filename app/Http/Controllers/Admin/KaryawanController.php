@@ -48,16 +48,16 @@ class KaryawanController extends Controller
             'nama' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:karyawan',
             'jenkel' => 'required',
             'id_role' => 'required',
             'id_pendidikan' => 'required',
             'thn_join' => 'required|numeric',
-            'no_telp' => 'required|numeric',
+            'no_telp' => 'required|numeric|unique:karyawan',
             'id_agama' => 'required',
             'alamat' => 'required',
-            'password' => 'required|min:6',
-            'password2' => 'required|same:password'
+            'password' => 'required|min:6|same:password2',
+            'password2' => 'required|min:6|same:password'
         ]);
 
         Karyawan::create([
@@ -73,7 +73,7 @@ class KaryawanController extends Controller
             'no_telp' => $request->no_telp,
             'id_agama' => $request->id_agama,
             'alamat' => $request->alamat,
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
             'foto' => 'default.jpg'
         ]);
 
