@@ -30,6 +30,8 @@ Route::post('/kategori/store', 'KategoriController@store');
 Route::get('/kategori/edit/{id_kategori}', 'KategoriController@edit');
 Route::patch('/kategori/update/{id_kategori}', 'KategoriController@update');
 Route::delete('/kategori/destroy/{id_kategori}', 'KategoriController@destroy');
+//Admin Invetaris
+Route::get('/admin/pinjam', 'pinjamController@index');
 // Karyawan
 Route::get('/karyawan', 'Admin\KaryawanController@index');
 Route::get('/createkaryawan', 'Admin\KaryawanController@create');
@@ -99,8 +101,9 @@ Route::post('/cuti', 'CutiController@store');
 //--------------------------------------------
 //Invetaris
 
-Route::get('/invetaris', 'Invetaris@index');
-Route::get('/pinjam/create', 'pinjamController@create');
+Route::get('/invetaris', 'barangController@index');
+Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
 Route::get('/barang', 'barangController@index');
 Route::get('/show/{id_barang}', 'barangController@show');
+Route::get('/invetaris/pengajuan', 'barangController@tampil');
 

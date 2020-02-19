@@ -16,7 +16,7 @@
     {{csrf_field()}}
     <div class="form-group">
       <label for="nabar">Nama Barang </label>
-    <input type="text" class="form-control @error('nabar') is-invalid @enderror" id="nabar" placeholder="" name="nabar" value="">
+    <input type="text" class="form-control @error('nabar') is-invalid @enderror" id="nabar" placeholder="" name="nabar" value="{{$barang->nama_barang}}" readonly>
       @error('nabar')
       <div class="invalid-feedback">{{$message}}</div>
       @enderror
@@ -24,7 +24,7 @@
 
     <div class="form-group">
     <label for="kategory">Nama Kategori </label>
-    <input type="text" class="form-control @error('kategory') is-invalid @enderror" id="kategory" placeholder="" name="kategory" value="">
+    <input type="text" class="form-control @error('kategory') is-invalid @enderror" id="kategory" placeholder="" name="kategory" value="{{$kategori->nama_kategori}}" readonly>
     @error('kategory')
     <div class="invalid-feedback">{{$message}}</div>
     @enderror
@@ -32,7 +32,7 @@
 
     <div class="form-group">
     <label for="type">Tipe </label>
-    <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" placeholder="" name="type" value="">
+    <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" placeholder="" name="type" value="{{$barang->type}}" readonly>
     @error('type')
     <div class="invalid-feedback">{{$message}}</div>
     @enderror
@@ -40,7 +40,7 @@
 
     <div class="form-group">
     <label for="stok">Stok</label>
-    <input type="text" class="form-control @error('stok') is-invalid @enderror" id="stok" placeholder="" name="stok" value="">
+    <input type="text" class="form-control @error('stok') is-invalid @enderror" id="stok" placeholder="" name="stok" value="{{$barang->stok}}" readonly>
     </div>
 
     <div class="form-group">
@@ -51,13 +51,13 @@
     @enderror
     </div>
 
-    <div class="form-group">
+    {{-- <div class="form-group">
     <label for="tgl_pinjam">Tanggal Pinjam </label>
     <input type="date" class="form-control @error('tgl_pinjam') is-invalid @enderror" id="tgl_pinjam" placeholder="" name="tgl_pinjam" value="{{date('y-m-d')}}">
     @error('tgl_pinjam')
     <div class="invalid-feedback">{{$message}}</div>
     @enderror
-    </div>
+    </div> --}}
 
     <div class="form-group">
     <label for="keterangan">Keterangan</label>

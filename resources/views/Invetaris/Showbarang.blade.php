@@ -1,4 +1,4 @@
-@extends('templates/template-invetaris')
+@extends('templates/template-home')
 
 @section('title', 'Data Barang')
 
@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card mx-auto" style="width: 25rem; height: 25rem;">
             <div class="card-body">
             <li>{{$barang->keterangan}}</li>
             </div>

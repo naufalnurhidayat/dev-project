@@ -98,7 +98,7 @@
         </a>
         <div id="inventori" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Data Barang</a>
+          <a class="collapse-item" href="{{url('/admin/pinjam')}}">Data Pinjam</a>
           </div>
         </div>
       </li>
