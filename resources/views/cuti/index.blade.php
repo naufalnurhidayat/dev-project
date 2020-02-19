@@ -51,9 +51,9 @@
                         <td>{{ $c->Karyawan['nama'] }}</td>
                         <td>{{ $c->Karyawan['jenkel'] }}</td>
                         <td>{{ $c->Karyawan['id_role'] }}</td>
-                        <td>16-09-2020</td>
+                        <td>{{ $c->tgl_cuti }}</td>
                         <td>{{ $c->JenisCuti['jenis_cuti'] }}</td>
-                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td><span class="badge badge-warning">{{ $c->status }}</span></td>
                       </tr>
                     @endforeach
                   </tbody>

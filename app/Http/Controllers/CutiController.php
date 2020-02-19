@@ -18,7 +18,7 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $cuti = Cuti::get();
+        $cuti = Cuti::with('jenis_cuti')->get();
         return view('cuti/index', ['cuti' => $cuti]);
     }
 
