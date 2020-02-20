@@ -11,6 +11,6 @@ class Role extends Model
     protected $primaryKey = 'id';
     
     public function karyawan() {
-    	return $this->hasMany('App\Karyawan', 'id');
+        return $this->hasMany('App\Karyawan', 'id');
     }
 }
