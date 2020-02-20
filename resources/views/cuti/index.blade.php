@@ -2,26 +2,6 @@
 
 @section('title', 'Halaman Cuti')
 
-{{-- <div class="table-responsive">
-  <table class="table table-hover table-striped table-bordered">
-    <thead class="table-light">
-      <th>No</th>
-      <th>NIP</th>
-      <th>Nama</th>
-      <th>Email</th>
-      <th>Role</th>
-    </thead>
-  @foreach ($karyawan as $k)
-    <tbody>
-      <td>{{ $loop->iteration }}</td>
-      <td>{{ $k->nip }}</td>
-      <td>{{ $k->nama }}</td>
-      <td>{{ $k->email }}</td>
-      <td>{{ $k->id_role }}</td>
-    </tbody>
-    @endforeach
-  </table>
-</div> --}}
 @section('content')
   <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -40,18 +20,20 @@
                       <th>Jenis Kelamin</th>
                       <th>Role</th>
                       <th>Tanggal Pengajuan Cuti</th>
+                      <th>Jenis Cuti</th>
                       <th>Status</th>
                     </tr>
                   </thead>
                   <tbody class="table table-bordered">
-                    @foreach ($karyawan as $k)
+                    @foreach ($cuti as $c)
                       <tr align="center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $k->nama }}</td>
-                        <td>{{ $k->jenkel }}</td>
-                        <td>{{ $k->karyawan->role->role }}</td>
-                        <td>16-09-2020</td>
-                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td>{{ $c->Karyawan['nama'] }}</td>
+                        <td>{{ $c->Karyawan['jenkel'] }}</td>
+                        <td>{{ $c->Karyawan['id_role'] }}</td>
+                        <td>{{ $c->tgl_cuti }}</td>
+                        <td>{{ $c->id_jenis_cuti }}</td>
+                        <td><span class="badge badge-warning">{{ $c->status }}</span></td>
                       </tr>
                     @endforeach
                   </tbody>
@@ -63,7 +45,3 @@
         </div>
         <!-- /.container-fluid -->
 @endsection
-{{-- <td>{{ $c->id_karyawan }}</td>
-<td>{{ $c->id_jenis_cuti }}</td>
-<td>{{ $c->awal_cuti }}</td>
-<td>{{ $c->akhir_cuti }}</td> --}}

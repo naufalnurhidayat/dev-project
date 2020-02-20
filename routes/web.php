@@ -18,6 +18,8 @@
 Route::get('/admin', 'Admin\HomeController@index');
 
 // Master
+
+//inventaris
 Route::get('/barang/index', 'databoxController@index');
 Route::get('/admin/create', 'databoxController@create');
 Route::post('/barang/store', 'databoxController@store');
@@ -41,7 +43,7 @@ Route::delete('/hapuskaryawan/{karyawan}', 'Admin\KaryawanController@destroy');
 Route::get('/ubahkaryawan/{karyawan}', 'Admin\KaryawanController@edit');
 Route::patch('/karyawan/{karyawan}', 'Admin\KaryawanController@update');
 
-// Role
+//Role
 Route::get('/role', 'Admin\RoleController@index');
 Route::get('/createrole', 'Admin\RoleController@create');
 Route::post('/createrole', 'Admin\RoleController@store');
@@ -49,7 +51,7 @@ Route::delete('/hapusrole/{role}', 'Admin\RoleController@destroy');
 Route::get('/ubahrole/{role}', 'Admin\RoleController@edit');
 Route::patch('/ubahrole/{role}', 'Admin\RoleController@update');
 
-// Pendidikan
+//Pendidikan
 Route::get('/admin/pendidikan', 'Admin\pendidikanController@index');
 Route::get('/ubah/{id}', 'Admin\pendidikanController@edit');
 Route::delete('/hapus/{id}', 'Admin\pendidikanController@destroy');
@@ -57,7 +59,7 @@ Route::get('/tambahPendidikan', 'Admin\pendidikanController@create');
 Route::post('/store', 'Admin\pendidikanController@store');
 Route::post('/apdet/{id}', 'Admin\pendidikanController@update');
 
-// Agama
+//Agama
 Route::get('/admin/agama', 'Admin\agamaController@index');
 Route::get('/admin/agama/create', 'Admin\agamaController@create');
 Route::post('/admin/agama', 'Admin\agamaController@store');
@@ -75,6 +77,12 @@ Route::post('/admin/jeniscuti', 'Admin\JenisCutiController@store');
 Route::delete('/admin/jeniscuti/{jenis_cuti}', 'Admin\JenisCutiController@destroy');
 Route::get('/admin/jeniscuti/edit/{jenis_cuti}', 'Admin\JenisCutiController@edit');
 Route::patch('/admin/jeniscuti/{jenis_cuti}', 'Admin\JenisCutiController@update');
+
+// Transaksi
+
+//Cuti
+Route::get('/admin/cuti', 'Admin\CutiController@index');
+Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
 
 // -------------------------------------------
 // User
@@ -107,3 +115,11 @@ Route::get('/barang', 'barangController@index');
 Route::get('/show/{id_barang}', 'barangController@show');
 Route::get('/invetaris/pengajuan', 'barangController@tampil');
 
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
