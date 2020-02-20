@@ -16,7 +16,7 @@ class Barang extends Model
     }
 
     public function Pinjam(){
-        return $this->hasMany('App\Pinjam', 'id_barang');
+        return $this->hasMany('App\Pinjam', 'id_pinjam');
     }
 }
 
