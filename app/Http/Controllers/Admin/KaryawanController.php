@@ -8,6 +8,7 @@ use App\Pendidikan;
 use App\Agama;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class KaryawanController extends Controller
 {

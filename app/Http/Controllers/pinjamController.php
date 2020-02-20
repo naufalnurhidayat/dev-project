@@ -41,7 +41,28 @@ class pinjamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+
+            'nabar' => 'required',
+            'kategory' => 'required',
+            'type' => 'required',
+            'stok' => 'required',
+            'jumlah' => 'required',
+            'status' => 'pending',
+            'keterangan' => 'required'
+        ]);
+
+        Pinjam::create([
+            'id_barang' => $request->id_barang,
+            'id_kategori' => $request->id_kategori,
+            'type' => $request->type,
+            'stok' => $request->stok,
+            'jumlah_pinjam' => $request->jumlah,
+            'tgl_pinjam' => date("Y-m-d"),
+            'status' => 'Pending',
+            'keterangan' => $request->keterangan
+        ]);
+        return redirect('/invetaris/pengajuan')->with('status', 'Data Berhasil Di Tambah!!!');
     }
 
     /**
