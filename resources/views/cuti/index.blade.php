@@ -30,9 +30,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $c->Karyawan['nama'] }}</td>
                         <td>{{ $c->Karyawan['jenkel'] }}</td>
-                        <td>{{ $c->Karyawan['id_role'] }}</td>
+                        <td>{{ $c->Karyawan->Role['role'] }}</td>
                         <td>{{ $c->tgl_cuti }}</td>
-                        <td>{{ $c->id_jenis_cuti }}</td>
+                        <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                         <td><span class="badge badge-warning">{{ $c->status }}</span></td>
                       </tr>
                     @endforeach

@@ -11,6 +11,6 @@ class JenisCuti extends Model
     protected $primaryKey = 'id';
 
     public function cuti() {
-        return $this->hasMany('App\Cuti');
+        return $this->hasMany('App\Cuti', 'id');
     }
 }
