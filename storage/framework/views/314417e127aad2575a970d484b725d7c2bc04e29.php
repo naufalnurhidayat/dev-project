@@ -9,17 +9,17 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>@yield('title')</title>
+  <title><?php echo $__env->yieldContent('title'); ?></title>
 
   <!-- Custom fonts for this template-->
-  <link href="{{ asset('sbadmin2') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo e(asset('sbadmin2')); ?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="{{ asset('sbadmin2') }}/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="<?php echo e(asset('sbadmin2')); ?>/css/sb-admin-2.min.css" rel="stylesheet">
 
-  <!-- Custom styles for this page -->
-  <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -32,8 +32,8 @@
     <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/admin') }}">
-        <img src="{{ asset('img/logotelkom.jfif')}}" width="50%" class="rounded">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo e(url('/admin')); ?>">
+        <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" width="50%" class="rounded">
       </a>
 
       <!-- Divider -->
@@ -41,7 +41,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin') }}">
+        <a class="nav-link" href="<?php echo e(url('/admin')); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Home</span></a>
       </li>
@@ -54,12 +54,12 @@
         </a>
         <div id="admin" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{url('/karyawan')}}">Karyawan</a>
-            <a class="collapse-item" href="{{url('/role')}}">Role</a>
-            <a class="collapse-item" href="{{url('/admin/pendidikan')}}">Pendidikan</a>
-            <a class="collapse-item" href="{{url('/admin/agama')}}">Agama</a>
-            <a class="collapse-item" href="{{url('/admin/jeniscuti')}}">Jenis Cuti</a>
-            <a class="collapse-item" href="{{url('/barang/index')}}">Data Barang</a>
+            <a class="collapse-item" href="<?php echo e(url('/karyawan')); ?>">Karyawan</a>
+            <a class="collapse-item" href="<?php echo e(url('/role')); ?>">Role</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/pendidikan')); ?>">Pendidikan</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/agama')); ?>">Agama</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/jeniscuti')); ?>">Jenis Cuti</a>
+            <a class="collapse-item" href="<?php echo e(url('/barang/index')); ?>">Data Barang</a>
           </div>
         </div>
       </li>
@@ -72,7 +72,7 @@
         </a>
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ url('/admin/data-kehadiran') }}">Data Kehadiran</a>
+            <a class="collapse-item" href="#">Data Kehadiran</a>
             </div>
         </div>
         </li>
@@ -85,7 +85,7 @@
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{url('/admin/cuti')}}">Data Cuti</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/cuti')); ?>">Data Cuti</a>
           </div>
         </div>
       </li>
@@ -98,7 +98,7 @@
         </a>
         <div id="inventori" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="{{url('/admin/pinjam')}}">Data Pinjam</a>
+            <a class="collapse-item" href="#">Data Barang</a>
           </div>
         </div>
       </li>
@@ -139,11 +139,11 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ url('/profile') }}">
+                <a class="dropdown-item" href="<?php echo e(url('/profile')); ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="{{ url('ubahprofile') }}">
+                <a class="dropdown-item" href="<?php echo e(url('ubahprofile')); ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Ubah Profile
                 </a>
@@ -160,7 +160,7 @@
         </nav>
         <!-- End of Topbar -->
 
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
 
 
   <!-- Scroll to Top Button-->
@@ -181,36 +181,37 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{{ url('/login') }}">Logout</a>
+          <a class="btn btn-primary" href="<?php echo e(url('/login')); ?>">Logout</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('sbadmin2') }}/vendor/jquery/jquery.min.js"></script>
-  <script src="{{ asset('sbadmin2') }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/jquery/jquery.min.js"></script>
+  <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="{{ asset('sbadmin2') }}/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="{{ asset('sbadmin2') }}/js/sb-admin-2.min.js"></script>
+  <script src="<?php echo e(asset('sbadmin2')); ?>/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="{{ asset('sbadmin2') }}/vendor/chart.js/Chart.min.js"></script>
+  <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script>
-  <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script>
+  <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/chart-area-demo.js"></script>
+  <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/chart-pie-demo.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="{{ asset('sbadmin2') }}/vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
+    <!-- Page level plugins -->
+    <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  
+    <!-- Page level custom scripts -->
+    <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
 
 </body>
 
 </html>
+<?php /**PATH D:\Folder_iqbal\Prakerin\projek_pkl\Program_Cuti\dev-project\resources\views/templates/template-admin.blade.php ENDPATH**/ ?>

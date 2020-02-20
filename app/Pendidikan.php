@@ -12,6 +12,6 @@ class Pendidikan extends Model
     public $timestamps = false;
 
     public function pendidikan() {
-    	return $this->hasMany('App\Pendidikan', 'id');
+        return $this->hasMany('App\Pendidikan', 'id');
     }
 }
