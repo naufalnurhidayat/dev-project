@@ -14,7 +14,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Registrasi Karyawan</h1>
               </div>
-              <form method="POST" action="{{ url('/karyawan') }}" class="user">
+              <form method="POST" action="{{ url('/admin/karyawan') }}" class="user">
                 @csrf
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">

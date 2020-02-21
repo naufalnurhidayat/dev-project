@@ -15,7 +15,7 @@
 
     <div class="row mb-3">
         <div class="col">
-            <a href="{{url('/createkaryawan')}}" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Karyawan</a>
+            <a href="{{url('/admin/karyawan/create')}}" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Karyawan</a>
         </div>
     </div>
           <!-- DataTales Example -->
@@ -45,9 +45,9 @@
                       <td>{{ $k->jenkel }}</td>
                       <td>{{ $k->Role['role'] }}</td>
                       <td>
-                        <a href="{{url('/detailkaryawan')}}/{{$k->id}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
-                        <a href="{{url('/ubahkaryawan')}}/{{$k->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                        <form action="{{ url('/hapuskaryawan') }}/{{$k->id}}" method="POST" class="d-inline">
+                        <a href="{{url('/admin/karyawan')}}/{{$k->id}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
+                        <a href="{{url('/admin/karyawan/edit')}}/{{$k->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        <form action="{{ url('/admin/karyawan') }}/{{$k->id}}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf
                           <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>

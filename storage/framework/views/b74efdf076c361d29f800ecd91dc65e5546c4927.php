@@ -12,7 +12,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Registrasi Karyawan</h1>
               </div>
-              <form method="POST" action="<?php echo e(url('/karyawan')); ?>" class="user">
+              <form method="POST" action="<?php echo e(url('/admin/karyawan')); ?>" class="user">
                 <?php echo csrf_field(); ?>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">

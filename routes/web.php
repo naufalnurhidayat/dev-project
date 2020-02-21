@@ -42,12 +42,12 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::patch('/karyawan/{karyawan}', 'Admin\KaryawanController@update');
 
     //Role
-    Route::get('/role', 'Admin\RoleController@index');
-    Route::get('/createrole', 'Admin\RoleController@create');
-    Route::post('/createrole', 'Admin\RoleController@store');
-    Route::delete('/hapusrole/{role}', 'Admin\RoleController@destroy');
-    Route::get('/ubahrole/{role}', 'Admin\RoleController@edit');
-    Route::patch('/ubahrole/{role}', 'Admin\RoleController@update');
+    Route::get('/admin/role', 'Admin\RoleController@index');
+    Route::get('/admin/role/create', 'Admin\RoleController@create');
+    Route::post('/admin/role', 'Admin\RoleController@store');
+    Route::delete('/admin/role/{role}', 'Admin\RoleController@destroy');
+    Route::get('/admin/role/edit/{role}', 'Admin\RoleController@edit');
+    Route::patch('/admin/role/{role}', 'Admin\RoleController@update');
 
     //Pendidikan
     Route::get('/admin/pendidikan', 'Admin\pendidikanController@index');

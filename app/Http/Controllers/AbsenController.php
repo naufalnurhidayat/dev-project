@@ -37,7 +37,23 @@ class AbsenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        date_default_timezone_set("Asia/Jakarta");
+
+        // $request->validate([
+        //     'id_karyawan' => 'required',
+        //     'jam_masuk' => 'required',
+        //     'tanggal' => 'required',
+        //     'catatan' => 'required'
+        // ]);
+        
+        Absen::create([
+            'id_karyawan' => $request->id_karyawan,
+            'jam_masuk' => date('h:i:s'),
+            'tanggal' => date('Y-m-d'),
+            'catatan' => $request->keterangan
+        ]);
+
+        return redirect('/absen')->with('status', 'Please Check Your Belongings And Step Carefully');
     }
 
     /**

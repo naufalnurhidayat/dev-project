@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Registrasi Karyawan'); ?>
+<?php $__env->startSection('title', 'Edit Karyawan'); ?>
 
 <?php $__env->startSection('content'); ?>
 
@@ -10,9 +10,9 @@
           <div class="col">
             <div class="p-5">
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Ubah Data Karyawan</h1>
+                <h1 class="h4 text-gray-900 mb-4"><i class="fas fa-edit"></i>Edit Data Karyawan</h1>
               </div>
-              <form method="POST" action="<?php echo e(url('/karyawan')); ?>/<?php echo e($karyawan->id); ?>" class="user">
+              <form method="POST" action="<?php echo e(url('/admin/karyawan')); ?>/<?php echo e($karyawan->id); ?>" class="user">
                 <?php echo method_field('patch'); ?>
                 <?php echo csrf_field(); ?>
                 <div class="form-group row">
@@ -307,9 +307,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                   </div>
                 </div>
-                <button type="submit" name="ubah" class="btn btn-primary btn-user btn-block">
-                  Ubah Data
-                </button>
+                <button type="submit" name="ubah" class="btn btn-primary btn-user btn-block">Edit Data</button>
               </form>
             </div>
           </div>
