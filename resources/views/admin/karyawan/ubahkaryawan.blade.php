@@ -14,7 +14,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4"><i class="fas fa-edit"></i>Edit Data Karyawan</h1>
               </div>
-              <form method="POST" action="{{ url('/karyawan') }}/{{ $karyawan->id }}" class="user">
+              <form method="POST" action="{{ url('/admin/karyawan') }}/{{ $karyawan->id }}" class="user">
                 @method('patch')
                 @csrf
                 <div class="form-group row">
