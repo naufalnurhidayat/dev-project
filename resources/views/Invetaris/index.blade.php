@@ -1,4 +1,4 @@
-@extends('templates/template-home')
+{{-- @extends('templates/template-home')
 
 @section('title', 'Invetaris')
 
@@ -81,4 +81,4 @@
 
   
 
-@endsection
+@endsection --}}

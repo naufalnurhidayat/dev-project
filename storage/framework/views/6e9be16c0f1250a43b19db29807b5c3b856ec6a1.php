@@ -17,8 +17,8 @@
             <a href="<?php echo e(url('/createkaryawan')); ?>" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Karyawan</a>
         </div>
     </div>
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h3 class="m-0 font-weight-bold text-primary">Data Karyawan</h3>
             </div>
@@ -31,7 +31,6 @@
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
-                      
                       <th>Role</th>
                       <th>Aksi</th>
                     </tr>
@@ -43,7 +42,6 @@
                       <td><?php echo e($k->nip); ?></td>
                       <td><?php echo e($k->nama); ?></td>
                       <td><?php echo e($k->jenkel); ?></td>
-                      
                       <td><?php echo e($k->Role['role']); ?></td>
                       <td>
                         <a href="<?php echo e(url('/detailkaryawan')); ?>/<?php echo e($k->id); ?>" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>

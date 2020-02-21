@@ -99,7 +99,8 @@ class barangController extends Controller
 
     public function tampil()
     {
-        return view('Invetaris.pengajuan', compact(['barang']));
+        $pinjam = Pinjam::all();
+        return view('Invetaris.pengajuan', compact('pinjam'));
     }
 
 }

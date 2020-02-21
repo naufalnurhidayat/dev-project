@@ -37,19 +37,19 @@
           </thead>
       
           <tbody>
-            {{-- @foreach($barang as $box) --}}
+        @foreach($pinjam as $p)
            <tr> 
-           <td></td> 
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
+           <td>{{$p->Barang['nama_barang']}}</td> 
+           <td>{{$p->Kategori['nama_kategori']}}</td>
+           <td>{{$p->jumlah_pinjam}}</td>
+           <td>{{$p->tgl_pinjam}}</td>
+           <td><span class="badge badge-warning">{{$p->status}}</span></td>
+           <td>{{$p->keterangan}}</td>
            <td>
            <a href="" class="btn btn-success btn-sm"><i class="fa fa-print"></i> Print</a>
            </td>
            </tr>
-           {{-- @endforeach --}}
+        @endforeach
           </tbody>
         </table>
       </div>

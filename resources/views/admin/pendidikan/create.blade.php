@@ -10,7 +10,7 @@
       <div class="col-8">
       <h1 class="mt-3">Data Pendidikan</h1>
 
-      <form method="post" action="{{url('/store')}}">
+      <form method="post" action="{{url('/admin/store')}}">
         @csrf
       <div class="form-group">
         <label for="pendidikan">Pendidikan</label>

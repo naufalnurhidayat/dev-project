@@ -15,6 +15,6 @@ class Kategori extends Model
     }
 
     public function pinjam(){
-        return $this->hasMany('App\Pinjam', 'id_kategori');
+        return $this->hasMany('App\Pinjam', 'id_pinjam');
     }
 }

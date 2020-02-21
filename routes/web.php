@@ -13,8 +13,8 @@
 
 // -------------------------------------------
 // Admin
-
-// Home
+Route::group(['middleware' => 'auth'], function () {
+  // Home
 Route::get('/admin', 'Admin\HomeController@index');
 
 // Master

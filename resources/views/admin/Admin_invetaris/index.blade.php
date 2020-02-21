@@ -24,7 +24,7 @@
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
-            <tr>
+            <tr align="center">
               <th>Nama Peminjam</th>
               <th>Nama Barang</th>
               <th>Jumlah Pinjam</th>
@@ -36,20 +36,24 @@
           </thead>
       
           <tbody>
-            {{-- @foreach($barang as $box) --}}
-           <tr> 
-           <td></td> 
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
-           <td></td>
+            @foreach($pinjam as $p)
+           <tr align="center"> 
+           <td>{{$p->Karyawan['nama']}}</td> 
+           <td>{{$p->Barang['nama_barang']}}</td>
+           <td>{{$p->jumlah_pinjam}}</td>
+           <td>{{$p->tgl_pinjam}}</td>
+           <td><span class="bagde badge-warning rounded">{{$p->status}}</span></td>
+           <td>{{$p->keterangan}}</td>
            <td>
-           <a href="" class="btn btn-warning btn-sm mb-2"><i class="fa fa-edit"></i> Ubah</a>
-           <a href="" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</a>
+            <form class="d-inline" method="post" action="">
+              {{ method_field('DELETE')}}
+              {{csrf_field()  }}
+              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-success btn-sm mb-2"><i class="fa fa-check"></i>Accept</button>
+              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm"><i class="fa fa-times-circle"></i> Rejected</button>
+             </form>
            </td>
            </tr>
-           {{-- @endforeach --}}
+           @endforeach
           </tbody>
         </table>
       </div>

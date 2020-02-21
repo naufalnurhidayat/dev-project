@@ -18,8 +18,8 @@
   <!-- Custom styles for this template-->
   <link href="<?php echo e(asset('sbadmin2')); ?>/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this page -->
-    <link href="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <!-- Custom styles for this page -->
+  <link href="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -72,7 +72,7 @@
         </a>
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Data Kehadiran</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/data-kehadiran')); ?>">Data Kehadiran</a>
             </div>
         </div>
         </li>
@@ -98,7 +98,7 @@
         </a>
         <div id="inventori" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="#">Data Barang</a>
+          <a class="collapse-item" href="<?php echo e(url('/admin/pinjam')); ?>">Data Pinjam</a>
           </div>
         </div>
       </li>
@@ -204,12 +204,12 @@
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/chart-area-demo.js"></script>
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/chart-pie-demo.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-  
-    <!-- Page level custom scripts -->
-    <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
+  <!-- Page level plugins -->
+  <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
 
 </body>
 
