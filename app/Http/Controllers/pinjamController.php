@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pinjam;
 use App\Kategori;
 use App\Barang;
+use App\Karyawan;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\Controller;
 
@@ -82,9 +83,9 @@ class pinjamController extends Controller
      * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function edit(pinjam $pinjam)
+    public function edit($id_pinjam)
     {
-        //
+        
     }
 
     /**
