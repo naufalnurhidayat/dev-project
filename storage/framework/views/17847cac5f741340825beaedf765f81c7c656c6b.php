@@ -2,6 +2,13 @@
 
 <?php $__env->startSection('content'); ?>
 
+<?php if(session('status')): ?>
+    <div class="alert alert-success">
+        <?php echo e(session('status')); ?>
+
+    </div>
+<?php endif; ?>
+
 <div class="container">
     <div class="row mt-3">
         <div class="col">

@@ -8,6 +8,7 @@ use App\Pendidikan;
 use App\Agama;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class KaryawanController extends Controller
 {
@@ -77,7 +78,7 @@ class KaryawanController extends Controller
             'foto' => 'default.jpg'
         ]);
 
-        return redirect('/karyawan')->with('status', 'Karyawan berhasil ditambahkan!');
+        return redirect('/admin/karyawan')->with('status', 'Karyawan berhasil ditambahkan!');
     }
 
     /**
@@ -141,7 +142,7 @@ class KaryawanController extends Controller
             'alamat' => $request->alamat
         ]);
 
-        return redirect('/karyawan')->with('status', 'Data Karyawan berhasil diubah');
+        return redirect('/admin/karyawan')->with('status', 'Data Karyawan berhasil diubah');
     }
 
     /**
@@ -153,6 +154,6 @@ class KaryawanController extends Controller
     public function destroy(Karyawan $karyawan)
     {
         Karyawan::destroy($karyawan->id);
-        return redirect('/karyawan')->with('status', 'Karyawan berhasil dihapus');
+        return redirect('/admin/karyawan')->with('status', 'Karyawan berhasil dihapus');
     }
 }

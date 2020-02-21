@@ -26,7 +26,7 @@
                             <li>Agama: <?php echo e($karyawan->Agama['agama']); ?></li>
                             <li>Alamat: <?php echo e($karyawan->alamat); ?></li>
                         </ul>
-                        <a href="<?php echo e(url('/karyawan')); ?>" class="btn btn-primary ml-4">Kembali</a>
+                        <a href="<?php echo e(url('/admin/karyawan')); ?>" class="btn btn-primary ml-4">Kembali</a>
                     </div>
                   </div>
             </div>

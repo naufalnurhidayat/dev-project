@@ -54,8 +54,8 @@
         </a>
         <div id="admin" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{url('/karyawan')}}">Karyawan</a>
-            <a class="collapse-item" href="{{url('/role')}}">Role</a>
+            <a class="collapse-item" href="{{url('/admin/karyawan')}}">Karyawan</a>
+            <a class="collapse-item" href="{{url('/admin/role')}}">Role</a>
             <a class="collapse-item" href="{{url('/admin/pendidikan')}}">Pendidikan</a>
             <a class="collapse-item" href="{{url('/admin/agama')}}">Agama</a>
             <a class="collapse-item" href="{{url('/admin/jeniscuti')}}">Jenis Cuti</a>
@@ -139,11 +139,11 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ url('/profile') }}">
+                <a class="dropdown-item" href="{{ url('/profile/1') }}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="{{ url('ubahprofile') }}">
+                <a class="dropdown-item" href="{{ url('profile/edit') }}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Ubah Profile
                 </a>

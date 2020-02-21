@@ -28,7 +28,7 @@
                             <li>Agama: {{ $karyawan->Agama['agama'] }}</li>
                             <li>Alamat: {{ $karyawan->alamat }}</li>
                         </ul>
-                        <a href="{{url('/karyawan')}}" class="btn btn-primary ml-4">Kembali</a>
+                        <a href="{{url('/admin/karyawan')}}" class="btn btn-primary ml-4">Kembali</a>
                     </div>
                   </div>
             </div>
