@@ -37,7 +37,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($karyawan as $k)
+                  @foreach ($user as $k)
                     <tr align="center">
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $k->nip }}</td>
