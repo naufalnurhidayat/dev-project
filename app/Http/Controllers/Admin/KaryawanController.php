@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Karyawan;
+use App\User;
 use App\Role;
 use App\Pendidikan;
 use App\Agama;
@@ -45,17 +45,17 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip' => 'required|numeric',
+            'nip' => 'required|unique:karyawan|numeric',
             'nama' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
             'email' => 'required|email|unique:karyawan',
             'jenkel' => 'required',
-            'id_role' => 'required',
-            'id_pendidikan' => 'required',
+            'id_role' => 'required|numeric',
+            'id_pendidikan' => 'required|numeric',
             'thn_join' => 'required|numeric',
             'no_telp' => 'required|numeric|unique:karyawan',
-            'id_agama' => 'required',
+            'id_agama' => 'required|numeric',
             'alamat' => 'required',
             'password' => 'required|min:6|same:password2',
             'password2' => 'required|min:6|same:password'
@@ -113,16 +113,16 @@ class KaryawanController extends Controller
     public function update(Request $request, Karyawan $karyawan)
     {
         $request->validate([
-            'nip' => 'required',
+            'nip' => 'required|unique:karyawan|numeric',
             'nama' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:karyawan',
             'jenkel' => 'required',
             'id_role' => 'required',
             'id_pendidikan' => 'required',
             'thn_join' => 'required',
-            'no_telp' => 'required',
+            'no_telp' => 'required|unique:karyawan|numeric',
             'id_agama' => 'required',
             'alamat' => 'required'
         ]);

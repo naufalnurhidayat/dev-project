@@ -68,28 +68,12 @@ Route::delete('/admin/agama/{agama}', 'Admin\agamaController@destroy');
 Route::get('/admin/agama/edit/{agama}', 'Admin\agamaController@edit');
 Route::patch('/admin/agama/{agama}', 'Admin\agamaController@update');
 
-// Absen
-Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
-
-// Jencut
-Route::get('/admin/jeniscuti', 'Admin\JenisCutiController@index');
-Route::get('/admin/jeniscuti/create', 'Admin\JenisCutiController@create');
-Route::post('/admin/jeniscuti', 'Admin\JenisCutiController@store');
-Route::delete('/admin/jeniscuti/{jenis_cuti}', 'Admin\JenisCutiController@destroy');
-Route::get('/admin/jeniscuti/edit/{jenis_cuti}', 'Admin\JenisCutiController@edit');
-Route::patch('/admin/jeniscuti/{jenis_cuti}', 'Admin\JenisCutiController@update');
-
-// Transaksi
-
-//Cuti
-Route::get('/admin/cuti', 'Admin\CutiController@index');
-Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
-
-// -------------------------------------------
 // User
-
 Route::get('/', 'Home@index');
-Route::get('/login', 'Login\LoginController@index');
+Route::get('/login', 'AuthController@index')->name('login');
+Route::post('/login', 'AuthController@login');
+Route::post('/logout', 'AuthController@logout');
+
 
 // -------------------------------------------
 // Absen
@@ -105,7 +89,6 @@ Route::get('/izinabsen', 'AbsenController@izinAbsen');
 Route::get('/cuti', 'CutiController@index');
 Route::get('/cuti/create', 'CutiController@create');
 Route::post('/cuti', 'CutiController@store');
-
 
 //--------------------------------------------
 //Invetaris
