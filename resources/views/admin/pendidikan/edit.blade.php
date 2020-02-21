@@ -21,7 +21,7 @@
       </div>
 
       <button type="submit" class="btn btn-success">Edit</button>
-      <a href="/pendidikan" class="btn btn-danger">Kembali</a>
+      <a href="/admin/pendidikan" class="btn btn-danger">Kembali</a>
       </form>
   
   </div>
