@@ -19,7 +19,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $user = user::all();
+        $user = User::all();
         return view('admin/karyawan/index', compact('user'));
     }
 

@@ -93,8 +93,6 @@ Route::get('/', 'Home@index')->middleware('auth');
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/logout', 'AuthController@logout');
 
-    Route::get('/profile/{id}', 'ProfileController@show');
-    Route::get('/profile/edit/{id}', 'ProfileController@edit');
     // Absen
     Route::get('/absen', 'AbsenController@index');
     Route::get('/tampilabsen', 'AbsenController@show');
