@@ -26,4 +26,8 @@ class Karyawan extends Model
         return $this->hasMany('App\Absen', 'id_absen');
     }
 
+    public function pinjam() {
+        return $this->hasMany('App\Pinjam', 'id_pinjam');
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pinjam;
 use App\Kategori;
 use App\Barang;
+use App\Karyawan;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\Controller;
 

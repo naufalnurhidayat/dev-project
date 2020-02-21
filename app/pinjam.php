@@ -18,4 +18,8 @@ class pinjam extends Model
     public function Kategori(){
         return $this->beLongsTo('App\Kategori', 'id_kategori', 'id_kategori');
     }
+
+    public function karyawan() {
+        return $this->beLongsTo('App\Karyawan', 'id', 'id');
+    }
 }

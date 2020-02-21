@@ -38,7 +38,7 @@
           <tbody>
             @foreach($pinjam as $p)
            <tr align="center"> 
-           <td></td> 
+           <td>{{$p->Karyawan['nama']}}</td> 
            <td>{{$p->Barang['nama_barang']}}</td>
            <td>{{$p->jumlah_pinjam}}</td>
            <td>{{$p->tgl_pinjam}}</td>
