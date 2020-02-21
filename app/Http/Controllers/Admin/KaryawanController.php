@@ -19,7 +19,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan = Karyawan::all();
+        $karyawan = User::all();
         return view('admin/karyawan/index', compact('karyawan'));
     }
 
@@ -61,7 +61,7 @@ class KaryawanController extends Controller
             'password2' => 'required|min:6|same:password'
         ]);
 
-        Karyawan::create([
+        User::create([
             'nip' => $request->nip,
             'nama' => $request->nama,
             'tmp_lahir' => $request->tmp_lahir,
@@ -127,7 +127,7 @@ class KaryawanController extends Controller
             'alamat' => 'required'
         ]);
 
-        Karyawan::where('id', $karyawan->id)->Update([
+        User::where('id', $karyawan->id)->Update([
             'nip' => $request->nip,
             'nama' => $request->nama,
             'tmp_lahir' => $request->tmp_lahir,
@@ -153,7 +153,7 @@ class KaryawanController extends Controller
      */
     public function destroy(Karyawan $karyawan)
     {
-        Karyawan::destroy($karyawan->id);
+        User::destroy($karyawan->id);
         return redirect('/karyawan')->with('status', 'Karyawan berhasil dihapus');
     }
 }
