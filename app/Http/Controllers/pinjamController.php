@@ -82,9 +82,9 @@ class pinjamController extends Controller
      * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function edit(pinjam $pinjam)
+    public function edit($id_pinjam)
     {
-        //
+        
     }
 
     /**

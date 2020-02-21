@@ -34,6 +34,7 @@ Route::patch('/kategori/update/{id_kategori}', 'KategoriController@update');
 Route::delete('/kategori/destroy/{id_kategori}', 'KategoriController@destroy');
 //Admin Invetaris
 Route::get('/admin/pinjam', 'pinjamController@index');
+Route::get('/admin/ubah/{id_pinjam}', 'pinjamController@edit');
 // Karyawan
 Route::get('/karyawan', 'Admin\KaryawanController@index');
 Route::get('/createkaryawan', 'Admin\KaryawanController@create');
