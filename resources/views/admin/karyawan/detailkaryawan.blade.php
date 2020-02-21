@@ -15,18 +15,18 @@
                 <div class="card">
                     <div class="card-body">
                         <ul>
-                            <li>NIP: {{ $karyawan->nip }}</li>
-                            <li>Nama: {{ $karyawan->nama }}</li>
-                            <li>Tempat Lahir: {{ $karyawan->tmp_lahir }}</li>
-                            <li>Tanggal Lahir: {{ $karyawan->tgl_lahir }}</li>
-                            <li>Email: {{ $karyawan->email }}</li>
-                            <li>Jenis Kelamin: {{ $karyawan->jenkel }}</li>
-                            <li>Role: {{ $karyawan->Role['role'] }}</li>
-                            <li>Pendidikan: {{ $karyawan->Pendidikan['pendidikan'] }}</li>
-                            <li>Tahun Join: {{ $karyawan->thn_join }}</li>
-                            <li>No. Telpon: {{ $karyawan->no_telp }}</li>
-                            <li>Agama: {{ $karyawan->Agama['agama'] }}</li>
-                            <li>Alamat: {{ $karyawan->alamat }}</li>
+                            <li>NIP: {{ $user->nip }}</li>
+                            <li>Nama: {{ $user->nama }}</li>
+                            <li>Tempat Lahir: {{ $user->tmp_lahir }}</li>
+                            <li>Tanggal Lahir: {{ $user->tgl_lahir }}</li>
+                            <li>Email: {{ $user->email }}</li>
+                            <li>Jenis Kelamin: {{ $user->jenkel }}</li>
+                            <li>Role: {{ $user->Role['role'] }}</li>
+                            <li>Pendidikan: {{ $user->Pendidikan['pendidikan'] }}</li>
+                            <li>Tahun Join: {{ $user->thn_join }}</li>
+                            <li>No. Telpon: {{ $user->no_telp }}</li>
+                            <li>Agama: {{ $user->Agama['agama'] }}</li>
+                            <li>Alamat: {{ $user->alamat }}</li>
                         </ul>
                         <a href="{{url('/admin/karyawan')}}" class="btn btn-primary ml-4">Kembali</a>
                     </div>

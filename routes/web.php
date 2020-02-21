@@ -33,13 +33,13 @@ Route::get('/admin', 'Admin\HomeController@index');
     //Admin Invetaris
     Route::get('/admin/pinjam', 'pinjamController@index');
     // Karyawan
-    Route::get('/karyawan', 'Admin\KaryawanController@index');
-    Route::get('/createkaryawan', 'Admin\KaryawanController@create');
-    Route::get('/detailkaryawan/{karyawan}', 'Admin\KaryawanController@show');
-    Route::post('/karyawan', 'Admin\KaryawanController@store');
-    Route::delete('/hapuskaryawan/{karyawan}', 'Admin\KaryawanController@destroy');
-    Route::get('/ubahkaryawan/{karyawan}', 'Admin\KaryawanController@edit');
-    Route::patch('/karyawan/{karyawan}', 'Admin\KaryawanController@update');
+    Route::get('/admin/karyawan', 'Admin\KaryawanController@index');
+    Route::get('/admin/karyawan/create', 'Admin\KaryawanController@create');
+    Route::get('/admin/karyawan/{karyawan}', 'Admin\KaryawanController@show');
+    Route::post('/admin/karyawan', 'Admin\KaryawanController@store');
+    Route::delete('/admin/karyawan/{karyawan}', 'Admin\KaryawanController@destroy');
+    Route::get('/admin/karyawan/edit/{karyawan}', 'Admin\KaryawanController@edit');
+    Route::patch('/admin/karyawan/{karyawan}', 'Admin\KaryawanController@update');
 
     //Role
     Route::get('/admin/role', 'Admin\RoleController@index');

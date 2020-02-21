@@ -14,36 +14,36 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4"><i class="fas fa-edit"></i>Edit Data Karyawan</h1>
               </div>
-              <form method="POST" action="{{ url('/admin/karyawan') }}/{{ $karyawan->id }}" class="user">
+              <form method="POST" action="{{ url('/admin/karyawan') }}/{{ $user->id }}" class="user">
                 @method('patch')
                 @csrf
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('nip') is-invalid @enderror" value="{{ $karyawan->nip }}" id="nip" placeholder="NIP" name="nip">
+                    <input type="text" class="form-control form-control-user @error('nip') is-invalid @enderror" value="{{ $user->nip }}" id="nip" placeholder="NIP" name="nip">
                     @error('nip') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror" id="nama" placeholder="Nama" name="nama" value="{{ $karyawan->nama }}">
+                    <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror" id="nama" placeholder="Nama" name="nama" value="{{ $user->nama }}">
                     @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('tmp_lahir') is-invalid @enderror" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="{{ $karyawan->tmp_lahir }}">
+                    <input type="text" class="form-control form-control-user @error('tmp_lahir') is-invalid @enderror" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="{{ $user->tmp_lahir }}">
                     @error('tmp_lahir') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="date" class="form-control form-control-user @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="{{ $karyawan->tgl_lahir }}">
+                    <input type="date" class="form-control form-control-user @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="{{ $user->tgl_lahir }}">
                     @error('tgl_lahir') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ $karyawan->email }}">
+                    <input type="text" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ $user->email }}">
                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    @if ($karyawan->jenkel == 'Laki-laki')
+                    @if ($user->jenkel == 'Laki-laki')
                       <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="Laki-laki" name="jenkel" value="Laki-laki" checked>
                       <label for="Laki-laki" class="ml-4">Laki-laki</label>
                       @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -78,11 +78,11 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('thn_join') is-invalid @enderror" id="thn_join" placeholder="Tahun Join" name="thn_join" value="{{ $karyawan->thn_join }}">
+                    <input type="text" class="form-control form-control-user @error('thn_join') is-invalid @enderror" id="thn_join" placeholder="Tahun Join" name="thn_join" value="{{ $user->thn_join }}">
                     @error('thn_join') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user @error('no_telp') is-invalid @enderror" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="{{ $karyawan->no_telp }}">
+                    <input type="text" class="form-control form-control-user @error('no_telp') is-invalid @enderror" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="{{ $user->no_telp }}">
                     @error('no_telp') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
@@ -95,7 +95,7 @@
                     @error('id_agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <textarea name="alamat" id="alamat" class="@error('alamat') is-invalid @enderror">{{ $karyawan->alamat }}</textarea>
+                    <textarea name="alamat" id="alamat" class="@error('alamat') is-invalid @enderror">{{ $user->alamat }}</textarea>
                     @error('alamat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
