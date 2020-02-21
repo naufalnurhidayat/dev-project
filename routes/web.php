@@ -13,7 +13,7 @@
 
 // -------------------------------------------
 // Admin
-// Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
   // Home
 Route::get('/admin', 'Admin\HomeController@index');
   // Master
@@ -82,7 +82,7 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
 
     // -------------------------------------------
-// });
+});
 
 Route::get('/login', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login');
