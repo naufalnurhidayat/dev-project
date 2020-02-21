@@ -19,8 +19,8 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan = User::all();
-        return view('admin/karyawan/index', compact('karyawan'));
+        $user = user::all();
+        return view('admin/karyawan/index', compact('user'));
     }
 
     /**
@@ -45,16 +45,16 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip' => 'required|unique:karyawan|numeric',
+            'nip' => 'required|unique:users|numeric',
             'nama' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
-            'email' => 'required|email|unique:karyawan',
+            'email' => 'required|email|unique:users',
             'jenkel' => 'required',
             'id_role' => 'required|numeric',
             'id_pendidikan' => 'required|numeric',
             'thn_join' => 'required|numeric',
-            'no_telp' => 'required|numeric|unique:karyawan',
+            'no_telp' => 'required|numeric|unique:users',
             'id_agama' => 'required|numeric',
             'alamat' => 'required',
             'password' => 'required|min:6|same:password2',
@@ -84,50 +84,50 @@ class KaryawanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Karyawan $karyawan)
+    public function show(User $user)
     {
-        return view('admin/karyawan/detailkaryawan', compact('karyawan'));
+        return view('admin/karyawan/detailkaryawan', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(Karyawan $karyawan)
+    public function edit(User $user)
     {
-        return view('admin/karyawan/ubahkaryawan', compact('karyawan'));
+        return view('admin/karyawan/ubahkaryawan', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Karyawan $karyawan)
+    public function update(Request $request, User $user)
     {
         $request->validate([
-            'nip' => 'required|unique:karyawan|numeric',
+            'nip' => 'required|unique:users|numeric',
             'nama' => 'required',
             'tmp_lahir' => 'required',
             'tgl_lahir' => 'required',
-            'email' => 'required|email|unique:karyawan',
+            'email' => 'required|email|unique:users',
             'jenkel' => 'required',
             'id_role' => 'required',
             'id_pendidikan' => 'required',
             'thn_join' => 'required',
-            'no_telp' => 'required|unique:karyawan|numeric',
+            'no_telp' => 'required|unique:users|numeric',
             'id_agama' => 'required',
             'alamat' => 'required'
         ]);
 
-        User::where('id', $karyawan->id)->Update([
+        User::where('id', $user->id)->Update([
             'nip' => $request->nip,
             'nama' => $request->nama,
             'tmp_lahir' => $request->tmp_lahir,
@@ -148,12 +148,12 @@ class KaryawanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Karyawan  $karyawan
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Karyawan $karyawan)
+    public function destroy(User $user)
     {
-        User::destroy($karyawan->id);
+        User::destroy($user->id);
         return redirect('/karyawan')->with('status', 'Karyawan berhasil dihapus');
     }
 }
