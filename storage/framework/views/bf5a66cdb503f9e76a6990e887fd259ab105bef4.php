@@ -28,9 +28,9 @@
                         <td><?php echo e($loop->iteration); ?></td>
                         <td><?php echo e($c->Karyawan['nama']); ?></td>
                         <td><?php echo e($c->Karyawan['jenkel']); ?></td>
-                        <td><?php echo e($c->Karyawan['id_role']); ?></td>
+                        <td><?php echo e($c->Karyawan->Role['role']); ?></td>
                         <td><?php echo e($c->tgl_cuti); ?></td>
-                        <td><?php echo e($c->id_jenis_cuti); ?></td>
+                        <td><?php echo e($c->jenis_cuti['jenis_cuti']); ?></td>
                         <td><span class="badge badge-warning"><?php echo e($c->status); ?></span></td>
                       </tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
