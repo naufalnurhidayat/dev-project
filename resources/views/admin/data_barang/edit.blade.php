@@ -23,10 +23,10 @@
     <div class="form-group">
         <label for="kategory">Nama Kategori </label>
         <select name="id_kategori" id="kategory" class="form-control">
-        {{-- <option value="">---Pilih kategori---</option>     --}}
-            {{-- @foreach($kategori as $k) --}}
         <option value="{{$kategori->id_kategori}}">{{$kategori->nama_kategori}}</option>
-            {{-- @endforeach   --}}
+        {{-- @foreach($kategori as $k)
+            <option value="{{$k->id_kategori}}">{{$k->nama_kategori}}</option>
+        @endforeach   --}}
         </select>
         @error('kategory')
             <div class="invalid-feedback">{{$message}}</div>
@@ -46,8 +46,8 @@
     <div class="form-group">
         <label for="kondisi">Kondisi</label>
         <select name="kondisi" id="kondisi" class="form-control">
-            {{-- <option value="">--Kondisi--</option> --}}
-        <option value="{{$barang->kondisi}}">Baru</option>
+            <option value="">--{{$barang->kondisi}}--</option>
+            <option>Baru</option>
             <option>Bekas</option>
         </select>
     @error('kondisi')

@@ -53,11 +53,11 @@ Route::patch('/ubahrole/{role}', 'Admin\RoleController@update');
 
 //Pendidikan
 Route::get('/admin/pendidikan', 'Admin\pendidikanController@index');
-Route::get('/ubah/{id}', 'Admin\pendidikanController@edit');
-Route::delete('/hapus/{id}', 'Admin\pendidikanController@destroy');
-Route::get('/tambahPendidikan', 'Admin\pendidikanController@create');
-Route::post('/store', 'Admin\pendidikanController@store');
-Route::post('/apdet/{id}', 'Admin\pendidikanController@update');
+Route::get('/admin/ubah/{id}', 'Admin\pendidikanController@edit');
+Route::delete('/admin/hapus/{id}', 'Admin\pendidikanController@destroy');
+Route::get('/admin/tambahPendidikan', 'Admin\pendidikanController@create');
+Route::post('/admin/store', 'Admin\pendidikanController@store');
+Route::post('/admin/apdet/{id}', 'Admin\pendidikanController@update');
 
 //Agama
 Route::get('/admin/agama', 'Admin\agamaController@index');
