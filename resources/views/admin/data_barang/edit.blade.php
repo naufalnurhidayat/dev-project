@@ -23,10 +23,14 @@
     <div class="form-group">
         <label for="kategory">Nama Kategori </label>
         <select name="id_kategori" id="kategory" class="form-control">
-        <option value="{{$kategori->id_kategori}}">{{$kategori->nama_kategori}}</option>
-        {{-- @foreach($kategori as $k)
-            <option value="{{$k->id_kategori}}">{{$k->nama_kategori}}</option>
-        @endforeach   --}}
+        {{-- <option value="{{$kategori->id_kategori}}">{{$kategori->nama_kategori}}</option> --}}
+        @foreach($kategori as $k)
+            @if ($k->id_kategori == $barang->id_kategori)
+                <option value="{{$k->id_kategori}}" selected>{{$k->nama_kategori}}</option>
+            @else
+                <option value="{{$k->id_kategori}}">{{$k->nama_kategori}}</option>
+            @endif
+        @endforeach  
         </select>
         @error('kategory')
             <div class="invalid-feedback">{{$message}}</div>

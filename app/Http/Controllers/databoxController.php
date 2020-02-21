@@ -74,7 +74,8 @@ class databoxController extends Controller
     public function edit($id_barang)
     {
         $barang = Barang::find($id_barang);
-        $kategori = Kategori::find($barang->id_kategori);
+        $kategori = Kategori::all();
+        // $kategori = Kategori::find($barang->id_kategori);
         return view('admin/data_barang/edit', ['barang' => $barang, 'kategori' => $kategori]);   
     }
 
