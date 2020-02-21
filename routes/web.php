@@ -114,6 +114,7 @@ Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
 Route::get('/barang', 'barangController@index');
 Route::get('/show/{id_barang}', 'barangController@show');
 Route::get('/invetaris/pengajuan', 'barangController@tampil');
+Route::post('/pengajuan/store', 'pinjamController@store');
 
 
 // Auth::routes();

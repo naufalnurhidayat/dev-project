@@ -12,8 +12,11 @@
           <h5 class="card-title text-center">Data Pinjam</h5>
 
       
-      <form method="post" action="/">
+          <form method="post" action="{{url('/pengajuan/store')}}">
     {{csrf_field()}}
+
+   <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">     
+
     <div class="form-group">
       <label for="nabar">Nama Barang </label>
     <input type="text" class="form-control @error('nabar') is-invalid @enderror" id="nabar" placeholder="" name="nabar" value="{{$barang->nama_barang}}" readonly>
@@ -22,6 +25,7 @@
       @enderror
     </div>
 
+  <input type="hidden" name="id_kategori" value="{{$kategori->id_kategori}}">
     <div class="form-group">
     <label for="kategory">Nama Kategori </label>
     <input type="text" class="form-control @error('kategory') is-invalid @enderror" id="kategory" placeholder="" name="kategory" value="{{$kategori->nama_kategori}}" readonly>
