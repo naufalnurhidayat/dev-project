@@ -45,7 +45,7 @@ class RoleController extends Controller
         $role->role = $request->role;
         $role->save();
 
-        return redirect('/role')->with('status', 'Data role berhasil ditambahkan');
+        return redirect('/admin/role')->with('status', 'Data role berhasil ditambahkan');
     }
 
     /**
@@ -87,7 +87,7 @@ class RoleController extends Controller
             'role' => $request->role
         ]);
 
-        return redirect('/role')->with('status', 'Role berhasil diubah');
+        return redirect('/admin/role')->with('status', 'Role berhasil diubah');
     }
 
     /**
@@ -99,6 +99,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         Role::destroy($role->id);
-        return redirect('/role')->with('status', 'Role berhasil dihapus');
+        return redirect('/admin/role')->with('status', 'Role berhasil dihapus');
     }
 }
