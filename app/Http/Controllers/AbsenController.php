@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Absen;
 use App\Karyawan;
+use App\Role;
 use Illuminate\Http\Request;
 
 class AbsenController extends Controller
@@ -15,7 +16,8 @@ class AbsenController extends Controller
      */
     public function index()
     {
-        $absen = Absen::all();
+        $tanggal = date('Y-m-d');
+        $absen = Absen::where('tanggal', $tanggal)->get();
         return view('absen/index', compact('absen'));
     }
 
@@ -64,7 +66,7 @@ class AbsenController extends Controller
      */
     public function show(Absen $absen)
     {
-        return view('absen/checkabsen');
+        return $absen;
     }
 
     /**

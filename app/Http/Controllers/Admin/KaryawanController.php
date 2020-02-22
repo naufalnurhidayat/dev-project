@@ -154,6 +154,6 @@ class KaryawanController extends Controller
     public function destroy(User $user)
     {
         User::destroy($user->id);
-        return redirect('/karyawan')->with('status', 'Karyawan berhasil dihapus');
+        return redirect('/admin/karyawan')->with('status', 'Karyawan berhasil dihapus');
     }
 }

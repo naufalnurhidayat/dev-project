@@ -49,11 +49,11 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ url('/profile/1') }}">
+                <a class="dropdown-item" href="{{ url('/profile' .auth()->user()->id) }}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="{{ url('profile/edit/1') }}">
+                <a class="dropdown-item" href="{{ url('/profile/edit' .auth()->user()->id) }}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Ubah Profile
                 </a>
@@ -85,7 +85,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <form action="{{url('/logout')}}" method="get">
+          <form action="{{ url('/logout') }}" method="GET">
             @csrf
             <button class="btn btn-primary" type="submit">Logout</button>
           </form>
