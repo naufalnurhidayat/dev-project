@@ -16,7 +16,7 @@
   
   <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
   <a href="/" class="btn btn-danger mb-2">Kembali</a>
-<a href="{{url('/invetaris/pengajuan')}}" class="btn btn-primary mb-2">Pengajuan</a>
+<a href="{{url('/invetaris/pengajuan')}}" class="btn btn-primary mb-2"><i class="fa fa-shopping-cart"> Keranjang</i></a>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">

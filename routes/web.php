@@ -13,7 +13,7 @@
 
 // -------------------------------------------
 // Admin
-Route::group(['middleware' => 'auth'], function () {
+// Route::group(['middleware' => 'auth'], function () {
   // Home
 Route::get('/admin', 'Admin\HomeController@index');
   // Master
@@ -35,11 +35,11 @@ Route::get('/admin', 'Admin\HomeController@index');
     // Karyawan
     Route::get('/admin/karyawan', 'Admin\KaryawanController@index');
     Route::get('/admin/karyawan/create', 'Admin\KaryawanController@create');
-    Route::get('/admin/karyawan/{karyawan}', 'Admin\KaryawanController@show');
+    Route::get('/admin/karyawan/{user}', 'Admin\KaryawanController@show');
     Route::post('/admin/karyawan', 'Admin\KaryawanController@store');
-    Route::delete('/admin/karyawan/{karyawan}', 'Admin\KaryawanController@destroy');
-    Route::get('/admin/karyawan/edit/{karyawan}', 'Admin\KaryawanController@edit');
-    Route::patch('/admin/karyawan/{karyawan}', 'Admin\KaryawanController@update');
+    Route::delete('/admin/karyawan/{user}', 'Admin\KaryawanController@destroy');
+    Route::get('/admin/karyawan/edit/{user}', 'Admin\KaryawanController@edit');
+    Route::patch('/admin/karyawan/{user}', 'Admin\KaryawanController@update');
 
     //Role
     Route::get('/admin/role', 'Admin\RoleController@index');
@@ -82,16 +82,16 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
 
     // -------------------------------------------
-});
+// });
 
 Route::get('/login', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login');
 
 // -----------------------------------------------
-Route::get('/', 'Home@index')->middleware('auth');
 // User
 Route::group(['middleware' => 'auth'], function () {
-    Route::post('/logout', 'AuthController@logout');
+    Route::get('/', 'Home@index');
+    Route::get('/logout', 'AuthController@logout');
 
     // Absen
     Route::get('/absen', 'AbsenController@index');

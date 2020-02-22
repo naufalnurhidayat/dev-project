@@ -25,6 +25,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr align="center">
+              <th>NIP</th>
               <th>Nama Peminjam</th>
               <th>Nama Barang</th>
               <th>Jumlah Pinjam</th>
@@ -38,6 +39,7 @@
           <tbody>
             @foreach($pinjam as $p)
            <tr align="center"> 
+           <td>{{$p->Karyawan['nip']}}</td>
            <td>{{$p->Karyawan['nama']}}</td> 
            <td>{{$p->Barang['nama_barang']}}</td>
            <td>{{$p->jumlah_pinjam}}</td>
