@@ -86,6 +86,7 @@ Route::get('/admin', 'Admin\HomeController@index');
 
 Route::get('/login', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login');
+// Route::get('/logout', 'AuthController@logout');
 
 // -----------------------------------------------
 // User
@@ -97,7 +98,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile/edit/{id}', 'ProfileController@edit');
     // Absen
     Route::get('/absen', 'AbsenController@index');
-    Route::get('/tampilabsen', 'AbsenController@show');
+    Route::post('/absen', 'AbsenController@store');
+    Route::get('/tampilabsen/{absen}', 'AbsenController@show');
     Route::get('/checkabsen', 'AbsenController@create');
     Route::get('/izinabsen', 'AbsenController@izinAbsen');
 

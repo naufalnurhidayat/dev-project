@@ -99,6 +99,6 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         Role::destroy($role->id);
-        return redirect('/role')->with('status', 'Role berhasil dihapus');
+        return redirect('/admin/role')->with('status', 'Role berhasil dihapus');
     }
 }
