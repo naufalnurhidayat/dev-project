@@ -11,7 +11,7 @@
               <h6 class="m-0 font-weight-bold text-white">Data Cuti Karyawan</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">  
+              <div class="table-responsive">
                 <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
                   <thead class="bg-dark text-white">
                     <tr>
@@ -28,9 +28,9 @@
                     @foreach ($cuti as $c)
                       <tr align="center">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $c->Karyawan['nama'] }}</td>
-                        <td>{{ $c->Karyawan['jenkel'] }}</td>
-                        <td>{{ $c->Karyawan->Role['role'] }}</td>
+                        <td>{{ $c->User['nama'] }}</td>
+                        <td>{{ $c->User['jenkel'] }}</td>
+                        <td>{{ $c->User->Role['role'] }}</td>
                         <td>{{ $c->tgl_cuti }}</td>
                         <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                         <td><span class="badge badge-warning">{{ $c->status }}</span></td>

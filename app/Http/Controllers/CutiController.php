@@ -18,7 +18,7 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $cuti = Cuti::All();
+        $cuti = Cuti::Where('id_karyawan', auth()->user()->id)->get();
         return view('cuti/index', ['cuti' => $cuti]);
     }
 

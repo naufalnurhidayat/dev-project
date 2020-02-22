@@ -11,7 +11,7 @@ class Pendidikan extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
 
-    public function pendidikan() {
-        return $this->hasMany('App\Pendidikan', 'id');
+    public function user() {
+        return $this->hasMany('App\User', 'id');
     }
 }

@@ -37,11 +37,11 @@
             @foreach($cuti as $c)
             <tr align="center">
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $c->Karyawan['nama'] }}</td>
+              <td>{{ $c->User['nama'] }}</td>
               <td>{{ $c->tgl_cuti }}</td>
-              <td>{{ $c->id_jenis_cuti }}</td>
+              <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
               <td>{{ $c->alasan_cuti }}</td>
-              <td>{{ $c->status }}</td>
+              <td><span class="badge badge-warning">{{ $c->status }}</span></td>
               <td>
                 <button class="btn btn-success btn-sm" type="submit">Terima</button>
                 <button class="btn btn-danger btn-sm" type="submit">Tolak</button>

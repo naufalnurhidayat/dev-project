@@ -9,10 +9,10 @@
           <h3 class="mb-4"><i class="fas fa-calendar-week"></i> Form Pengajuan Cuti</h3>
           <form action="{{ url('/cuti') }}" method="post">
             @csrf
-            <input type="hidden" value="1" name="id_karyawan">
+            <input type="hidden" value="{{auth()->user()->id}}" name="id_karyawan">
             <div class="form-group">
               <label for="karyawan">Karyawan</label>
-              <input type="text" class="form-control @error('karyawan') is-invalid @enderror" name="karyawan" id="karyawan" value="iqbal" readonly>
+              <input type="text" class="form-control @error('karyawan') is-invalid @enderror" name="karyawan" id="karyawan" value="{{auth()->user()->nama}}" readonly>
               @error('karyawan')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-group">

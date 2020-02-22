@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function absen() {
         return $this->hasMany('App\Absen', 'id_absen');
     }
+
+    public function cuti() {
+        return $this->hasMany('App\Cuti', 'id');
+    }
 }

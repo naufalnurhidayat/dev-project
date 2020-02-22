@@ -78,7 +78,7 @@
                 <p class="lead">Selamat datang di (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
                 <hr class="my-4">
                 <p>Terima kasih telah menggunakan layanan kami.</p>
-                <a class="btn btn-danger btn-lg" href="" role="button" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                <a class="btn btn-danger btn-lg" href="#" role="button" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </div>
         </div>
     </div>
@@ -97,7 +97,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="<?php echo e(url('/login')); ?>">Logout</a>
+          <a class="btn btn-primary" href="<?php echo e(url('/logout')); ?>">Logout</a>
         </div>
       </div>
     </div>
