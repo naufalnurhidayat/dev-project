@@ -86,11 +86,11 @@ Route::get('/admin', 'Admin\HomeController@index');
 
 Route::get('/login', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login');
-Route::get('/logout', 'AuthController@logout');
 
 // -----------------------------------------------
 // User
 Route::group(['middleware' => 'auth'], function () {
+  Route::get('/logout', 'AuthController@logout');
   Route::get('/', 'Home@index');
 
     Route::get('/profile/{id}', 'ProfileController@show');
