@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <div class="col-4">
-            <form method="POST" action="{{ url('/ubahrole') }}/{{ $role->id }}">
+            <form method="POST" action="{{ url('/admin/role') }}/{{ $role->id }}">
                 @method('patch')
                 @csrf
                 <div class="form-group">

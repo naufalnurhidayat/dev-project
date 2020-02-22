@@ -16,18 +16,18 @@
                         <h5 class="card-title text-center">Form Keterangan Tidak Hadir</h5>
                         <form method="POST" action="{{ url('/absen') }}">
                             @csrf
-                            <input type="hidden" value="{{ 2 }}" name="id_karyawan" class="form-control">
+                            <input type="hidden" value="{{ auth()->user()->id }}" name="id_karyawan" class="form-control">
                             <div class="form-group">
                                 <label for="nip">NIP</label>
-                                <input type="text" class="form-control" id="nip" value="181910038" readonly name="nip">
+                                <input type="text" class="form-control" id="nip" value="{{ auth()->user()->nip }}" readonly name="nip">
                             </div>
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" id="nama" value="Naufal Nur Hidayat" readonly name="nama">
+                                <input type="text" class="form-control" id="nama" value="{{ auth()->user()->nama }}" readonly name="nama">
                             </div>
                             <div class="form-group">
                                 <label for="role">Role</label>
-                                <input type="text" class="form-control" id="role" value="Admin" readonly name="role">
+                                <input type="text" class="form-control" id="role" value="{{ auth()->user()->role->role }}" readonly name="role">
                             </div>
                             <div class="form-group">
                                 <label for="izin_pukul">Izin Pukul</label>
