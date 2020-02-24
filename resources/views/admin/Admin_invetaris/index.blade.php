@@ -27,11 +27,10 @@
             <tr align="center">
               <th>NIP</th>
               <th>Nama Peminjam</th>
-              <th>Nama Barang</th>
-              <th>Jumlah Pinjam</th>
+              {{-- <th>Jumlah Pinjam</th>
               <th>Tanggal Pinjam</th>
               <th>Status</th>  
-              <th>Keterangan</th>  
+              <th>Keterangan</th>   --}}
               <th>Action</th>
             </tr>
           </thead>
@@ -39,20 +38,20 @@
           <tbody>
             @foreach($pinjam as $p)
            <tr align="center"> 
-           <td>{{$p->Karyawan['nip']}}</td>
-           <td>{{$p->Karyawan['nama']}}</td> 
-           <td>{{$p->Barang['nama_barang']}}</td>
-           <td>{{$p->jumlah_pinjam}}</td>
+           <td>{{$p->User['nip']}}</td>
+           <td>{{$p->User['nama']}}</td> 
+           {{-- <td>{{$p->jumlah_pinjam}}</td>
            <td>{{$p->tgl_pinjam}}</td>
            <td><span class="bagde badge-warning rounded">{{$p->status}}</span></td>
-           <td>{{$p->keterangan}}</td>
+           <td>{{$p->keterangan}}</td> --}}
            <td>
-            <form class="d-inline" method="post" action="">
+            {{-- <form class="d-inline" method="post" action="">
               {{ method_field('DELETE')}}
-              {{csrf_field()  }}
-              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-success btn-sm mb-2"><i class="fa fa-check"></i>Accept</button>
-              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm"><i class="fa fa-times-circle"></i> Rejected</button>
-             </form>
+              {{csrf_field()  }} --}}
+              {{-- <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="btn btn-success"><i class="fa fa-check"> Accept</i></button>
+              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="btn btn-danger"><i class="fa fa-times-circle"> Rejected</i></button> --}}
+            <a href="{{url('/admin/detail')}}/{{$p->id}}" class="btn btn-primary mt-2"><i class="fa fa-detail">Detail</a>
+             {{-- </form> --}}
            </td>
            </tr>
            @endforeach

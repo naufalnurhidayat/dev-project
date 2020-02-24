@@ -72,9 +72,10 @@ class pinjamController extends Controller
      * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function show(pinjam $pinjam)
+    public function show(pinjam $id)
     {
-        //
+        $pinjam = Pinjam::where('id', $id->id)->get();
+        return view('admin.Admin_invetaris.show', compact('pinjam'));
     }
 
     /**
@@ -95,9 +96,12 @@ class pinjamController extends Controller
      * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pinjam $pinjam)
+    public function update(Request $request, Pinjam $pinjam)
     {
-        //
+        // echo $request['status'];exit;
+        $k = Pinjam::where('id', $pinjam->id)->first();
+        Pinjam::where('id_pinjam', $pinjam->id_pinjam)->update(['status' => $request['status']]);
+        return redirect('/admin/detail/'.$k->id)->with('status', 'Success');
     }
 
     /**
@@ -106,7 +110,7 @@ class pinjamController extends Controller
      * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pinjam $pinjam)
+    public function destroy(Pinjam $pinjam)
     {
         //
     }

@@ -76,7 +76,7 @@
     <div class="row mt-3">
         <div class="col">
             <div class="jumbotron mx-auto text-center">
-                <h1 class="display-3">Hallo, Nama User!</h1>  
+            <h1 class="display-3">{{auth()->user()->nama}}</h1>  
                 <p class="lead">Selamat datang di (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
                 <hr class="my-4">
                 <p>Terima kasih telah menggunakan layanan kami.</p>
@@ -96,6 +96,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
+        {{-- Form Input --}}
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

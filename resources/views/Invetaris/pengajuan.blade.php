@@ -1,4 +1,4 @@
-@extends('templates/template-home')
+{{-- @extends('templates/template-home')
 
 @section('title', 'Data Barang')
 
@@ -43,7 +43,14 @@
            <td>{{$p->Kategori['nama_kategori']}}</td>
            <td>{{$p->jumlah_pinjam}}</td>
            <td>{{$p->tgl_pinjam}}</td>
-           <td><span class="badge badge-warning">{{$p->status}}</span></td>
+           <td>@if( $p->status == "Pending" )
+            <span class="btn btn-warning">Pending</span>
+           @elseif ( $p->status == "Accept" )
+            <span class="btn btn-success">Accept</span>
+           @else
+            <span class="btn btn-danger">Rejected</span>
+           @endif
+           </td>
            <td>{{$p->keterangan}}</td>
            <td>
            <a href="" class="btn btn-success btn-sm"><i class="fa fa-print"></i> Print</a>
@@ -61,4 +68,4 @@
 
 
 
-@endsection
+@endsection --}}
