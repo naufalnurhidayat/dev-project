@@ -25,7 +25,7 @@
                             <li>Pendidikan: {{ $user->Pendidikan['pendidikan'] }}</li>
                             <li>Tahun Join: {{ $user->thn_join }}</li>
                             <li>No. Telpon: {{ $user->no_telp }}</li>
-                            <li>Agama: {{ $user->Agama['agama'] }}</li>
+                            <li>Agama: {{ $user->agama }}</li>
                             <li>Alamat: {{ $user->alamat }}</li>
                         </ul>
                         <a href="{{url('/admin/karyawan')}}" class="btn btn-primary ml-4">Kembali</a>

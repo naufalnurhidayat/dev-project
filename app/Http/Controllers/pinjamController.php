@@ -49,7 +49,7 @@ class pinjamController extends Controller
         Pinjam::create([
             'id_barang' => $request->id_barang,
             'id_kategori' => $request->id_kategori,
-            'id' => auth()->user()->id,
+            // 'id' => auth()->user()->id,
             'type' => $request->type,
             'stok' => $request->stok,
             'jumlah_pinjam' => $request->jumlah +1,

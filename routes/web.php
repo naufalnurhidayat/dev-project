@@ -60,14 +60,6 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::get('/admin/tambahPendidikan', 'Admin\pendidikanController@create');
     Route::post('/admin/store', 'Admin\pendidikanController@store');
     Route::patch('/admin/apdet/{id}', 'Admin\pendidikanController@update');
-
-    //Agama
-    Route::get('/admin/agama', 'Admin\agamaController@index');
-    Route::get('/admin/agama/create', 'Admin\agamaController@create');
-    Route::post('/admin/agama', 'Admin\agamaController@store');
-    Route::delete('/admin/agama/{agama}', 'Admin\agamaController@destroy');
-    Route::get('/admin/agama/edit/{agama}', 'Admin\agamaController@edit');
-    Route::patch('/admin/agama/{agama}', 'Admin\agamaController@update');
     
     // Absen
     Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');

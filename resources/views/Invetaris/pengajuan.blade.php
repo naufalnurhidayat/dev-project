@@ -23,7 +23,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" height="30px" cellspacing="0">
+        <table class="table table-bordered" id="dataTable" width="100%" height="20px" cellspacing="0">
           <thead>
             <tr align="center">
               <th>Nama Barang</th>
@@ -35,7 +35,7 @@
       
           <tbody>
         @foreach($barang as $b)
-           <tr align="center"> 
+           <tr align=""> 
            <td>{{$b->nama_barang}}</td> 
            <td>{{$b->Kategori['nama_kategori']}}</td>
            <td>{{$b->kondisi}}</td>
@@ -67,10 +67,10 @@
               <form method="post" action="{{url('/pengajuan/store')}}">
                 {{csrf_field()}}
                 
-                @foreach ($barang as $item)
+                {{-- @foreach ($barang as $item)
                 <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">     
                 <input type="hidden" name="id_kategori" value="{{$barang->Kategori['id_kategori']}}">     
-                @endforeach
+                @endforeach --}}
             
                 <div class="form-group">
                   <label for="keterangan">Keterangan </label>

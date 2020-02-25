@@ -57,7 +57,6 @@
             <a class="collapse-item" href="{{url('/admin/karyawan')}}">Karyawan</a>
             <a class="collapse-item" href="{{url('/admin/role')}}">Role</a>
             <a class="collapse-item" href="{{url('/admin/pendidikan')}}">Pendidikan</a>
-            <a class="collapse-item" href="{{url('/admin/agama')}}">Agama</a>
             <a class="collapse-item" href="{{url('/admin/jeniscuti')}}">Jenis Cuti</a>
             <a class="collapse-item" href="{{url('/barang/index')}}">Data Barang</a>
           </div>
