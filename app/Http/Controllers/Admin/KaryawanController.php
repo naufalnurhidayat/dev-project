@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\User;
+use App\Stream;
 use App\Role;
 use App\Pendidikan;
-use App\Agama;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -30,10 +30,10 @@ class KaryawanController extends Controller
      */
     public function create()
     {
+        $stream = Stream::all();
         $role = Role::all();
         $pendidikan = Pendidikan::all();
-        $agama = Agama::all();
-        return view('admin/karyawan/createkaryawan', ['role' => $role, 'pendidikan' => $pendidikan, 'agama' => $agama]);
+        return view('admin/karyawan/createkaryawan', ['role' => $role, 'stream' => $stream, 'pendidikan' => $pendidikan]);
     }
 
     /**
