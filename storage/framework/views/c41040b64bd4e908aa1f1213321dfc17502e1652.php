@@ -38,22 +38,30 @@
               <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" class="rounded" width="15%">
             </div>
 
+            <div class="">
+              <a href="<?php echo e(url('/')); ?>" class="btn btn-info btn-circle btn-lg">
+                <i class="fas fa-home"></i>
+              </a>
+            </div>
+
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-white-600 small"><?php echo e(auth()->user()->nama); ?></span>
-              <img class="img-profile rounded-circle" src="<?php echo e(asset('img/'.auth()->user()->foto)); ?>">
+                <span class="mr-2 d-none d-lg-inline text-white-600 small"></span>
+                
+              <img class="img-profile rounded-circle" src="">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo e(url('/profile')); ?>">
+                <a class="dropdown-item" href="">
+                  
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="<?php echo e(url('ubahprofile')); ?>">
+                <a class="dropdown-item" href="">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Ubah Profile
                 </a>
@@ -85,13 +93,16 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="/login">Logout</a>
+          <form action="<?php echo e(url('/logout')); ?>" method="GET">
+            <?php echo csrf_field(); ?>
+            <button class="btn btn-primary" type="submit">Logout</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
         
-         <!-- Bootstrap core JavaScript-->
+        <!-- Bootstrap core JavaScript-->
   <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/jquery/jquery.min.js"></script>
   <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 

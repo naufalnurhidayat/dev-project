@@ -2,6 +2,13 @@
 
 <?php $__env->startSection('content'); ?>
 
+<?php if(session('status')): ?>
+    <div class="alert alert-success">
+        <?php echo e(session('status')); ?>
+
+    </div>
+<?php endif; ?>
+
 <div class="container">
     <div class="row mt-3">
         <div class="col">
@@ -16,12 +23,47 @@
                 <a href="" class="btn btn-warning btn-circle btn-lg" data-toggle="modal" data-target="#izinmodal">
                     <i class="fas fa-exclamation-triangle"></i>
                 </a>
-                <a href="/" class="btn btn-info btn-circle btn-lg">
+                <a href="<?php echo e(url('/')); ?>" class="btn btn-info btn-circle btn-lg">
                     <i class="fas fa-info-circle"></i>
                 </a>
             </div>
         </div>
     </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>NIP</th>
+                <th>Nama</th>
+                <th>Role</th>
+                <th>Pukul</th>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php $__currentLoopData = $absen; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <tr align="center">
+                <td><?php echo e($loop->iteration); ?></td>
+                <td><?php echo e($a->Karyawan['nip']); ?></td>
+                <td><?php echo e($a->Karyawan['nama']); ?></td>
+                <td><?php echo e($a->Karyawan->Role['role']); ?></td>
+                <td><?php echo e($a->jam_masuk); ?></td>
+                <td><?php echo e($a->tanggal); ?></td>
+                <td><?php echo e($a->catatan); ?></td>
+              </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="modal fade" id="absenmodal" tabindex="-1" role="dialog" aria-labelledby="absenmodal" aria-hidden="true">
@@ -36,7 +78,7 @@
         <div class="modal-body">Klik 'Absen' jika ingin absen.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <a class="btn btn-primary" href="/checkabsen">Absen</a>
+          <a class="btn btn-primary" href="<?php echo e(url('/checkabsen')); ?>">Absen</a>
         </div>
       </div>
     </div>
@@ -51,10 +93,10 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Klik 'Izin' jika ingin tidak masuk.</div>
+        <div class="modal-body">Klik 'Izin' jika tidak masuk.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <a class="btn btn-primary" href="/izinabsen">Izin</a>
+          <a class="btn btn-primary" href="<?php echo e(url('/izinabsen')); ?>">Izin</a>
         </div>
       </div>
     </div>

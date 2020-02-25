@@ -10,7 +10,7 @@ class Role extends Model
     protected $fillable = ['role'];
     protected $primaryKey = 'id';
     
-    public function karyawan() {
-        return $this->hasMany('App\Karyawan', 'id');
+    public function user() {
+        return $this->hasMany('App\User', 'id');
     }
 }

@@ -66,4 +66,8 @@ class User extends Authenticatable
     public function barang(){
         return $this->hasMany('App\Barang', 'id_barang');
     }
+
+    public function cuti() {
+        return $this->hasMany('App\Cuti', 'id');
+    }
 }

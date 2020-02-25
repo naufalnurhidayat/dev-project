@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Ubah Role'); ?>
+<?php $__env->startSection('title', 'Edit Role'); ?>
 
 <?php $__env->startSection('content'); ?>
     
@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col-4">
-            <form method="POST" action="<?php echo e(url('/ubahrole')); ?>/<?php echo e($role->id); ?>">
+            <form method="POST" action="<?php echo e(url('/admin/role')); ?>/<?php echo e($role->id); ?>">
                 <?php echo method_field('patch'); ?>
                 <?php echo csrf_field(); ?>
                 <div class="form-group">
@@ -31,7 +31,7 @@ $message = $__bag->first($__errorArgs[0]); ?> <div class="invalid-feedback"><?ph
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                <button type="submit" class="btn btn-primary mt-3">Ubah</button>
+                <button type="submit" class="btn btn-primary mt-3">Edit</button>
             </form>
         </div>
     </div>

@@ -15,9 +15,12 @@ class CreateKembaliBarang extends Migration
     {
         Schema::create('kembali_barang', function (Blueprint $table) {
             $table->increments('id_kembali');
+            $table->integer('id');
+            $table->integer('id_kategori');
             $table->integer('id_barang');
             $table->integer('id_pinjam');
             $table->date('tgl_kembali');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -24,12 +24,12 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('jenkel', ['Laki-laki', 'Perempuan']);
             $table->integer('id_role');
+            $table->integer('id_stream');
             $table->integer('id_pendidikan');
             $table->integer('thn_join');
-            $table->string('no_telp');
-            $table->string('id_agama');
+            $table->string('no_telp')->unique();
+            $table->string('agama');
             $table->text('alamat');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

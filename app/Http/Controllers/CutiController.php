@@ -18,7 +18,7 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $cuti = Cuti::All();
+        $cuti = Cuti::where('id_karyawan', 2)->orderBy('tgl_cuti', 'desc')->get();
         return view('cuti/index', ['cuti' => $cuti]);
     }
 

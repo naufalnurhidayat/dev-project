@@ -84,6 +84,8 @@ Route::get('/admin', 'Admin\HomeController@index');
     // Transaksi
     //Cuti
     Route::get('/admin/cuti', 'Admin\CutiController@index');
+    Route::get('/admin/cuti/terima', 'Admin\CutiController@terima');
+    Route::get('/admin/cuti/tolak', 'Admin\CutiController@tolak');
     Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
 
     // -------------------------------------------
@@ -96,9 +98,9 @@ Route::post('/registrasi', 'Admin\KaryawanController@store');
 
 // -----------------------------------------------
 // User
-Route::group(['middleware' => 'auth'], function () {
-  Route::get('/logout', 'AuthController@logout');
-  Route::get('/', 'Home@index');
+// Route::group(['middleware' => 'auth'], function () {
+    Route::get('/logout', 'AuthController@logout');
+    Route::get('/', 'Home@index')->name('home');
 
     Route::get('/profile', 'ProfileController@index');
     Route::get('/profile/edit', 'ProfileController@edit');
@@ -124,7 +126,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/invetaris/keranjang', 'temporariController@index');
     Route::post('/pengajuan/store', 'PinjamController@store');
     Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
-});
+// });
 
 
 // Auth::routes();
