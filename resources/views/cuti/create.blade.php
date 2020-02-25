@@ -1,4 +1,4 @@
-@extends('templates/template-cuti')
+@extends('templates/template-home')
 
 @section('title', 'Form Pengajuan Cuti')
 
@@ -6,13 +6,13 @@
     <div class="container">
       <div class="row mx-auto">
         <div class="col">
-          <h3 class="mb-4"><i class="fas fa-calendar-week"></i> Form Pengajuan Cuti</h3>
+          <h3 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h3>
           <form action="{{ url('/cuti') }}" method="post">
             @csrf
-            <input type="hidden" value="{{auth()->user()->id}}" name="id_karyawan">
+            <input type="hidden" value="2" name="id_karyawan">
             <div class="form-group">
               <label for="karyawan">Karyawan</label>
-              <input type="text" class="form-control @error('karyawan') is-invalid @enderror" name="karyawan" id="karyawan" value="{{auth()->user()->nama}}" readonly>
+              <input type="text" class="form-control @error('karyawan') is-invalid @enderror" name="karyawan" id="karyawan" value="iqbal" readonly>
               @error('karyawan')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-group">
@@ -43,6 +43,7 @@
                 @error('alasan')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <button type="submit" class="btn btn-success float-right">Submit</button>
+            <a href="{{url('/cuti')}}" class="btn btn-danger float-right mr-2">Kembali</a>
           </form>
         </div>
       </div>

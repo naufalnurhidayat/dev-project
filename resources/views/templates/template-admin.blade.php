@@ -85,7 +85,9 @@
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{url('/admin/cuti')}}">Data Cuti</a>
+            <a class="collapse-item bg-warning text-white" href="{{url('/admin/cuti')}}"><b>Data Cuti</b></a>
+            <a class="collapse-item bg-success text-white" href="{{url('/admin/cuti/terima')}}"><b>Data Cuti Di Terima</b></a>
+            <a class="collapse-item bg-danger text-white" href="{{url('/admin/cuti/tolak')}}"><b>Data Cuti Di Tolak</b></a>
           </div>
         </div>
       </li>
@@ -134,19 +136,19 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->nama }}</span>
-                <img class="img-profile rounded-circle" src="{{ url('img') }}/{{ auth()->user()->foto }}">
+                {{-- <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->nama }}</span>
+                <img class="img-profile rounded-circle" src="{{ url('img') }}/{{ auth()->user()->foto }}"> --}}
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ url('/profile') }}/{{ auth()->user()->id }}">
+                {{-- <a class="dropdown-item" href="{{ url('/profile') }}/{{ auth()->user()->id }}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
                 <a class="dropdown-item" href="{{ url('profile/edit') }}/{{ auth()->user()->id }}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Ubah Profile
-                </a>
+                </a> --}}
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
