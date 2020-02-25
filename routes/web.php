@@ -58,12 +58,12 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::patch('/admin/apdet/{id}', 'Admin\pendidikanController@update');
 
     //Agama
-    Route::get('/admin/agama', 'Admin\agamaController@index');
-    Route::get('/admin/agama/create', 'Admin\agamaController@create');
-    Route::post('/admin/agama', 'Admin\agamaController@store');
-    Route::delete('/admin/agama/{agama}', 'Admin\agamaController@destroy');
-    Route::get('/admin/agama/edit/{agama}', 'Admin\agamaController@edit');
-    Route::patch('/admin/agama/{agama}', 'Admin\agamaController@update');
+    Route::get('/admin/stream', 'Admin\StreamController@index');
+    Route::get('/admin/stream/create', 'Admin\StreamController@create');
+    Route::post('/admin/stream', 'Admin\StreamController@store');
+    Route::delete('/admin/stream/{stream}', 'Admin\StreamController@destroy');
+    Route::get('/admin/stream/edit/{stream}', 'Admin\StreamController@edit');
+    Route::patch('/admin/stream/{stream}', 'Admin\StreamController@update');
     
     // Absen
     Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
