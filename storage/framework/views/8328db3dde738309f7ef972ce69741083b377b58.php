@@ -8,7 +8,7 @@
       <div class="col-8">
       <h1 class="mt-3">Data Pendidikan</h1>
 
-      <form method="post" action="<?php echo e(url('/store')); ?>">
+      <form method="post" action="<?php echo e(url('/admin/store')); ?>">
         <?php echo csrf_field(); ?>
       <div class="form-group">
         <label for="pendidikan">Pendidikan</label>

@@ -76,7 +76,11 @@
     <div class="row mt-3">
         <div class="col">
             <div class="jumbotron mx-auto text-center">
+<<<<<<< HEAD
             <h1 class="display-3">{{auth()->user()->nama}}</h1>  
+=======
+                <h1 class="display-3">Hallo, {{ auth()->user()->nama }}!</h1>  
+>>>>>>> 28f0bf0b7be91a54cc1eec2375dfdd554d96377b
                 <p class="lead">Selamat datang di (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
                 <hr class="my-4">
                 <p>Terima kasih telah menggunakan layanan kami.</p>

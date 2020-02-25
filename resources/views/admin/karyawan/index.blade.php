@@ -13,11 +13,6 @@
     </div>
   @endif
 
-    <div class="row mb-3">
-        <div class="col">
-            <a href="{{url('/admin/karyawan/create')}}" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Karyawan</a>
-        </div>
-    </div>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">

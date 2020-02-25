@@ -59,7 +59,11 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::delete('/admin/hapus/{id}', 'Admin\pendidikanController@destroy');
     Route::get('/admin/tambahPendidikan', 'Admin\pendidikanController@create');
     Route::post('/admin/store', 'Admin\pendidikanController@store');
+<<<<<<< HEAD
     Route::post('/admin/apdet/{id}', 'Admin\pendidikanController@update');
+=======
+    Route::patch('/admin/apdet/{id}', 'Admin\pendidikanController@update');
+>>>>>>> 28f0bf0b7be91a54cc1eec2375dfdd554d96377b
 
     //Agama
     Route::get('/admin/agama', 'Admin\agamaController@index');
@@ -71,6 +75,7 @@ Route::get('/admin', 'Admin\HomeController@index');
     
     // Absen
     Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
+    Route::patch('admin/data-kehadiran/{id}', 'Admin\AbsensiController@update');
 
     // Jencut
     Route::get('/admin/jeniscuti', 'Admin\JenisCutiController@index');
@@ -90,7 +95,8 @@ Route::get('/admin', 'Admin\HomeController@index');
 
 Route::get('/login', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login');
-// Route::get('/logout', 'AuthController@logout');
+Route::get('/registrasi', 'Admin\KaryawanController@create');
+Route::post('/registrasi', 'Admin\KaryawanController@store');
 
 // -----------------------------------------------
 // User
@@ -98,12 +104,14 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/logout', 'AuthController@logout');
   Route::get('/', 'Home@index');
 
+<<<<<<< HEAD
+=======
+    Route::get('/profile', 'ProfileController@index');
+    Route::get('/profile/edit', 'ProfileController@edit');
+>>>>>>> 28f0bf0b7be91a54cc1eec2375dfdd554d96377b
     // Absen
     Route::get('/absen', 'AbsenController@index');
     Route::post('/absen', 'AbsenController@store');
-    Route::get('/tampilabsen/{absen}', 'AbsenController@show');
-    Route::get('/checkabsen', 'AbsenController@create');
-    Route::get('/izinabsen', 'AbsenController@izinAbsen');
 
     // -------------------------------------------
     // Cuti

@@ -19,6 +19,8 @@ class CreateAbsensi extends Migration
             $table->time('jam_masuk');
             $table->date('tanggal');
             $table->string('catatan');
+            $table->text('picture')->change();
+            $table->string('status')->change();
             $table->timestamps();
         });
     }

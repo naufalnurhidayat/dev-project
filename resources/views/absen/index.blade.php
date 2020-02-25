@@ -4,17 +4,22 @@
 
 @section('content')
 
-@if (session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-@endif
 
 <div class="container">
-    <div class="row mt-3">
+  @if (session('status'))
+      <div class="alert alert-success">
+          {{ session('status') }}
+      </div>
+      @endif
+  @if (session('danger'))
+      <div class="alert alert-danger">
+          {{ session('danger') }}
+      </div>
+  @endif
+  <div class="row mt-3">
         <div class="col">
             <div class="jumbotron mx-auto text-center">
-                <h1 class="display-3">Hallo, Nama User!</h1>
+                <h1 class="display-3">Hallo, {{ auth()->user()->nama }}!</h1>
                 <p class="lead">Selamat datang di fitur absensi (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
                 <hr class="my-4">
                 <p>Silahkan klik tombol ceklist jika anda ingin absen. Silahkan klik tanda seru jika tidak hadir. Silahkan klik tombol 'i' jika ingin kembali ke home.</p>
@@ -45,6 +50,7 @@
                 <th>Pukul</th>
                 <th>Tanggal</th>
                 <th>Keterangan</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -57,6 +63,7 @@
                 <td>{{ $a->jam_masuk }}</td>
                 <td>{{ $a->tanggal }}</td>
                 <td>{{ $a->catatan }}</td>
+                <td>{{ $a->status }}</td>
               </tr>
             @endforeach
           </tbody>
@@ -79,7 +86,10 @@
         <div class="modal-body">Klik 'Absen' jika ingin absen.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <a class="btn btn-primary" href="{{url('/checkabsen')}}">Absen</a>
+          <form action="{{ url('/absen') }}" method="POST">
+            @csrf
+            <button class="btn btn-primary" type="submit">Absen</button>
+          </form>
         </div>
       </div>
     </div>
@@ -94,11 +104,24 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Klik 'Izin' jika tidak masuk.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <a class="btn btn-primary" href="{{url('/izinabsen')}}">Izin</a>
-        </div>
+        <form action="{{ url('/absen') }}" method="POST">
+          @csrf
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" name="catatan" placeholder="Keterangan..." class="form-control @error('catatan') is-invalid @enderror" id="izin">
+              @error('catatan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input @error('picture')is-invalid @enderror" id="picture" name="picture">
+              <label class="custom-file-label" for="picture">Lampirkan surat keterangan</label>
+              @error('picture') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+            <button name="izin" class="btn btn-primary" type="submit" value="izin">Izin</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

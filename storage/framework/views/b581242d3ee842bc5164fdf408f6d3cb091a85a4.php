@@ -49,13 +49,9 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo e(url('/profile' .auth()->user()->id)); ?>">
+                <a class="dropdown-item" href="<?php echo e(url('/profile')); ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
-                </a>
-                <a class="dropdown-item" href="<?php echo e(url('/profile/edit' .auth()->user()->id)); ?>">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Ubah Profile
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
@@ -94,7 +90,7 @@
     </div>
   </div>
         
-         <!-- Bootstrap core JavaScript-->
+<!-- Bootstrap core JavaScript-->
   <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/jquery/jquery.min.js"></script>
   <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -123,6 +119,13 @@
 
   <!-- Page level custom scripts -->
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
+
+  <script>
+    $('.custom-file-input').on('change', function() {
+      let fileName = $(this).val().split('\\').pop();
+      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+  </script>
 
 </body>
 

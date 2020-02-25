@@ -74,7 +74,7 @@
     <div class="row mt-3">
         <div class="col">
             <div class="jumbotron mx-auto text-center">
-                <h1 class="display-3">Hallo, Nama User!</h1>  
+                <h1 class="display-3">Hallo, <?php echo e(auth()->user()->nama); ?>!</h1>  
                 <p class="lead">Selamat datang di (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
                 <hr class="my-4">
                 <p>Terima kasih telah menggunakan layanan kami.</p>

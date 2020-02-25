@@ -64,14 +64,14 @@
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <select id="id_role" name="id_role" class="form-control @error('id_role') is-invalid @enderror">
                       <option value="">--Pilih Role--</option>
-                      <option value="1">1</option>
+                      <option value="{{ 1 }}"></option>
                     </select>
                     @error('id_role') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
                     <select id="id_pendidikan" name="id_pendidikan" class="form-control @error('id_pendidikan') is-invalid @enderror">
                       <option value="">--Pilih Pendidikan--</option>
-                      <option value="1">1</option>
+                      <option value="{{ 1 }}"></option>
                     </select>
                     @error('id_pendidikan') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
@@ -90,12 +90,12 @@
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <select id="id_agama" name="id_agama" class="form-control @error('id_agama') is-invalid @enderror">
                       <option value="">--Pilih Agama--</option>
-                      <option value="1">1</option>
+                      <option value="{{ 1 }}"></option>
                     </select>
                     @error('id_agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <textarea name="alamat" id="alamat" class="@error('alamat') is-invalid @enderror">{{ $user->alamat }}</textarea>
+                    <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror">{{ $user->alamat }}</textarea>
                     @error('alamat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
