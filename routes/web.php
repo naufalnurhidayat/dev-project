@@ -57,7 +57,7 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::post('/admin/store', 'Admin\pendidikanController@store');
     Route::patch('/admin/apdet/{id}', 'Admin\pendidikanController@update');
 
-    //Agama
+    //Stream
     Route::get('/admin/stream', 'Admin\StreamController@index');
     Route::get('/admin/stream/create', 'Admin\StreamController@create');
     Route::post('/admin/stream', 'Admin\StreamController@store');
