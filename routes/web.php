@@ -31,11 +31,11 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::patch('/kategori/update/{id_kategori}', 'KategoriController@update');
     Route::delete('/kategori/destroy/{id_kategori}', 'KategoriController@destroy');
     //Admin Invetaris
-    Route::get('/admin/pinjam', 'pinjamController@index');
+    Route::get('/admin/pinjam', 'PinjamController@index');
     Route::get('/admin/kembali', 'kembaliController@index');
-    Route::get('/admin/detail/{id}', 'pinjamController@show');
+    Route::get('/admin/detail/{id_pinjam}', 'PinjamController@show');
     // Route::get('/admin/detail/{id}', 'kembaliController@show');
-    Route::patch('/admin/status/{pinjam}', 'pinjamController@update');
+    Route::patch('/admin/status/{pinjam}', 'PinjamController@update');
     // Karyawan
     Route::get('/admin/karyawan', 'Admin\KaryawanController@index');
     Route::get('/admin/karyawan/create', 'Admin\KaryawanController@create');
@@ -119,9 +119,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
     Route::get('/barang', 'barangController@index');
     Route::get('/show/{id_pinjam}', 'barangController@show');
-    Route::get('/invetaris/pengajuan', 'barangController@tampil');
-    Route::get('/invetaris/keranjang', 'temporariController@index');
-    Route::post('/pengajuan/store', 'temporariController@store');
+    Route::get('/tampil/table', 'barangController@tampil');
+    // Route::get('/invetaris/keranjang', 'temporariController@index');
+    Route::post('/pengajuan/store', 'PinjamController@store');
     Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
 });
 

@@ -12,7 +12,7 @@
           <h5 class="card-title text-center">Data Pinjam</h5>
 
       
-          <form method="post" action="{{url('/pengajuan/store')}}">
+    <form method="post" action="{{url('/pengajuan/store')}}">
     {{csrf_field()}}
 
    <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">     

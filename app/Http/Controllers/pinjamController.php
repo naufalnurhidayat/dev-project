@@ -43,27 +43,21 @@ class pinjamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
-            'nabar' => 'required',
-            'kategory' => 'required',
-            'type' => 'required',
-            'stok' => 'required',
-            'jumlah' => 'required',
-            'status' => 'pending',
             'keterangan' => 'required'
         ]);
 
         Pinjam::create([
             'id_barang' => $request->id_barang,
             'id_kategori' => $request->id_kategori,
+            'id' => auth()->user()->id,
             'type' => $request->type,
             'stok' => $request->stok,
-            'jumlah_pinjam' => $request->jumlah,
+            'jumlah_pinjam' => $request->jumlah +1,
             'tgl_pinjam' => date("Y-m-d"),
             'status' => 'Pending',
             'keterangan' => $request->keterangan
         ]);
-        return redirect('/invetaris/pengajuan')->with('status', 'Data Berhasil Di Tambah!!!');
+        return redirect('/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');
     }
 
     /**
@@ -72,9 +66,9 @@ class pinjamController extends Controller
      * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function show(pinjam $id)
+    public function show(pinjam $id_pinjam)
     {
-        $pinjam = Pinjam::where('id', $id->id)->get();
+        $pinjam = Pinjam::where('id_pinjam', $id_pinjam->id_pinjam)->get();
         return view('admin.Admin_invetaris.show', compact('pinjam'));
     }
 

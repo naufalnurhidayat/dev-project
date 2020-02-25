@@ -43,26 +43,20 @@ class temporariController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
-            'nabar' => 'required',
-            'kategory' => 'required',
-            'type' => 'required',
-            'stok' => 'required',
-            'jumlah' => 'required|numeric',
             'keterangan' => 'required'
         ]);
 
-        Temporari::create([
+        Pinjam::create([
             'id_barang' => $request->id_barang,
             'id_kategori' => $request->id_kategori,
-            'id' => $request->id,
+            'id' => auth()->user()->id,
             'type' => $request->type,
             'stok' => $request->stok,
-            'jumlah_pinjam' => $request->jumlah,
+            'jumlah_pinjam' => $request->jumlah + 1,
             'tgl_pinjam' => date("Y-m-d"),
             'keterangan' => $request->keterangan
-        ]);
-        return redirect('/invetaris/keranjang')->with('status', 'Data Berhasil Di Tambah!!!');
+            ]);
+        return redirect('/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');
     }
 
     /**

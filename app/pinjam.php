@@ -8,7 +8,7 @@ class pinjam extends Model
 {
     protected $table = 'pinjam_barang';
     public $primarykey = 'id_pinjam';
-    public $fillable = ['id_barang', 'id_kategori', 'id', 'nama_pinjam', 'jumlah_pinjam', 'tgl_pinjam', 'status', 'keterangan'];
+    public $fillable = ['id_pinjam', 'id_barang', 'id_kategori', 'id', 'nama_pinjam', 'jumlah_pinjam', 'tgl_pinjam', 'status', 'keterangan'];
     public $timestamps = false;
 
     public function Barang(){

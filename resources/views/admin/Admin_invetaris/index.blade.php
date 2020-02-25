@@ -40,18 +40,8 @@
            <tr align="center"> 
            <td>{{$p->User['nip']}}</td>
            <td>{{$p->User['nama']}}</td> 
-           {{-- <td>{{$p->jumlah_pinjam}}</td>
-           <td>{{$p->tgl_pinjam}}</td>
-           <td><span class="bagde badge-warning rounded">{{$p->status}}</span></td>
-           <td>{{$p->keterangan}}</td> --}}
            <td>
-            {{-- <form class="d-inline" method="post" action="">
-              {{ method_field('DELETE')}}
-              {{csrf_field()  }} --}}
-              {{-- <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="btn btn-success"><i class="fa fa-check"> Accept</i></button>
-              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="btn btn-danger"><i class="fa fa-times-circle"> Rejected</i></button> --}}
-            <a href="{{url('/admin/detail')}}/{{$p->id}}" class="btn btn-primary mt-2"><i class="fa fa-detail">Detail</a>
-             {{-- </form> --}}
+            <a href="{{url('/admin/detail')}}/{{$p->id_pinjam}}" class="btn btn-primary mt-2"><i class="fa fa-detail">Detail</a>
            </td>
            </tr>
            @endforeach

@@ -21,9 +21,10 @@ class barangController extends Controller
         // $kategori = Kategori::all();
         // $barang = Barang::with('Kategori')->get();
         // return view('Invetaris.barang', ['barang' => $barang, 'kategori' => $kategori]);
-
+        $barang = Barang::all();
+        $kategori = Kategori::all();
         $pinjam = Pinjam::with('Kategori')->get();
-        return view('Invetaris.barang', compact('pinjam'));
+        return view('Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'barang' => $barang]);
     }
 
     /**
@@ -112,10 +113,11 @@ class barangController extends Controller
         return view('Invetaris.pinjam', compact(['Barang'=> $user]));
     }
 
-    // public function tampil()
-    // {
-    //     $pinjam = Pinjam::all();
-    //     return view('Invetaris.pengajuan', compact('pinjam'));
-    // }
+    public function tampil()
+    {
+        $barang = Barang::all();
+        $kategori = Kategori::all();
+        return view('Invetaris.pengajuan', ['barang' => $barang, 'kategori' => $kategori]);
+    }
 
 }
