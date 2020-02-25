@@ -124,7 +124,7 @@ Route::get('/admin', 'Admin\HomeController@index');
 // });
 
 
-Auth::routes();
+// Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
