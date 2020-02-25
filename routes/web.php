@@ -60,6 +60,17 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::get('/admin/tambahPendidikan', 'Admin\pendidikanController@create');
     Route::post('/admin/store', 'Admin\pendidikanController@store');
     Route::patch('/admin/apdet/{id}', 'Admin\pendidikanController@update');
+<<<<<<< HEAD
+=======
+
+    //Agama
+    Route::get('/admin/stream', 'Admin\StreamController@index');
+    Route::get('/admin/stream/create', 'Admin\StreamController@create');
+    Route::post('/admin/stream', 'Admin\StreamController@store');
+    Route::delete('/admin/stream/{stream}', 'Admin\StreamController@destroy');
+    Route::get('/admin/stream/edit/{stream}', 'Admin\StreamController@edit');
+    Route::patch('/admin/stream/{stream}', 'Admin\StreamController@update');
+>>>>>>> f41a14a640e110574d8a9e0b3cf1c4000e8f350f
     
     // Absen
     Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');

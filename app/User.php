@@ -43,8 +43,8 @@ class User extends Authenticatable
         return $this->belongsTo('App\Pendidikan', 'id_pendidikan', 'id');
     }
 
-    public function agama() {
-        return $this->belongsTo('App\Agama', 'id_agama', 'id');
+    public function stream() {
+        return $this->belongsTo('App\Stream', 'id_stream', 'id');
     }
 
     public function absen() {

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Karyawan extends Model
 {
     protected $table = 'users';
-    protected $fillable = ['nip', 'nama', 'tmp_lahir', 'tgl_lahir', 'email', 'jenkel', 'id_role', 'id_pendidikan', 'thn_join', 'no_telp', 'id_agama', 'alamat', 'password', 'foto'];
+    protected $fillable = ['nip', 'foto', 'nama', 'tmp_lahir', 'tgl_lahir', 'email', 'password', 'jenkel', 'id_role', 'is_stream', 'id_pendidikan', 'thn_join', 'no_telp', 'agama', 'alamat'];
     protected $primaryKey = 'id';
     
     public function role() {
@@ -16,10 +16,6 @@ class Karyawan extends Model
     
     public function pendidikan() {
         return $this->belongsTo('App\Pendidikan', 'id_pendidikan', 'id');
-    }
-
-    public function agama() {
-        return $this->belongsTo('App\Agama', 'id_agama', 'id');
     }
 
     public function absen() {
