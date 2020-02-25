@@ -30,7 +30,7 @@
                         </ul>
                         <a href="{{url('/admin/karyawan')}}" class="btn btn-primary ml-4">Kembali</a>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>

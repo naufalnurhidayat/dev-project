@@ -16,10 +16,12 @@ class CreatePinjamBarang extends Migration
         Schema::create('pinjam_barang', function (Blueprint $table) {
             $table->increments('id_pinjam');
             $table->integer('id_barang');
+            $table->integer('id_kategori');
+            $table->integer('id');
             $table->string('nama_pinjam');
             $table->integer('jumlah_pinjam');
             $table->date('tgl_pinjam');
-            $table->enum('status', ['Pinjam', 'Kembali']);
+            $table->string('status');
             $table->string('keterangan');
             $table->timestamps();
         });

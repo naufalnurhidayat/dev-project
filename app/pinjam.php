@@ -19,7 +19,7 @@ class pinjam extends Model
         return $this->beLongsTo('App\Kategori', 'id_kategori', 'id_kategori');
     }
 
-    public function karyawan() {
-        return $this->beLongsTo('App\Karyawan', 'id', 'id');
+    public function user() {
+        return $this->beLongsTo('AppUuser', 'id', 'id');
     }
 }

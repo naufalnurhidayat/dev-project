@@ -13,7 +13,7 @@
 
 // -------------------------------------------
 // Admin
-Route::group(['middleware' => 'auth'], function () {
+// Route::group(['middleware' => 'auth'], function () {
   // Home
 Route::get('/admin', 'Admin\HomeController@index');
   // Master
@@ -80,10 +80,12 @@ Route::get('/admin', 'Admin\HomeController@index');
     // Transaksi
     //Cuti
     Route::get('/admin/cuti', 'Admin\CutiController@index');
+    Route::get('/admin/cuti/terima', 'Admin\CutiController@terima');
+    Route::get('/admin/cuti/tolak', 'Admin\CutiController@tolak');
     Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
 
     // -------------------------------------------
-});
+// });
 
 Route::get('/login', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login');
@@ -92,9 +94,9 @@ Route::post('/registrasi', 'Admin\KaryawanController@store');
 
 // -----------------------------------------------
 // User
-Route::group(['middleware' => 'auth'], function () {
-  Route::get('/logout', 'AuthController@logout');
-  Route::get('/', 'Home@index');
+// Route::group(['middleware' => 'auth'], function () {
+    Route::get('/logout', 'AuthController@logout');
+    Route::get('/', 'Home@index')->name('home');
 
     Route::get('/profile', 'ProfileController@index');
     Route::get('/profile/edit', 'ProfileController@edit');
@@ -118,7 +120,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/show/{id_barang}', 'barangController@show');
     Route::get('/invetaris/pengajuan', 'barangController@tampil');
     Route::post('/pengajuan/store', 'pinjamController@store');
-});
+// });
 
 
 // Auth::routes();

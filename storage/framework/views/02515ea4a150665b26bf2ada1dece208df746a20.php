@@ -4,10 +4,10 @@
     <div class="container">
       <div class="row mx-auto">
         <div class="col">
-          <h3 class="mb-4"><i class="fas fa-calendar-week"></i> Form Pengajuan Cuti</h3>
+          <h3 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h3>
           <form action="<?php echo e(url('/cuti')); ?>" method="post">
             <?php echo csrf_field(); ?>
-            <input type="hidden" value="1" name="id_karyawan">
+            <input type="hidden" value="2" name="id_karyawan">
             <div class="form-group">
               <label for="karyawan">Karyawan</label>
               <input type="text" class="form-control <?php $__errorArgs = ['karyawan'];
@@ -111,9 +111,10 @@ endif;
 unset($__errorArgs, $__bag); ?>
             </div>
             <button type="submit" class="btn btn-success float-right">Submit</button>
+            <a href="<?php echo e(url('/cuti')); ?>" class="btn btn-danger float-right mr-2">Kembali</a>
           </form>
         </div>
       </div>
     </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('templates/template-cuti', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Folder_iqbal\Prakerin\projek_pkl\Program_Cuti\dev-project\resources\views/cuti/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('templates/template-home', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Folder_iqbal\Prakerin\projek_pkl\Program_Cuti\dev-project\resources\views/cuti/create.blade.php ENDPATH**/ ?>
