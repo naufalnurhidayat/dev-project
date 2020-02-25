@@ -14,7 +14,9 @@ class CreateProjekKaryawanTable extends Migration
     public function up()
     {
         Schema::create('projek_karyawan', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->integer('id_karyawan');
+            $table->integer('id_projek');
             $table->timestamps();
         });
     }

@@ -87,16 +87,10 @@ Route::get('/admin', 'Admin\HomeController@index');
     // -------------------------------------------
 // });
 
-<<<<<<< HEAD
-// Route::get('/login', 'AuthController@index')->name('login');
-// Route::post('/login', 'AuthController@login');
-// Route::get('/logout', 'AuthController@logout');
-=======
 Route::get('/login', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login');
 Route::get('/registrasi', 'Admin\KaryawanController@create');
 Route::post('/registrasi', 'Admin\KaryawanController@store');
->>>>>>> 28f0bf0b7be91a54cc1eec2375dfdd554d96377b
 
 // -----------------------------------------------
 // User
