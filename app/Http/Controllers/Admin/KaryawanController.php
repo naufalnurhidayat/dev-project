@@ -78,7 +78,7 @@ class KaryawanController extends Controller
             'foto' => 'default.jpg'
         ]);
 
-        return redirect('/admin/karyawan')->with('status', 'Karyawan berhasil ditambahkan!');
+        return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan!');
     }
 
     /**

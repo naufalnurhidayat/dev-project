@@ -51,11 +51,11 @@ Route::get('/admin', 'Admin\HomeController@index');
 
     //Pendidikan
     Route::get('/admin/pendidikan', 'Admin\pendidikanController@index');
-    Route::get('/ubah/{id}', 'Admin\pendidikanController@edit');
-    Route::delete('/hapus/{id}', 'Admin\pendidikanController@destroy');
-    Route::get('/tambahPendidikan', 'Admin\pendidikanController@create');
-    Route::post('/store', 'Admin\pendidikanController@store');
-    Route::post('/apdet/{id}', 'Admin\pendidikanController@update');
+    Route::get('/admin/ubah/{id}', 'Admin\pendidikanController@edit');
+    Route::delete('/admin/hapus/{id}', 'Admin\pendidikanController@destroy');
+    Route::get('/admin/tambahPendidikan', 'Admin\pendidikanController@create');
+    Route::post('/admin/store', 'Admin\pendidikanController@store');
+    Route::patch('/admin/apdet/{id}', 'Admin\pendidikanController@update');
 
     //Agama
     Route::get('/admin/agama', 'Admin\agamaController@index');
@@ -67,6 +67,7 @@ Route::get('/admin', 'Admin\HomeController@index');
     
     // Absen
     Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
+    Route::patch('admin/data-kehadiran/{id}', 'Admin\AbsensiController@update');
 
     // Jencut
     Route::get('/admin/jeniscuti', 'Admin\JenisCutiController@index');
@@ -86,7 +87,8 @@ Route::get('/admin', 'Admin\HomeController@index');
 
 Route::get('/login', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login');
-// Route::get('/logout', 'AuthController@logout');
+Route::get('/registrasi', 'Admin\KaryawanController@create');
+Route::post('/registrasi', 'Admin\KaryawanController@store');
 
 // -----------------------------------------------
 // User
@@ -94,14 +96,11 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/logout', 'AuthController@logout');
   Route::get('/', 'Home@index');
 
-    Route::get('/profile/{id}', 'ProfileController@show');
-    Route::get('/profile/edit/{id}', 'ProfileController@edit');
+    Route::get('/profile', 'ProfileController@index');
+    Route::get('/profile/edit', 'ProfileController@edit');
     // Absen
     Route::get('/absen', 'AbsenController@index');
     Route::post('/absen', 'AbsenController@store');
-    Route::get('/tampilabsen/{absen}', 'AbsenController@show');
-    Route::get('/checkabsen', 'AbsenController@create');
-    Route::get('/izinabsen', 'AbsenController@izinAbsen');
 
     // -------------------------------------------
     // Cuti

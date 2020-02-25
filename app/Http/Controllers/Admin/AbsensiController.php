@@ -72,7 +72,11 @@ class AbsensiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Absen::where('id_absen', $id)->Update([
+            'status' => 'Accepting'
+        ]);
+
+        return redirect('/data-kehadiran')->with('status', 'berhasil di prove');
     }
 
     /**

@@ -12,7 +12,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4"><i class="fas fa-edit"></i>Edit Data Karyawan</h1>
               </div>
-              <form method="POST" action="<?php echo e(url('/admin/karyawan')); ?>/<?php echo e($karyawan->id); ?>" class="user">
+              <form method="POST" action="<?php echo e(url('/admin/karyawan')); ?>/<?php echo e($user->id); ?>" class="user">
                 <?php echo method_field('patch'); ?>
                 <?php echo csrf_field(); ?>
                 <div class="form-group row">
@@ -24,7 +24,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e($karyawan->nip); ?>" id="nip" placeholder="NIP" name="nip">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($user->nip); ?>" id="nip" placeholder="NIP" name="nip">
                     <?php $__errorArgs = ['nip'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -42,7 +42,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="nama" placeholder="Nama" name="nama" value="<?php echo e($karyawan->nama); ?>">
+unset($__errorArgs, $__bag); ?>" id="nama" placeholder="Nama" name="nama" value="<?php echo e($user->nama); ?>">
                     <?php $__errorArgs = ['nama'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -62,7 +62,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="<?php echo e($karyawan->tmp_lahir); ?>">
+unset($__errorArgs, $__bag); ?>" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="<?php echo e($user->tmp_lahir); ?>">
                     <?php $__errorArgs = ['tmp_lahir'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -80,7 +80,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="<?php echo e($karyawan->tgl_lahir); ?>">
+unset($__errorArgs, $__bag); ?>" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="<?php echo e($user->tgl_lahir); ?>">
                     <?php $__errorArgs = ['tgl_lahir'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -100,7 +100,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="email" placeholder="Email" name="email" value="<?php echo e($karyawan->email); ?>">
+unset($__errorArgs, $__bag); ?>" id="email" placeholder="Email" name="email" value="<?php echo e($user->email); ?>">
                     <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -111,7 +111,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                   </div>
                   <div class="col-sm-6">
-                    <?php if($karyawan->jenkel == 'Laki-laki'): ?>
+                    <?php if($user->jenkel == 'Laki-laki'): ?>
                       <input type="radio" class="form-check-input ml-2 <?php $__errorArgs = ['jenkel'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -195,7 +195,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>">
                       <option value="">--Pilih Role--</option>
-                      <option value="1">1</option>
+                      <option value="<?php echo e(1); ?>"></option>
                     </select>
                     <?php $__errorArgs = ['id_role'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -216,7 +216,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>">
                       <option value="">--Pilih Pendidikan--</option>
-                      <option value="1">1</option>
+                      <option value="<?php echo e(1); ?>"></option>
                     </select>
                     <?php $__errorArgs = ['id_pendidikan'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -237,7 +237,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="thn_join" placeholder="Tahun Join" name="thn_join" value="<?php echo e($karyawan->thn_join); ?>">
+unset($__errorArgs, $__bag); ?>" id="thn_join" placeholder="Tahun Join" name="thn_join" value="<?php echo e($user->thn_join); ?>">
                     <?php $__errorArgs = ['thn_join'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -255,7 +255,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="<?php echo e($karyawan->no_telp); ?>">
+unset($__errorArgs, $__bag); ?>" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="<?php echo e($user->no_telp); ?>">
                     <?php $__errorArgs = ['no_telp'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -277,7 +277,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>">
                       <option value="">--Pilih Agama--</option>
-                      <option value="1">1</option>
+                      <option value="<?php echo e(1); ?>"></option>
                     </select>
                     <?php $__errorArgs = ['id_agama'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -289,14 +289,14 @@ endif;
 unset($__errorArgs, $__bag); ?>
                   </div>
                   <div class="col-sm-6">
-                    <textarea name="alamat" id="alamat" class="<?php $__errorArgs = ['alamat'];
+                    <textarea name="alamat" id="alamat" class="form-control <?php $__errorArgs = ['alamat'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>"><?php echo e($karyawan->alamat); ?></textarea>
+unset($__errorArgs, $__bag); ?>"><?php echo e($user->alamat); ?></textarea>
                     <?php $__errorArgs = ['alamat'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

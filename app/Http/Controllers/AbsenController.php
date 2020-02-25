@@ -41,21 +41,41 @@ class AbsenController extends Controller
     {
         date_default_timezone_set("Asia/Jakarta");
 
-        // $request->validate([
-        //     'id_karyawan' => 'required',
-        //     'jam_masuk' => 'required',
-        //     'tanggal' => 'required',
-        //     'catatan' => 'required'
-        // ]);
-        
-        Absen::create([
-            'id_karyawan' => $request->id_karyawan,
-            'jam_masuk' => date('h:i:s'),
-            'tanggal' => date('Y-m-d'),
-            'catatan' => $request->keterangan
-        ]);
+        $buttonIzin = $request->izin;
 
-        return redirect('/absen')->with('status', 'Please Check Your Belongings And Step Carefully');
+        $request->validate([
+            'catatan' => 'required',
+            'picture' => 'required'
+        ]);
+            
+        $user = Absen::where([
+            ['id_karyawan', '=', auth()->user()->id],
+            ['tanggal', '=', date('Y-m-d')]
+            ])->get();
+                
+        if(count($user) > 0) {
+            return redirect('/absen')->with('danger', 'Anda telah absen');
+        } else if($buttonIzin) {
+            Absen::create([
+                'id_karyawan' => auth()->user()->id,
+                'jam_masuk' => date('H:i:s'),
+                'tanggal' => date('Y-m-d'),
+                'catatan' => $request->catatan,
+                'status' => 'Pending',
+                'picture' => $request->picture
+            ]);
+        } else {
+            Absen::create([
+                'id_karyawan' => auth()->user()->id,
+                'jam_masuk' => date('H:i:s'),
+                'tanggal' => date('Y-m-d'),
+                'catatan' => 'Masuk',
+                'status' => 'Pending',
+                'picture' => null
+            ]);
+        }
+
+        return redirect('/absen')->with('status', 'Terima kasih');
     }
 
     /**
@@ -66,7 +86,7 @@ class AbsenController extends Controller
      */
     public function show(Absen $absen)
     {
-        return $absen;
+        return view('absen/checkabsen', compact('user'));
     }
 
     /**
@@ -77,7 +97,7 @@ class AbsenController extends Controller
      */
     public function edit(Absen $absen)
     {
-        //
+        
     }
 
     /**
@@ -89,7 +109,7 @@ class AbsenController extends Controller
      */
     public function update(Request $request, Absen $absen)
     {
-        //
+        
     }
 
     /**
@@ -100,14 +120,7 @@ class AbsenController extends Controller
      */
     public function destroy(Absen $absen)
     {
-        //
+        
     }
 
-    /**
-     * Izin absen
-     */
-    public function izinAbsen()
-    {
-        return view('absen/izinabsen');
-    }
 }
