@@ -52,13 +52,13 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <select id="id_role" name="id_role" class="form-control @error('id_role') is-invalid @enderror">
-                      <option value="">--Pilih Role--</option>
-                      @foreach ($role as $r)
-                        <option value="{{ $r->id }}">{{ $r->role }}</option>
+                    <select id="id_stream" name="id_stream" class="form-control @error('id_stream') is-invalid @enderror">
+                      <option value="">--Pilih Stream--</option>
+                      @foreach ($stream as $s)
+                        <option value="{{ $s->id }}">{{ $s->stream }}</option>
                       @endforeach
                     </select>
-                    @error('id_role') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @error('id_stream') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
                     <select id="id_pendidikan" name="id_pendidikan" class="form-control @error('id_pendidikan') is-invalid @enderror">
@@ -84,9 +84,12 @@
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <select id="id_agama" name="id_agama" class="form-control @error('id_agama') is-invalid @enderror">
                       <option value="">--Pilih Agama--</option>
-                      @foreach($agama as $a)
-                      <option value="{{$a->id}}">{{$a->agama}}</option>
-                      @endforeach
+                      <option value="Islam">Islam</option>
+                      <option value="Kristen">Kristen</option>
+                      <option value="Kristen">Katolik</option>
+                      <option value="Hindu">Hindu</option>
+                      <option value="Buddha">Buddha</option>
+                      <option value="Konghucu">Konghucu</option>
                     </select>
                     @error('id_agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
@@ -103,6 +106,17 @@
                   <div class="col-sm-6">
                     <input type="password" class="form-control form-control-user @error('password2') is-invalid @enderror" id="password2" placeholder="Konfirmasi Password" name="password2">
                     @error('password2') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <select id="id_role" name="id_role" class="form-control @error('id_role') is-invalid @enderror">
+                      <option value="">--Pilih Stream--</option>
+                      @foreach ($role as $r)
+                        <option value="{{ $r->id }}">{{ $r->stream }}</option>
+                      @endforeach
+                    </select>
+                    @error('id_role') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
                 <button type="submit" name="registasi" class="btn btn-primary btn-user btn-block">
