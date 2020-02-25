@@ -2,18 +2,24 @@
 
 <?php $__env->startSection('content'); ?>
 
-<?php if(session('status')): ?>
-    <div class="alert alert-success">
-        <?php echo e(session('status')); ?>
-
-    </div>
-<?php endif; ?>
 
 <div class="container">
-    <div class="row mt-3">
+  <?php if(session('status')): ?>
+      <div class="alert alert-success">
+          <?php echo e(session('status')); ?>
+
+      </div>
+      <?php endif; ?>
+  <?php if(session('danger')): ?>
+      <div class="alert alert-danger">
+          <?php echo e(session('danger')); ?>
+
+      </div>
+  <?php endif; ?>
+  <div class="row mt-3">
         <div class="col">
             <div class="jumbotron mx-auto text-center">
-                <h1 class="display-3">Hallo, Nama User!</h1>
+                <h1 class="display-3">Hallo, <?php echo e(auth()->user()->nama); ?>!</h1>
                 <p class="lead">Selamat datang di fitur absensi (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
                 <hr class="my-4">
                 <p>Silahkan klik tombol ceklist jika anda ingin absen. Silahkan klik tanda seru jika tidak hadir. Silahkan klik tombol 'i' jika ingin kembali ke home.</p>
@@ -44,6 +50,7 @@
                 <th>Pukul</th>
                 <th>Tanggal</th>
                 <th>Keterangan</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -56,6 +63,7 @@
                 <td><?php echo e($a->jam_masuk); ?></td>
                 <td><?php echo e($a->tanggal); ?></td>
                 <td><?php echo e($a->catatan); ?></td>
+                <td><?php echo e($a->status); ?></td>
               </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </tbody>
@@ -78,7 +86,10 @@
         <div class="modal-body">Klik 'Absen' jika ingin absen.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <a class="btn btn-primary" href="<?php echo e(url('/checkabsen')); ?>">Absen</a>
+          <form action="<?php echo e(url('/absen')); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+            <button class="btn btn-primary" type="submit">Absen</button>
+          </form>
         </div>
       </div>
     </div>
@@ -93,11 +104,52 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Klik 'Izin' jika tidak masuk.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <a class="btn btn-primary" href="<?php echo e(url('/izinabsen')); ?>">Izin</a>
-        </div>
+        <form action="<?php echo e(url('/absen')); ?>" method="POST">
+          <?php echo csrf_field(); ?>
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" name="catatan" placeholder="Keterangan..." class="form-control <?php $__errorArgs = ['catatan'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="izin">
+              <?php $__errorArgs = ['catatan'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <div class="invalid-feedback"><?php echo e($message); ?></div> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input <?php $__errorArgs = ['picture'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="picture" name="picture">
+              <label class="custom-file-label" for="picture">Lampirkan surat keterangan</label>
+              <?php $__errorArgs = ['picture'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <div class="invalid-feedback"><?php echo e($message); ?></div> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+            <button name="izin" class="btn btn-primary" type="submit" value="izin">Izin</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>

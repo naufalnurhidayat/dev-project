@@ -10,25 +10,26 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="{{ asset('img') }}/{{ $user->foto }}" class="card-img">
+                        <img src="{{ asset('img/' . auth()->user()->foto) }}" class="card-img">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4>{{ $user->nama }}</h4>
+                            <h4>{{ auth()->user()->nama }}</h4>
                             <ul>
-                                <li>{{ $user->nip }}</li>
-                                <li>{{ $user->tgl_lahir }}</li>
-                                <li>{{ $user->tmp_lahir }}</li>
-                                <li>{{ $user->email }}</li>
-                                <li>{{ $user->jenkel }}</li>
-                                <li>{{ $user->Role['role'] }}</li>
-                                <li>{{ $user->Pendidikan['pendidikan'] }}</li>
-                                <li>{{ $user->thn_join }}</li>
-                                <li>{{ $user->no_telp }}</li>
-                                <li>{{ $user->Agama['agama'] }}</li>
-                                <li>{{ $user->alamat }}</li>
+                                <li>{{ auth()->user()->nip }}</li>
+                                <li>{{ auth()->user()->tgl_lahir }}</li>
+                                <li>{{ auth()->user()->tmp_lahir }}</li>
+                                <li>{{ auth()->user()->email }}</li>
+                                <li>{{ auth()->user()->jenkel }}</li>
+                                <li>{{ auth()->user()->role->role }}</li>
+                                <li>{{ auth()->user()->pendidikan->pendidikan }}</li>
+                                <li>{{ auth()->user()->thn_join }}</li>
+                                <li>{{ auth()->user()->no_telp }}</li>
+                                <li>{{ auth()->user()->agama->agama }}</li>
+                                <li>{{ auth()->user()->alamat }}</li>
                             </ul>
                             <a href="{{ url('/') }}" class="btn btn-primary ml-4">Kembali</a>
+                            <a href="{{ url('/profile/edit') }}" class="btn btn-success">Ubah Profile</a>
                         </div>
                     </div>
                 </div>

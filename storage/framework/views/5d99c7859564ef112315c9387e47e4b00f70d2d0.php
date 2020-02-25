@@ -20,6 +20,8 @@
                   <th>Pukul</th>
                   <th>Tanggal</th>
                   <th>Keterangan</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -32,6 +34,15 @@
                   <td><?php echo e($da->jam_masuk); ?></td>
                   <td><?php echo e($da->tanggal); ?></td>
                   <td><?php echo e($da->catatan); ?></td>
+                  <td><?php echo e($da->status); ?></td>
+                  <td>
+                    <a href="<?php echo e(url('/admin/data-kehadiran/'. $da->id)); ?>">Test</a>
+                    <form action="<?php echo e(url('/admin/data-kehadiran/'. $da->id)); ?>" method="POST">
+                      <?php echo method_field('patch'); ?>
+                      <?php echo csrf_field(); ?>
+                      <button type="submit" class="badge badge-success" name="accept">Accept</button>
+                    </form>
+                  </td>
                 </tr>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>

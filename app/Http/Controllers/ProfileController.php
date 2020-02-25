@@ -17,7 +17,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view('user/profile');
     }
 
     /**
@@ -49,9 +49,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $user = Karyawan::where('id', $id)->first();
 
-        return view('user/profile', compact('user'));
     }
 
     /**
@@ -60,11 +58,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $user = Karyawan::where('id', $id)->first();
-        
-        return view('user/edit', compact('user'));
+        $role = Role::all();
+        $pendidikan = Pendidikan::all();
+        $agama = Agama::all();
+        return view('user/edit', ['role' => $role, 'pendidikan'  => $pendidikan, 'agama' => $agama]);
     }
 
     /**

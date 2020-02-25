@@ -5,6 +5,11 @@
 @section('content')
 
 <div class="container">
+@if(session('status'))
+  <div class="alert alert-success">
+    {{ session('status') }}
+  </div>
+@endif
 
 <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
   <div class="card-body p-0">
@@ -28,6 +33,9 @@
             <button type="submit" name="login" class="btn btn-primary btn-user btn-block">
               Login
             </button>
+            <div class="text-center">
+              <a href="{{ url('/registrasi') }}">Create an account</a>
+            </div>
           </form>
         </div>
       </div>

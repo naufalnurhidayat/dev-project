@@ -22,6 +22,8 @@
                   <th>Pukul</th>
                   <th>Tanggal</th>
                   <th>Keterangan</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -34,6 +36,15 @@
                   <td>{{ $da->jam_masuk }}</td>
                   <td>{{ $da->tanggal }}</td>
                   <td>{{ $da->catatan }}</td>
+                  <td>{{ $da->status }}</td>
+                  <td>
+                    <a href="{{ url('/admin/data-kehadiran/'. $da->id) }}">Test</a>
+                    <form action="{{ url('/admin/data-kehadiran/'. $da->id) }}" method="POST">
+                      @method('patch')
+                      @csrf
+                      <button type="submit" class="badge badge-success" name="accept">Accept</button>
+                    </form>
+                  </td>
                 </tr>
               @endforeach
             </tbody>

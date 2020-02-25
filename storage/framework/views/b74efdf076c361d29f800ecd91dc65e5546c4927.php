@@ -12,7 +12,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Registrasi Karyawan</h1>
               </div>
-              <form method="POST" action="<?php echo e(url('/admin/karyawan')); ?>" class="user">
+              <form method="POST" action="<?php echo e(url('/registrasi')); ?>" class="user">
                 <?php echo csrf_field(); ?>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -325,4 +325,4 @@ unset($__errorArgs, $__bag); ?>
   </div>
 
   <?php $__env->stopSection(); ?>
-<?php echo $__env->make('templates/template-admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\devProject\resources\views/admin/karyawan/createkaryawan.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('templates/template-dasar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\devProject\resources\views/admin/karyawan/createkaryawan.blade.php ENDPATH**/ ?>
