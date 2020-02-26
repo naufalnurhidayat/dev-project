@@ -48,7 +48,7 @@
           <ul class="navbar-nav ml-auto">
 
             <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow shadow-lg rounded">
+            <li class="nav-item dropdown no-arrow shadow-lg">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-white small"><?php echo e(auth()->user()->nama); ?></span>
               <img class="img-profile rounded-circle" src="<?php echo e(url('img/'.auth()->user()->foto)); ?>">
