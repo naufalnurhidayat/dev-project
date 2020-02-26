@@ -28,7 +28,7 @@
                         </ul>
                         <a href="<?php echo e(url('/admin/karyawan')); ?>" class="btn btn-primary ml-4">Kembali</a>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>

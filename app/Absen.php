@@ -9,7 +9,7 @@ class Absen extends Model
     protected $table = 'absensi';
     protected $fillable = ['id_karyawan', 'jam_masuk', 'tanggal', 'catatan', 'status', 'picture'];
 
-    public function karyawan() {
-        return $this->belongsTo('App\Karyawan', 'id_karyawan', 'id');
+    public function user() {
+        return $this->belongsTo('App\User', 'id_karyawan', 'id');
     }
 }

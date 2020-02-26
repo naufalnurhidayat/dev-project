@@ -57,7 +57,7 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::post('/admin/store', 'Admin\pendidikanController@store');
     Route::patch('/admin/apdet/{id}', 'Admin\pendidikanController@update');
 
-    //Agama
+    //Stream
     Route::get('/admin/stream', 'Admin\StreamController@index');
     Route::get('/admin/stream/create', 'Admin\StreamController@create');
     Route::post('/admin/stream', 'Admin\StreamController@store');
@@ -68,6 +68,8 @@ Route::get('/admin', 'Admin\HomeController@index');
     // Absen
     Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
     Route::patch('admin/data-kehadiran/{id}', 'Admin\AbsensiController@update');
+    Route::get('admin/absen', 'Admin\AbsensiController@create');
+    Route::post('admin/absen', 'Admin\AbsensiController@store');
 
     // Jencut
     Route::get('/admin/jeniscuti', 'Admin\JenisCutiController@index');
@@ -98,7 +100,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout', 'AuthController@logout');
     Route::get('/', 'Home@index')->name('home');
 
-    Route::get('/profile', 'ProfileController@index');
+    Route::get('/profile/{nama}', 'ProfileController@index');
     Route::get('/profile/edit', 'ProfileController@edit');
     // Absen
     Route::get('/absen', 'AbsenController@index');

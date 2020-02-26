@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Absen;
-use App\Karyawan;
-use App\Role;
+use App\User;
+use App\Stream;
 use Illuminate\Http\Request;
 
 class AbsenController extends Controller
@@ -43,11 +43,6 @@ class AbsenController extends Controller
 
         $buttonIzin = $request->izin;
 
-        $request->validate([
-            'catatan' => 'required',
-            'picture' => 'required'
-        ]);
-            
         $user = Absen::where([
             ['id_karyawan', '=', auth()->user()->id],
             ['tanggal', '=', date('Y-m-d')]
@@ -56,6 +51,12 @@ class AbsenController extends Controller
         if(count($user) > 0) {
             return redirect('/absen')->with('danger', 'Anda telah absen');
         } else if($buttonIzin) {
+            
+            $request->validate([
+                'catatan' => 'required',
+                'picture' => 'required'
+            ]);
+
             Absen::create([
                 'id_karyawan' => auth()->user()->id,
                 'jam_masuk' => date('H:i:s'),

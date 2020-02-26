@@ -11,6 +11,7 @@
       <h3 class="mt-3"><i class="fas fa-edit"></i> Edit Pendidikan</h3>
 
       <form method="post" action="/admin/apdet/{{ $pendidikan->id }}">
+        @method('patch')
         {{csrf_field()}}
       <div class="form-group">
         <label for="pendidikan">Pendidikan</label>

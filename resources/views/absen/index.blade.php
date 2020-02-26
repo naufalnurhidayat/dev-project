@@ -22,7 +22,7 @@
                 <h1 class="display-3">Hallo, {{ auth()->user()->nama }}!</h1>
                 <p class="lead">Selamat datang di fitur absensi (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
                 <hr class="my-4">
-                <p>Silahkan klik tombol ceklist jika anda ingin absen. Silahkan klik tanda seru jika tidak hadir. Silahkan klik tombol 'i' jika ingin kembali ke home.</p>
+                <p>Silahkan klik tombol ceklist jika anda ingin absen. Silahkan klik tanda seru jika tidak hadir. Silahkan klik tombol 'home' jika ingin kembali ke home.</p>
                 <a href="" class="btn btn-success btn-circle btn-lg" data-toggle="modal" data-target="#absenmodal">
                     <i class="fas fa-check"></i>
                 </a>
@@ -30,7 +30,7 @@
                     <i class="fas fa-exclamation-triangle"></i>
                 </a>
                 <a href="{{url('/')}}" class="btn btn-info btn-circle btn-lg">
-                    <i class="fas fa-info-circle"></i>
+                    <i class="fas fa-home"></i>
                 </a>
             </div>
         </div>
@@ -57,9 +57,9 @@
             @foreach ($absen as $a)
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $a->Karyawan['nip'] }}</td>
-                <td>{{ $a->Karyawan['nama'] }}</td>
-                <td>{{ $a->Karyawan->Role['role'] }}</td>
+                <td>{{ $a->User['nip'] }}</td>
+                <td>{{ $a->User['nama'] }}</td>
+                <td>{{ $a->User->Stream['stream'] }}</td>
                 <td>{{ $a->jam_masuk }}</td>
                 <td>{{ $a->tanggal }}</td>
                 <td>{{ $a->catatan }}</td>
@@ -88,7 +88,7 @@
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
           <form action="{{ url('/absen') }}" method="POST">
             @csrf
-            <button class="btn btn-primary" type="submit">Absen</button>
+            <button class="btn btn-primary" type="submit" name="absen">Absen</button>
           </form>
         </div>
       </div>
