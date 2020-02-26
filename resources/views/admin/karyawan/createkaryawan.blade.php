@@ -118,7 +118,7 @@
                     </select>
                     @error('id_role') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
-                  <div class="col-sm-6">
+                  {{-- <div class="col-sm-6">
                     <select multiple="multiple" name="id_projek[]" id="id_projek" class="form-control @error('id_projek') is-invalid @enderror">
                       <option value="">--Pilih Projek--</option>
                       @foreach ($projek as $p)
@@ -127,7 +127,7 @@
                     </select>
                     @error('id_projek') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
-                </div>
+                </div> --}}
                 <button type="submit" name="registasi" class="btn btn-primary btn-user btn-block">
                   Registrasi Akun
                 </button>
