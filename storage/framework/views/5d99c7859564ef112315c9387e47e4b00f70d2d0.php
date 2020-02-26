@@ -3,6 +3,18 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="container">
+  <?php if(session('status')): ?>
+    <div class="alert alert-success">
+        <?php echo e(session('status')); ?>
+
+    </div>
+  <?php endif; ?>
+  <?php if(session('danger')): ?>
+    <div class="alert alert-danger">
+        <?php echo e(session('danger')); ?>
+
+    </div>
+  <?php endif; ?>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -16,7 +28,7 @@
                   <th>No</th>
                   <th>NIP</th>
                   <th>Nama</th>
-                  <th>Role</th>
+                  <th>Stream</th>
                   <th>Pukul</th>
                   <th>Tanggal</th>
                   <th>Keterangan</th>
@@ -28,19 +40,19 @@
                 <?php $__currentLoopData = $data_absen; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $da): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr align="center">
                   <td><?php echo e($loop->iteration); ?></td>
-                  <td><?php echo e($da->Karyawan['nip']); ?></td>
-                  <td><?php echo e($da->Karyawan['nama']); ?></td>
-                  <td><?php echo e($da->Karyawan->Role['role']); ?></td>
+                  <td><?php echo e($da->User['nip']); ?></td>
+                  <td><?php echo e($da->User['nama']); ?></td>
+                  <td><?php echo e($da->User->Stream['stream']); ?></td>
                   <td><?php echo e($da->jam_masuk); ?></td>
                   <td><?php echo e($da->tanggal); ?></td>
                   <td><?php echo e($da->catatan); ?></td>
                   <td><?php echo e($da->status); ?></td>
                   <td>
-                    <a href="<?php echo e(url('/admin/data-kehadiran/'. $da->id)); ?>">Test</a>
-                    <form action="<?php echo e(url('/admin/data-kehadiran/'. $da->id)); ?>" method="POST">
+                    <form action="<?php echo e(url('/admin/data-kehadiran/'. $da->id_absen)); ?>" method="POST">
                       <?php echo method_field('patch'); ?>
                       <?php echo csrf_field(); ?>
-                      <button type="submit" class="badge badge-success" name="accept">Accept</button>
+                      <button type="submit" class="badge badge-success" name="prove" value="Accepting">Accept</button>
+                      <button type="submit" class="badge badge-danger" name="prove" value="Rejecting">Reject</button>
                     </form>
                   </td>
                 </tr>

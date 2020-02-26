@@ -86,6 +86,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Absen
     Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
     Route::patch('admin/data-kehadiran/{id}', 'Admin\AbsensiController@update');
+    Route::get('admin/absen', 'Admin\AbsensiController@create');
+    Route::post('admin/absen', 'Admin\AbsensiController@store');
 
     //Cuti
     Route::get('/admin/cuti', 'Admin\CutiController@index');
@@ -220,8 +222,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/logout', 'AuthController@logout');
     Route::get('/', 'Home@index')->name('home');
 
-    // Profile
-    Route::get('/profile', 'ProfileController@index');
+    Route::get('/profile/{nama}', 'ProfileController@index');
     Route::get('/profile/edit', 'ProfileController@edit');
 
     // Absen

@@ -25,7 +25,7 @@
                                 <li>{{ auth()->user()->pendidikan->pendidikan }}</li>
                                 <li>{{ auth()->user()->thn_join }}</li>
                                 <li>{{ auth()->user()->no_telp }}</li>
-                                <li>{{ auth()->user()->agama->agama }}</li>
+                                <li>{{ auth()->user()->agama }}</li>
                                 <li>{{ auth()->user()->alamat }}</li>
                             </ul>
                             <a href="{{ url('/') }}" class="btn btn-primary ml-4">Kembali</a>
