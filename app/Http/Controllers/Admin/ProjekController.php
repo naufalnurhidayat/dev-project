@@ -15,7 +15,8 @@ class ProjekController extends Controller
      */
     public function index()
     {
-        //
+        $projek = Projek::all();
+        return view('admin/projek/index', compact('projek'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ProjekController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/projek/create');
     }
 
     /**
@@ -36,7 +37,9 @@ class ProjekController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([ 'project' => 'required' ]);
+        Projek::create($request->all());
+        return redirect('/admin/projek')->with('status', 'Data berhasil di Tambah');
     }
 
     /**
@@ -58,7 +61,7 @@ class ProjekController extends Controller
      */
     public function edit(Projek $projek)
     {
-        //
+        return view('admin/projek/edit', compact('projek'));
     }
 
     /**
@@ -70,7 +73,9 @@ class ProjekController extends Controller
      */
     public function update(Request $request, Projek $projek)
     {
-        //
+        $request->validate([ 'projek' => 'required' ]);
+        Projek::where('id', $projek->id)->update(['project' => $request->projek]);
+        return redirect('/admin/projek')->with('status', 'Data Berhasil di Edit');
     }
 
     /**
@@ -81,6 +86,7 @@ class ProjekController extends Controller
      */
     public function destroy(Projek $projek)
     {
-        //
+        Projek::destroy($projek->id);
+        return redirect('/admin/projek')->with('status', 'Data Berhasil di Hapus');
     }
 }

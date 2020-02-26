@@ -9,5 +9,4 @@ class Projek extends Model
     protected $table = 'projek';
     protected $fillable = ['project'];
 
-    
 }

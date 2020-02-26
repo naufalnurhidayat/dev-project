@@ -82,7 +82,7 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <select id="id_agama" name="id_agama" class="form-control @error('id_agama') is-invalid @enderror">
+                    <select id="id_agama" name="agama" class="form-control @error('id_agama') is-invalid @enderror">
                       <option value="">--Pilih Agama--</option>
                       <option value="Islam">Islam</option>
                       <option value="Kristen">Kristen</option>
@@ -111,12 +111,21 @@
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <select id="id_role" name="id_role" class="form-control @error('id_role') is-invalid @enderror">
-                      <option value="">--Pilih Stream--</option>
+                      <option value="">--Pilih Role--</option>
                       @foreach ($role as $r)
-                        <option value="{{ $r->id }}">{{ $r->stream }}</option>
+                        <option value="{{ $r->id }}">{{ $r->role }}</option>
                       @endforeach
                     </select>
                     @error('id_role') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                  </div>
+                  <div class="col-sm-6">
+                    <select multiple="multiple" name="id_projek[]" id="id_projek" class="form-control @error('id_projek') is-invalid @enderror">
+                      <option value="">--Pilih Projek--</option>
+                      @foreach ($projek as $p)
+                      <option value="{{ $p->id }}">{{ $p->project }}</option>
+                      @endforeach
+                    </select>
+                    @error('id_projek') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
                 <button type="submit" name="registasi" class="btn btn-primary btn-user btn-block">
