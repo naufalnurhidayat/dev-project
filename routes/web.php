@@ -13,7 +13,7 @@
 
 // -------------------------------------------
 // Admin
-// Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
   // Home
 Route::get('/admin', 'Admin\HomeController@index');
   // Master
@@ -126,7 +126,7 @@ Route::get('/admin', 'Admin\HomeController@index');
     Route::get('/show/{id_barang}', 'barangController@show');
     Route::get('/invetaris/pengajuan', 'barangController@tampil');
     Route::post('/pengajuan/store', 'pinjamController@store');
-// });
+});
 
 
 // Auth::routes();
