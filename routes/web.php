@@ -33,9 +33,9 @@ Route::get('/admin', 'Admin\HomeController@index');
     //Admin Invetaris
     Route::get('/admin/pinjam', 'PinjamController@index');
     Route::get('/admin/kembali', 'kembaliController@index');
-    Route::get('/admin/detail/{id_pinjam}', 'PinjamController@show');
+    // Route::get('/admin/detail/{id}', 'PinjamController@show');
     // Route::get('/admin/detail/{id}', 'kembaliController@show');
-    Route::patch('/admin/status/{pinjam}', 'PinjamController@update');
+    Route::patch('/admin/status/{id_pinjam}', 'PinjamController@update');
     // Karyawan
     Route::get('/admin/karyawan', 'Admin\KaryawanController@index');
     Route::get('/admin/karyawan/create', 'Admin\KaryawanController@create');

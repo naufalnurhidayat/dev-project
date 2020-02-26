@@ -48,15 +48,15 @@
            <td>{{$box->Barang['kondisi']}}</td>
            <td>
             @if( $box->status == "Pending" )
-                <span class="btn btn-warning">Pending</span>
+                <span class="btn btn-warning btn-sm">Pending</span>
                @elseif ( $box->status == "Accept" )
                 <span class="btn btn-success btn-sm"><i class="fas fa-check"> Accept</i></span>
                @else
-                <span class="btn btn-danger">Rejected</span>
+                <span class="btn btn-danger btn-sm">Rejected</span>
                @endif
            </td>
            <td>
-             <a href="" class="btn btn-primary btn-sm"><i class="fas fa-print"> Print</i></a>
+             <a href="" class="btn btn-primary btn-sm mb-2"><i class="fas fa-print"> Print</i></a>
              <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-box"></i> Pengembalian</a>
            {{-- <a href="{{url('/pinjam/create')}}/{{$box->id_barang}}" class="btn btn-success btn-sm"><i class="fa fa-book"></i> Pinjam</a> --}}
            </td>

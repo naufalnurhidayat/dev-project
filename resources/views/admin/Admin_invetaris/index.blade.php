@@ -26,11 +26,11 @@
           <thead>
             <tr align="center">
               <th>NIP</th>
-              <th>Nama Peminjam</th>
-              {{-- <th>Jumlah Pinjam</th>
+              <th>Nama</th>
+              <th>Nama Barang</th>
+              <th>Jumlah Pinjam</th>
               <th>Tanggal Pinjam</th>
-              <th>Status</th>  
-              <th>Keterangan</th>   --}}
+              <th>Status</th>    
               <th>Action</th>
             </tr>
           </thead>
@@ -39,9 +39,26 @@
             @foreach($pinjam as $p)
            <tr align="center"> 
            <td>{{$p->User['nip']}}</td>
-           <td>{{$p->User['nama']}}</td> 
+           <td>{{$p->User['nama']}}</td>
+           <td>{{$p->Barang['nama_barang']}}</td>
+           <td>{{$p->jumlah_pinjam}}</td>
+           <td>{{$p->tgl_pinjam}}</td>
+           <td>@if( $p->status == "Pending" )
+                <span class="btn btn-warning btn-sm">Pending</span>
+               @elseif ( $p->status == "Accept" )
+                <span class="btn btn-success btn-sm">Accept</span>
+               @else
+                <span class="btn btn-danger btn-sm">Rejected</span>
+               @endif
+           </td>
            <td>
-            <a href="{{url('/admin/detail')}}/{{$p->id_pinjam}}" class="btn btn-primary mt-2"><i class="fa fa-detail">Detail</a>
+           <form class="d-inline" method="POST" action="{{url('/admin/status')}}/{{$p->id_pinjam}}">
+              @method('patch')
+              @csrf 
+               <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-success btn-sm" value="Accept"><i class="fa fa-check"> Accept</i></button>
+              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-danger btn-sm" value="Rejected"><i class="fa fa-times-circle"> Rejected</i></button>
+            {{-- <a href="{{url('/admin/detail')}}/{{$p->id}}" class="btn btn-primary mt-2"><i class="fa fa-detail">Detail</a> --}}
+             </form>
            </td>
            </tr>
            @endforeach

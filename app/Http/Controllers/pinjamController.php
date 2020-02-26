@@ -42,6 +42,7 @@ class pinjamController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->id_barang);
         $request->validate([
             'keterangan' => 'required'
         ]);
@@ -49,7 +50,7 @@ class pinjamController extends Controller
         Pinjam::create([
             'id_barang' => $request->id_barang,
             'id_kategori' => $request->id_kategori,
-            // 'id' => auth()->user()->id,
+            'id' => auth()->user()->id,
             'type' => $request->type,
             'stok' => $request->stok,
             'jumlah_pinjam' => $request->jumlah +1,
@@ -66,9 +67,9 @@ class pinjamController extends Controller
      * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function show(pinjam $id_pinjam)
+    public function show(pinjam $id)
     {
-        $pinjam = Pinjam::where('id_pinjam', $id_pinjam->id_pinjam)->get();
+        $pinjam = Pinjam::where('id', $id->id)->get();
         return view('admin.Admin_invetaris.show', compact('pinjam'));
     }
 
@@ -87,15 +88,13 @@ class pinjamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\pinjam  $pinjam
+     * @param  \App\Pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Pinjam $pinjam)
-    {
-        // echo $request['status'];exit;
-        $k = Pinjam::where('id', $pinjam->id)->first();
-        Pinjam::where('id_pinjam', $pinjam->id_pinjam)->update(['status' => $request['status']]);
-        return redirect('/admin/detail/'.$k->id)->with('status', 'Success');
+    { 
+        Pinjam::where('id_pinjam', $pinjam->id_pinjam)->Update(['status' => $request['status']]);
+        return redirect('/admin/pinjam')->with('status', 'Success');
     }
 
     /**

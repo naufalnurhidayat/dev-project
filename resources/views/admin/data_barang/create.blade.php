@@ -45,7 +45,7 @@
     <div class="form-group">
         <label for="kondisi">Kondisi</label>
         <select name="kondisi" id="kondisi" class="form-control">
-            <option value="">--Pilih Kategori--</option>
+            <option value="">--Pilih Kondisi--</option>
             <option>Baru</option>
             <option>Bekas</option>
         </select>

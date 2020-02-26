@@ -50,6 +50,7 @@
     </div>
   </div>
 
+  @foreach($barang as $box)
   <div class="modal fade" id="pinjam" tabindex="-1" role="dialog" aria-labelledby="pinjam" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -67,10 +68,8 @@
               <form method="post" action="{{url('/pengajuan/store')}}">
                 {{csrf_field()}}
                 
-                {{-- @foreach ($barang as $item)
-                <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">     
-                <input type="hidden" name="id_kategori" value="{{$barang->Kategori['id_kategori']}}">     
-                @endforeach --}}
+              <input type="hidden" name="id_barang" value="{{$box->id_barang}}"> 
+              <input type="hidden" name="id_kategori" value="{{$box->Kategori['id_kategori']}}">     
             
                 <div class="form-group">
                   <label for="keterangan">Keterangan </label>
@@ -79,22 +78,18 @@
                   <div class="invalid-feedback">{{$message}}</div>
                   @enderror
                 </div>
-
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <form action="{{ url('/logout') }}" method="GET">
-            @csrf
-            <button class="btn btn-primary">Ajukan</button>
+            <button type="submit" class="btn btn-primary">Ajukan</button>
           </form>
         </div>
       </div>
     </div>
   </div>
-
-
+  @endforeach
 
 </div>
 <!-- /.container-fluid -->
