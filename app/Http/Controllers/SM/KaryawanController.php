@@ -27,7 +27,7 @@ class KaryawanController extends Controller
     public function index()
     {
         $user = User::all();
-        return view('admin/karyawan/index', compact('user'));
+        return view('sm/karyawan/index', compact('user'));
     }
 
     /**
@@ -59,7 +59,7 @@ class KaryawanController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin/karyawan/detailkaryawan', compact('user'));
+        return view('sm/karyawan/detailkaryawan', compact('user'));
     }
 
     /**
@@ -70,7 +70,7 @@ class KaryawanController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin/karyawan/ubahkaryawan', compact('user'));
+        return view('sm/karyawan/ubahkaryawan', compact('user'));
     }
 
     /**
@@ -112,7 +112,7 @@ class KaryawanController extends Controller
             'alamat' => $request->alamat
         ]);
 
-        return redirect('/admin/karyawan')->with('status', 'Data Karyawan berhasil diubah');
+        return redirect('/sm/karyawan')->with('status', 'Data Karyawan berhasil diubah');
     }
 
     /**
@@ -124,6 +124,6 @@ class KaryawanController extends Controller
     public function destroy(User $user)
     {
         User::destroy($user->id);
-        return redirect('/admin/karyawan')->with('status', 'Karyawan berhasil dihapus');
+        return redirect('/sm/karyawan')->with('status', 'Karyawan berhasil dihapus');
     }
 }

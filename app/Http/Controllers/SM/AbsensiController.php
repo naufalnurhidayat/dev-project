@@ -17,7 +17,7 @@ class AbsensiController extends Controller
     public function index()
     {
         $data_absen = Absen::all();
-        return view('admin/absen/index', compact('data_absen'));
+        return view('sm/absen/index', compact('data_absen'));
     }
 
     /**
