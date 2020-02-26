@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\SM;
 
 use App\Cuti;
 use App\JenisCuti;
@@ -19,7 +19,7 @@ class CutiController extends Controller
     public function index()
     {
         $cuti = Cuti::where('status', 'Pending')->orderBy('tgl_cuti', 'desc')->get();
-        return view('admin/cuti/index', ['cuti' => $cuti]);
+        return view('sm/cuti/index', ['cuti' => $cuti]);
     }
 
     /**
@@ -53,13 +53,13 @@ class CutiController extends Controller
     public function terima()
     {
         $cuti = Cuti::where('status', 'Terima')->orderBy('tgl_cuti', 'desc')->get();
-        return view('admin/cuti/terima', compact('cuti'));
+        return view('sm/cuti/terima', compact('cuti'));
     }
 
     public function tolak()
     {
         $cuti = Cuti::where('status', 'Tolak')->orderBy('tgl_cuti', 'desc')->get();
-        return view('admin/cuti/tolak', compact('cuti'));
+        return view('sm/cuti/tolak', compact('cuti'));
     }
     
     public function show(Cuti $cuti)
@@ -88,7 +88,7 @@ class CutiController extends Controller
     public function update(Request $request, Cuti $cuti)
     {
         Cuti::Where('id', $cuti->id)->Update(['status' => $request['status']]);
-        return redirect('/admin/cuti')->with('status', 'Status Berhasil Di Edit');
+        return redirect('/sm/cuti')->with('status', 'Status Berhasil Di Edit');
     }
 
     /**
