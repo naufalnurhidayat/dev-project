@@ -15,8 +15,11 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($nama)
     {
+        if ($nama != auth()->user()->nama) {
+            return view('error/userNotFound');
+        }
         return view('user/profile');
     }
 

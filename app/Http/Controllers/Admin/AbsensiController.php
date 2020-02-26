@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Absen;
-use App\Karyawan;
+use App\User;
+use App\Stream;
 
 class AbsensiController extends Controller
 {
@@ -27,7 +28,9 @@ class AbsensiController extends Controller
      */
     public function create()
     {
-        //
+        $tanggal = date('Y-m-d');
+        $absen = Absen::where('tanggal', $tanggal)->get();
+        return view('admin/absen/absen', compact('absen'));
     }
 
     /**
@@ -38,7 +41,44 @@ class AbsensiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        date_default_timezone_set("Asia/Jakarta");
+
+        $buttonIzin = $request->izin;
+
+        $user = Absen::where([
+            ['id_karyawan', '=', auth()->user()->id],
+            ['tanggal', '=', date('Y-m-d')]
+            ])->get();
+                
+        if(count($user) > 0) {
+            return redirect('/admin/absen')->with('danger', 'Anda telah absen');
+        } else if($buttonIzin) {
+            
+            $request->validate([
+                'catatan' => 'required',
+                'picture' => 'required'
+            ]);
+
+            Absen::create([
+                'id_karyawan' => auth()->user()->id,
+                'jam_masuk' => date('H:i:s'),
+                'tanggal' => date('Y-m-d'),
+                'catatan' => $request->catatan,
+                'status' => 'Pending',
+                'picture' => $request->picture
+            ]);
+        } else {
+            Absen::create([
+                'id_karyawan' => auth()->user()->id,
+                'jam_masuk' => date('H:i:s'),
+                'tanggal' => date('Y-m-d'),
+                'catatan' => 'Masuk',
+                'status' => 'Pending',
+                'picture' => null
+            ]);
+        }
+
+        return redirect('/admin/absen')->with('status', 'Terima kasih');
     }
 
     /**
@@ -72,11 +112,17 @@ class AbsensiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Absen::where('id_absen', $id)->Update([
-            'status' => 'Accepting'
-        ]);
+        $status = Absen::where('id_absen', $id)->first()->status;
+        
+        if($status != 'Pending') {
+            return redirect('/admin/data-kehadiran')->with('danger', 'Data ini telah di prove');
+        } else {
+            Absen::where('id_absen', $id)->Update([
+                'status' => $request->prove
+            ]);
+        }
 
-        return redirect('/data-kehadiran')->with('status', 'berhasil di prove');
+        return redirect('/admin/data-kehadiran')->with('status', 'Berhasil di prove');
     }
 
     /**
@@ -87,6 +133,6 @@ class AbsensiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
