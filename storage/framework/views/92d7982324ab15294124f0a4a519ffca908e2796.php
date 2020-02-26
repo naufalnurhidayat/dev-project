@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-4">
-                <form method="POST" action="/admin/role">
+                <form method="POST" action="<?php echo e(url('/admin/role')); ?>">
                     <?php echo csrf_field(); ?>
                     <div class="form-group">
                         <label for="role">Role</label>
