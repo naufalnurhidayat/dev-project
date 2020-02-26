@@ -5,6 +5,16 @@
 @section('content')
 
 <div class="container">
+  @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+  @endif
+  @if (session('danger'))
+    <div class="alert alert-danger">
+        {{ session('danger') }}
+    </div>
+  @endif
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -18,7 +28,7 @@
                   <th>No</th>
                   <th>NIP</th>
                   <th>Nama</th>
-                  <th>Role</th>
+                  <th>Stream</th>
                   <th>Pukul</th>
                   <th>Tanggal</th>
                   <th>Keterangan</th>
@@ -30,19 +40,19 @@
                 @foreach ($data_absen as $da)
                 <tr align="center">
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ $da->Karyawan['nip'] }}</td>
-                  <td>{{ $da->Karyawan['nama'] }}</td>
-                  <td>{{ $da->Karyawan->Role['role'] }}</td>
+                  <td>{{ $da->User['nip'] }}</td>
+                  <td>{{ $da->User['nama'] }}</td>
+                  <td>{{ $da->User->Stream['stream'] }}</td>
                   <td>{{ $da->jam_masuk }}</td>
                   <td>{{ $da->tanggal }}</td>
                   <td>{{ $da->catatan }}</td>
                   <td>{{ $da->status }}</td>
                   <td>
-                    <a href="{{ url('/admin/data-kehadiran/'. $da->id) }}">Test</a>
-                    <form action="{{ url('/admin/data-kehadiran/'. $da->id) }}" method="POST">
+                    <form action="{{ url('/admin/data-kehadiran/'. $da->id_absen) }}" method="POST">
                       @method('patch')
                       @csrf
-                      <button type="submit" class="badge badge-success" name="accept">Accept</button>
+                      <button type="submit" class="badge badge-success" name="prove" value="Accepting">Accept</button>
+                      <button type="submit" class="badge badge-danger" name="prove" value="Rejecting">Reject</button>
                     </form>
                   </td>
                 </tr>

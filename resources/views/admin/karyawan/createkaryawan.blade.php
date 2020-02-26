@@ -131,6 +131,9 @@
                 <button type="submit" name="registasi" class="btn btn-primary btn-user btn-block">
                   Registrasi Akun
                 </button>
+                <div class="text-center">
+                  <a href="{{ url('/login') }}" class="">Have an account? Login here</a>
+                </div>
               </form>
             </div>
           </div>

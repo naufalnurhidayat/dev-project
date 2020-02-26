@@ -1,21 +1,21 @@
-<?php $__env->startSection('title', 'Ubah Role'); ?>
+<?php $__env->startSection('title', 'Edit Role'); ?>
 
 <?php $__env->startSection('content'); ?>
     
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Form Ubah Role</h1>
+            <h3><i class="fas fa-edit"></i>Edit Role</h3>
         </div>
     </div>
     <div class="row">
         <div class="col-4">
-            <form method="POST" action="<?php echo e(url('/ubahrole')); ?>/<?php echo e($role->id); ?>">
+            <form method="POST" action="<?php echo e(url('/admin/role')); ?>/<?php echo e($role->id); ?>">
                 <?php echo method_field('patch'); ?>
                 <?php echo csrf_field(); ?>
                 <div class="form-group">
-                  <label for="role">Role</label>
-                  <input type="text" class="form-control <?php $__errorArgs = ['role'];
+                    <label for="role">Role</label>
+                    <input type="text" class="form-control <?php $__errorArgs = ['role'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -23,7 +23,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="role" name="role" value="<?php echo e($role->role); ?>">
-                  <?php $__errorArgs = ['role'];
+                    <?php $__errorArgs = ['role'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -31,8 +31,8 @@ $message = $__bag->first($__errorArgs[0]); ?> <div class="invalid-feedback"><?ph
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                <button type="submit" class="btn btn-primary mt-3">Ubah</button>
-              </form>
+                <button type="submit" class="btn btn-primary mt-3">Edit</button>
+            </form>
         </div>
     </div>
 </div>

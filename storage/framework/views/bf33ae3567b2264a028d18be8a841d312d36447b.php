@@ -56,8 +56,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?php echo e(url('/admin/karyawan')); ?>">Karyawan</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/role')); ?>">Role</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/stream')); ?>">Stream</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/pendidikan')); ?>">Pendidikan</a>
-            <a class="collapse-item" href="<?php echo e(url('/admin/agama')); ?>">Agama</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/jeniscuti')); ?>">Jenis Cuti</a>
             <a class="collapse-item" href="<?php echo e(url('/barang/index')); ?>">Data Barang</a>
           </div>
@@ -72,6 +72,7 @@
         </a>
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="<?php echo e(url('/admin/absen')); ?>">Absen</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/data-kehadiran')); ?>">Data Kehadiran</a>
             </div>
         </div>
@@ -85,7 +86,9 @@
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo e(url('/admin/cuti')); ?>">Data Cuti</a>
+            <a class="collapse-item bg-warning text-white" href="<?php echo e(url('/admin/cuti')); ?>"><b>Data Cuti</b></a>
+            <a class="collapse-item bg-success text-white" href="<?php echo e(url('/admin/cuti/terima')); ?>"><b>Data Cuti Di Terima</b></a>
+            <a class="collapse-item bg-danger text-white" href="<?php echo e(url('/admin/cuti/tolak')); ?>"><b>Data Cuti Di Tolak</b></a>
           </div>
         </div>
       </li>
@@ -139,7 +142,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo e(url('/profile')); ?>">
+                <a class="dropdown-item" href="<?php echo e(url('/profile/'.auth()->user()->nama)); ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>

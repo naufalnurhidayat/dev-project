@@ -19,7 +19,7 @@ class CreateAbsensi extends Migration
             $table->time('jam_masuk');
             $table->date('tanggal');
             $table->string('catatan');
-            $table->text('picture');
+            $table->text('picture')->nullable();
             $table->string('status');
             $table->timestamps();
         });

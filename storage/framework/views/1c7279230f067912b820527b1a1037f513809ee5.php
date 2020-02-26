@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Daftar Pendidikan'); ?>
+<?php $__env->startSection('title', 'Edit Pendidikan'); ?>
 
 <?php $__env->startSection('content'); ?>
 
@@ -6,9 +6,10 @@
 <div class="container">
     <div class="row">
       <div class="col-8">
-      <h1 class="mt-3">Silahkan Isi Data Pendidikan</h1>
+      <h3 class="mt-3"><i class="fas fa-edit"></i> Edit Pendidikan</h3>
 
-      <form method="post" action="/apdet/<?php echo e($pendidikan->id); ?>">
+      <form method="post" action="/admin/apdet/<?php echo e($pendidikan->id); ?>">
+        <?php echo method_field('patch'); ?>
         <?php echo e(csrf_field()); ?>
 
       <div class="form-group">
