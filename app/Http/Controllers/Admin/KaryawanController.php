@@ -47,14 +47,6 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        // for ($i=0; $i < count($request->id_projek); $i++) { 
-        //     if ($i == count($request->id_projek)-1) {
-        //         $data = [1, 'id_projek' => $request->id_projek];
-        //     } else {
-        //         $data = [1, 'id_projek' => $request->id_projek];
-        //     }
-        // }
-        // dd([$data]);
         $request->validate([
             'nip' => 'required|unique:users|numeric',
             'nama' => 'required',
@@ -72,8 +64,8 @@ class KaryawanController extends Controller
             'password' => 'required|min:6|same:password2',
             'password2' => 'required|min:6|same:password'
         ]);
-
-        $u = User::create([
+        
+        User::create([
             'nip' => $request->nip,
             'nama' => $request->nama,
             'tmp_lahir' => $request->tmp_lahir,
@@ -90,11 +82,7 @@ class KaryawanController extends Controller
             'password' => Hash::make($request->password),
             'foto' => 'default.jpg'
         ]);
-        
-        Projek_Karyawan::insert([
-            ['id_karyawan' => $u->id, 'id_projek' => 2],
-            ['id_karyawan' => $u->id, 'id_projek' => 3]
-        ]);
+
         return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan!');
     }
 
