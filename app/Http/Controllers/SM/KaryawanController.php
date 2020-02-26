@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\SM;
 
 use App\User;
 use App\Projek_Karyawan;
