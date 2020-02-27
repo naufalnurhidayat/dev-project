@@ -18,7 +18,10 @@ class CheckRole
     {
         if (in_array($request->user()->role->role, $roles)) {
             return $next($request);
+        } elseif (auth()->user()) {
+            return redirect('/accessforbidden');
+        } else {
+            return redirect('/login');
         }
-        return redirect('/accessforbidden');
     }
 }
