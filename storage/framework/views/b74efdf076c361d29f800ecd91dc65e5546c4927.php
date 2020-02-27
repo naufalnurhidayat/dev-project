@@ -234,7 +234,7 @@ unset($__errorArgs, $__bag); ?>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <select id="id_agama" name="agama" class="form-control <?php $__errorArgs = ['id_agama'];
+                    <select id="agama" name="agama" class="form-control <?php $__errorArgs = ['agama'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -250,7 +250,7 @@ unset($__errorArgs, $__bag); ?>">
                       <option value="Buddha">Buddha</option>
                       <option value="Konghucu">Konghucu</option>
                     </select>
-                    <?php $__errorArgs = ['id_agama'];
+                    <?php $__errorArgs = ['agama'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -340,7 +340,29 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                   </div>
-                  
+                  <div class="col-sm-6">
+                    <select multiple="multiple" name="id_projek[]" id="id_projek" class="form-control <?php $__errorArgs = ['id_projek[]'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                      <option value="">--Pilih Projek--</option>
+                      <?php $__currentLoopData = $projek; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <option value="<?php echo e($p->id); ?>"><?php echo e($p->project); ?></option>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </select>
+                    <?php $__errorArgs = ['id_projek[]'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <div class="invalid-feedback"><?php echo e($message); ?></div> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                  </div>
                 </div>
                 <button type="submit" name="registasi" class="btn btn-primary btn-user btn-block">
                   Registrasi Akun
