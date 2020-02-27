@@ -56,7 +56,7 @@ class pinjamController extends Controller
             'jumlah_pinjam' => $request->jumlah +1,
             'tgl_pinjam' => date("Y-m-d"),
             'status' => 'Pending',
-            'status_kembali' => 'Belum',
+            // 'status_kembali' => 'Belum',
             'keterangan' => $request->keterangan
         ]);
         return redirect('/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');

@@ -212,6 +212,15 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/invetaris/keranjang', 'temporariController@index');
     Route::post('/pengajuan/store', 'PinjamController@store');
     Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
+
+     //Admin Invetaris
+     Route::get('/admin/pinjam', 'PinjamController@index');
+     Route::get('/admin/kembali', 'kembaliController@index');
+     Route::post('/admin/kembali/store', 'kembaliController@store');
+     Route::patch('/admin/status/{pinjam}', 'kembaliController@update');
+     // Route::get('/admin/detail/{id}', 'PinjamController@show');
+     // Route::get('/admin/detail/{id}', 'kembaliController@show');
+     Route::patch('/admin/status/{id_pinjam}', 'PinjamController@update');
 });
 
 
