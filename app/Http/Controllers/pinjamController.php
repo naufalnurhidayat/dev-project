@@ -92,8 +92,9 @@ class pinjamController extends Controller
      * @param  \App\Pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pinjam $pinjam)
+    public function update(Request $request, pinjam $id_pinjam)
     { 
+        return $id_pinjam; 
         Pinjam::where('id_pinjam', $pinjam->id_pinjam)->Update(['status' => $request['status']]);
         return redirect('/admin/pinjam')->with('status', 'Success');
     }
