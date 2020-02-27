@@ -81,6 +81,7 @@ class AuthController extends Controller
             'alamat' => 'required',
             'password' => 'required|min:6|same:password2',
             'password2' => 'required|min:6|same:password'
+            // 'id_projek[]' => 'required'
         ]);
 
         $u = User::create([
