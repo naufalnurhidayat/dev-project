@@ -13,12 +13,6 @@ use Illuminate\Http\Request;
 
 class KaryawanController extends Controller
 {
-    // public function __construct()
-    // {
-    //     if (auth()->user()->role != "Admin" || "Scra Master" || "Product Owner") {
-    //         return redirect('/');
-    //     }
-    // }
     /**
      * Display a listing of the resource.
      *

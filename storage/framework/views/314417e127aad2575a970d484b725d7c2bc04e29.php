@@ -73,6 +73,7 @@
         </a>
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="<?php echo e(url('/admin/absen')); ?>">Absen</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/data-kehadiran')); ?>">Data Kehadiran</a>
             </div>
         </div>
@@ -142,7 +143,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo e(url('/profile')); ?>">
+                <a class="dropdown-item" href="<?php echo e(url('/profile/'.auth()->user()->nama)); ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
@@ -212,6 +213,14 @@
 
   <!-- Page level custom scripts -->
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
+
+  
+  <script>
+    $('.custom-file-input').on('change', function() {
+      let fileName = $(this).val().split('\\').pop();
+      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+  </script>
 
 </body>
 
