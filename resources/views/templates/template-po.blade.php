@@ -55,12 +55,6 @@
         <div id="po" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{url('/po/karyawan')}}">Karyawan</a>
-            <a class="collapse-item" href="{{url('/po/role')}}">Role</a>
-            <a class="collapse-item" href="{{url('/po/stream')}}">Stream</a>
-            <a class="collapse-item" href="{{url('/po/projek')}}">Projek</a>
-            <a class="collapse-item" href="{{url('/po/pendidikan')}}">Pendidikan</a>
-            <a class="collapse-item" href="{{url('/po/jeniscuti')}}">Jenis Cuti</a>
-            <a class="collapse-item" href="{{url('/barang/index')}}">Data Barang</a>
           </div>
         </div>
       </li>
@@ -73,6 +67,7 @@
         </a>
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ url('/po/absen') }}">Absen</a>
             <a class="collapse-item" href="{{ url('/po/data-kehadiran') }}">Data Kehadiran</a>
             </div>
         </div>
@@ -212,6 +207,14 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
+
+  {{-- Script Untuk Absen --}}
+  <script>
+    $('.custom-file-input').on('change', function() {
+      let fileName = $(this).val().split('\\').pop();
+      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+  </script>
 
 </body>
 

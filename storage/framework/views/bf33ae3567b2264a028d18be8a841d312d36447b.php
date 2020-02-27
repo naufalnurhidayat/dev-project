@@ -57,6 +57,7 @@
             <a class="collapse-item" href="<?php echo e(url('/admin/karyawan')); ?>">Karyawan</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/role')); ?>">Role</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/stream')); ?>">Stream</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/projek')); ?>">Projek</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/pendidikan')); ?>">Pendidikan</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/jeniscuti')); ?>">Jenis Cuti</a>
             <a class="collapse-item" href="<?php echo e(url('/barang/index')); ?>">Data Barang</a>
@@ -138,7 +139,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo e(auth()->user()->nama); ?></span>
-                <img class="img-profile rounded-circle" src="<?php echo e(url('img')); ?>/<?php echo e(auth()->user()->foto); ?>">
+                <img class="img-profile rounded-circle" src="<?php echo e(url('img/'.auth()->user()->foto)); ?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -212,6 +213,14 @@
 
   <!-- Page level custom scripts -->
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
+
+  
+  <script>
+    $('.custom-file-input').on('change', function() {
+      let fileName = $(this).val().split('\\').pop();
+      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+  </script>
 
 </body>
 

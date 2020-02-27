@@ -1,4 +1,4 @@
-@extends('templates/template-admin')
+@extends('templates/template-po')
 
 @section('title', 'Data Cuti')
 
