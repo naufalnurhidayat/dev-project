@@ -16,6 +16,7 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::group(['middleware' => 'checkRole:Admin'], function () {
 		// ADMIN
+			// Route::get('/logoutAdmin', 'AuthController@logout');
 			// Home Admin
 			Route::get('/admin', 'Admin\HomeController@index');
 		  // Master
@@ -101,6 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['middleware' => 'checkRole:Scrum Master'], function () {
 		// SM
+			// Route::get('/logoutSm', 'AuthController@logout');
 			// Home SM
 			Route::get('/sm', 'SM\HomeController@index');
 		  // Master
@@ -143,6 +145,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['middleware' => 'checkRole:Product Owner'], function () {
 		// PO
+			// Route::get('/logoutPo', 'AuthController@logout');
 			// Home PO
 			Route::get('/po', 'PO\HomeController@index');
 		  // Master
@@ -186,7 +189,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::group(['middleware' => 'checkRole:User'], function () {
 		// USER
 			// Home User
-			Route::get('/logout', 'AuthController@logout');
 			Route::get('/', 'Home@index')->name('home');
 		
 			Route::get('/profile/{nama}', 'ProfileController@index');
@@ -210,6 +212,9 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::post('/pengajuan/store', 'pinjamController@store');
 		
 		// --------------------------------------------------------------------------------------
+	});
+	Route::group(['middleware' => ['checkRole:Admin,Product Owner,Scrum Master,User']], function () {
+		Route::get('/logout', 'AuthController@logout');
 	});
 
 });

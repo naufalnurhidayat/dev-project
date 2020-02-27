@@ -24,7 +24,15 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         if(Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/');
+            if (auth()->user()->role->role == "Admin") {
+                return redirect('/admin');
+            } elseif (auth()->user()->role->role == "Scrum Master") {
+                return redirect('/sm');
+            } elseif (auth()->user()->role->role == "Product Owner") {
+                return redirect('/po');
+            } else {
+                return redirect('/');
+            }
         } else return redirect('/login');
     }
 
