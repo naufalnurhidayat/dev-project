@@ -83,7 +83,7 @@
           <div class="row justify-content-center">
             <div class="col">
               
-                <form method="post" action="{{url('/admin/kembali/store')}}">
+                <form method="post" action="{{url('/kembali/store')}}">
                 {{csrf_field()}}
                 
               <input type="hidden" name="id_barang" value="{{$box->id_barang}}"> 
