@@ -213,6 +213,7 @@ Route::group(['middleware' => 'auth'], function () {
 		
 		// --------------------------------------------------------------------------------------
 	});
+	
 	Route::group(['middleware' => ['checkRole:Admin,Product Owner,Scrum Master,User']], function () {
 		Route::get('/logout', 'AuthController@logout');
 	});
@@ -225,6 +226,6 @@ Route::group(['middleware' => 'auth'], function () {
 // Registrasi
     Route::get('/registrasi', 'AuthController@create');
 	Route::post('/registrasi', 'AuthController@store');
-	Route::get('/accessforbidden', function() {
-		return view('error.blocked');
-	});
+Route::get('/accessforbidden', function() {
+	return view('error.blocked');
+});
