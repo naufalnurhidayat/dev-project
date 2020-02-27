@@ -82,7 +82,7 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <select id="id_agama" name="agama" class="form-control @error('id_agama') is-invalid @enderror">
+                    <select id="agama" name="agama" class="form-control @error('agama') is-invalid @enderror">
                       <option value="">--Pilih Agama--</option>
                       <option value="Islam">Islam</option>
                       <option value="Kristen">Kristen</option>
@@ -91,7 +91,7 @@
                       <option value="Buddha">Buddha</option>
                       <option value="Konghucu">Konghucu</option>
                     </select>
-                    @error('id_agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @error('agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
                     <textarea name="alamat" id="alamat" class=" form-control @error('alamat') is-invalid @enderror" rows="2" placeholder="Alamat">{{ old('alamat') }}</textarea>
@@ -118,16 +118,16 @@
                     </select>
                     @error('id_role') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
-                  {{-- <div class="col-sm-6">
-                    <select multiple="multiple" name="id_projek[]" id="id_projek" class="form-control @error('id_projek') is-invalid @enderror">
+                  <div class="col-sm-6">
+                    <select multiple="multiple" name="id_projek[]" id="id_projek" class="form-control @error('id_projek[]') is-invalid @enderror">
                       <option value="">--Pilih Projek--</option>
                       @foreach ($projek as $p)
                       <option value="{{ $p->id }}">{{ $p->project }}</option>
                       @endforeach
                     </select>
-                    @error('id_projek') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @error('id_projek[]') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
-                </div> --}}
+                </div>
                 <button type="submit" name="registasi" class="btn btn-primary btn-user btn-block">
                   Registrasi Akun
                 </button>
