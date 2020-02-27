@@ -19,7 +19,15 @@ class CheckRole
         if (in_array($request->user()->role->role, $roles)) {
             return $next($request);
         } elseif (auth()->user()) {
-            return redirect('/accessforbidden');
+            if (auth()->user()->role->role == "Admin") {
+                return redirect('/admin');
+            } elseif (auth()->user()->role->role == "Scrum Master") {
+                return redirect('/sm');
+            } elseif (auth()->user()->role->role == "Product Owner") {
+                return redirect('/po');
+            } elseif (auth()->user()->role->role == "User") {
+                return redirect('/');
+            }
         } else {
             return redirect('/login');
         }

@@ -210,6 +210,7 @@ Route::group(['middleware' => 'auth'], function () {
 		
 		// --------------------------------------------------------------------------------------
 	});
+	
 	Route::group(['middleware' => ['checkRole:Admin,Product Owner,Scrum Master,User']], function () {
 		Route::get('/logout', 'AuthController@logout');
 	});
