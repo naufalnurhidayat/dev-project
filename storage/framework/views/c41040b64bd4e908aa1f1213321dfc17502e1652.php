@@ -120,6 +120,7 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
 
+  
   <script>
     $('.custom-file-input').on('change', function() {
       let fileName = $(this).val().split('\\').pop();

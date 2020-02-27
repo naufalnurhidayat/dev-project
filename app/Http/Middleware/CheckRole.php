@@ -14,11 +14,11 @@ class CheckRole
      * @param  string  $role
      * @return mixed
      */
-    public function handle($request, Closure $next, $id_role)
+    public function handle($request, Closure $next, ...$roles)
     {
-        if ($request->user()->role->role != $id_role) {
-            return redirect('/accessforbidden');
+        if (in_array($request->user()->role->role, $roles)) {
+            return $next($request);
         }
-        return $next($request);
+        return redirect('/accessforbidden');
     }
 }
