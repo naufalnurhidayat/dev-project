@@ -70,4 +70,8 @@ class User extends Authenticatable
     public function cuti() {
         return $this->hasMany('App\Cuti', 'id');
     }
+
+    public function projek_karyawan() {
+        return $this->hasMany('App\Projek_Karyawan');
+    }
 }

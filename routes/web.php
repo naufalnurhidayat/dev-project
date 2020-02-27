@@ -16,9 +16,8 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::group(['middleware' => 'checkRole:Admin'], function () {
 		// ADMIN
-			// Route::get('/logoutAdmin', 'AuthController@logout');
 			// Home Admin
-			Route::get('/admin', 'Admin\HomeController@index');
+			Route::get('/admin', 'Admin\HomeController@index')->name('admin');
 		  // Master
 			//inventaris
 			Route::get('/barang/index', 'databoxController@index');
@@ -108,9 +107,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['middleware' => 'checkRole:Scrum Master'], function () {
 		// SM
-			// Route::get('/logoutSm', 'AuthController@logout');
 			// Home SM
-			Route::get('/sm', 'SM\HomeController@index');
+			Route::get('/sm', 'SM\HomeController@index')->name('sm');
 		  // Master
 			//inventaris
 			Route::get('/sm/barang/index', 'databoxController@index');
@@ -159,9 +157,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::group(['middleware' => 'checkRole:Product Owner'], function () {
 		// PO
-			// Route::get('/logoutPo', 'AuthController@logout');
 			// Home PO
-			Route::get('/po', 'PO\HomeController@index');
+			Route::get('/po', 'PO\HomeController@index')->name('po');
 		  // Master
 			//inventaris
 			Route::get('/po/barang/index', 'databoxController@index');
