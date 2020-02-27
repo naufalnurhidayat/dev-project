@@ -133,6 +133,8 @@ Route::group(['middleware' => 'auth'], function () {
 			// Absen
 			Route::get('sm/data-kehadiran', 'SM\AbsensiController@index');
 			Route::patch('sm/data-kehadiran/{id}', 'SM\AbsensiController@update');
+			Route::get('sm/absen', 'SM\AbsensiController@create');
+			Route::post('sm/absen', 'SM\AbsensiController@store');
 		
 			//Cuti
 			Route::get('/sm/cuti', 'SM\CutiController@index');
@@ -176,6 +178,8 @@ Route::group(['middleware' => 'auth'], function () {
 			// Absen
 			Route::get('po/data-kehadiran', 'PO\AbsensiController@index');
 			Route::patch('po/data-kehadiran/{id}', 'PO\AbsensiController@update');
+			Route::get('po/absen', 'PO\AbsensiController@create');
+			Route::post('po/absen', 'PO\AbsensiController@store');
 		
 			//Cuti
 			Route::get('/po/cuti', 'PO\CutiController@index');
