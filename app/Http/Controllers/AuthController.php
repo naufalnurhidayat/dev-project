@@ -16,13 +16,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // public function __construct()
-    // {
-    //     if ($this->middleware('auth')) {
-    //         return redirect('/');
-    //     }
-    // }
-
     public function index()
     {
         return view('login/login');
