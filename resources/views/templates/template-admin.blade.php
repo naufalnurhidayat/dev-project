@@ -215,6 +215,14 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
 
+  {{-- Script Untuk Absen --}}
+  <script>
+    $('.custom-file-input').on('change', function() {
+      let fileName = $(this).val().split('\\').pop();
+      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+  </script>
+
 </body>
 
 </html>
