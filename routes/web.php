@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Admin Invetaris
     Route::get('/admin/pinjam', 'PinjamController@index');
     Route::get('/admin/kembali', 'kembaliController@index');
+    Route::post('/admin/kembali/store', 'kembaliController@store');
     Route::patch('/admin/status/{pinjam}', 'kembaliController@update');
     // Route::get('/admin/detail/{id}', 'PinjamController@show');
     // Route::get('/admin/detail/{id}', 'kembaliController@show');

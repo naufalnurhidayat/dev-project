@@ -17,6 +17,7 @@ class CreatePinjamBarang extends Migration
             $table->increments('id_pinjam');
             $table->integer('id_barang');
             $table->integer('id_kategori');
+            $table->integer('id_kembali');
             $table->integer('id');
             $table->string('nama_pinjam');
             $table->integer('jumlah_pinjam');

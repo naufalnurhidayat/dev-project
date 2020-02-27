@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Kategori;
 use App\Pinjam;
 use App\User;
+use App\Kembali;
 
 class barangController extends Controller
 {
@@ -23,8 +24,9 @@ class barangController extends Controller
         // return view('Invetaris.barang', ['barang' => $barang, 'kategori' => $kategori]);
         $barang = Barang::all();
         $kategori = Kategori::all();
+        $kembali = Kembali::all();
         $pinjam = Pinjam::with('Kategori')->get();
-        return view('Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'barang' => $barang]);
+        return view('Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'kembali' => $kembali, 'barang' => $barang]);
     }
 
     /**

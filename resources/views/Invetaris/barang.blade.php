@@ -32,7 +32,7 @@
               <th>Nama Kategori</th>
               <th>Jumlah Pinjam</th>
               <th>Tanggal Pinjam</th>
-              <th>Kondisi</th>
+              <th>Kembali</th>
               <th>Status</th>  
               <th>Action</th>
             </tr>
@@ -45,36 +45,75 @@
            <td>{{$box->Kategori->nama_kategori}}</td>
            <td>{{$box->jumlah_pinjam}}</td>
            <td>{{$box->tgl_pinjam}}</td>
-           <td>{{$box->Barang['kondisi']}}</td>
+           <td><span class="badge badge-warning">{{$box->status_kembali}}</span></td>
            <td>
             @if( $box->status == "Pending" )
-                <span class="btn btn-warning btn-sm">Pending</span>
+                <span class="badge badge-warning btn-sm">Pending</span>
                @elseif ( $box->status == "Accept" )
-                <span class="btn btn-success btn-sm"><i class="fas fa-check"> Accept</i></span>
+                <span class="badge badge-success btn-sm"><i class="fas fa-check"> Accept</i></span>
                @else
-                <span class="btn btn-danger btn-sm">Rejected</span>
+                <span class="badge badge-danger btn-sm">Rejected</span>
                @endif
            </td>
            <td>
              <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"> Print</i></a>
-             <a href="#" class="btn btn-secondary btn-sm"><i class=""></i> Pengembalian</a>
+             <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Pengembalian</a>
            {{-- <a href="{{url('/pinjam/create')}}/{{$box->id_barang}}" class="btn btn-success btn-sm"><i class="fa fa-book"></i> Pinjam</a> --}}
-           </td>
+           {{-- </td>
            </tr>
            @endforeach
           </tbody>
-        </table>
+        </table> --}}
       </div>
     </div>
   </div>
 
+     {{-- @foreach($barang as $box) --}}
+  <div class="modal fade" id="kembali_{{$box->id_barang}}" tabindex="-1" role="dialog" aria-labelledby="kembali" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="kembali">Peminjaman</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        {{-- Form Input --}}
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col">
+              
+                <form method="post" action="{{url('/admin/kembali/store')}}">
+                {{csrf_field()}}
+                
+              <input type="hidden" name="id_barang" value="{{$box->id_barang}}"> 
+              <input type="hidden" name="id_kategori" value="{{$box->Kategori['id_kategori']}}">
+              {{-- <input type="hidden" name="id_pinjam" value="{{$box->Pinjam['id_pinjam']}}"> --}}
+              <div class="modal-body">Yakin ingin dikembalikan ?</div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Ajukan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</td>
+</tr>
+@endforeach
+</tbody>
+</table>
 </div>
 <!-- /.container-fluid -->
 
-      </div>
+      {{-- </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 
 

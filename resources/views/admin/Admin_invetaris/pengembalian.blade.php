@@ -28,8 +28,7 @@
               <th>NIP</th>
               <th>Nama</th>
               <th>Nama Barang</th>
-              <th>Jumlah Pinjam</th>
-              <th>Tanggal Pinjam</th>
+              <th>Tanggal Kembali</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -38,12 +37,11 @@
           <tbody>
             @foreach($kembali as $k)
            <tr align="center"> 
-           <td></td>
-           <td></td> 
-           <td></td>
-           <td></td>
-           <td></td>
-           <td><span class="badge badge-warning badge-sm"></td></span>
+           <td>{{$k->User['nip']}}</td>
+           <td>{{$k->User['nama']}}</td> 
+           <td>{{$k->Barang['nama_barang']}}</td>
+           <td>{{$k->tgl_kembali}}</td>
+           <td><span class="badge badge-warning badge-sm">{{$k->status_kembali}}</td></span>
            <td>
             <form action="{{url('/admin/status/'. $k->id_pinjam)}}" method="post">
               @method('patch')

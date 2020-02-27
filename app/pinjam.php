@@ -8,7 +8,7 @@ class Pinjam extends Model
 {
     protected $table = 'pinjam_barang';
     public $primarykey = 'id_pinjam';
-    public $fillable = ['id_pinjam', 'id_barang', 'id_kategori', 'id', 'nama_pinjam', 'jumlah_pinjam', 'tgl_pinjam', 'status', 'keterangan'];
+    public $fillable = ['id_pinjam', 'id_barang', 'id_kategori', 'id_kembali', 'id', 'nama_pinjam', 'jumlah_pinjam', 'tgl_pinjam', 'status', 'keterangan'];
     public $timestamps = false;
 
     public function Barang(){
@@ -24,6 +24,6 @@ class Pinjam extends Model
     }
 
     public function kembali(){
-        return $this->hasMany('App\Kembali', 'id_kembali');
+        return $this->beLongsTo('App\Kembali', 'id_kembali', 'id_kembali');
     }
 }
