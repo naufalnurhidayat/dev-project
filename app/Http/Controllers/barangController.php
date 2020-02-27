@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Kategori;
 use App\Pinjam;
+use App\User;
+use App\Kembali;
 
 class barangController extends Controller
 {
@@ -17,9 +19,15 @@ class barangController extends Controller
      */
     public function index()
     {
+        // $kategori = Kategori::all();
+        // $barang = Barang::with('Kategori')->get();
+        // return view('Invetaris.barang', ['barang' => $barang, 'kategori' => $kategori]);
+        $barang = Barang::all();
         $kategori = Kategori::all();
-        $barang = Barang::with('Kategori')->get();
-        return view('Invetaris.barang', ['barang' => $barang, 'kategori' => $kategori]);
+        $kembali = Kembali::all();
+        // $pinjam = Pinjam::with('Kategori')->get();
+        $pinjam = Pinjam::where('id', auth()->user()->id)->get();
+        return view('Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'kembali' => $kembali, 'barang' => $barang]);
     }
 
     /**
@@ -40,7 +48,18 @@ class barangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        Pinjam::create([
+            'id_barang' => $request->id_barang,
+            'id_kategori' => $request->id_kategori,
+            'id' => $request->id,
+            'type' => $request->type,
+            'stok' => $request->stok,
+            'jumlah_pinjam' => $request->jumlah,
+            'tgl_pinjam' => date("Y-m-d"),
+            'keterangan' => $request->keterangan
+        ]);
+        return redirect('/invetaris/pengajuan')->with('status', 'Data Berhasil Di Tambah!!!');
     }
 
     /**
@@ -49,10 +68,10 @@ class barangController extends Controller
      * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function show($id_barang)
+    public function show($id_pinjam)
     {
-        $barang = Barang::find($id_barang);
-        return view('Invetaris.Showbarang', compact('barang'));
+        $pinjam = Pinjam::find($id_pinjam);
+        return view('Invetaris.Showbarang', compact('pinjam'));
     }
 
     /**
@@ -99,8 +118,9 @@ class barangController extends Controller
 
     public function tampil()
     {
-        $pinjam = Pinjam::all();
-        return view('Invetaris.pengajuan', compact('pinjam'));
+        $barang = Barang::all();
+        $kategori = Kategori::all();
+        return view('Invetaris.pengajuan', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
 }

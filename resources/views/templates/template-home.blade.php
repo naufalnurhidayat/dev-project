@@ -38,6 +38,12 @@
               <img src="{{ asset('img/logotelkom.jfif') }}" class="rounded" width="15%">
             </div>
 
+            {{-- <div class="">
+              <a href="{{url('/')}}" class="btn btn-info btn-circle btn-lg">
+                <i class="fas fa-home"></i>
+              </a>
+            </div> --}}
+
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 

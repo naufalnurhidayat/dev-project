@@ -126,8 +126,8 @@
                       @endforeach
                     </select>
                     @error('id_projek') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                  </div> --}}
-                </div>
+                  </div>
+                </div> --}}
                 <button type="submit" name="registasi" class="btn btn-primary btn-user btn-block">
                   Registrasi Akun
                 </button>

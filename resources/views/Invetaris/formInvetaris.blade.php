@@ -12,7 +12,7 @@
           <h5 class="card-title text-center">Data Pinjam</h5>
 
       
-          <form method="post" action="{{url('/pengajuan/store')}}">
+    <form method="post" action="{{url('/pengajuan/store')}}">
     {{csrf_field()}}
 
    <input type="hidden" name="id_barang" value="{{$barang->id_barang}}">     
@@ -34,6 +34,8 @@
     @enderror
     </div>
 
+    <input type="hidden" name="id" value="{{auth()->user()->id}}">
+
     <div class="form-group">
     <label for="type">Tipe </label>
     <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" placeholder="" name="type" value="{{$barang->type}}" readonly>
@@ -49,7 +51,7 @@
 
     <div class="form-group">
     <label for="jumlah">Jumlah Pinjam </label>
-    <input type="text" class="form-control @error('jumlah') is-invalid @enderror" id="jumlah" placeholder="" name="jumlah" value="">
+    <input type="number" class="form-control @error('jumlah') is-invalid @enderror" id="jumlah" placeholder="" name="jumlah" value="">
     @error('jumlah')
     <div class="invalid-feedback">{{$message}}</div>
     @enderror
