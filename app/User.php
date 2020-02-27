@@ -51,7 +51,27 @@ class User extends Authenticatable
         return $this->hasMany('App\Absen', 'id_absen');
     }
 
+    public function temporari(){
+        return $this->hasMany('App\Temporari', 'id_temp');
+    }
+
+    public function Pinjam(){
+        return $this->hasMany('App\Pinjam', 'id_pinjam');
+    }
+
+    public function kembali(){
+        return $this->hasMany('App\Kembali', 'id_kembali');
+    }
+
+    public function barang(){
+        return $this->hasMany('App\Barang', 'id_barang');
+    }
+
     public function cuti() {
         return $this->hasMany('App\Cuti', 'id');
+    }
+
+    public function projek_karyawan() {
+        return $this->hasMany('App\Projek_Karyawan');
     }
 }
