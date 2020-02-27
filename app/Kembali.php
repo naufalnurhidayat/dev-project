@@ -8,7 +8,7 @@ class Kembali extends Model
 {
     protected $table = 'kembali_barang';
     public $primarykey = 'id_kembali';
-    public $fillable = ['id_kembali', 'id_barang', 'id_pinjam', 'id', 'tgl_kembali'];
+    public $fillable = ['id_kembali', 'id_barang', 'id_pinjam', 'id', 'id_kategori', 'tgl_kembali', 'status'];
     public $timestamps = false;
 
     public function Barang(){

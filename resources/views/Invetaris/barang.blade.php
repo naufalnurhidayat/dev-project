@@ -56,8 +56,8 @@
                @endif
            </td>
            <td>
-             <a href="" class="btn btn-primary btn-sm mb-2"><i class="fas fa-print"> Print</i></a>
-             <a href="#" class="btn btn-warning btn-sm"><i class="fa fa-box"></i> Pengembalian</a>
+             <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"> Print</i></a>
+             <a href="#" class="btn btn-secondary btn-sm"><i class=""></i> Pengembalian</a>
            {{-- <a href="{{url('/pinjam/create')}}/{{$box->id_barang}}" class="btn btn-success btn-sm"><i class="fa fa-book"></i> Pinjam</a> --}}
            </td>
            </tr>

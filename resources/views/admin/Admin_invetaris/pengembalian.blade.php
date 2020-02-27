@@ -26,7 +26,11 @@
           <thead>
             <tr align="center">
               <th>NIP</th>
-              <th>Nama Peminjam</th>
+              <th>Nama</th>
+              <th>Nama Barang</th>
+              <th>Jumlah Pinjam</th>
+              <th>Tanggal Pinjam</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -34,10 +38,19 @@
           <tbody>
             @foreach($kembali as $k)
            <tr align="center"> 
-           <td>{{$k->User['nip']}}</td>
-           <td>{{$k->User['nama']}}</td> 
+           <td></td>
+           <td></td> 
+           <td></td>
+           <td></td>
+           <td></td>
+           <td><span class="badge badge-warning badge-sm"></td></span>
            <td>
-            <a href="{{url('/admin/detail')}}/{{$k->id}}" class="btn btn-primary mt-2"><i class="fa fa-detail">Detail</a>
+            <form action="{{url('/admin/status/'. $k->id_pinjam)}}" method="post">
+              @method('patch')
+              @csrf
+               <button class="btn btn-success rounded-circle" name="status_kembali" value="accept"><i class="fas fa-check"></i></button>
+               <button class="btn btn-danger rounded-circle" name="status_kembali" value="rejected"><i class="fas fa-times-circle"></i></button>
+              </form>
            </td>
            </tr>
            @endforeach

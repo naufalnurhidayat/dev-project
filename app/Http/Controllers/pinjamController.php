@@ -42,7 +42,7 @@ class pinjamController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->id_barang);
+        // dd($request->id_barang);
         $request->validate([
             'keterangan' => 'required'
         ]);
@@ -56,6 +56,7 @@ class pinjamController extends Controller
             'jumlah_pinjam' => $request->jumlah +1,
             'tgl_pinjam' => date("Y-m-d"),
             'status' => 'Pending',
+            'stauts_kembali' => 'Belum',
             'keterangan' => $request->keterangan
         ]);
         return redirect('/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');

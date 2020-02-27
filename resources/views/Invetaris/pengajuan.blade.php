@@ -40,18 +40,18 @@
            <td>{{$b->Kategori['nama_kategori']}}</td>
            <td>{{$b->kondisi}}</td>
            <td>
-           <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#pinjam"><i class=""></i> Pinjam</a>
-           </td>
-           </tr>
-        @endforeach
-          </tbody>
-        </table>
+           <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#pinjam_{{$b->id_barang}}"><i class=""></i> Pinjam</a>
+           {{-- </td> --}}
+           {{-- </tr> --}}
+        {{-- @endforeach --}}
+          {{-- </tbody> --}}
+        {{-- </table> --}}
       </div>
     </div>
   </div>
 
-  @foreach($barang as $box)
-  <div class="modal fade" id="pinjam" tabindex="-1" role="dialog" aria-labelledby="pinjam" aria-hidden="true">
+  {{-- @foreach($barang as $box) --}}
+  <div class="modal fade" id="pinjam_{{$b->id_barang}}" tabindex="-1" role="dialog" aria-labelledby="pinjam" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -68,8 +68,8 @@
               <form method="post" action="{{url('/pengajuan/store')}}">
                 {{csrf_field()}}
                 
-              <input type="hidden" name="id_barang" value="{{$box->id_barang}}"> 
-              <input type="hidden" name="id_kategori" value="{{$box->Kategori['id_kategori']}}">     
+              <input type="hidden" name="id_barang" value="{{$b->id_barang}}"> 
+              <input type="hidden" name="id_kategori" value="{{$b->Kategori['id_kategori']}}">     
             
                 <div class="form-group">
                   <label for="keterangan">Keterangan </label>
@@ -89,7 +89,11 @@
       </div>
     </div>
   </div>
+</td>
+</tr>
   @endforeach
+</tbody>
+</table>
 
 </div>
 <!-- /.container-fluid -->

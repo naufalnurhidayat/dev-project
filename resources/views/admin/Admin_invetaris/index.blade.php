@@ -44,19 +44,19 @@
            <td>{{$p->jumlah_pinjam}}</td>
            <td>{{$p->tgl_pinjam}}</td>
            <td>@if( $p->status == "Pending" )
-                <span class="btn btn-warning btn-sm">Pending</span>
+                <span class="badge badge-warning btn-sm">Pending</span>
                @elseif ( $p->status == "Accept" )
-                <span class="btn btn-success btn-sm">Accept</span>
+                <span class="badge badge-success btn-sm">Accept</span>
                @else
-                <span class="btn btn-danger btn-sm">Rejected</span>
+                <span class="badge badge-danger btn-sm">Rejected</span>
                @endif
            </td>
            <td>
            <form class="d-inline" method="POST" action="{{url('/admin/status')}}/{{$p->id_pinjam}}">
               @method('patch')
               @csrf 
-               <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-success btn-sm" value="Accept"><i class="fa fa-check"> Accept</i></button>
-              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-danger btn-sm" value="Rejected"><i class="fa fa-times-circle"> Rejected</i></button>
+               <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-success rounded-circle btn-sm" value="Accept"><i class="fa fa-check"></i></button>
+              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-danger rounded-circle btn-sm" value="Rejected"><i class="fa fa-times-circle"></i></button>
             {{-- <a href="{{url('/admin/detail')}}/{{$p->id}}" class="btn btn-primary mt-2"><i class="fa fa-detail">Detail</a> --}}
              </form>
            </td>

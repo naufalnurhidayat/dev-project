@@ -20,6 +20,9 @@ class kembaliController extends Controller
     public function index()
     {
         $kembali = Kembali::all();
+        // $user = User::all();
+        // $pinjam = Pinjam::all();
+        // $barang = Barang::all();
         return view('admin.Admin_invetaris.pengembalian', compact('kembali'));
     }
 
@@ -74,9 +77,19 @@ class kembaliController extends Controller
      * @param  \App\Kembali  $kembali
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kembali $kembali)
+    public function update(Request $request, Pinjam $pinjam)
     {
-        //
+        $status = Pinjam::where('id_pinjam', $pinjam)->first()->status_pinjam;
+
+        if($status != 'Belum') {
+            return redirect('admin/kembali')->with('danger', 'Data ini telah di prove');
+        }else{
+            Pinjam::where('id_pinjam', $pinjam)->Update([
+                'status_kembali' => $request->status_kembali
+            ]);
+        }
+        return redirect('admin/kembali')->with('status', 'Berhasil di Prove');
+
     }
 
     /**
