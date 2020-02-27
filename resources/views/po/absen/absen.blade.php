@@ -1,4 +1,4 @@
-@extends('templates/template-admin')
+@extends('templates/template-po')
 
 @section('title', 'Absen')
 
@@ -86,7 +86,7 @@
         <div class="modal-body">Klik 'Absen' jika ingin absen.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <form action="{{ url('/admin/absen') }}" method="POST">
+          <form action="{{ url('/po/absen') }}" method="POST">
             @csrf
             <button class="btn btn-primary" type="submit" name="absen">Absen</button>
           </form>
@@ -104,7 +104,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form action="{{ url('/absen') }}" method="POST">
+        <form action="{{ url('/po/absen') }}" method="POST">
           @csrf
           <div class="modal-body">
             <div class="form-group">

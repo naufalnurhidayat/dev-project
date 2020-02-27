@@ -1,4 +1,4 @@
-@extends('templates/template-admin')
+@extends('templates/template-sm')
 
 @section('title', 'Edit Karyawan')
 

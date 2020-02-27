@@ -29,7 +29,7 @@
                 <a href="" class="btn btn-warning btn-circle btn-lg" data-toggle="modal" data-target="#izinmodal">
                     <i class="fas fa-exclamation-triangle"></i>
                 </a>
-                <a href="{{url('/')}}" class="btn btn-info btn-circle btn-lg">
+                <a href="{{url('/admin')}}" class="btn btn-info btn-circle btn-lg">
                     <i class="fas fa-home"></i>
                 </a>
             </div>
@@ -104,7 +104,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form action="{{ url('/absen') }}" method="POST">
+        <form action="{{ url('/admin/absen') }}" method="POST">
           @csrf
           <div class="modal-body">
             <div class="form-group">
