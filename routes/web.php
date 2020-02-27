@@ -99,7 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 // SM
     // Home SM
-    Route::get('/sm', 'Admin\HomeController@index');
+    Route::get('/sm', 'SM\HomeController@index');
   // Master
     //inventaris
     Route::get('/barang/index', 'databoxController@index');
@@ -118,46 +118,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sm/pinjam', 'pinjamController@index');
 
     // Karyawan
-    Route::get('/sm/karyawan', 'Admin\KaryawanController@index');
-    Route::get('/sm/karyawan/{user}', 'Admin\KaryawanController@show');
-    Route::delete('/sm/karyawan/{user}', 'Admin\KaryawanController@destroy');
-    Route::get('/sm/karyawan/edit/{user}', 'Admin\KaryawanController@edit');
-    Route::patch('/sm/karyawan/{user}', 'Admin\KaryawanController@update');
-    
-  // Transaksi
-    // Absen
-    Route::get('sm/data-kehadiran', 'Admin\AbsensiController@index');
-    Route::patch('sm/data-kehadiran/{id}', 'Admin\AbsensiController@update');
-
-    //Cuti
-    Route::get('/sm/cuti', 'Admin\CutiController@index');
-    Route::get('/sm/cuti/terima', 'Admin\CutiController@terima');
-    Route::get('/sm/cuti/tolak', 'Admin\CutiController@tolak');
-    Route::patch('/sm/cuti/{cuti}', 'Admin\CutiController@update');
-    
-// --------------------------------------------------------------------------------------
-
-// SM
-    // Home SM
-    Route::get('/sm', 'SM\HomeController@index');
-  // Master
-    //inventaris
-    Route::get('/barang/index', 'databoxController@index');
-    Route::get('/sm/create', 'databoxController@create');
-    Route::post('/barang/store', 'databoxController@store');
-    Route::patch('/sm/barang/update/{id_barang}', 'databoxController@update');
-    Route::get('/sm/barang/edit/{id_barang}', 'databoxController@edit');
-    Route::delete('/sm/destroy/{id_barang}', 'databoxController@destroy');
-    Route::get('/kategori/index', 'KategoriController@index');
-    Route::get('/kategori/create', 'KategoriController@create');
-    Route::post('/kategori/store', 'KategoriController@store');
-    Route::get('/kategori/edit/{id_kategori}', 'KategoriController@edit');
-    Route::patch('/kategori/update/{id_kategori}', 'KategoriController@update');
-    Route::delete('/kategori/destroy/{id_kategori}', 'KategoriController@destroy');
-    //SM Invetaris
-    Route::get('/sm/pinjam', 'pinjamController@index');
-
-    // Karyawan
     Route::get('/sm/karyawan', 'SM\KaryawanController@index');
     Route::get('/sm/karyawan/{user}', 'SM\KaryawanController@show');
     Route::delete('/sm/karyawan/{user}', 'SM\KaryawanController@destroy');
@@ -168,6 +128,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Absen
     Route::get('sm/data-kehadiran', 'SM\AbsensiController@index');
     Route::patch('sm/data-kehadiran/{id}', 'SM\AbsensiController@update');
+    Route::get('sm/absen', 'SM\AbsensiController@create');
+    Route::post('sm/absen', 'SM\AbsensiController@store');
 
     //Cuti
     Route::get('/sm/cuti', 'SM\CutiController@index');
@@ -208,6 +170,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Absen
     Route::get('po/data-kehadiran', 'PO\AbsensiController@index');
     Route::patch('po/data-kehadiran/{id}', 'PO\AbsensiController@update');
+    Route::get('po/absen', 'PO\AbsensiController@create');
+    Route::post('po/absen', 'PO\AbsensiController@store');
 
     //Cuti
     Route::get('/po/cuti', 'PO\CutiController@index');
