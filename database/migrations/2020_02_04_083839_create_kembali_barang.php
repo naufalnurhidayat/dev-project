@@ -20,7 +20,7 @@ class CreateKembaliBarang extends Migration
             $table->integer('id_barang');
             $table->integer('id_pinjam');
             $table->date('tgl_kembali');
-            $table->string('status');
+            $table->string('status_kembali');
             $table->timestamps();
         });
     }

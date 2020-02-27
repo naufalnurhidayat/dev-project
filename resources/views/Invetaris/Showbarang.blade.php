@@ -9,7 +9,7 @@
         <div class="col">
             <div class="card mx-auto" style="width: 25rem; height: 25rem;">
             <div class="card-body">
-            <li>{{$barang->keterangan}}</li>
+            {{-- <li>{{$pinjam->keterangan}}</li> --}}
             </div>
             <a href="/barang" class="btn btn-primary">Kembali</a>
         </div>
