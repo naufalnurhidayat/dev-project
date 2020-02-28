@@ -9,6 +9,7 @@ use App\Kategori;
 use App\Pinjam;
 use App\User;
 use App\Kembali;
+use App\Role;
 
 class barangController extends Controller
 {
@@ -19,15 +20,11 @@ class barangController extends Controller
      */
     public function index()
     {
-        // $kategori = Kategori::all();
-        // $barang = Barang::with('Kategori')->get();
-        // return view('Invetaris.barang', ['barang' => $barang, 'kategori' => $kategori]);
         $barang = Barang::all();
         $kategori = Kategori::all();
         $kembali = Kembali::all();
-        // $pinjam = Pinjam::with('Kategori')->get();
         $pinjam = Pinjam::where('id', auth()->user()->id)->get();
-        return view('Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'kembali' => $kembali, 'barang' => $barang]);
+        return view('Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'barang' => $barang, 'kembali' => $kembali]);
     }
 
     /**

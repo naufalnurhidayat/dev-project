@@ -32,14 +32,14 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::get('/kategori/edit/{id_kategori}', 'KategoriController@edit');
 			Route::patch('/kategori/update/{id_kategori}', 'KategoriController@update');
 			Route::delete('/kategori/destroy/{id_kategori}', 'KategoriController@destroy');
-      //Admin Invetaris
-     Route::get('/admin/pinjam', 'PinjamController@index');
-     Route::get('/admin/kembali', 'kembaliController@index');
-    //  Route::post('/admin/kembali/store', 'kembaliController@store');
-     Route::patch('/admin/status/{pinjam}', 'kembaliController@update');
-     // Route::get('/admin/detail/{id}', 'PinjamController@show');
-     // Route::get('/admin/detail/{id}', 'kembaliController@show');
-     Route::patch('/admin/status/{id_pinjam}', 'PinjamController@update');
+      		//Admin Invetaris
+     		Route::get('/admin/pinjam', 'PinjamController@index');
+     		Route::get('/admin/kembali', 'kembaliController@index');
+    		//  Route::post('/admin/kembali/store', 'kembaliController@store');
+			Route::patch('/admin/status/{pinjam}', 'PinjamController@update');
+     		Route::patch('/admin/kembali/status/{kembali}', 'kembaliController@update');
+     		// Route::get('/admin/detail/{id}', 'PinjamController@show');
+     		// Route::get('/admin/detail/{id}', 'kembaliController@show');
 		
 			// Karyawan
 			Route::get('/admin/karyawan', 'Admin\KaryawanController@index');

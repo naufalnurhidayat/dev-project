@@ -45,7 +45,7 @@
            <td>{{$box->Kategori->nama_kategori}}</td>
            <td>{{$box->jumlah_pinjam}}</td>
            <td>{{$box->tgl_pinjam}}</td>
-           <td><span class="badge badge-warning">{{$box->Kembali['status_kembali']}}</span></td>
+           <td>{{$box->Kembali['status_kembali']}}</td>
            <td>
             @if( $box->status == "Pending" )
                 <span class="badge badge-warning btn-sm">Pending</span>

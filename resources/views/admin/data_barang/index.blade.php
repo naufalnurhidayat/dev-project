@@ -23,7 +23,6 @@
     </div>
     
     <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
-      <a href="" class="btn btn-success mb-2"><i class="fa fa-print"> Print</i></a>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">

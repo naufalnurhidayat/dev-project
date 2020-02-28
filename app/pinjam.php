@@ -26,4 +26,8 @@ class Pinjam extends Model
     public function kembali(){
         return $this->beLongsTo('App\Kembali', 'id_kembali', 'id_kembali');
     }
+
+    public function role(){
+        return $this->beLongsTo('App\Role', 'id_role', 'id');
+    }
 }
