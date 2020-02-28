@@ -20,7 +20,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = Projek_Karyawan::where('id_karyawan', auth()->user()->id);
         return view('po/karyawan/index', compact('user'));
     }
 

@@ -17,4 +17,12 @@ class Kategori extends Model
     public function pinjam(){
         return $this->hasMany('App\Pinjam', 'id_pinjam');
     }
+
+    public function kembali(){
+        return $this->hasMany('App\Kembali', 'id_kembali');
+    }
+
+    public function temporari(){
+        return $this->hasMany('App\Temporari', 'id_temp');
+    }
 }

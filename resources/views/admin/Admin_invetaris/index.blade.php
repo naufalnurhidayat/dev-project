@@ -25,12 +25,12 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr align="center">
-              <th>Nama Peminjam</th>
+              <th>NIP</th>
+              <th>Nama</th>
               <th>Nama Barang</th>
               <th>Jumlah Pinjam</th>
               <th>Tanggal Pinjam</th>
-              <th>Status</th>  
-              <th>Keterangan</th>  
+              <th>Status</th>    
               <th>Action</th>
             </tr>
           </thead>
@@ -38,18 +38,26 @@
           <tbody>
             @foreach($pinjam as $p)
            <tr align="center"> 
-           <td>{{$p->Karyawan['nama']}}</td> 
+           <td>{{$p->User['nip']}}</td>
+           <td>{{$p->User['nama']}}</td>
            <td>{{$p->Barang['nama_barang']}}</td>
            <td>{{$p->jumlah_pinjam}}</td>
            <td>{{$p->tgl_pinjam}}</td>
-           <td><span class="bagde badge-warning rounded">{{$p->status}}</span></td>
-           <td>{{$p->keterangan}}</td>
+           <td>@if( $p->status == "Pending" )
+                <span class="badge badge-warning btn-sm">Pending</span>
+               @elseif ( $p->status == "Accept" )
+                <span class="badge badge-success btn-sm">Accept</span>
+               @else
+                <span class="badge badge-danger btn-sm">Rejected</span>
+               @endif
+           </td>
            <td>
-            <form class="d-inline" method="post" action="">
-              {{ method_field('DELETE')}}
-              {{csrf_field()  }}
-              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-success btn-sm mb-2"><i class="fa fa-check"></i>Accept</button>
-              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm"><i class="fa fa-times-circle"></i> Rejected</button>
+           <form class="d-inline" method="POST" action="{{url('/admin/status')}}/{{$p->id_pinjam}}">
+              @method('patch')
+              @csrf 
+               <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-success rounded-circle btn-sm" value="Accept"><i class="fa fa-check"></i></button>
+              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-danger rounded-circle btn-sm" value="Rejected"><i class="fa fa-times-circle"></i></button>
+            {{-- <a href="{{url('/admin/detail')}}/{{$p->id}}" class="btn btn-primary mt-2"><i class="fa fa-detail">Detail</a> --}}
              </form>
            </td>
            </tr>

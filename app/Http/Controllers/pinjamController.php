@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Pinjam;
 use App\Kategori;
 use App\Barang;
-use App\Karyawan;
+use App\User;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\Controller;
 
@@ -42,28 +42,24 @@ class pinjamController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->id_barang);
         $request->validate([
-
-            'nabar' => 'required',
-            'kategory' => 'required',
-            'type' => 'required',
-            'stok' => 'required',
-            'jumlah' => 'required',
-            'status' => 'pending',
             'keterangan' => 'required'
         ]);
 
         Pinjam::create([
             'id_barang' => $request->id_barang,
             'id_kategori' => $request->id_kategori,
+            'id' => auth()->user()->id,
             'type' => $request->type,
             'stok' => $request->stok,
-            'jumlah_pinjam' => $request->jumlah,
+            'jumlah_pinjam' => $request->jumlah +1,
             'tgl_pinjam' => date("Y-m-d"),
             'status' => 'Pending',
+            // 'status_kembali' => 'Belum',
             'keterangan' => $request->keterangan
         ]);
-        return redirect('/invetaris/pengajuan')->with('status', 'Data Berhasil Di Tambah!!!');
+        return redirect('/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');
     }
 
     /**
@@ -72,9 +68,10 @@ class pinjamController extends Controller
      * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function show(pinjam $pinjam)
+    public function show(pinjam $id)
     {
-        //
+        $pinjam = Pinjam::where('id', $id->id)->get();
+        return view('admin.Admin_invetaris.show', compact('pinjam'));
     }
 
     /**
@@ -92,12 +89,13 @@ class pinjamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\pinjam  $pinjam
+     * @param  \App\Pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pinjam $pinjam)
-    {
-        //
+    public function update(Request $request, Pinjam $pinjam)
+    { 
+        Pinjam::where('id_pinjam', $pinjam->id_pinjam)->Update(['status' => $request['status']]);
+        return redirect('/admin/pinjam')->with('status', 'Success');
     }
 
     /**
@@ -106,7 +104,7 @@ class pinjamController extends Controller
      * @param  \App\pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pinjam $pinjam)
+    public function destroy(Pinjam $pinjam)
     {
         //
     }
