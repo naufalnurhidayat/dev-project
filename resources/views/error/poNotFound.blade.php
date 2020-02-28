@@ -1,4 +1,4 @@
-@extends('templates/template-home')
+@extends('templates/template-po')
 
 @section('title', '404 Not Found')
 

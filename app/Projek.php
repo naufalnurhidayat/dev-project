@@ -10,6 +10,6 @@ class Projek extends Model
     protected $fillable = ['project'];
 
     public function projek_karyawan() {
-        return $this->hasMany('App\Projek_Karyawan');
+        return $this->hasMany('App\Projek_Karyawan', 'id');
     }
 }

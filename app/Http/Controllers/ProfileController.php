@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Karyawan;
+use App\User;
 use App\Role;
 use App\Pendidikan;
-use App\Agama;
+use App\Stream;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -20,7 +20,7 @@ class ProfileController extends Controller
         if ($nama != auth()->user()->nama) {
             return view('error/userNotFound');
         }
-        return view('user/profile');
+        return view('profile/profile');
     }
 
     /**
@@ -61,12 +61,17 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
+        if ($id != auth()->user()->id) {
+            return view('error/userNotFound');
+        }
+
         $role = Role::all();
+        $stream = Stream::all();
         $pendidikan = Pendidikan::all();
-        $agama = Agama::all();
-        return view('user/edit', ['role' => $role, 'pendidikan'  => $pendidikan, 'agama' => $agama]);
+        $agama = ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu'];
+        return view('profile/edit', ['role' => $role, 'pendidikan'  => $pendidikan, 'stream' => $stream, 'agama' => $agama]);
     }
 
     /**
@@ -78,7 +83,22 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        User::where('id', $id)->Update([
+            'nip' => $request->nip,
+            'nama' => $request->nama,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'email' => $request->email,
+            'jenkel' => $request->jenkel,
+            'id_role' => $request->id_role,
+            'id_pendidikan' => $request->id_pendidikan,
+            'thn_join' => $request->thn_join,
+            'no_telp' => $request->no_telp,
+            'agama' => $request->agama,
+            'alamat' => $request->alamat
+        ]);
+
+        return redirect('/profile/' . $request->nama)->with('status', 'Profile berhasil diubah');
     }
 
     /**

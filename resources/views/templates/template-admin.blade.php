@@ -42,7 +42,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin') }}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-home"></i>
           <span>Home</span></a>
       </li>
 
@@ -68,7 +68,7 @@
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#absensi" aria-expanded="true" aria-controls="absensi">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-clipboard"></i>
             <span>Absensi</span>
         </a>
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -144,7 +144,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="{{ url('/profile/'.auth()->user()->nama) }}">
+                <a class="dropdown-item" href="{{ url('/admin/profile/'.auth()->user()->nama) }}">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>

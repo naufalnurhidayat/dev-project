@@ -20,8 +20,10 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $user = Projek_Karyawan::where('id_karyawan', auth()->user()->id);
-        return view('po/karyawan/index', compact('user'));
+        $user = Projek_Karyawan::where('id_karyawan', auth()->user()->id)->get();
+        $projek = Projek_Karyawan::where('id_projek', $user[0]->id_projek)->get();
+        $projek_karyawan = Projek_Karyawan::where('id_projek', $user[0]->id_projek)->first();
+        return view('po/karyawan/index', ['projek' => $projek, 'projek_karyawan' => $projek_karyawan]);
     }
 
     /**
@@ -53,7 +55,8 @@ class KaryawanController extends Controller
      */
     public function show(User $user)
     {
-        return view('po/karyawan/detailkaryawan', compact('user'));
+        $projek = Projek_Karyawan::where('id_karyawan', $user->id)->first();
+        return view('po/karyawan/detailkaryawan', ['user' => $user, 'projek' => $projek]);
     }
 
     /**
