@@ -23,7 +23,6 @@ class CreatePinjamBarang extends Migration
             $table->integer('jumlah_pinjam');
             $table->date('tgl_pinjam');
             $table->string('status');
-            $table->string('status_kembali');
             $table->string('keterangan');
             $table->timestamps();
         });

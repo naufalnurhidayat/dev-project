@@ -41,13 +41,20 @@
            <td>{{$k->User['nama']}}</td> 
            <td>{{$k->Barang['nama_barang']}}</td>
            <td>{{$k->tgl_kembali}}</td>
-           <td><span class="badge badge-warning badge-sm">{{$k->status_kembali}}</td></span>
+           <td>@if( $k->status_kembali == "Belum" )
+            <span class="badge badge-warning btn-sm">Belum Kembali</span>
+           @else
+            <span class="badge badge-success btn-sm">Sudah Kembali</span>
+           @endif
+       </td>
            <td>
-            <form action="{{url('/admin/status/'. $k->id_pinjam)}}" method="post">
+            <form action="{{url('/admin/kembali/status/'. $k->id_kembali)}}" method="post">
               @method('patch')
               @csrf
-               <button class="btn btn-success rounded-circle" name="status_kembali" value="accept"><i class="fas fa-check"></i></button>
-               <button class="btn btn-danger rounded-circle" name="status_kembali" value="rejected"><i class="fas fa-times-circle"></i></button>
+              @if ($k->status_kembali == "Belum" )
+               <button class="btn btn-success rounded-circle" name="status_kembali" value="success"><i class="fas fa-check"></i></button>
+              @else
+              @endif  
               </form>
            </td>
            </tr>
