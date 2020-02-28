@@ -7,7 +7,6 @@
           <h3 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h3>
           <form action="<?php echo e(url('/cuti')); ?>" method="post">
             <?php echo csrf_field(); ?>
-            <input type="hidden" value="2" name="id_karyawan">
             <div class="form-group">
               <label for="karyawan">Karyawan</label>
               <input type="text" class="form-control <?php $__errorArgs = ['karyawan'];
@@ -17,7 +16,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="karyawan" id="karyawan" value="iqbal" readonly>
+unset($__errorArgs, $__bag); ?>" name="karyawan" id="karyawan" value="<?php echo e(auth()->user()->nama); ?>" readonly>
               <?php $__errorArgs = ['karyawan'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

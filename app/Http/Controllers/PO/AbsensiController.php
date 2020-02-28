@@ -88,7 +88,7 @@ class AbsensiController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -132,6 +132,6 @@ class AbsensiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

@@ -18,6 +18,10 @@ Route::group(['middleware' => 'auth'], function () {
 		// ADMIN
 			// Home Admin
 			Route::get('/admin', 'Admin\HomeController@index')->name('admin');
+
+			Route::get('/admin/profile/{nama}', 'Admin\ProfileController@index');
+			Route::get('/admin/profile/edit/{id}', 'Admin\ProfileController@edit');
+			Route::patch('/admin/profile/edit/{id}', 'Admin\ProfileController@update');
 		  // Master
 			//inventaris
 			Route::get('/barang/index', 'databoxController@index');
@@ -98,6 +102,9 @@ Route::group(['middleware' => 'auth'], function () {
 		
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
+			Route::get('/admin/cuti/showAdmin', 'Admin\CutiController@cutiAdmin');
+			Route::get('/admin/cuti/create', 'Admin\CutiController@create');
+			Route::post('/admin/cuti', 'Admin\CutiController@store');
 			Route::get('/admin/cuti/terima', 'Admin\CutiController@terima');
 			Route::get('/admin/cuti/tolak', 'Admin\CutiController@tolak');
       Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
@@ -109,6 +116,10 @@ Route::group(['middleware' => 'auth'], function () {
 		// SM
 			// Home SM
 			Route::get('/sm', 'SM\HomeController@index')->name('sm');
+
+			Route::get('/sm/profile/{nama}', 'SM\ProfileController@index');
+			Route::get('/sm/profile/edit/{id}', 'SM\ProfileController@edit');
+			Route::patch('/sm/profile/edit/{id}', 'SM\ProfileController@update');
 		  // Master
 			//inventaris
 			Route::get('/sm/barang/index', 'databoxController@index');
@@ -161,6 +172,10 @@ Route::group(['middleware' => 'auth'], function () {
 		// PO
 			// Home PO
 			Route::get('/po', 'PO\HomeController@index')->name('po');
+
+			Route::get('/po/profile/{nama}', 'PO\ProfileController@index');
+			Route::get('/po/profile/edit/{id}', 'PO\ProfileController@edit');
+			Route::patch('/po/profile/edit/{id}', 'PO\ProfileController@update');
 		  // Master
 			//inventaris
 			Route::get('/po/barang/index', 'databoxController@index');
@@ -213,7 +228,8 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::get('/', 'Home@index')->name('home');
 		
 			Route::get('/profile/{nama}', 'ProfileController@index');
-			Route::get('/profile/edit', 'ProfileController@edit');
+			Route::get('/profile/edit/{id}', 'ProfileController@edit');
+			Route::patch('/profile/edit/{id}', 'ProfileController@update');
 		
 			// Absen
 			Route::get('/absen', 'AbsenController@index');

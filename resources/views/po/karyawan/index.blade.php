@@ -16,7 +16,8 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h3 class="m-0 font-weight-bold text-primary">Data Karyawan</h3>
+                <h4 class="m-0 font-weight-bold text-primary d-inline">Data Karyawan</h4>
+                <h6 class="m-0 font-weight-bold text-primary float-right mt-2">Projek: {{ $projek_karyawan->Projek['project'] }}</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -27,21 +28,22 @@
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
-                      <th>Role</th>
+                      <th>Stream</th>
+                      <th>Projek</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($user as $k)
+                  @foreach ($projek as $k)
                     <tr align="center">
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $k->nip }}</td>
-                      <td>{{ $k->nama }}</td>
-                      <td>{{ $k->jenkel }}</td>
-                      <td>{{ $k->Role['role'] }}</td>
+                      <td>{{ $k->User['nip'] }}</td>
+                      <td>{{ $k->User['nama'] }}</td>
+                      <td>{{ $k->User['jenkel'] }}</td>
+                      <td>{{ $k->User->Stream['stream'] }}</td>
+                      <td>{{ $k->Projek->project }}</td>
                       <td>
-                        <a href="{{url('/admin/karyawan')}}/{{$k->id}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
-                        <a href="{{url('/admin/karyawan/edit')}}/{{$k->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="{{ url('/po/karyawan/' . $k->User['id']) }}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
                         <form action="{{ url('/admin/karyawan') }}/{{$k->id}}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf

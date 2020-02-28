@@ -10,10 +10,10 @@ class Projek_Karyawan extends Model
     protected $fillable = ['id_karyawan', 'id_projek'];
 
     public function projek() {
-        return $this->belongsTo('App\Projek');
+        return $this->belongsTo('App\Projek', 'id_projek', 'id');
     }
 
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'id_karyawan', 'id');
     }
 }

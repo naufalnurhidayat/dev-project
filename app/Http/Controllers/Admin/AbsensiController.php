@@ -112,10 +112,18 @@ class AbsensiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $status = Absen::where('id_absen', $id)->first()->status;
+        date_default_timezone_set("Asia/Jakarta");
         
-        if($status != 'Pending') {
-            return redirect('/sm/data-kehadiran')->with('danger', 'Data ini telah di prove');
+        // $jam_awal = explode(':', $data_absen->jam_masuk);
+        // $satu_jam = $jam_awal[0] + 1;
+        // $waktu = $satu_jam . ':' . $jam_awal[1] . ':' . $jam_awal[2];
+    
+        // if($data_absen->jam_masuk != $waktu && $data_absen->status == 'Pending') {
+            
+        // }
+
+        if($data_absen->status != 'Pending') {
+            return redirect('/admin/data-kehadiran')->with('danger', 'Data ini telah di prove');
         } else {
             Absen::where('id_absen', $id)->Update([
                 'status' => $request->prove

@@ -111,9 +111,9 @@ class AbsensiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $status = Absen::where('id_absen', $id)->first()->status;
+        $data_absen = Absen::where('id_absen', $id)->first();
         
-        if($status != 'Pending') {
+        if($data_absen->status != 'Pending') {
             return redirect('/sm/data-kehadiran')->with('danger', 'Data ini telah di prove');
         } else {
             Absen::where('id_absen', $id)->Update([

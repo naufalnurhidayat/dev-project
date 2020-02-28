@@ -23,7 +23,7 @@
                             <li>Pendidikan: <?php echo e($user->Pendidikan['pendidikan']); ?></li>
                             <li>Tahun Join: <?php echo e($user->thn_join); ?></li>
                             <li>No. Telpon: <?php echo e($user->no_telp); ?></li>
-                            <li>Agama: <?php echo e($user->Agama['agama']); ?></li>
+                            <li>Agama: <?php echo e($user->agama); ?></li>
                             <li>Alamat: <?php echo e($user->alamat); ?></li>
                         </ul>
                         <a href="<?php echo e(url('/admin/karyawan')); ?>" class="btn btn-primary ml-4">Kembali</a>
