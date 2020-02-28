@@ -56,7 +56,6 @@ class pinjamController extends Controller
             'jumlah_pinjam' => $request->jumlah +1,
             'tgl_pinjam' => date("Y-m-d"),
             'status' => 'Pending',
-            // 'status_kembali' => 'Belum',
             'keterangan' => $request->keterangan
         ]);
         return redirect('/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');
@@ -92,10 +91,10 @@ class pinjamController extends Controller
      * @param  \App\Pinjam  $pinjam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pinjam $id_pinjam)
+    public function update(Request $request, $pinjam)
     { 
-        return $id_pinjam; 
-        Pinjam::where('id_pinjam', $pinjam->id_pinjam)->Update(['status' => $request['status']]);
+    //    return $pinjam;
+        Pinjam::where('id_pinjam', $pinjam)->Update(['status' => $request['status']]);
         return redirect('/admin/pinjam')->with('status', 'Success');
     }
 
@@ -109,4 +108,18 @@ class pinjamController extends Controller
     {
         //
     }
+
+    // public function Ubah(Request $request, Pinjam $Pinjam)
+    // {
+    //     dd($Pinjam);
+    //     $data = DB::table('pinjam_barang')->get();
+    //      foreach($data as $media) {
+    //     if ( $media->status == 'pending' ) {
+    //         DB::table('pinjam_barang')->where('status',$id_pinjam->id_pinjam)->update(['status' => $request['status']]);
+    //     }
+    // }
+    // $media->status = $request->status;
+    // $media->save();
+    // return redirect()->back()->with('message', 'Status changed!');
+    // }
 }

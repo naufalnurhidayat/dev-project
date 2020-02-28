@@ -52,7 +52,7 @@
                @endif
            </td>
            <td>
-           <form class="d-inline" method="POST" action="{{url('/admin/status')}}/{{$p->id_pinjam}}">
+           <form method="post" action="{{url('/admin/status')}}/{{$p->id_pinjam}}">
               @method('patch')
               @csrf 
                <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-success rounded-circle btn-sm" value="Accept"><i class="fa fa-check"></i></button>

@@ -53,7 +53,6 @@ class kembaliController extends Controller
             'stok' => $request->stok,
             'jumlah_pinjam' => $request->jumlah +1,
             'tgl_kembali' => date("Y-m-d"),
-            // 'status' => 'pending',
             'status_kembali' => 'Belum',
             'keterangan' => $request->keterangan
         ]);
@@ -90,18 +89,11 @@ class kembaliController extends Controller
      * @param  \App\Kembali  $kembali
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pinjam $pinjam)
+    public function update(Request $request, $kembali)
     {
-        $status = Pinjam::where('id_pinjam', $pinjam)->first()->status_pinjam;
-
-        if($status != 'Belum') {
-            return redirect('admin/kembali')->with('danger', 'Data ini telah di prove');
-        }else{
-            Pinjam::where('id_pinjam', $pinjam)->Update([
-                'status_kembali' => $request->status_kembali
-            ]);
-        }
-        return redirect('admin/kembali')->with('status', 'Berhasil di Prove');
+        // return $kembali;
+        Kembali::where('id_kembali', $kembali)->Update(['status_kembali' => $request['status_kembali']]);
+        return redirect('/admin/kembali')->with('status', 'Success');
 
     }
 
