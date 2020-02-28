@@ -58,7 +58,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $c->User['nama'] }}</td>
                 <td>{{ $c->User['jenkel'] }}</td>
-                <td>{{ $c->User->Role['role'] }}</td>
+                <td>{{ $c->User->Stream['stream'] }}</td>
                 <td>{{ $c->tgl_cuti }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                 <td>

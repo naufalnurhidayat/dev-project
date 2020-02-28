@@ -113,8 +113,7 @@ class AuthController extends Controller
         ]);
         
         Projek_Karyawan::insert([
-            ['id_karyawan' => $u->id, 'id_projek' => 2],
-            ['id_karyawan' => $u->id, 'id_projek' => 3]
+            ['id_karyawan' => $u->id, 'id_projek' => 2]
         ]);
         return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan!');
     }
