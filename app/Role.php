@@ -13,4 +13,8 @@ class Role extends Model
     public function user() {
         return $this->hasMany('App\User', 'id');
     }
+
+    public function Pinjam(){
+        return $this->hasMany('App\Pinjam', 'id_pinjam');
+    }
 }

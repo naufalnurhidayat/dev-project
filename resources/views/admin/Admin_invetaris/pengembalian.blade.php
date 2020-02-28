@@ -51,8 +51,10 @@
             <form action="{{url('/admin/kembali/status/'. $k->id_kembali)}}" method="post">
               @method('patch')
               @csrf
-               <button class="btn btn-success rounded-circle" name="status_kembali" value="succes"><i class="fas fa-check"></i></button>
-               {{-- <button class="btn btn-danger rounded-circle" name="status_kembali" value="not"><i class="fas fa-times-circle"></i></button> --}}
+              @if ($k->status_kembali == "Belum" )
+               <button class="btn btn-success rounded-circle" name="status_kembali" value="success"><i class="fas fa-check"></i></button>
+              @else
+              @endif  
               </form>
            </td>
            </tr>

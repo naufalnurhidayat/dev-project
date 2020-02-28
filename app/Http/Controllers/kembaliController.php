@@ -19,10 +19,7 @@ class kembaliController extends Controller
      */
     public function index()
     {
-        $kembali = Kembali::all();
-        // $user = User::all();
-        // $pinjam = Pinjam::all();
-        // $barang = Barang::all();
+        $kembali = Kembali::orderBy('tgl_kembali', 'desc')->get();
         return view('admin.Admin_invetaris.pengembalian', compact('kembali'));
     }
 
@@ -93,6 +90,13 @@ class kembaliController extends Controller
     {
         // return $kembali;
         Kembali::where('id_kembali', $kembali)->Update(['status_kembali' => $request['status_kembali']]);
+        if($request['status_kembali'] == "success"){
+            $k = Kembali::where('id_kembali', $kembali)->first();
+            $barang = Barang::where('id_barang', $k->id_barang)->first();
+            // return $barang;
+            $i = $barang->stok+1;
+            Barang::where('id_barang', $barang->id_barang)->update(['stok' => $i]);
+        }
         return redirect('/admin/kembali')->with('status', 'Success');
 
     }

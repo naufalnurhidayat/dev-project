@@ -6,6 +6,7 @@ use App\Pinjam;
 use App\Kategori;
 use App\Barang;
 use App\User;
+use App\Role;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\Controller;
 
@@ -18,7 +19,8 @@ class pinjamController extends Controller
      */
     public function index()
     { 
-        $pinjam = Pinjam::all();
+        // $pinjam = Pinjam::all();
+        $pinjam = Pinjam::orderBy('tgl_pinjam', 'desc')->get();
         return view('admin.Admin_invetaris.index', compact('pinjam'));
     }
 
@@ -29,9 +31,9 @@ class pinjamController extends Controller
      */
     public function create($id_barang)
     {
-        $barang = Barang::where('id_barang', $id_barang)->first();
-        $kategori = Kategori::where('id_kategori', $barang->id_kategori)->first();
-        return view('Invetaris.formInvetaris', ['barang' => $barang, 'kategori' => $kategori]);
+        // $barang = Barang::where('id_barang', $id_barang)->first();
+        // $kategori = Kategori::where('id_kategori', $barang->id_kategori)->first();
+        // return view('Invetaris.formInvetaris', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
     /**
@@ -53,7 +55,7 @@ class pinjamController extends Controller
             'id' => auth()->user()->id,
             'type' => $request->type,
             'stok' => $request->stok,
-            'jumlah_pinjam' => $request->jumlah +1,
+            'jumlah_pinjam' => 1,
             'tgl_pinjam' => date("Y-m-d"),
             'status' => 'Pending',
             'keterangan' => $request->keterangan
@@ -92,9 +94,15 @@ class pinjamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $pinjam)
-    { 
-    //    return $pinjam;
+    {
         Pinjam::where('id_pinjam', $pinjam)->Update(['status' => $request['status']]);
+        if($request['status'] == "Accept"){
+            $p = Pinjam::where('id_pinjam', $pinjam)->first();
+            $barang = Barang::where('id_barang', $p->id_barang)->first();
+            // return $barang->stok-1;
+            $k = $barang->stok-1;
+            Barang::where('id_barang', $barang->id_barang)->update(['stok' => $k]);
+        }
         return redirect('/admin/pinjam')->with('status', 'Success');
     }
 
@@ -108,18 +116,4 @@ class pinjamController extends Controller
     {
         //
     }
-
-    // public function Ubah(Request $request, Pinjam $Pinjam)
-    // {
-    //     dd($Pinjam);
-    //     $data = DB::table('pinjam_barang')->get();
-    //      foreach($data as $media) {
-    //     if ( $media->status == 'pending' ) {
-    //         DB::table('pinjam_barang')->where('status',$id_pinjam->id_pinjam)->update(['status' => $request['status']]);
-    //     }
-    // }
-    // $media->status = $request->status;
-    // $media->save();
-    // return redirect()->back()->with('message', 'Status changed!');
-    // }
 }

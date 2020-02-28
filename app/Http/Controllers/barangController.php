@@ -9,6 +9,7 @@ use App\Kategori;
 use App\Pinjam;
 use App\User;
 use App\Kembali;
+use App\Role;
 
 class barangController extends Controller
 {
