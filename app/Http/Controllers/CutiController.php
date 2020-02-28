@@ -18,7 +18,7 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $cuti = Cuti::where('id_karyawan', 2)->orderBy('tgl_cuti', 'desc')->get();
+        $cuti = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
         return view('cuti/index', ['cuti' => $cuti]);
     }
 
@@ -41,21 +41,24 @@ class CutiController extends Controller
      */
     public function store(Request $request)
     {
+        date_default_timezone_set("Asia/Jakarta");
+        if (auth()->user()->jatah_cuti == 0) {
+            return redirect('/cuti')->with('status', 'Jatah Cuti Anda Telah Habis');
+        }
         $request->validate([
-            'karyawan' => 'required',
-            'jencut' => 'required',
+            'jencut' => 'required|numeric',
             'awal' => 'required',
             'akhir' => 'required',
             'alasan' => 'required'
         ]);
         Cuti::create([
-            'id_karyawan' => $request->id_karyawan,
+            'id_karyawan' => auth()->user()->id,
             'id_jenis_cuti' => $request->jencut,
-            'tgl_cuti' => date("Y-m-d"),
+            'tgl_cuti' => date("Y-m-d H:i:s"),
             'awal_cuti' => $request->awal,
             'akhir_cuti' => $request->akhir,
             'alasan_cuti' => $request->alasan,
-            'status' => 'Pending'
+            'status' => 'Diproses'
         ]);
         return redirect('/cuti')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
     }

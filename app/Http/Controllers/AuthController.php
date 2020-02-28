@@ -18,7 +18,17 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('login/login');
+        if (auth()->user()) {
+            if (auth()->user()->role->role == "Admin") {
+                return redirect('/admin');
+            } elseif (auth()->user()->role->role == "Scrum Master") {
+                return redirect('/sm');
+            } elseif (auth()->user()->role->role == "Product Owner") {
+                return redirect('/po');
+            } elseif (auth()->user()->role->role == "User") {
+                return redirect('/');
+            }
+        } else return view('login/login');
     }
 
     public function login(Request $request)

@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('jenkel', ['Laki-laki', 'Perempuan']);
+            $table->integer('jatah_cuti')->nullable();
             $table->integer('id_role');
             $table->integer('id_stream');
             $table->integer('id_pendidikan');
