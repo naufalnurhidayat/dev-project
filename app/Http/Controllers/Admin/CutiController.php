@@ -18,7 +18,7 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $cuti = Cuti::where('status', 'Pending')->orderBy('tgl_cuti', 'desc')->get();
+        $cuti = Cuti::where('status', 'Diproses')->orderBy('tgl_cuti', 'desc')->get();
         return view('admin/cuti/index', ['cuti' => $cuti]);
     }
 
@@ -29,7 +29,8 @@ class CutiController extends Controller
      */
     public function create()
     {
-        //
+        $jencut = JenisCuti::all();
+        return view('admin/cuti/create', ['jencut' => $jencut]);
     }
 
     /**
@@ -40,7 +41,26 @@ class CutiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        date_default_timezone_set("Asia/Jakarta");
+        if (auth()->user()->jatah_cuti == 0) {
+            return redirect('/admin/cuti/showAdmin')->with('jatah', 'Jatah Cuti Anda Telah Habis');
+        }
+        $request->validate([
+            'jencut' => 'required|numeric',
+            'awal' => 'required',
+            'akhir' => 'required',
+            'alasan' => 'required'
+        ]);
+        Cuti::create([
+            'id_karyawan' => auth()->user()->id,
+            'id_jenis_cuti' => $request->jencut,
+            'tgl_cuti' => date("Y-m-d H:i:s"),
+            'awal_cuti' => $request->awal,
+            'akhir_cuti' => $request->akhir,
+            'alasan_cuti' => $request->alasan,
+            'status' => 'Diproses'
+        ]);
+        return redirect('/admin/cuti/showAdmin')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
     }
 
     /**
@@ -67,6 +87,12 @@ class CutiController extends Controller
         //
     }
 
+    public function cutiAdmin()
+    {
+        $ct = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
+        return view('admin/cuti/show', ['ct' => $ct]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -88,6 +114,11 @@ class CutiController extends Controller
     public function update(Request $request, Cuti $cuti)
     {
         Cuti::Where('id', $cuti->id)->Update(['status' => $request['status']]);
+        if ($request['status'] == "Terima") {
+            $karyawan = User::where('id', $cuti->id_karyawan)->first();
+            $k = $karyawan->jatah_cuti -1;
+            User::Where('id', $cuti->id_karyawan)->update(['jatah_cuti' => $k]);
+        }
         return redirect('/admin/cuti')->with('status', 'Status Berhasil Di Edit');
     }
 

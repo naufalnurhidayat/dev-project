@@ -102,6 +102,9 @@ Route::group(['middleware' => 'auth'], function () {
 		
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
+			Route::get('/admin/cuti/showAdmin', 'Admin\CutiController@cutiAdmin');
+			Route::get('/admin/cuti/create', 'Admin\CutiController@create');
+			Route::post('/admin/cuti', 'Admin\CutiController@store');
 			Route::get('/admin/cuti/terima', 'Admin\CutiController@terima');
 			Route::get('/admin/cuti/tolak', 'Admin\CutiController@tolak');
       Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
