@@ -27,7 +27,7 @@
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
-                      <th>Role</th>
+                      <th>Stream</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -38,7 +38,7 @@
                       <td>{{ $k->nip }}</td>
                       <td>{{ $k->nama }}</td>
                       <td>{{ $k->jenkel }}</td>
-                      <td>{{ $k->Role['role'] }}</td>
+                      <td>{{ $k->Stream['stream'] }}</td>
                       <td>
                         <a href="{{url('/admin/karyawan')}}/{{$k->id}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
                         <a href="{{url('/admin/karyawan/edit')}}/{{$k->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
