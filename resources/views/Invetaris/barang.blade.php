@@ -57,6 +57,7 @@
            </td>
            <td>
              <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"> Print</i></a>
+             @if( $box->status_kembali == "Belum" )
              <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Pengembalian</a>
            {{-- <a href="{{url('/pinjam/create')}}/{{$box->id_barang}}" class="btn btn-success btn-sm"><i class="fa fa-book"></i> Pinjam</a> --}}
            {{-- </td>
@@ -101,7 +102,8 @@
       </div>
     </div>
   </div>
-
+        @else
+        @endif
 </td>
 </tr>
 @endforeach

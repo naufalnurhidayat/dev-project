@@ -191,14 +191,22 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::patch('/po/kategori/update/{id_kategori}', 'KategoriController@update');
 			Route::delete('/po/kategori/destroy/{id_kategori}', 'KategoriController@destroy');
 			//PO Invetaris
-       Route::get('/po/pinjam', 'PinjamController@index');
-       Route::get('/po/kembali', 'kembaliController@index');
+       Route::get('/po/pinjam', 'PO\PinjamController@index');
+       Route::get('/po/kembali', 'PO\kembaliController@index');
        Route::post('/po/kembali/store', 'kembaliController@store');
-       Route::patch('/po/status/{pinjam}', 'kembaliController@update');
-       // Route::get('/po/detail/{id}', 'PinjamController@show');
-       // Route::get('/po/detail/{id}', 'kembaliController@show');
        Route::patch('/po/status/{id_pinjam}', 'PinjamController@update');
-		
+       Route::patch('/po/status/{pinjam}', 'kembaliController@update');
+       //Invetaris
+      Route::get('/po/invetaris', 'PO\barangController@index');
+      Route::post('/po/pengajuan/store', 'PO\PinjamController@store');
+      Route::post('/kembali/store', 'kembaliController@store');
+      Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
+      Route::get('/barang', 'barangController@index');
+      Route::get('/show/{id_pinjam}', 'barangController@show');
+      Route::get('/po/tampil/table', 'PO\barangController@tampil');
+      // Route::get('/invetaris/keranjang', 'temporariController@index');
+      Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
+		//---------------------------------------------------------------------------------------
 			// Karyawan
 			Route::get('/po/karyawan', 'PO\KaryawanController@index');
 			Route::get('/po/karyawan/{user}', 'PO\KaryawanController@show');

@@ -97,12 +97,21 @@
         <div id="inventori" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{url('/po/pinjam')}}">Data Pinjam</a>
+          <a class="collapse-item" href="{{url('/po/kembali')}}">Pengembalian</a>
           </div>
         </div>
       </li>
 
+      
       <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
+      <hr class="sidebar-divider mt-3">
+      <div class="sidebar-heading">User</div>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/po/invetaris') }}">
+          <i class="fas fa-fw fa-box"></i>
+          <span>Peminjaman</span></a>
+      </li>
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
