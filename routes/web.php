@@ -193,9 +193,9 @@ Route::group(['middleware' => 'auth'], function () {
 			//PO Invetaris
        Route::get('/po/pinjam', 'PO\PinjamController@index');
        Route::get('/po/kembali', 'PO\kembaliController@index');
-       Route::post('/po/kembali/store', 'kembaliController@store');
-       Route::patch('/po/status/{id_pinjam}', 'PinjamController@update');
-       Route::patch('/po/status/{pinjam}', 'kembaliController@update');
+       Route::post('/po/kembali/store', 'PO\kembaliController@store');
+       Route::patch('/po/status/{pinjam}', 'PO\PinjamController@update');
+       Route::patch('/po/kembali/status/{kembali}', 'PO\kembaliController@update');
        //Invetaris
       Route::get('/po/invetaris', 'PO\barangController@index');
       Route::post('/po/pengajuan/store', 'PO\PinjamController@store');
