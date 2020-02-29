@@ -42,7 +42,7 @@
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $da->User['nip'] }}</td>
                   <td>{{ $da->User['nama'] }}</td>
-                  <td>{{ $da->User->Stream['stream'] }}</td>
+                  <td>{{ $da->Stream['stream'] }}</td>
                   <td>{{ $da->jam_masuk }}</td>
                   <td>{{ $da->tanggal }}</td>
                   <td>{{ $da->catatan }}</td>

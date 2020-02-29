@@ -15,7 +15,7 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="{{ asset('img/' . auth()->user()->foto) }}" class="card-img">
+                        <img src="{{ asset('img/profile/' . auth()->user()->foto) }}" class="card-img">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -26,7 +26,7 @@
                                 <li>{{ auth()->user()->tmp_lahir }}</li>
                                 <li>{{ auth()->user()->email }}</li>
                                 <li>{{ auth()->user()->jenkel }}</li>
-                                <li>{{ auth()->user()->role->role }}</li>
+                                <li>{{ auth()->user()->stream->stream }}</li>
                                 <li>{{ auth()->user()->pendidikan->pendidikan }}</li>
                                 <li>{{ auth()->user()->thn_join }}</li>
                                 <li>{{ auth()->user()->no_telp }}</li>

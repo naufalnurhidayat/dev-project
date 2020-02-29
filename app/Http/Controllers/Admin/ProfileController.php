@@ -85,6 +85,8 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::where('id', $id)->first();
+
         User::where('id', $id)->Update([
             'nip' => $request->nip,
             'nama' => $request->nama,
@@ -92,13 +94,19 @@ class ProfileController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'email' => $request->email,
             'jenkel' => $request->jenkel,
-            'id_role' => $request->id_role,
+            'id_stream' => $request->id_stream,
             'id_pendidikan' => $request->id_pendidikan,
             'thn_join' => $request->thn_join,
             'no_telp' => $request->no_telp,
             'agama' => $request->agama,
             'alamat' => $request->alamat
         ]);
+
+        if($request->hasFile('picture')){
+            $request->file('picture')->move('img/profile', $request->file('picture')->getClientOriginalName());
+            $user->foto = $request->file('picture')->getClientOriginalName();
+            $user->save();
+        }
 
         return redirect('/admin/profile/' . $request->nama)->with('status', 'Profile berhasil diubah');
     }
