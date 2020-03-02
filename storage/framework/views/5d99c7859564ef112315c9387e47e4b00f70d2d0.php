@@ -42,7 +42,7 @@
                   <td><?php echo e($loop->iteration); ?></td>
                   <td><?php echo e($da->User['nip']); ?></td>
                   <td><?php echo e($da->User['nama']); ?></td>
-                  <td><?php echo e($da->Stream['stream']); ?></td>
+                  <td><?php echo e($da->User->Stream['stream']); ?></td>
                   <td><?php echo e($da->jam_masuk); ?></td>
                   <td><?php echo e($da->tanggal); ?></td>
                   <td><?php echo e($da->catatan); ?></td>

@@ -42,7 +42,7 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -76,37 +76,43 @@ class KaryawanController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'nip' => 'required|unique:users|numeric',
-            'nama' => 'required',
-            'tmp_lahir' => 'required',
-            'tgl_lahir' => 'required',
-            'email' => 'required|email|unique:users',
-            'jenkel' => 'required',
-            'id_role' => 'required',
-            'id_pendidikan' => 'required',
-            'thn_join' => 'required',
-            'no_telp' => 'required|unique:users|numeric',
-            'id_agama' => 'required',
-            'alamat' => 'required'
-        ]);
-
-        User::where('id', $user->id)->Update([
-            'nip' => $request->nip,
-            'nama' => $request->nama,
-            'tmp_lahir' => $request->tmp_lahir,
-            'tgl_lahir' => $request->tgl_lahir,
-            'email' => $request->email,
-            'jenkel' => $request->jenkel,
-            'id_role' => $request->id_role,
-            'id_pendidikan' => $request->id_pendidikan,
-            'thn_join' => $request->thn_join,
-            'no_telp' => $request->no_telp,
-            'id_agama' => $request->id_agama,
-            'alamat' => $request->alamat
-        ]);
-
-        return redirect('/sm/karyawan')->with('status', 'Data Karyawan berhasil diubah');
+            $request->validate([
+                'nip' => 'required|numeric',
+                'nama' => 'required',
+                'tmp_lahir' => 'required',
+                'tgl_lahir' => 'required',
+                'email' => 'required|email',
+                'jenkel' => 'required',
+                'id_stream' => 'required',
+                'id_pendidikan' => 'required',
+                'thn_join' => 'required',
+                'no_telp' => 'required|numeric',
+                'agama' => 'required',
+                'alamat' => 'required'
+            ]);
+    
+            User::where('id', $user->id)->Update([
+                'nip' => $request->nip,
+                'nama' => $request->nama,
+                'tmp_lahir' => $request->tmp_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'email' => $request->email,
+                'jenkel' => $request->jenkel,
+                'id_stream' => $request->id_stream,
+                'id_pendidikan' => $request->id_pendidikan,
+                'thn_join' => $request->thn_join,
+                'no_telp' => $request->no_telp,
+                'agama' => $request->agama,
+                'alamat' => $request->alamat
+            ]);
+    
+            if($request->hasFile('picture')){
+                $request->file('picture')->move('img/profile', $request->file('picture')->getClientOriginalName());
+                $user->foto = $request->file('picture')->getClientOriginalName();
+                $user->save();
+            }
+    
+            return redirect('/sm/karyawan')->with('status', 'Data Karyawan berhasil diubah');
     }
 
     /**

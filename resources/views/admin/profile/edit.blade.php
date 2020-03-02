@@ -37,7 +37,7 @@
       <div class="form-group row">
         <label for="tgl_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir" value="{{ auth()->user()->tgl_lahir }}">
+          <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" name="tgl_lahir" value="{{ auth()->user()->tgl_lahir }}">
           @error('tgl_lahir') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>

@@ -121,6 +121,7 @@ class AbsensiController extends Controller
         // if($data_absen->jam_masuk != $waktu && $data_absen->status == 'Pending') {
             
         // }
+        $data_absen = Absen::where('id_absen', $id)->first();
 
         if($data_absen->status != 'Pending') {
             return redirect('/admin/data-kehadiran')->with('danger', 'Data ini telah di prove');
