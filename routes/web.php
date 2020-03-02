@@ -288,6 +288,3 @@ Route::group(['middleware' => 'auth'], function () {
 // Registrasi
     Route::get('/registrasi', 'AuthController@create');
   	Route::post('/registrasi', 'AuthController@store');
-Route::get('/accessforbidden', function() {
-	return view('error.blocked');
-});

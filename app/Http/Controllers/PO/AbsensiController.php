@@ -5,7 +5,9 @@ namespace App\Http\Controllers\PO;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Absen;
-use App\Karyawan;
+use App\User;
+use App\Projek;
+use App\Projek_Karyawan;
 
 class AbsensiController extends Controller
 {
@@ -16,6 +18,11 @@ class AbsensiController extends Controller
      */
     public function index()
     {
+        // $projek = Projek_Karyawan::where('id_karyawan', auth()->user()->id)->get();
+        // $user = Projek_Karyawan::where('id_projek', $projek[0]->id_projek)->get();
+        // foreach ($user as $u) {
+        //     $data_absen = Absen::where('id_karyawan', $u->id_karyawan)->get();
+        // }
         $data_absen = Absen::all();
         return view('po/absen/index', compact('data_absen'));
     }
