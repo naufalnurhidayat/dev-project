@@ -101,6 +101,7 @@ class AuthController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'email' => $request->email,
             'jenkel' => $request->jenkel,
+            'jatah_cuti' => 12,
             'id_role' => $request->id_role,
             'id_stream' => $request->id_stream,
             'id_pendidikan' => $request->id_pendidikan,

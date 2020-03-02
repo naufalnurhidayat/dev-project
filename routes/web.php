@@ -37,11 +37,11 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::patch('/kategori/update/{id_kategori}', 'KategoriController@update');
 			Route::delete('/kategori/destroy/{id_kategori}', 'KategoriController@destroy');
       		//Admin Invetaris
-     		Route::get('/admin/pinjam', 'PinjamController@index');
-     		Route::get('/admin/kembali', 'kembaliController@index');
+			Route::get('/admin/pinjam', 'PinjamController@index');
+			Route::get('/admin/kembali', 'kembaliController@index');
     		//  Route::post('/admin/kembali/store', 'kembaliController@store');
 			Route::patch('/admin/status/{pinjam}', 'PinjamController@update');
-     		Route::patch('/admin/kembali/status/{kembali}', 'kembaliController@update');
+			Route::patch('/admin/kembali/status/{kembali}', 'kembaliController@update');
      		// Route::get('/admin/detail/{id}', 'PinjamController@show');
      		// Route::get('/admin/detail/{id}', 'kembaliController@show');
 		
@@ -102,7 +102,8 @@ Route::group(['middleware' => 'auth'], function () {
 		
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
-			Route::get('/admin/cuti/showAdmin', 'Admin\CutiController@cutiAdmin');
+			Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
+			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@show');
 			Route::get('/admin/cuti/create', 'Admin\CutiController@create');
 			Route::post('/admin/cuti', 'Admin\CutiController@store');
 			Route::get('/admin/cuti/terima', 'Admin\CutiController@terima');
@@ -136,13 +137,13 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::delete('/sm/kategori/destroy/{id_kategori}', 'KategoriController@destroy');
       
        //Admin Invetaris
-     Route::get('/sm/pinjam', 'PinjamController@index');
-     Route::get('/sm/kembali', 'kembaliController@index');
-     Route::post('/sm/kembali/store', 'kembaliController@store');
-     Route::patch('/sm/status/{pinjam}', 'kembaliController@update');
-     // Route::get('/sm/detail/{id}', 'PinjamController@show');
-     // Route::get('/sm/detail/{id}', 'kembaliController@show');
-     Route::patch('/sm/status/{id_pinjam}', 'PinjamController@update');
+			Route::get('/sm/pinjam', 'PinjamController@index');
+			Route::get('/sm/kembali', 'kembaliController@index');
+			Route::post('/sm/kembali/store', 'kembaliController@store');
+			Route::patch('/sm/status/{pinjam}', 'kembaliController@update');
+			// Route::get('/sm/detail/{id}', 'PinjamController@show');
+			// Route::get('/sm/detail/{id}', 'kembaliController@show');
+			Route::patch('/sm/status/{id_pinjam}', 'PinjamController@update');
 		
 			// Karyawan
 			Route::get('/sm/karyawan', 'SM\KaryawanController@index');
@@ -191,13 +192,13 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::patch('/po/kategori/update/{id_kategori}', 'KategoriController@update');
 			Route::delete('/po/kategori/destroy/{id_kategori}', 'KategoriController@destroy');
 			//PO Invetaris
-       Route::get('/po/pinjam', 'PinjamController@index');
-       Route::get('/po/kembali', 'kembaliController@index');
-       Route::post('/po/kembali/store', 'kembaliController@store');
-       Route::patch('/po/status/{pinjam}', 'kembaliController@update');
-       // Route::get('/po/detail/{id}', 'PinjamController@show');
+			Route::get('/po/pinjam', 'PinjamController@index');
+			Route::get('/po/kembali', 'kembaliController@index');
+			Route::post('/po/kembali/store', 'kembaliController@store');
+			Route::patch('/po/status/{pinjam}', 'kembaliController@update');
+			// Route::get('/po/detail/{id}', 'PinjamController@show');
        // Route::get('/po/detail/{id}', 'kembaliController@show');
-       Route::patch('/po/status/{id_pinjam}', 'PinjamController@update');
+      Route::patch('/po/status/{id_pinjam}', 'PinjamController@update');
 		
 			// Karyawan
 			Route::get('/po/karyawan', 'PO\KaryawanController@index');
@@ -215,6 +216,10 @@ Route::group(['middleware' => 'auth'], function () {
 		
 			//Cuti
 			Route::get('/po/cuti', 'PO\CutiController@index');
+			Route::get('/po/cuti/show', 'PO\CutiController@cutiPo');
+			Route::get('/po/cuti/{cuti}', 'PO\CutiController@show');
+			Route::get('/po/cuti/create', 'PO\CutiController@create');
+			Route::post('/po/cuti', 'PO\CutiController@store');
 			Route::get('/po/cuti/terima', 'PO\CutiController@terima');
 			Route::get('/po/cuti/tolak', 'PO\CutiController@tolak');
       Route::patch('/po/cuti/{cuti}', 'PO\CutiController@update');
@@ -258,8 +263,6 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/logout', 'AuthController@logout');
 	});
 
-
-     
 });
 
 

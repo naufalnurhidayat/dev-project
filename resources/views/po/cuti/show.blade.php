@@ -1,4 +1,4 @@
-@extends('templates/template-home')
+@extends('templates/template-po')
 
 @section('title', 'Halaman Cuti')
 
@@ -11,20 +11,16 @@
       {{ session('status') }}
     </div>
   @endif
-  
-  <div class="row mt-3">
-      <div class="col">
-          <div class="jumbotron mx-auto text-center">
-              <h1 class="display-3">Hallo, Nama User!</h1>
-              <p class="lead">Selamat datang di fitur cuti (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
-              <hr class="my-4">
-              <p>Silahkan klik tombol kalender jika anda ingin membuat pengajuan cuti. Silahkan klik tombol home jika ingin kembali ke home.</p>
-              <a href="{{url('/cuti/create')}}" class="btn btn-success btn-circle btn-lg">
-                  <i class="fas fa-calendar-plus"></i>
-              </a>
-          </div>
-      </div>
-  </div>
+
+  @if (session('jatah'))
+    <div class="alert alert-danger">
+      {{ session('jatah') }}
+    </div>
+  @endif
+    
+  <a href="{{url('/po/cuti/create')}}" class="btn btn-primary mb-3">
+    <i class="fas fa-calendar-plus"></i> Buat Pengajuan Cuti
+  </a>
 <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -46,19 +42,19 @@
               <th>No</th>
               <th>Nama</th>
               <th>Jenis Kelamin</th>
-              <th>Stream</th>
+              <th>Role</th>
               <th>Tanggal Pengajuan Cuti</th>
               <th>Jenis Cuti</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody class="table table-bordered">
-            @foreach ($cuti as $c)
+            @foreach ($ct as $c)
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $c->User['nama'] }}</td>
                 <td>{{ $c->User['jenkel'] }}</td>
-                <td>{{ $c->User->Stream['stream'] }}</td>
+                <td>{{ $c->User->Role['role'] }}</td>
                 <td>{{ $c->tgl_cuti }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                 <td>
@@ -79,5 +75,5 @@
   </div>
 
 </div>
-<!-- /.container-fluid -->
+        <!-- /.container-fluid -->
 @endsection

@@ -28,7 +28,6 @@
               <th>Karyawan</th>
               <th>Tanggal Cuti</th>
               <th>Jenis Cuti</th>
-              <th>Alasan</th>
               <th>Status</th> 
               <th>Aksi</th>
             </tr>
@@ -40,7 +39,6 @@
               <td>{{ $c->User['nama'] }}</td>
               <td>{{ $c->tgl_cuti }}</td>
               <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
-              <td>{{ $c->alasan_cuti }}</td>
               <td><span class="badge badge-warning">{{ $c->status }}</span></td>
               <td>
                 <form action="{{url('/admin/cuti/'.$c->id)}}" method="post">
