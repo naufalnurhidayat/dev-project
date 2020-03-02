@@ -14,19 +14,19 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4>{{ $user->nama }}</h4>
+                            <h4><strong>Nama: </strong>{{ $user->nama }}</h4>
                             <ul>
-                                <li>{{ $user->nip }}</li>
-                                <li>{{ $user->tgl_lahir }}</li>
-                                <li>{{ $user->tmp_lahir }}</li>
-                                <li>{{ $user->email }}</li>
-                                <li>{{ $user->jenkel }}</li>
-                                <li>{{ $user->stream->stream }}</li>
-                                <li>{{ $user->pendidikan->pendidikan }}</li>
-                                <li>{{ $user->thn_join }}</li>
-                                <li>{{ $user->no_telp }}</li>
-                                <li>{{ $user->agama }}</li>
-                                <li>{{ $user->alamat }}</li>
+                                <li><strong>NIP: </strong>{{ $user->nip }}</li>
+                                <li><strong>Tanggal Lahir: </strong>{{ $user->tgl_lahir }}</li>
+                                <li><strong>Tempat Lahir: </strong>{{ $user->tmp_lahir }}</li>
+                                <li><strong>Email: </strong>{{ $user->email }}</li>
+                                <li><strong>Jenis Kelamin: </strong>{{ $user->jenkel }}</li>
+                                <li><strong>Stream: </strong>{{ $user->stream->stream }}</li>
+                                <li><strong>Pendidikan: </strong>{{ $user->pendidikan->pendidikan }}</li>
+                                <li><strong>Tahun Join: </strong>{{ $user->thn_join }}</li>
+                                <li><strong>Nomor Telpon: </strong>{{ $user->no_telp }}</li>
+                                <li><strong>Agama: </strong>{{ $user->agama }}</li>
+                                <li><strong>Alamat: </strong>{{ $user->alamat }}</li>
                             </ul>
                             <a href="{{ url('/admin/karyawan') }}" class="btn btn-primary ml-4">Kembali</a>
                         </div>

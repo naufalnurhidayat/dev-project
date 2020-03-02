@@ -12,19 +12,19 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4><?php echo e($user->nama); ?></h4>
+                            <h4><strong>Nama: </strong><?php echo e($user->nama); ?></h4>
                             <ul>
-                                <li><?php echo e($user->nip); ?></li>
-                                <li><?php echo e($user->tgl_lahir); ?></li>
-                                <li><?php echo e($user->tmp_lahir); ?></li>
-                                <li><?php echo e($user->email); ?></li>
-                                <li><?php echo e($user->jenkel); ?></li>
-                                <li><?php echo e($user->stream->stream); ?></li>
-                                <li><?php echo e($user->pendidikan->pendidikan); ?></li>
-                                <li><?php echo e($user->thn_join); ?></li>
-                                <li><?php echo e($user->no_telp); ?></li>
-                                <li><?php echo e($user->agama); ?></li>
-                                <li><?php echo e($user->alamat); ?></li>
+                                <li><strong>NIP: </strong><?php echo e($user->nip); ?></li>
+                                <li><strong>Tanggal Lahir: </strong><?php echo e($user->tgl_lahir); ?></li>
+                                <li><strong>Tempat Lahir: </strong><?php echo e($user->tmp_lahir); ?></li>
+                                <li><strong>Email: </strong><?php echo e($user->email); ?></li>
+                                <li><strong>Jenis Kelamin: </strong><?php echo e($user->jenkel); ?></li>
+                                <li><strong>Stream: </strong><?php echo e($user->stream->stream); ?></li>
+                                <li><strong>Pendidikan: </strong><?php echo e($user->pendidikan->pendidikan); ?></li>
+                                <li><strong>Tahun Join: </strong><?php echo e($user->thn_join); ?></li>
+                                <li><strong>Nomor Telpon: </strong><?php echo e($user->no_telp); ?></li>
+                                <li><strong>Agama: </strong><?php echo e($user->agama); ?></li>
+                                <li><strong>Alamat: </strong><?php echo e($user->alamat); ?></li>
                             </ul>
                             <a href="<?php echo e(url('/admin/karyawan')); ?>" class="btn btn-primary ml-4">Kembali</a>
                         </div>

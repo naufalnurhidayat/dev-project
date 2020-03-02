@@ -87,6 +87,21 @@ class ProfileController extends Controller
     {
         $user = User::where('id', $id)->first();
 
+        $request->validate([
+            'nip' => 'required|numeric',
+            'nama' => 'required',
+            'tmp_lahir' => 'required',
+            'tgl_lahir' => 'required',
+            'email' => 'required|email',
+            'jenkel' => 'required',
+            'id_stream' => 'required',
+            'id_pendidikan' => 'required',
+            'thn_join' => 'required',
+            'no_telp' => 'required|numeric',
+            'agama' => 'required',
+            'alamat' => 'required'
+        ]);
+
         User::where('id', $id)->Update([
             'nip' => $request->nip,
             'nama' => $request->nama,

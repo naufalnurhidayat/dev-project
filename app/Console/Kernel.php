@@ -26,6 +26,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->call(function () {
+            echo "ini cron";
+        })->everyMinute();
+
     }
 
     /**

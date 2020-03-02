@@ -27,7 +27,7 @@
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
-                      <th>Role</th>
+                      <th>Stream</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -38,11 +38,10 @@
                       <td>{{ $k->nip }}</td>
                       <td>{{ $k->nama }}</td>
                       <td>{{ $k->jenkel }}</td>
-                      <td>{{ $k->Role['role'] }}</td>
+                      <td>{{ $k->Stream['stream'] }}</td>
                       <td>
-                        <a href="{{url('/admin/karyawan')}}/{{$k->id}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
-                        <a href="{{url('/admin/karyawan/edit')}}/{{$k->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                        <form action="{{ url('/admin/karyawan') }}/{{$k->id}}" method="POST" class="d-inline">
+                        <a href="{{url('/sm/karyawan/' . $k->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
+                        <form action="{{ url('/sm/karyawan/' . $k->id)}}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf
                           <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
