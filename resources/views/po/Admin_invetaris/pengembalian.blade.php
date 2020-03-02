@@ -48,7 +48,7 @@
            @endif
        </td>
            <td>
-            <form action="{{url('/admin/kembali/status/'. $k->id_kembali)}}" method="post">
+            <form action="{{url('/po/kembali/status/'. $k->id_kembali)}}" method="post">
               @method('patch')
               @csrf
               @if ($k->status_kembali == "Belum" )
