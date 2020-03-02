@@ -48,11 +48,11 @@
                   <td>{{ $da->catatan }}</td>
                   <td>{{ $da->status }}</td>
                   <td>
-                    <form action="{{ url('/admin/data-kehadiran/'. $da->id_absen) }}" method="POST">
+                    <form action="{{ url('/po/data-kehadiran/'. $da->id_absen) }}" method="POST">
                       @method('patch')
                       @csrf
-                      <button type="submit" class="badge badge-success" name="prove" value="Accepting">Accept</button>
-                      <button type="submit" class="badge badge-danger" name="prove" value="Rejecting">Reject</button>
+                      <button type="submit" class="badge badge-success" name="prove" value="Accepting" onclick="return confirm('Accept?')">Accept</button>
+                      <button type="submit" class="badge badge-danger" name="prove" value="Rejecting" onclick="return confirm('Reject?')">Reject</button>
                     </form>
                   </td>
                 </tr>

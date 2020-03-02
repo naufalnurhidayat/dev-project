@@ -47,7 +47,7 @@
                         <form action="{{ url('/admin/karyawan') }}/{{$k->id}}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf
-                          <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-trash"></i> Hapus</button>
                         </form>
                       </td>
                     </tr>
