@@ -44,7 +44,7 @@
                 <form action="{{url('/admin/cuti/'.$c->id)}}" method="post">
                   @csrf
                   @method('patch')
-                  <a href="{{url('/admin/cuti/detail/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
+                  <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
                   <button class="btn btn-success btn-sm" onclick="return confirm('Yakin ingin menerima?');" type="submit" name="status" value="Terima"><i class="fa fa-check"></i></button>
                   <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Tolak"><i class="fa fa-times-circle"></i></button>
                 </form>

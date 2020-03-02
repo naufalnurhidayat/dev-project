@@ -82,6 +82,16 @@ class CutiController extends Controller
         return view('admin/cuti/tolak', compact('cuti'));
     }
     
+    public function detailTerima(Cuti $cuti)
+    {
+        return view('admin/cuti/detailTerima', compact('cuti'));
+    }
+
+    public function detailTolak(Cuti $cuti)
+    {
+        return view('admin/cuti/detailTolak', compact('cuti'));
+    }
+
     public function show(Cuti $cuti)
     {
         return view('admin/cuti/detailCuti', compact('cuti'));

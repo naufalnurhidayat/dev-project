@@ -7,7 +7,7 @@
 <!-- DataTales Example -->
   <div class="card shadow">
     <div class="card-header py-3">
-      <h5 class="m-0 font-weight-bold text-primary d-inline">Detail Cuti {{$cuti->user['nama']}}</h5>
+      <h5 class="m-0 font-weight-bold text-primary">Detail Cuti {{$cuti->user['nama']}}</h5>
     </div>
     <div class="card-body">
       <div class="row">
@@ -18,6 +18,11 @@
                 <td>Nama Karyawan</td>
                 <td>:</td>
                 <td><strong>{{$cuti->User['nama']}}</strong></td>
+              </tr>
+              <tr>
+                <td>Stream</td>
+                <td>:</td>
+                <td><strong>{{$cuti->User->stream['stream']}}</strong></td>
               </tr>
               <tr>
                 <td>Tanggal Cuti</td>
@@ -45,6 +50,15 @@
                 <td><strong><div class="badge badge-warning">{{$cuti->status}}</div></strong></td>
               </tr>
             </table>
+            <div class="text-center">
+              <form action="{{url('/po/cuti/'.$cuti->id)}}" method="post">
+                @csrf
+                @method('patch')
+                <a href="{{url('/po/cuti/')}}" class="btn btn-primary">Kembali</a>
+                <button class="btn btn-danger" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Tolak"><i class="fa fa-times-circle"></i> Tolak</button>
+                <button class="btn btn-success" onclick="return confirm('Yakin ingin menerima?');" type="submit" name="status" value="Terima"><i class="fa fa-check"></i> Terima</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
