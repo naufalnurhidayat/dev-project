@@ -60,7 +60,7 @@ class pinjamController extends Controller
             'status' => 'Pending',
             'keterangan' => $request->keterangan
         ]);
-        return redirect('/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');
+        return redirect('/sm/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');
     }
 
     /**

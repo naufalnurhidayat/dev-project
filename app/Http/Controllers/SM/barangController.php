@@ -24,7 +24,7 @@ class barangController extends Controller
         $kategori = Kategori::all();
         $kembali = Kembali::all();
         $pinjam = Pinjam::where('id', auth()->user()->id)->get();
-        return view('Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'barang' => $barang, 'kembali' => $kembali]);
+        return view('sm.Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'barang' => $barang, 'kembali' => $kembali]);
     }
 
     /**
@@ -117,7 +117,7 @@ class barangController extends Controller
     {
         $barang = Barang::all();
         $kategori = Kategori::all();
-        return view('Invetaris.pengajuan', ['barang' => $barang, 'kategori' => $kategori]);
+        return view('sm.Invetaris.pengajuan', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
 }

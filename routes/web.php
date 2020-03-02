@@ -141,7 +141,16 @@ Route::group(['middleware' => 'auth'], function () {
      		Route::post('/sm/kembali/store', 'SM\kembaliController@store');
      		Route::patch('/sm/status/{id_pinjam}', 'SM\PinjamController@update');
      		Route::patch('/sm/kembali/status/{kembali}', 'SM\kembaliController@update');
-     
+	 
+			 //Invetaris
+			 Route::get('/sm/invetaris', 'SM\barangController@index');
+			 Route::post('/sm/kembali/store', 'SM\kembaliController@store');
+			 Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
+			 Route::get('/barang', 'barangController@index');
+			 Route::get('/show/{id_pinjam}', 'barangController@show');
+			 Route::get('/sm/tampil/table', 'SM\barangController@tampil');
+			 Route::post('/sm/pengajuan/store', 'SM\PinjamController@store');
+			 Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
 		
 			// Karyawan
 			Route::get('/sm/karyawan', 'SM\KaryawanController@index');
