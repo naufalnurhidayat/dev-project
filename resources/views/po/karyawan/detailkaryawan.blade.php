@@ -10,7 +10,7 @@
                 <div class="card mb-3">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="{{ asset('img/' . $user->foto) }}" class="card-img">
+                            <img src="{{ asset('img/profile/' . $user->foto) }}" class="card-img">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -29,7 +29,7 @@
                                     <li><strong>Alamat:</strong> {{ $user->alamat }}</li>
                                     <li><strong>Projek:</strong> {{ $projek->Projek['project'] }}</li>
                                 </ul>
-                                <a href="{{ url('/po') }}" class="btn btn-primary ml-4">Kembali</a>                          </div>
+                                <a href="{{ url('/po/karyawan') }}" class="btn btn-primary ml-4">Kembali</a>                          </div>
                         </div>
                     </div>
                 </div>

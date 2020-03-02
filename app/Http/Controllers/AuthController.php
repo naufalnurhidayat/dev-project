@@ -68,13 +68,6 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        // for ($i=0; $i < count($request->id_projek); $i++) { 
-        //     // if ($i == count($request->id_projek)-1) {
-        //     //     $data = [1, 'id_projek' => $request->id_projek[$i]];
-        //     // } else {
-        //     //     $data = [1, 'id_projek' => $request->id_projek[$i]];
-        //     // }
-        // }
         $request->validate([
             'nip' => 'required|unique:users|numeric',
             'nama' => 'required',
@@ -91,7 +84,7 @@ class AuthController extends Controller
             'alamat' => 'required',
             'password' => 'required|min:6|same:password2',
             'password2' => 'required|min:6|same:password'
-            // 'id_projek[]' => 'required'
+            
         ]);
 
         $u = User::create([
@@ -113,9 +106,13 @@ class AuthController extends Controller
             'foto' => 'default.jpg'
         ]);
         
-        Projek_Karyawan::insert([
-            ['id_karyawan' => $u->id, 'id_projek' => 2]
-        ]);
+        $dataProjek = [];
+        foreach ($request->id_projek as $projek) {
+            $dataProjek[] = ['id_karyawan' => $u->id, 'id_projek' => $projek];
+        }
+
+        Projek_Karyawan::insert($dataProjek);
+
         return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan!');
     }
 
@@ -124,5 +121,13 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/login');
     }
+
+    // public function cron()
+    // {
+    //     while (true) {
+    //         echo "tes";
+    //         sleep(1);
+    //     }
+    // }
 
 }
