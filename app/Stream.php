@@ -8,10 +8,11 @@ class Stream extends Model
 {
     protected $table = 'stream';
     protected $fillable = ['stream'];
+    protected $primaryKey = 'id';
 
-    public function stream()
+    public function user()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\User', 'id');
     }
 
 }
