@@ -81,10 +81,20 @@ class CutiController extends Controller
         $cuti = Cuti::where('status', 'Tolak')->orderBy('tgl_cuti', 'desc')->get();
         return view('po/cuti/tolak', compact('cuti'));
     }
+
+    public function detailTerima(Cuti $cuti)
+    {
+        return view('po/cuti/detailTerima', compact('cuti'));
+    }
+
+    public function detailTolak(Cuti $cuti)
+    {
+        return view('po/cuti/detailTolak', compact('cuti'));
+    }
     
     public function show(Cuti $cuti)
     {
-        //
+        return view('po/cuti/detailCuti', compact('cuti'));
     }
 
     public function cutiPo()

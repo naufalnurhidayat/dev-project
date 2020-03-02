@@ -84,7 +84,7 @@ class CutiController extends Controller
     
     public function show(Cuti $cuti)
     {
-        //
+        return view('admin/cuti/detailCuti', compact('cuti'));
     }
 
     public function cutiAdmin()

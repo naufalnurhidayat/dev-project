@@ -103,11 +103,13 @@ Route::group(['middleware' => 'auth'], function () {
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
 			Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
-			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@show');
 			Route::get('/admin/cuti/create', 'Admin\CutiController@create');
-			Route::post('/admin/cuti', 'Admin\CutiController@store');
 			Route::get('/admin/cuti/terima', 'Admin\CutiController@terima');
 			Route::get('/admin/cuti/tolak', 'Admin\CutiController@tolak');
+			Route::get('/admin/cuti/terima/{cuti}', 'Admin\CutiController@detailTerima');
+			Route::get('/admin/cuti/tolak/{cuti}', 'Admin\CutiController@detailTolak');
+			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@show');
+			Route::post('/admin/cuti', 'Admin\CutiController@store');
       Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
 			
 		// --------------------------------------------------------------------------------------		
@@ -217,11 +219,13 @@ Route::group(['middleware' => 'auth'], function () {
 			//Cuti
 			Route::get('/po/cuti', 'PO\CutiController@index');
 			Route::get('/po/cuti/show', 'PO\CutiController@cutiPo');
-			Route::get('/po/cuti/{cuti}', 'PO\CutiController@show');
 			Route::get('/po/cuti/create', 'PO\CutiController@create');
-			Route::post('/po/cuti', 'PO\CutiController@store');
 			Route::get('/po/cuti/terima', 'PO\CutiController@terima');
 			Route::get('/po/cuti/tolak', 'PO\CutiController@tolak');
+			Route::get('/po/cuti/terima/{cuti}', 'PO\CutiController@detailTerima');
+			Route::get('/po/cuti/tolak/{cuti}', 'PO\CutiController@detailTolak');
+			Route::get('/po/cuti/{cuti}', 'PO\CutiController@show');
+			Route::post('/po/cuti', 'PO\CutiController@store');
       Route::patch('/po/cuti/{cuti}', 'PO\CutiController@update');
 			
 		// --------------------------------------------------------------------------------------
