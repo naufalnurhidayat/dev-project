@@ -94,6 +94,7 @@ class AuthController extends Controller
             'tgl_lahir' => $request->tgl_lahir,
             'email' => $request->email,
             'jenkel' => $request->jenkel,
+            'jatah_cuti' => 12,
             'id_role' => $request->id_role,
             'id_stream' => $request->id_stream,
             'id_pendidikan' => $request->id_pendidikan,
@@ -109,7 +110,6 @@ class AuthController extends Controller
         foreach ($request->id_projek as $projek) {
             $dataProjek[] = ['id_karyawan' => $u->id, 'id_projek' => $projek];
         }
-
         Projek_Karyawan::insert($dataProjek);
 
         return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan!');
@@ -120,13 +120,5 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/login');
     }
-
-    // public function cron()
-    // {
-    //     while (true) {
-    //         echo "tes";
-    //         sleep(1);
-    //     }
-    // }
 
 }

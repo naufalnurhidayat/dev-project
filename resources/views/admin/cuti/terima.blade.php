@@ -41,7 +41,7 @@
               <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
               <td>{{ $c->alasan_cuti }}</td>
               <td>
-                  <a href="{{url('/admin/cuti/detailDiterima/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>
+                  <a href="{{url('/admin/cuti/terima/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>
               </td>
             </tr>
             @endforeach
