@@ -42,7 +42,7 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="<?php echo e(url('/admin')); ?>">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-fw fa-home"></i>
           <span>Home</span></a>
       </li>
 
@@ -68,7 +68,7 @@
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#absensi" aria-expanded="true" aria-controls="absensi">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-clipboard"></i>
             <span>Absensi</span>
         </a>
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -87,7 +87,7 @@
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item bg-primary text-white" href="<?php echo e(url('/admin/cuti/showAdmin')); ?>"><b>Data Cuti Anda</b></a>
+            <a class="collapse-item bg-primary text-white" href="<?php echo e(url('/admin/cuti/show')); ?>"><b>Data Cuti Anda</b></a>
             <a class="collapse-item bg-warning text-white" href="<?php echo e(url('/admin/cuti')); ?>"><b>Data Cuti Di Proses</b></a>
             <a class="collapse-item bg-success text-white" href="<?php echo e(url('/admin/cuti/terima')); ?>"><b>Data Cuti Di Terima</b></a>
             <a class="collapse-item bg-danger text-white" href="<?php echo e(url('/admin/cuti/tolak')); ?>"><b>Data Cuti Di Tolak</b></a>
@@ -141,11 +141,11 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo e(auth()->user()->nama); ?></span>
-                <img class="img-profile rounded-circle" src="<?php echo e(url('img/'.auth()->user()->foto)); ?>">
+                <img class="img-profile rounded-circle" src="<?php echo e(url('img/profile/'.auth()->user()->foto)); ?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?php echo e(url('/profile/'.auth()->user()->nama)); ?>">
+                <a class="dropdown-item" href="<?php echo e(url('/admin/profile/'.auth()->user()->nama)); ?>">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>

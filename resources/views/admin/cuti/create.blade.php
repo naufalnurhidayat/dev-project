@@ -1,4 +1,4 @@
-@extends('templates/template-home')
+@extends('templates/template-admin')
 
 @section('title', 'Form Pengajuan Cuti')
 
