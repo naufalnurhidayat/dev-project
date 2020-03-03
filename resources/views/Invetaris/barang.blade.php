@@ -40,7 +40,7 @@
           </thead>
       
           <tbody>
-            @php $i=1 @endphp
+            {{-- @php $i=1 @endphp --}}
             @foreach($pinjam as $box)
            <tr align="center">
            {{-- <td>{{$i++}}</td> --}}
