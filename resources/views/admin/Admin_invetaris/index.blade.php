@@ -15,7 +15,6 @@
   <!-- Page Heading -->
   
   <h1 class="h3 mb-2 text-gray-800">Data Peminjaman</h1>
-  <button href="#" class="btn btn-success btn-sm btn-filter"><i class="fas fa-filter"> Filter Tanggal</i></button>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -79,20 +78,4 @@
 
 
 
-@endsection
-
-@section('scripts')
-
-<script type="text/javascript">
-    $(document).ready(function(){
-
-      $('.btn-filter').click(function(e){
-        e.preventDefault();
-        alert('tes button'); 
-      })
-
-    })
-
-</script>
-    
 @endsection

@@ -34,7 +34,9 @@
           </thead>
       
           <tbody>
-        @foreach($barang as $b)
+            @foreach($barang as $b)
+            @if($b->stok == 0)
+            @else
            <tr align=""> 
            <td>{{$b->nama_barang}}</td> 
            <td>{{$b->Kategori['nama_kategori']}}</td>
@@ -91,6 +93,7 @@
   </div>
 </td>
 </tr>
+@endif
   @endforeach
 </tbody>
 </table>
