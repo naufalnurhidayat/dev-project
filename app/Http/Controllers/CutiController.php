@@ -60,6 +60,7 @@ class CutiController extends Controller
             'alasan_cuti' => $request->alasan,
             'status' => 'Diproses'
         ]);
+        
         return redirect('/cuti')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
     }
 

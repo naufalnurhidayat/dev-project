@@ -20,6 +20,21 @@
                 <td><strong>{{$cuti->User['nama']}}</strong></td>
               </tr>
               <tr>
+                <td>Email</td>
+                <td>:</td>
+                <td><strong>{{$cuti->user->email}}</strong></td>
+              </tr>
+              <tr>
+                <td>No. Telepon</td>
+                <td>:</td>
+                <td><strong>{{$cuti->user->no_telp}}</strong></td>
+              </tr>
+              <tr>
+                <td>Stream</td>
+                <td>:</td>
+                <td><strong>{{$cuti->user->stream['stream']}}</strong></td>
+              </tr>
+              <tr>
                 <td>Tanggal Cuti</td>
                 <td>:</td>
                 <td><strong>{{$cuti->tgl_cuti}}</strong></td>

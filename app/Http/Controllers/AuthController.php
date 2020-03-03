@@ -110,7 +110,6 @@ class AuthController extends Controller
         foreach ($request->id_projek as $projek) {
             $dataProjek[] = ['id_karyawan' => $u->id, 'id_projek' => $projek];
         }
-
         Projek_Karyawan::insert($dataProjek);
 
         return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan!');
@@ -121,13 +120,5 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/login');
     }
-
-    // public function cron()
-    // {
-    //     while (true) {
-    //         echo "tes";
-    //         sleep(1);
-    //     }
-    // }
 
 }
