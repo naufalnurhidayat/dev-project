@@ -151,8 +151,8 @@
     <div class="form-group row">
       <div class="col-sm-2"></div>
       <div class="col-sm-5">
+        <a href="{{ url('/admin/profile/' . auth()->user()->nama) }}" class="btn btn-secondary btn-user">Kembali</a>
         <button type="submit" name="ubah" class="btn btn-primary btn-user">Edit Data</button>
-        <a href="{{ url('/admin/profile/' . auth()->user()->nama) }}" class="btn btn-success btn-user">Kembali</a>
       </div>
     </div>
   </form>

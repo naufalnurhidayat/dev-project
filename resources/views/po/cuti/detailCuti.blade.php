@@ -12,7 +12,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-3 my-auto pb-5">
-          <img src="{{asset('img/profile/'.$cuti->user['foto'])}}" class="card-img-bottom rounded-pill">	
+          <img src="{{asset('img/profile/'.$cuti->user['foto'])}}" class="card-img-bottom rounded img-fluid">	
         </div>
         <div class="col-md-9 my-auto">
           <div class="table-responsive">
