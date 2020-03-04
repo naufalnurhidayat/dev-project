@@ -46,7 +46,7 @@
               <th>No</th>
               <th>Nama</th>
               <th>Jenis Kelamin</th>
-              <th>Role</th>
+              <th>Stream</th>
               <th>Tanggal Pengajuan Cuti</th>
               <th>Jenis Cuti</th>
               <th>Status</th>

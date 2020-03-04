@@ -6,14 +6,6 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-  <!-- Page Heading -->
-  @if (session('status'))
-    <div class="alert alert-success">
-      {{ session('status') }}
-    </div>
-  @endif
-    
     <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -28,7 +20,6 @@
               <th>Karyawan</th>
               <th>Tanggal Cuti</th>
               <th>Jenis Cuti</th>
-              <th>Alasan</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -39,9 +30,8 @@
               <td>{{ $c->User['nama'] }}</td>
               <td>{{ $c->tgl_cuti }}</td>
               <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
-              <td>{{ $c->alasan_cuti }}</td>
               <td>
-                  <a href="{{url('/admin/cuti/detailDitolak/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>
+                  <a href="{{url('/po/cuti/tolak/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>
               </td>
             </tr>
             @endforeach
