@@ -3,30 +3,26 @@
 @section('title', 'Edit Pendidikan')
 
 @section('content')
-
-
 <div class="container">
-    <div class="row">
-      <div class="col-8">
-      <h3 class="mt-3"><i class="fas fa-edit"></i> Edit Pendidikan</h3>
-
-      <form method="post" action="/admin/apdet/{{ $pendidikan->id }}">
+  <div class="row">
+		<div class="col">
+			<h3><i class="fas fa-edit"></i> Edit Stream</h3>
+		</div>
+	</div>
+  <div class="row">
+    <div class="col-4">
+      <form method="post" action="{{url('/admin/pendidikan/'.$pendidikan->id)}}">
         @method('patch')
         {{csrf_field()}}
-      <div class="form-group">
-        <label for="pendidikan">Pendidikan</label>
-        <input type="text" class="form-control @error('pendidikan') is-invalid @enderror" id="pendidikan" placeholder=" Pendidikan " name="pendidikan" value="{{ $pendidikan->pendidikan }}">
-        @error('pendidikan')
-        <div class="invalid-feedback">{{$message}}</div>
-        @enderror
-      </div>
-
-      <button type="submit" class="btn btn-success">Edit</button>
-      <a href="/admin/pendidikan" class="btn btn-danger">Kembali</a>
+        <div class="form-group">
+          <label for="pendidikan">Pendidikan</label>
+          <input type="text" class="form-control @error('pendidikan') is-invalid @enderror" id="pendidikan" name="pendidikan" value="{{ $pendidikan->pendidikan }}" autofocus>
+          @error('pendidikan')<div class="invalid-feedback">{{$message}}</div>@enderror
+        </div>
+        <a href="{{url('/admin/pendidikan')}}" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-primary">Edit</button>
       </form>
-  
+    </div>
   </div>
-  </div>
-  </div>
-
+</div>
 @endsection

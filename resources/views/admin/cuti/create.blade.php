@@ -1,6 +1,6 @@
 @extends('templates/template-admin')
 
-@section('title', 'Form Pengajuan Cuti')
+@section('title', 'Form Pengajuan Cuti Admin')
 
 @section('content')
     <div class="container">
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
               <label for="jencut">Jenis Cuti</label>
-              <select  class="form-control @error('jencut') is-invalid @enderror" name="jencut" id="jencut">
+              <select  class="form-control @error('jencut') is-invalid @enderror" name="jencut" id="jencut" autofocus>
                   <option selected value="">-- Pilih Jenis Cuti --</option>
                 @foreach ($jencut as $j)
                   <option value="{{$j->id}}">{{$j->jenis_cuti}}</option>  
@@ -42,7 +42,7 @@
                 @error('alasan')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <button type="submit" class="btn btn-success float-right">Submit</button>
-            <a href="{{url('/cuti')}}" class="btn btn-danger float-right mr-2">Kembali</a>
+            <a href="{{url('/admin/cuti')}}" class="btn btn-secondary float-right mr-2">Kembali</a>
           </form>
         </div>
       </div>

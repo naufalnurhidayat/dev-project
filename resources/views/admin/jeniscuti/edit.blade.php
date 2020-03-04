@@ -17,7 +17,7 @@
 				@csrf
 				<div class="form-group">
 					<label for="jenis_cuti">Jenis Cuti</label>
-					<input type="text" class="form-control @error('jenis_cuti') is-invalid @enderror" id="jenis_cuti" name="jenis_cuti" value="{{ $jenisCuti->jenis_cuti }}">
+					<input type="text" class="form-control @error('jenis_cuti') is-invalid @enderror" id="jenis_cuti" name="jenis_cuti" value="{{ $jenisCuti->jenis_cuti }}" autofocus>
 					@error('jenis_cuti') <div class="invalid-feedback">{{ $message }}</div> @enderror
 				<button type="submit" class="btn btn-primary mt-3">Edit</button>
 			</form>
