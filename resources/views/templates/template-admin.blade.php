@@ -42,8 +42,8 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin') }}">
-          <i class="fas fa-fw fa-home"></i>
-          <span>Home</span></a>
+          <i class="fas fa-fw fa-home"></i> <span>Home</span>
+        </a>
       </li>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -54,13 +54,13 @@
         </a>
         <div id="admin" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item bg-primary text-white" href="{{url('/admin/karyawan')}}"><i class="fas fa-user-tie"></i>&nbsp Karyawan</a>
+            <a class="collapse-item bg-primary text-white" href="{{url('/admin/karyawan')}}"><i class="fas fa-user-tie"></i>&nbsp; Karyawan</a>
             <a class="collapse-item bg-light text-primary" href="{{url('/admin/role')}}">Role</a>
-            <a class="collapse-item bg-primary text-white" href="{{url('/admin/stream')}}"><i class="fas fa-stream"></i>&nbsp Stream</a>
-            <a class="collapse-item" href="{{url('/admin/projek')}}">Projek</a>
-            <a class="collapse-item bg-primary text-white" href="{{url('/admin/pendidikan')}}"><i class="fas fa-school"></i>&nbsp Pendidikan</a>
-            <a class="collapse-item" href="{{url('/admin/jeniscuti')}}">Jenis Cuti</a>
-            <a class="collapse-item" href="{{url('/barang/index')}}">Data Barang</a>
+            <a class="collapse-item bg-primary text-white" href="{{url('/admin/stream')}}"><i class="fas fa-stream"></i>&nbsp; Stream</a>
+            <a class="collapse-item bg-light text-primary" href="{{url('/admin/projek')}}"><i class="fas fa-project-diagram"></i>&nbsp; Projek</a>
+            <a class="collapse-item bg-primary text-white" href="{{url('/admin/pendidikan')}}"><i class="fas fa-school"></i>&nbsp; Pendidikan</a>
+            <a class="collapse-item bg-light text-primary" href="{{url('/admin/jeniscuti')}}">Jenis Cuti</a>
+            <a class="collapse-item bg-primary text-white" href="{{url('/barang/index')}}"><i class="fas fa-database"></i>&nbsp; Barang</a>
           </div>
         </div>
       </li>
