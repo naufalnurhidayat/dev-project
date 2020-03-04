@@ -250,7 +250,6 @@ Route::group(['middleware' => 'auth'], function () {
 		// USER
 			// Home User
 			Route::get('/', 'Home@index')->name('home');
-		
 			Route::get('/profile/{nama}', 'ProfileController@index');
 			Route::get('/profile/edit/{id}', 'ProfileController@edit');
 			Route::patch('/profile/edit/{id}', 'ProfileController@update');
