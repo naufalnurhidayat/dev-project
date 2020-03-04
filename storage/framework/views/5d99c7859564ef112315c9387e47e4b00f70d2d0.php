@@ -46,13 +46,20 @@
                   <td><?php echo e($da->jam_masuk); ?></td>
                   <td><?php echo e($da->tanggal); ?></td>
                   <td><?php echo e($da->catatan); ?></td>
-                  <td><?php echo e($da->status); ?></td>
+                  <?php if($da->status == 'Accepting'): ?>
+                    <td><span class="badge badge-success"><?php echo e($da->status); ?></span></td>
+                  <?php elseif($da->status == 'Rejecting'): ?>
+                    <td><span class="badge badge-danger"><?php echo e($da->status); ?></span></td>
+                  <?php else: ?>
+                    <td><span class="badge badge-warning"><?php echo e($da->status); ?></span></td>
+                  <?php endif; ?>
                   <td>
                     <form action="<?php echo e(url('/admin/data-kehadiran/'. $da->id_absen)); ?>" method="POST">
                       <?php echo method_field('patch'); ?>
                       <?php echo csrf_field(); ?>
-                      <button type="submit" class="badge badge-success" name="prove" value="Accepting">Accept</button>
-                      <button type="submit" class="badge badge-danger" name="prove" value="Rejecting">Reject</button>
+                      <a href="<?php echo e(url('/admin/data-kehadiran/' . $da->id_absen)); ?>" class="badge badge-primary">Detail</a>
+                      <button type="submit" class="badge badge-success" name="prove" value="Accepting" onclick="return confirm('Accept?')">Accept</button>
+                      <button type="submit" class="badge badge-danger" name="prove" value="Rejecting" onclick="return confirm('Reject?')">Reject</button>
                     </form>
                   </td>
                 </tr>

@@ -58,15 +58,17 @@ class AbsensiController extends Controller
                 'catatan' => 'required',
                 'picture' => 'required'
             ]);
-
-            Absen::create([
-                'id_karyawan' => auth()->user()->id,
-                'jam_masuk' => date('H:i:s'),
-                'tanggal' => date('Y-m-d'),
-                'catatan' => $request->catatan,
-                'status' => 'Pending',
-                'picture' => $request->picture
-            ]);
+            if($request->hasFile('picture')){
+                $request->file('picture')->move('img/absen', $request->file('picture')->getClientOriginalName());
+                Absen::create([
+                    'id_karyawan' => auth()->user()->id,
+                    'jam_masuk' => date('H:i:s'),
+                    'tanggal' => date('Y-m-d'),
+                    'catatan' => $request->catatan,
+                    'status' => 'Pending',
+                    'picture' => $request->file('picture')->getClientOriginalName()
+                ]);
+            }
         } else {
             Absen::create([
                 'id_karyawan' => auth()->user()->id,
@@ -89,7 +91,8 @@ class AbsensiController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Absen::where('id_absen', $id)->first();
+        return view('admin/absen/detail-absen', compact('user'));
     }
 
     /**
