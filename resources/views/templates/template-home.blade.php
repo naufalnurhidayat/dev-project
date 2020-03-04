@@ -34,9 +34,10 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
             
-            <div class="mr-3">
+          {{-- gambar --}}
+            {{-- <div class="mr-3">
               <img src="{{ asset('img/logotelkom.jfif') }}" class="rounded" width="15%">
-            </div>
+            </div> --}}
 
             {{-- <div class="">
               <a href="{{url('/')}}" class="btn btn-info btn-circle btn-lg">
