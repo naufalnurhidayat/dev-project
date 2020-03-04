@@ -14,13 +14,13 @@
 
     <div class="row mb-3">
         <div class="col">
-            <a href="<?php echo e(url('/admin/tambahPendidikan')); ?>" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Pendidikan</a>
+            <a href="<?php echo e(url('/admin/pendidikan/create')); ?>" class="btn btn-primary"><i class="fas fa-plus fa-sm"></i> Tambah Pendidikan</a>
         </div>
     </div>
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h3 class="m-0 font-weight-bold text-primary">Data Pendidikan</h3>
+                <h4 class="m-0 font-weight-bold text-primary">Data Pendidikan</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -38,8 +38,8 @@
                       <td><?php echo e($loop->iteration); ?></td>
                       <td><?php echo e($education->pendidikan); ?></td>
                       <td>
-                        <a href="<?php echo e(url('/admin/ubah')); ?>/<?php echo e($education->id); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> <b>Edit</b></a>
-                        <form action="<?php echo e(url('/admin/hapus')); ?>/<?php echo e($education->id); ?>" method="POST" class="d-inline">
+                        <a href="<?php echo e(url('/admin/pendidikan/edit/'.$education->id)); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> <b>Edit</b></a>
+                        <form action="<?php echo e(url('/admin/pendidikan/'.$education->id)); ?>" method="POST" class="d-inline">
                           <?php echo method_field('delete'); ?>
                           <?php echo csrf_field(); ?>
                           <button type="submit" class="btn btn-danger btn-sm" name="hapus"><i class="fa fa-trash"></i> <b>Hapus</b></button>

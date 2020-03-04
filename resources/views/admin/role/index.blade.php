@@ -1,6 +1,6 @@
 @extends('templates/template-admin')
 
-@section('title', 'Daftar Role')
+@section('title', 'Data Role')
 
 @section('content')
 
@@ -43,7 +43,7 @@
                         <form action="{{ url('/admin/role')}}/{{ $r->id }}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf
-                          <button type="submit" class="btn btn-danger btn-sm" name="hapus"><i class="fa fa-trash"></i> <b>Hapus</b></button>
+                          <button type="submit" class="btn btn-danger btn-sm" name="hapus" onclick="return confirm('Yakin Ingin Menghapus?');"><i class="fa fa-trash"></i> <b>Hapus</b></button>
                         </form>
                       </td>
                   </tr>

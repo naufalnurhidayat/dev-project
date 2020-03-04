@@ -12,7 +12,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-3 my-auto pb-5">
-          <img src="{{asset('img/profile/'.$cuti->user['foto'])}}" class="card-img-bottom rounded-pill">	
+          <img src="{{asset('img/profile/'.$cuti->user['foto'])}}" class="card-img-bottom rounded img-fluid">	
         </div>
         <div class="col-md-9 my-auto">
           <div class="table-responsive">
@@ -28,14 +28,14 @@
                 <td><strong>{{$cuti->user->email}}</strong></td>
               </tr>
               <tr>
-                <td>No. Telepon</td>
-                <td>:</td>
-                <td><strong>{{$cuti->user->no_telp}}</strong></td>
-              </tr>
-              <tr>
                 <td>Stream</td>
                 <td>:</td>
                 <td><strong>{{$cuti->user->stream['stream']}}</strong></td>
+              </tr>
+              <tr>
+                <td>Jenis Kelamin</td>
+                <td>:</td>
+                <td><strong>{{$cuti->user->jenkel}}</strong></td>
               </tr>
               <tr>
                 <td>Tanggal Cuti</td>
@@ -68,7 +68,7 @@
       </div>
     </div>
   </div>
-  <div class="text-center mt-3 mb-5 pb-4">
+  <div class="text-center mt-3 mb-5 pb-5">
     <form action="{{url('/po/cuti/'.$cuti->id)}}" method="post">
       @csrf
       @method('patch')
@@ -76,7 +76,6 @@
       <button class="btn btn-danger" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Tolak"><i class="fa fa-times-circle"></i> Tolak</button>
       <button class="btn btn-success" onclick="return confirm('Yakin ingin menerima?');" type="submit" name="status" value="Terima"><i class="fa fa-check"></i> Terima</button>
     </form>
-  </div>
 </div>
 <!-- /.container-fluid -->
 @endsection

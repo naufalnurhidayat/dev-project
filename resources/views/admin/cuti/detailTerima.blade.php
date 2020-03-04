@@ -11,7 +11,10 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col">
+        <div class="col-md-3 my-auto pb-5">
+          <img src="{{asset('img/profile/'.$cuti->user['foto'])}}" class="card-img-bottom rounded-pill">	
+        </div>
+        <div class="col-md-9 my-auto">
           <div class="table-responsive">
             <table class="table table-striped" cellspacing="0">
               <tr>
@@ -25,9 +28,9 @@
                 <td><strong>{{$cuti->user->email}}</strong></td>
               </tr>
               <tr>
-                <td>No. Telepon</td>
+                <td>Jenis Kelamin</td>
                 <td>:</td>
-                <td><strong>{{$cuti->user->no_telp}}</strong></td>
+                <td><strong>{{$cuti->user->jenkel}}</strong></td>
               </tr>
               <tr>
                 <td>Stream</td>
@@ -60,11 +63,13 @@
                 <td><strong><div class="badge badge-success">{{$cuti->status}}</div></strong></td>
               </tr>
             </table>
-                <a href="{{url('/admin/cuti/terima')}}" class="btn btn-primary">Kembali</a>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="text-center mt-3 mb-5 pb-5">
+    <a href="{{url('/admin/cuti/terima')}}" class="btn btn-primary">Kembali</a>
   </div>
 </div>
 <!-- /.container-fluid -->

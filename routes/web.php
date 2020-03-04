@@ -56,17 +56,17 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::get('/admin/role', 'Admin\RoleController@index');
 			Route::get('/admin/role/create', 'Admin\RoleController@create');
 			Route::post('/admin/role', 'Admin\RoleController@store');
-			Route::delete('/admin/role/{role}', 'Admin\RoleController@destroy');
 			Route::get('/admin/role/edit/{role}', 'Admin\RoleController@edit');
+			Route::delete('/admin/role/{role}', 'Admin\RoleController@destroy');
 			Route::patch('/admin/role/{role}', 'Admin\RoleController@update');
 			
 			//Pendidikan
 			Route::get('/admin/pendidikan', 'Admin\pendidikanController@index');
-			Route::get('/admin/ubah/{id}', 'Admin\pendidikanController@edit');
-			Route::delete('/admin/hapus/{id}', 'Admin\pendidikanController@destroy');
-			Route::get('/admin/tambahPendidikan', 'Admin\pendidikanController@create');
-			Route::post('/admin/store', 'Admin\pendidikanController@store');
-			Route::patch('/admin/apdet/{id}', 'Admin\pendidikanController@update');
+			Route::get('/admin/pendidikan/create', 'Admin\pendidikanController@create');
+			Route::get('/admin/pendidikan/edit/{id}', 'Admin\pendidikanController@edit');
+			Route::post('/admin/pendidikan', 'Admin\pendidikanController@store');
+			Route::delete('/admin/pendidikan/{id}', 'Admin\pendidikanController@destroy');
+			Route::patch('/admin/pendidikan/{id}', 'Admin\pendidikanController@update');
 			
 			//Stream
 			Route::get('/admin/stream', 'Admin\StreamController@index');

@@ -27,7 +27,6 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -42,33 +41,29 @@
               <th>Action</th>
             </tr>
           </thead>
-      
           <tbody>
             @foreach($barang as $box)
-           <tr> 
-           <td>{{$box->nama_barang}}</td> 
-           <td>{{$box->Kategori->nama_kategori}}</td>
-           <td>{{$box->stok}}</td>
-           <td>{{$box->type}}</td>
-           <td>{{$box->kondisi}}</td>
-           <td>
-           <a href="{{url('/admin/barang/edit')}}/{{$box->id_barang}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
-           {{-- <a href="{{url('/admin/destroy')}}/{{$box->id_barang}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</a> --}}
-           <form class="d-inline" method="post" action="{{url('/admin/destroy')}}/{{$box->id_barang}}">
-            {{ method_field('DELETE')}}
-            {{csrf_field()  }}
-            <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm" onClick="return confirm('apakah anda yakin')"><i class="fa fa-trash mr-2"></i>Hapus</button>
-           </form>
-
-           </td>
-           </tr>
-           @endforeach
+            <tr> 
+              <td>{{$box->nama_barang}}</td> 
+              <td>{{$box->Kategori->nama_kategori}}</td>
+              <td>{{$box->stok}}</td>
+              <td>{{$box->type}}</td>
+              <td>{{$box->kondisi}}</td>
+              <td>
+              <a href="{{url('/admin/barang/edit')}}/{{$box->id_barang}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+              <form class="d-inline" method="post" action="{{url('/admin/destroy')}}/{{$box->id_barang}}">
+                {{ method_field('DELETE')}}
+                {{csrf_field()  }}
+                <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm"><i class="fa fa-trash mr-2"></i>Hapus</button>
+              </form>
+              </td>
+            </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
     </div>
   </div>
-
 </div>
 <!-- /.container-fluid -->
 

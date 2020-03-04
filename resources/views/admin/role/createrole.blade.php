@@ -15,7 +15,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="role">Role</label>
-                        <input type="text" class="form-control @error('role') is-invalid @enderror" id="role" name="role" value="{{ old('role') }}">
+                        <input type="text" class="form-control @error('role') is-invalid @enderror" id="role" name="role" value="{{ old('role') }}" autofocus>
                         @error('role') <div class="invalid-feedback">{{ $message }}</div> @enderror
                     <button type="submit" class="btn btn-primary mt-3">Tambah</button>
                 </form>
