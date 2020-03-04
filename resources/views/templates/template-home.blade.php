@@ -34,16 +34,10 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
             
-          {{-- gambar --}}
-            {{-- <div class="mr-3">
-              <img src="{{ asset('img/logotelkom.jfif') }}" class="rounded" width="15%">
-            </div> --}}
-
-            {{-- <div class="">
-              <a href="{{url('/')}}" class="btn btn-info btn-circle btn-lg">
-                <i class="fas fa-home"></i>
-              </a>
-            </div> --}}
+            <div class="mr-3">
+              <img src="{{ asset('img/logotelkom.jfif') }}" class="rounded mr-3" width="15%">
+              <a href="{{url('/')}}" class="btn btn-danger btn-lg"><i class="fas fa-home"></i></a>
+            </div>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">

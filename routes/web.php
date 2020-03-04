@@ -96,6 +96,7 @@ Route::group(['middleware' => 'auth'], function () {
 		  // Transaksi
 			// Absen
 			Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
+			Route::get('admin/data-kehadiran/{id}', 'Admin\AbsensiController@show');
 			Route::patch('admin/data-kehadiran/{id}', 'Admin\AbsensiController@update');
 			Route::get('admin/absen', 'Admin\AbsensiController@create');
 			Route::post('admin/absen', 'Admin\AbsensiController@store');
@@ -250,7 +251,6 @@ Route::group(['middleware' => 'auth'], function () {
 		// USER
 			// Home User
 			Route::get('/', 'Home@index')->name('home');
-		
 			Route::get('/profile/{nama}', 'ProfileController@index');
 			Route::get('/profile/edit/{id}', 'ProfileController@edit');
 			Route::patch('/profile/edit/{id}', 'ProfileController@update');
