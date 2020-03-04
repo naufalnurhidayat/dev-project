@@ -17,7 +17,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-3 my-auto pb-5">
-          <img src="{{asset('img/profile/'.auth()->user()->foto)}}" class="card-img-bottom">	
+          <img src="{{asset('img/profile/'.auth()->user()->foto)}}" class="card-img-bottom rounded img-fluid shadow">	
         </div>
         <div class="col-md-9 my-auto">
           <div class="table-responsive">
