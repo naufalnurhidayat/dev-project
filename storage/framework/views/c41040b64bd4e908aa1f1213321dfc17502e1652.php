@@ -35,7 +35,7 @@
         <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
             
             <div class="mr-3">
-              <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" class="rounded mr-3" width="15%">
+              <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" class="rounded mr" width="15%">
               <a href="<?php echo e(url('/')); ?>" class="btn btn-danger btn-lg"><i class="fas fa-home"></i></a>
             </div>
 
