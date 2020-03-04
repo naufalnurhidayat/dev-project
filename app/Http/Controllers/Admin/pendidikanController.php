@@ -37,11 +37,7 @@ class pendidikanController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'pendidikan' => 'required'
-        ]);
-
-
+        $request->validate(['pendidikan' => 'required']);
         Pendidikan::create($request->all());
         return redirect('/admin/pendidikan')->with('status', 'Data berhasil di Tambah!!');
     }
@@ -78,12 +74,8 @@ class pendidikanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'pendidikan' => 'required'
-        ]);
-        
-        $pendidikan = Pendidikan::find($id);
-        $pendidikan->update($request->all());
+        $request->validate(['pendidikan' => 'required']);
+        Pendidikan::where('id', $id)->update(['pendidikan' => $request->pendidikan]);
         return redirect('/admin/pendidikan')->with('status', 'Data Berhasil di Edit');
     }
 
@@ -95,8 +87,7 @@ class pendidikanController extends Controller
      */
     public function destroy($id)
     {
-        $pendidikan = Pendidikan::find($id);
-        $pendidikan->delete(); 
+        Pendidikan::destroy($id);
         return redirect('/admin/pendidikan')->with('status', 'Data berhasil di Hapus');
     }
 }
