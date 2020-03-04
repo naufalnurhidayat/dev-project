@@ -271,9 +271,8 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('/barang', 'barangController@index');
       Route::get('/show/{id_pinjam}', 'barangController@show');
       Route::get('/tampil/table', 'barangController@tampil');
-      // Route::get('/invetaris/keranjang', 'temporariController@index');
       Route::post('/pengajuan/store', 'PinjamController@store');
-      Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
+	  Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
 		
 		// --------------------------------------------------------------------------------------
 	});
