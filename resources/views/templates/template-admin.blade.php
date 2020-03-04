@@ -54,11 +54,11 @@
         </a>
         <div id="admin" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{url('/admin/karyawan')}}">Karyawan</a>
-            <a class="collapse-item" href="{{url('/admin/role')}}">Role</a>
-            <a class="collapse-item" href="{{url('/admin/stream')}}">Stream</a>
+            <a class="collapse-item bg-primary text-white" href="{{url('/admin/karyawan')}}"><i class="fas fa-user-tie"></i>&nbsp Karyawan</a>
+            <a class="collapse-item bg-light text-primary" href="{{url('/admin/role')}}">Role</a>
+            <a class="collapse-item bg-primary text-white" href="{{url('/admin/stream')}}"><i class="fas fa-stream"></i>&nbsp Stream</a>
             <a class="collapse-item" href="{{url('/admin/projek')}}">Projek</a>
-            <a class="collapse-item" href="{{url('/admin/pendidikan')}}">Pendidikan</a>
+            <a class="collapse-item bg-primary text-white" href="{{url('/admin/pendidikan')}}"><i class="fas fa-school"></i>&nbsp Pendidikan</a>
             <a class="collapse-item" href="{{url('/admin/jeniscuti')}}">Jenis Cuti</a>
             <a class="collapse-item" href="{{url('/barang/index')}}">Data Barang</a>
           </div>
