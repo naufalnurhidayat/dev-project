@@ -11,8 +11,8 @@
       {{ session('status') }}
     </div>
   @endif
-  
-  <div class="row mt-3">
+  <a href="{{url('/cuti/create')}}" class="btn btn-primary mb-3"><i class="fas fa-calendar-plus">&nbsp; Buat Pengajuan Cuti</i></a>
+  {{-- <div class="row mt-3">
       <div class="col">
           <div class="jumbotron mx-auto text-center">
               <h1 class="display-3">Hallo, Nama User!</h1>
@@ -24,7 +24,7 @@
               </a>
           </div>
       </div>
-  </div>
+  </div> --}}
 <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">

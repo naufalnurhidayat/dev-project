@@ -54,43 +54,41 @@
         </a>
         <div id="admin" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item bg-primary text-white" href="<?php echo e(url('/admin/karyawan')); ?>"><i class="fas fa-user-tie"></i>&nbsp; Karyawan</a>
-            <a class="collapse-item bg-light text-primary" href="<?php echo e(url('/admin/role')); ?>">Role</a>
-            <a class="collapse-item bg-primary text-white" href="<?php echo e(url('/admin/stream')); ?>"><i class="fas fa-stream"></i>&nbsp; Stream</a>
-            <a class="collapse-item bg-light text-primary" href="<?php echo e(url('/admin/projek')); ?>"><i class="fas fa-project-diagram"></i>&nbsp; Projek</a>
-            <a class="collapse-item bg-primary text-white" href="<?php echo e(url('/admin/pendidikan')); ?>"><i class="fas fa-school"></i>&nbsp; Pendidikan</a>
-            <a class="collapse-item bg-light text-primary" href="<?php echo e(url('/admin/jeniscuti')); ?>">Jenis Cuti</a>
-            <a class="collapse-item bg-primary text-white" href="<?php echo e(url('/barang/index')); ?>"><i class="fas fa-database"></i>&nbsp; Barang</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/role')); ?>">Role</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/stream')); ?>">Stream</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/projek')); ?>">Projek</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/pendidikan')); ?>">Pendidikan</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/karyawan')); ?>">Karyawan</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/jeniscuti')); ?>">Jenis Cuti</a>
+            <a class="collapse-item" href="<?php echo e(url('/barang/index')); ?>">Barang</a>
           </div>
         </div>
       </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#absensi" aria-expanded="true" aria-controls="absensi">
-            <i class="fas fa-fw fa-clipboard"></i>
-            <span>Absensi</span>
+          <i class="fas fa-fw fa-clipboard"></i>
+          <span>Absensi</span>
         </a>
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
+          <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?php echo e(url('/admin/absen')); ?>">Absen</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/data-kehadiran')); ?>">Data Kehadiran</a>
-            </div>
+          </div>
         </div>
-        </li>
+      </li>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cuti" aria-expanded="true" aria-controls="cuti">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-file-invoice"></i>
           <span>Cuti</span>
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item bg-primary text-white" href="<?php echo e(url('/admin/cuti/show')); ?>"><b>Data Cuti Anda</b></a>
-            <a class="collapse-item bg-warning text-white" href="<?php echo e(url('/admin/cuti')); ?>"><b>Data Cuti Di Proses</b></a>
-            <a class="collapse-item bg-success text-white" href="<?php echo e(url('/admin/cuti/terima')); ?>"><b>Data Cuti Di Terima</b></a>
-            <a class="collapse-item bg-danger text-white" href="<?php echo e(url('/admin/cuti/tolak')); ?>"><b>Data Cuti Di Tolak</b></a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/cuti/show')); ?>">Data Cuti Anda</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/cuti')); ?>">Data Cuti Karyawan</a>
           </div>
         </div>
       </li>
