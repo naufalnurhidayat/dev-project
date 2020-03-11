@@ -10,8 +10,13 @@
 
     </div>
   <?php endif; ?>
+  <?php if(session('jatah')): ?>
+    <div class="alert alert-danger">
+      <?php echo e(session('jatah')); ?>
+
+    </div>
+  <?php endif; ?>
   <a href="<?php echo e(url('/cuti/create')); ?>" class="btn btn-primary mb-3"><i class="fas fa-calendar-plus">&nbsp; Buat Pengajuan Cuti</i></a>
-  
 <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">

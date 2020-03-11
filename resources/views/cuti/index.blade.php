@@ -11,20 +11,12 @@
       {{ session('status') }}
     </div>
   @endif
+  @if (session('jatah'))
+    <div class="alert alert-danger">
+      {{ session('jatah') }}
+    </div>
+  @endif
   <a href="{{url('/cuti/create')}}" class="btn btn-primary mb-3"><i class="fas fa-calendar-plus">&nbsp; Buat Pengajuan Cuti</i></a>
-  {{-- <div class="row mt-3">
-      <div class="col">
-          <div class="jumbotron mx-auto text-center">
-              <h1 class="display-3">Hallo, Nama User!</h1>
-              <p class="lead">Selamat datang di fitur cuti (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
-              <hr class="my-4">
-              <p>Silahkan klik tombol kalender jika anda ingin membuat pengajuan cuti. Silahkan klik tombol home jika ingin kembali ke home.</p>
-              <a href="{{url('/cuti/create')}}" class="btn btn-success btn-circle btn-lg">
-                  <i class="fas fa-calendar-plus"></i>
-              </a>
-          </div>
-      </div>
-  </div> --}}
 <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">

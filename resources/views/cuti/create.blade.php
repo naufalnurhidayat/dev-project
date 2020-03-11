@@ -17,7 +17,7 @@
             <div class="form-group">
               <label for="jencut">Jenis Cuti</label>
               <select  class="form-control @error('jencut') is-invalid @enderror" name="jencut" id="jencut">
-                  <option selected value="">-- Pilih Jenis Cuti --</option>
+                  <option value="">-- Pilih Jenis Cuti --</option>
                 @foreach ($jencut as $j)
                   <option value="{{$j->id}}">{{$j->jenis_cuti}}</option>  
                 @endforeach
@@ -27,12 +27,12 @@
             <div class="form-group row">
               <div class="col-6">
                 <label for="awal">Awal Cuti</label>
-                <input type="date" class="form-control @error('awal') is-invalid @enderror" name="awal" id="awal" value="{{ old('awal') }}">
+                <input type="date" min="{{ date('Y-m-d') }}" class="form-control @error('awal') is-invalid @enderror" name="awal" id="awal" value="{{ old('awal') }}">
                 @error('awal')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
               <div class="col-6">
                 <label for="akhir">akhir Cuti</label>
-                <input type="date" class="form-control @error('akhir') is-invalid @enderror" name="akhir" id="akhir" value="{{ old('akhir') }}">
+                <input type="date" min="{{ date('Y-m-d') }}" class="form-control @error('akhir') is-invalid @enderror" name="akhir" id="akhir" value="{{ old('akhir') }}">
                 @error('akhir')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
             </div>
