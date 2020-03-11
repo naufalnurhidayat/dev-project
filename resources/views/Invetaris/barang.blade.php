@@ -48,7 +48,7 @@
            <td>{{$box->Kategori->nama_kategori}}</td>
            <td>{{$box->jumlah_pinjam}}</td>
            <td>{{$box->tgl_pinjam}}</td>
-           <td>{{$box->Kembali[0]}}</td>
+           <td>{{$box->Kembali['tgl_kembali']}}</td>
            <td>
             @if( $box->status == "Pending" )
                 <span class="badge badge-warning btn-sm">Pending</span>
@@ -61,7 +61,7 @@
            <td>
              @if($box->status == "Pending")
              @else
-             <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"> Print</i></a>
+             <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"></i></a>
              <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Pengembalian</a>
       </div>
     </div>

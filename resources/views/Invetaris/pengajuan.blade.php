@@ -10,12 +10,24 @@
         {{ session('status') }}
     </div>
 @endif
-<!-- Begin Page Content -->
+
 <div class="container-fluid">
-  <!-- Page Heading -->
   
   <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
-<a href="{{url('/invetaris')}}" class="btn btn-warning mb-2">Kembali</a>
+  <a href="{{url('/invetaris')}}" class="btn btn-warning mb-2">Kembali</a>
+
+{{-- ----Select Option------ --}}
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+  </div>
+  <select class="custom-select" name="kategori" id="inputGroupSelect01">
+    <option selected>Choose Kategori</option>
+    @foreach ($kategori as $item)
+    <option value={{$item->id_kategori}} id="kategori">{{$item->nama_kategori}}</option>
+    @endforeach
+  </select>
+</div>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -33,7 +45,7 @@
             </tr>
           </thead>
       
-          <tbody>
+          <tbody id="barang">
             @foreach($barang as $b)
             @if($b->stok == 0)
             @else
@@ -43,11 +55,6 @@
            <td>{{$b->kondisi}}</td>
            <td>
            <a href="" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#pinjam_{{$b->id_barang}}"><i class=""></i> Pinjam</a>
-           {{-- </td> --}}
-           {{-- </tr> --}}
-        {{-- @endforeach --}}
-          {{-- </tbody> --}}
-        {{-- </table> --}}
       </div>
     </div>
   </div>
@@ -102,5 +109,20 @@
 <!-- /.container-fluid -->
 
 
-
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('#kategori').on('change', function(e){
+          var id = e.target.value;
+          $.get('{{ url('kategori')}}/'+id, function(data){
+              console.log(id);
+              console.log(data);
+              $('#barang').empty();
+              $.each(data, function(index, element){
+                  $('#barang').append("<tr><td>"+element.nama_barang+"</td><td>"+element.nama_kategori+"</td>"+
+                  "<td>"+element.kondisi+"</td></tr>");
+              });
+          });
+      });
+  });
+</script>
 @endsection

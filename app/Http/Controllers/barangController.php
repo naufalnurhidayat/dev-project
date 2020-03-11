@@ -120,4 +120,12 @@ class barangController extends Controller
         return view('Invetaris.pengajuan', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
+    public function merkAjax($id){
+        if($id==0){
+            $barang = Barang::all();
+        }else{
+            $barang = Barang::where('id_kategori','=',$id)->get();
+        }
+        return $barang;
+    }
 }

@@ -273,6 +273,7 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('/tampil/table', 'barangController@tampil');
       Route::post('/pengajuan/store', 'PinjamController@store');
 	  Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
+	  Route::get('/kategori/{id}', 'barangController@cobajax');
 		
 		// --------------------------------------------------------------------------------------
 	});
