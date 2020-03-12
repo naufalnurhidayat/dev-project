@@ -111,4 +111,16 @@ class kembaliController extends Controller
     {
         //
     }
+
+    public function periode(Request $request)
+    {
+        try {
+            $dari = $request->dari;
+            $sampai = $request->sampai;
+            $kembali = Kembali::whereDate('tgl_kembali', '>=',$dari)->whereDate('tgl_kembali', '<=',$sampai)->get();
+            return view('admin.Admin_invetaris.pengembalian', compact('kembali'));
+        } catch (\Exception $e) {
+            \Session::flash('gagal', $e->getMessage());
+        }
+    }
 }

@@ -17,7 +17,8 @@
       <div class="col">
         <div class="p-5">
           <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Login</h1>
+            <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" width="25%" class="mb-3">
+            <h1 class="h4 text-gray-900 mb-4">Login</h1>
           </div>
           <form action="<?php echo e(url('/login')); ?>" method="POST">
             <?php echo csrf_field(); ?>

@@ -117,7 +117,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="Laki-laki" name="jenkel" value="Laki-laki">
+unset($__errorArgs, $__bag); ?>" id="Laki-laki" name="jenkel" value="Laki-laki"<?php echo e(old('jenkel') == 'Laki-laki' ? 'checked' : ''); ?>>
                     <label for="Laki-laki" class="ml-4">Laki-laki</label>
                     <?php $__errorArgs = ['jenkel'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -134,7 +134,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="perempuan" name="jenkel" value="Perempuan">
+unset($__errorArgs, $__bag); ?>" id="perempuan" name="jenkel" value="Perempuan"<?php echo e(old('jenkel') == 'Perempuan' ? 'checked' : ''); ?>>
                     <label for="perempuan" class="ml-4">Perempuan</label>
                     <?php $__errorArgs = ['jenkel'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -158,7 +158,7 @@ endif;
 unset($__errorArgs, $__bag); ?>">
                       <option value="">--Pilih Stream--</option>
                       <?php $__currentLoopData = $stream; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $s): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($s->id); ?>"><?php echo e($s->stream); ?></option>
+                        <option value="<?php echo e($s->id); ?>"<?php echo e(old('id_stream') == $s->id ? 'selected' : ''); ?>><?php echo e($s->stream); ?></option>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <?php $__errorArgs = ['id_stream'];
@@ -181,7 +181,7 @@ endif;
 unset($__errorArgs, $__bag); ?>">
                       <option value="">--Pilih Pendidikan--</option>
                       <?php $__currentLoopData = $pendidikan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($p->id); ?>"><?php echo e($p->pendidikan); ?></option>
+                        <option value="<?php echo e($p->id); ?>"<?php echo e(old('id_pendidikan') == $p->id ? 'selected' : ''); ?>><?php echo e($p->pendidikan); ?></option>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <?php $__errorArgs = ['id_pendidikan'];
@@ -243,12 +243,12 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>">
                       <option value="">--Pilih Agama--</option>
-                      <option value="Islam">Islam</option>
-                      <option value="Kristen">Kristen</option>
-                      <option value="Kristen">Katolik</option>
-                      <option value="Hindu">Hindu</option>
-                      <option value="Buddha">Buddha</option>
-                      <option value="Konghucu">Konghucu</option>
+                      <option value="Islam"<?php echo e(old('agama') == 'Islam' ? 'selected' : ''); ?>>Islam</option>
+                      <option value="Kristen"<?php echo e(old('agama') == 'Kristen' ? 'selected' : ''); ?>>Kristen</option>
+                      <option value="Katholik"<?php echo e(old('agama') == 'Katholik' ? 'selected' : ''); ?>>Katolik</option>
+                      <option value="Hindu"<?php echo e(old('agama') == 'Hindu' ? 'selected' : ''); ?>>Hindu</option>
+                      <option value="Buddha"<?php echo e(old('agama') == 'Buddha' ? 'selected' : ''); ?>>Buddha</option>
+                      <option value="Konghucu"<?php echo e(old('agama') == 'Konghucu' ? 'selected' : ''); ?>>Konghucu</option>
                     </select>
                     <?php $__errorArgs = ['agama'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -328,7 +328,7 @@ endif;
 unset($__errorArgs, $__bag); ?>">
                       <option value="">--Pilih Role--</option>
                       <?php $__currentLoopData = $role; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($r->id); ?>"><?php echo e($r->role); ?></option>
+                        <option value="<?php echo e($r->id); ?>"<?php echo e(old('id_role') == $r->id ? 'selected' : ''); ?>><?php echo e($r->role); ?></option>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <?php $__errorArgs = ['id_role'];
@@ -351,7 +351,7 @@ endif;
 unset($__errorArgs, $__bag); ?>">
                       <option value="">--Pilih Projek--</option>
                       <?php $__currentLoopData = $projek; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                      <option value="<?php echo e($p->id); ?>"><?php echo e($p->project); ?></option>
+                      <option value="<?php echo e($p->id); ?>"<?php echo e(old('id_projek[]') == $p->id ? 'selected' : ''); ?>><?php echo e($p->project); ?></option>
                       <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                     <?php $__errorArgs = ['id_projek[]'];

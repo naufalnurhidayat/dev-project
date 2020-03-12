@@ -18,7 +18,9 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h3 class="m-0 font-weight-bold text-primary">Data Kehadiran Karyawan</h3>
+      <h3 class="m-0 font-weight-bold text-primary d-inline">Data Kehadiran Karyawan</h3>
+      <a href="{{ url('/admin/absen/exportexcel') }}" class="btn btn-success float-right"><i class="fas fa-print"></i></a>
+      <a href="{{ url('/admin/absen/exportpdf') }}" class="btn btn-danger float-right mr-2"><i class="fas fa-print"></i></a>
     </div>
     <div class="card-body">
             <div class="table-responsive">

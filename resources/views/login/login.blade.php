@@ -18,7 +18,8 @@
       <div class="col">
         <div class="p-5">
           <div class="text-center">
-              <h1 class="h4 text-gray-900 mb-4">Login</h1>
+            <img src="{{ asset('img/logotelkom.jfif') }}" width="25%" class="mb-3">
+            <h1 class="h4 text-gray-900 mb-4">Login</h1>
           </div>
           <form action="{{ url('/login') }}" method="POST">
             @csrf

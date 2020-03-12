@@ -104,7 +104,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form action="<?php echo e(url('/absen')); ?>" method="POST">
+        <form action="<?php echo e(url('/absen')); ?>" method="POST" enctype="multipart/form-data">
           <?php echo csrf_field(); ?>
           <div class="modal-body">
             <div class="form-group">
