@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
 			//inventaris
 			Route::get('/barang/index', 'databoxController@index');
 			Route::get('/admin/create', 'databoxController@create');
-			Route::post('/barang/store', 'databoxController@store');
+			Route::post('/admin/barang/store', 'databoxController@store');
 			Route::patch('/admin/barang/update/{id_barang}', 'databoxController@update');
 			Route::get('/admin/barang/edit/{id_barang}', 'databoxController@edit');
 			Route::delete('/admin/destroy/{id_barang}', 'databoxController@destroy');
@@ -273,7 +273,7 @@ Route::group(['middleware' => 'auth'], function () {
       Route::get('/tampil/table', 'barangController@tampil');
       Route::post('/pengajuan/store', 'PinjamController@store');
 	  Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
-	  Route::get('/kategori/{id}', 'barangController@cobajax');
+	  Route::get('/kategori', 'barangController@cobajax');
 		
 		// --------------------------------------------------------------------------------------
 	});

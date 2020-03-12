@@ -17,16 +17,20 @@
   <a href="{{url('/invetaris')}}" class="btn btn-warning mb-2">Kembali</a>
 
 {{-- ----Select Option------ --}}
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+<div class="row">
+  <div class="col-3">
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Categori</label>
+      </div>
+        <select class="custom-select" name="kategori" id="kategori">
+          <option selected value="">Choose Kategori</option>
+            @foreach ($kategori as $item)
+          <option value={{$item->id_kategori}}>{{$item->nama_kategori}}</option>
+            @endforeach
+        </select>
+      </div>
   </div>
-  <select class="custom-select" name="kategori" id="inputGroupSelect01">
-    <option selected>Choose Kategori</option>
-    @foreach ($kategori as $item)
-    <option value={{$item->id_kategori}} id="kategori">{{$item->nama_kategori}}</option>
-    @endforeach
-  </select>
 </div>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
@@ -44,7 +48,7 @@
               <th>Action</th>
             </tr>
           </thead>
-      
+
           <tbody id="barang">
             @foreach($barang as $b)
             @if($b->stok == 0)
@@ -109,7 +113,7 @@
 <!-- /.container-fluid -->
 
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   $(document).ready(function(){
       $('#kategori').on('change', function(e){
           var id = e.target.value;
@@ -119,10 +123,10 @@
               $('#barang').empty();
               $.each(data, function(index, element){
                   $('#barang').append("<tr><td>"+element.nama_barang+"</td><td>"+element.nama_kategori+"</td>"+
-                  "<td>"+element.kondisi+"</td></tr>");
+                  "<td>"+element.kondisi+"</td><td>"+"</td></tr>");
               });
           });
       });
   });
-</script>
+</script> --}}
 @endsection
