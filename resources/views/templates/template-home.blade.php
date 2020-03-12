@@ -20,6 +20,7 @@
 
   <!-- Custom styles for this page -->
   <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 </head>
 
@@ -127,8 +128,25 @@
       let fileName = $(this).val().split('\\').pop();
       $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
+
+
+  $(document).ready(function (){
+
+    $("#kategori").on('change', function(){
+      const kategori = $("#kategori").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '{{url('/kategori')}}',
+        data: 'kategori_id=' + kategori,
+        success:function(response){
+          console.log(response);
+          $("#barang").html(response);
+        }
+      })
+    })
+  })
   </script>
-
 </body>
-
 </html>

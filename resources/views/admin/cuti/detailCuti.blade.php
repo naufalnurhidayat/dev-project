@@ -60,7 +60,15 @@
               <tr>
                 <td>Status</td>
                 <td>:</td>
-                <td><strong><div class="badge badge-warning">{{$cuti->status}}</div></strong></td>
+                <td>
+                  @if ($cuti->status == "Diterima")
+                      <span class="badge badge-success">{{ $cuti->status }}</span>
+                  @elseif ($cuti->status == "Ditolak")
+                      <span class="badge badge-danger">{{ $cuti->status }}</span>
+                  @else
+                      <span class="badge badge-warning">{{ $cuti->status }}</span>
+                  @endif 
+                </td>
               </tr>
             </table>
           </div>

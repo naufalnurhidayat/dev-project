@@ -20,6 +20,7 @@
 
   <!-- Custom styles for this page -->
   <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 </head>
 
@@ -60,7 +61,6 @@
             <a class="collapse-item" href="{{url('/admin/pendidikan')}}">Pendidikan</a>
             <a class="collapse-item" href="{{url('/admin/karyawan')}}">Karyawan</a>
             <a class="collapse-item" href="{{url('/admin/jeniscuti')}}">Jenis Cuti</a>
-            <a class="collapse-item" href="{{url('/barang/index')}}">Barang</a>
           </div>
         </div>
       </li>
@@ -96,13 +96,14 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#inventori" aria-expanded="true" aria-controls="inventori">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-box"></i>
           <span>Inventori</span>
         </a>
         <div id="inventori" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{url('/admin/pinjam')}}">Data Pinjam</a>
           <a class="collapse-item" href="{{url('/admin/kembali')}}">Pengembalian</a>
+          <a class="collapse-item" href="{{url('/barang/index')}}">Data Barang</a>
           </div>
         </div>
       </li>
@@ -216,9 +217,24 @@
 
   {{-- Script Untuk Absen --}}
   <script>
-    $('.custom-file-input').on('change', function() {
-      let fileName = $(this).val().split('\\').pop();
-      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    $(document).ready(function () {
+      $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+      });
+
+      $("#keyword").change(function () {
+        const status = $("#keyword").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/admin/cuti/status')}}',
+          data: 'status=' + status,
+          success: function (response) {
+            $("#tampungan").html(response);
+          }
+        });
+      });
     });
   </script>
 

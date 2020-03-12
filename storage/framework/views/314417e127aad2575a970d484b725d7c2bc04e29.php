@@ -216,9 +216,24 @@
 
   
   <script>
-    $('.custom-file-input').on('change', function() {
-      let fileName = $(this).val().split('\\').pop();
-      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    $(document).ready(function () {
+      $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+      });
+
+      $("#keyword").change(function () {
+        const status = $("#keyword").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '<?php echo e(url('/admin/cuti/status')); ?>',
+          data: 'status=' + status,
+          success: function (response) {
+            $("#tampungan").html(response);
+          }
+        });
+      });
     });
   </script>
 
