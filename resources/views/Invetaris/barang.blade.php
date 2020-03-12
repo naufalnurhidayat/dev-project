@@ -28,6 +28,7 @@
         <table class="table table-bordered" id="dataTable" width="100%" height="20px" cellspacing="0">
           <thead>
             <tr align="center">
+              {{-- <th>No</th> --}}
               <th>Nama Barang</th>
               <th>Nama Kategori</th>
               <th>Jumlah Pinjam</th>
@@ -39,13 +40,15 @@
           </thead>
       
           <tbody>
+            {{-- @php $i=1 @endphp --}}
             @foreach($pinjam as $box)
-           <tr align="center"> 
-           <td>{{$box->Barang['nama_barang']}}</td> 
+           <tr align="center">
+           {{-- <td>{{$i++}}</td> --}}
+           <td>{{$box->Barang['nama_barang']}}</td>
            <td>{{$box->Kategori->nama_kategori}}</td>
            <td>{{$box->jumlah_pinjam}}</td>
            <td>{{$box->tgl_pinjam}}</td>
-           <td>{{$box->Kembali['status_kembali']}}</td>
+           <td>{{$box->Kembali['tgl_kembali']}}</td>
            <td>
             @if( $box->status == "Pending" )
                 <span class="badge badge-warning btn-sm">Pending</span>
@@ -56,9 +59,9 @@
                @endif
            </td>
            <td>
-             <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"> Print</i></a>
              @if($box->status == "Pending")
              @else
+             <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"></i></a>
              <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Pengembalian</a>
       </div>
     </div>
