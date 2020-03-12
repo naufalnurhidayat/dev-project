@@ -84,7 +84,6 @@ class AuthController extends Controller
             'alamat' => 'required',
             'password' => 'required|min:6|same:password2',
             'password2' => 'required|min:6|same:password'
-            
         ]);
 
         $u = User::create([
@@ -106,6 +105,10 @@ class AuthController extends Controller
             'foto' => 'default.jpg'
         ]);
         
+            // $request->validate([
+            //     'id_projek[]' => 'required'
+            // ]);
+
         $dataProjek = [];
         foreach ($request->id_projek as $projek) {
             $dataProjek[] = ['id_karyawan' => $u->id, 'id_projek' => $projek];

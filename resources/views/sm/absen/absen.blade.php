@@ -104,7 +104,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form action="{{ url('/sm/absen') }}" method="POST">
+        <form action="{{ url('/sm/absen') }}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="modal-body">
             <div class="form-group">

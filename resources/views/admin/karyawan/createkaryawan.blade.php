@@ -42,10 +42,10 @@
                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="Laki-laki" name="jenkel" value="Laki-laki">
+                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="Laki-laki" name="jenkel" value="Laki-laki"{{old('jenkel') == 'Laki-laki' ? 'checked' : ''}}>
                     <label for="Laki-laki" class="ml-4">Laki-laki</label>
                     @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="perempuan" name="jenkel" value="Perempuan">
+                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="perempuan" name="jenkel" value="Perempuan"{{old('jenkel') == 'Perempuan' ? 'checked' : ''}}>
                     <label for="perempuan" class="ml-4">Perempuan</label>
                     @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
@@ -55,7 +55,7 @@
                     <select id="id_stream" name="id_stream" class="form-control @error('id_stream') is-invalid @enderror">
                       <option value="">--Pilih Stream--</option>
                       @foreach ($stream as $s)
-                        <option value="{{ $s->id }}">{{ $s->stream }}</option>
+                        <option value="{{ $s->id }}"{{old('id_stream') == $s->id ? 'selected' : ''}}>{{ $s->stream }}</option>
                       @endforeach
                     </select>
                     @error('id_stream') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -64,7 +64,7 @@
                     <select id="id_pendidikan" name="id_pendidikan" class="form-control @error('id_pendidikan') is-invalid @enderror">
                       <option value="">--Pilih Pendidikan--</option>
                       @foreach ($pendidikan as $p)
-                        <option value="{{ $p->id }}">{{ $p->pendidikan }}</option>
+                        <option value="{{ $p->id }}"{{old('id_pendidikan') == $p->id ? 'selected' : ''}}>{{ $p->pendidikan }}</option>
                       @endforeach
                     </select>
                     @error('id_pendidikan') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -84,12 +84,12 @@
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <select id="agama" name="agama" class="form-control @error('agama') is-invalid @enderror">
                       <option value="">--Pilih Agama--</option>
-                      <option value="Islam">Islam</option>
-                      <option value="Kristen">Kristen</option>
-                      <option value="Kristen">Katolik</option>
-                      <option value="Hindu">Hindu</option>
-                      <option value="Buddha">Buddha</option>
-                      <option value="Konghucu">Konghucu</option>
+                      <option value="Islam"{{old('agama') == 'Islam' ? 'selected' : ''}}>Islam</option>
+                      <option value="Kristen"{{old('agama') == 'Kristen' ? 'selected' : ''}}>Kristen</option>
+                      <option value="Katholik"{{old('agama') == 'Katholik' ? 'selected' : ''}}>Katolik</option>
+                      <option value="Hindu"{{old('agama') == 'Hindu' ? 'selected' : ''}}>Hindu</option>
+                      <option value="Buddha"{{old('agama') == 'Buddha' ? 'selected' : ''}}>Buddha</option>
+                      <option value="Konghucu"{{old('agama') == 'Konghucu' ? 'selected' : ''}}>Konghucu</option>
                     </select>
                     @error('agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
@@ -113,7 +113,7 @@
                     <select id="id_role" name="id_role" class="form-control @error('id_role') is-invalid @enderror">
                       <option value="">--Pilih Role--</option>
                       @foreach ($role as $r)
-                        <option value="{{ $r->id }}">{{ $r->role }}</option>
+                        <option value="{{ $r->id }}"{{old('id_role') == $r->id ? 'selected' : ''}}>{{ $r->role }}</option>
                       @endforeach
                     </select>
                     @error('id_role') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -122,7 +122,7 @@
                     <select multiple="multiple" name="id_projek[]" id="id_projek" class="form-control @error('id_projek[]') is-invalid @enderror">
                       <option value="">--Pilih Projek--</option>
                       @foreach ($projek as $p)
-                      <option value="{{ $p->id }}">{{ $p->project }}</option>
+                      <option value="{{ $p->id }}"{{old('id_projek[]') == $p->id ? 'selected' : ''}}>{{ $p->project }}</option>
                       @endforeach
                     </select>
                     @error('id_projek[]') <div class="invalid-feedback">{{ $message }}</div> @enderror
