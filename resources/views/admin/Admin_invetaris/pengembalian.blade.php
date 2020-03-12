@@ -18,7 +18,7 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-
+      <i href="#" class="btn btn-warning btn-filter"><i class="fas fa-filter"> Filter Tanggal</i></i>
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -67,6 +67,50 @@
 
 </div>
 <!-- /.container-fluid -->
+<div class="modal fade" id="modal-filter" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+  <div class="modal-dialog modal-default modal-dialog-centered modal-" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h6 class="modal-title" id="modal-title-notification">Your attention is required</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form role="form" action="{{url('/transaksi-filter')}}" method="get">
+          <div class="box-body">
+            <div class="form-group" data-provide="datepicker">
+              <label for="exampleInputEmail1">Dari Tanggal</label>
+            <input type="date" class="form-control datepicker" id="exampleInputEmail1" placeholder="Dari Tanggal" name="dari" autocomplete="off" value="{{ date('Y-m-d') }}">
+            </div>
+
+              <div class="form-group" data-provide="datepicker">
+                <label for="exampleInputEmail1">Sampai Tanggal</label>
+                <input type="date" class="form-control datepicker" id="exampleInputEmail1" placeholder="sampai Tanggal" name="sampai" autocomplete="off" value="{{ date('Y-m-d') }}">
+              </div>
+            </div>
+            
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+
+    </div>
+  </div>
+</div>
+
+{{-- ----Javascript----- --}}
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.btn-filter').click(function(e){
+    e.preventDefault();
+    $('#modal-filter').modal();
+  })
+})
+
+</script>
 
 
 

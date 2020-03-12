@@ -86,24 +86,23 @@
       </div>
 
       <div class="modal-body">
-        <form role="form">
+        <form role="form" action="{{url('/transaksi-filter')}}" method="get">
           <div class="box-body">
             <div class="form-group" data-provide="datepicker">
               <label for="exampleInputEmail1">Dari Tanggal</label>
-              <input type="date" class="form-control datepicker" id="exampleInputEmail1" placeholder="Dari Tanggal" name="dari" autocomplete="off">
+            <input type="date" class="form-control datepicker" id="exampleInputEmail1" placeholder="Dari Tanggal" name="dari" autocomplete="off" value="{{ date('Y-m-d') }}">
             </div>
-          </form>
 
-          <form role="form">
-            <div class="box-body">
               <div class="form-group" data-provide="datepicker">
                 <label for="exampleInputEmail1">Sampai Tanggal</label>
-                <input type="date" class="form-control datepicker" id="exampleInputEmail1" placeholder="sampai Tanggal" name="sampai" autocomplete="off">
+                <input type="date" class="form-control datepicker" id="exampleInputEmail1" placeholder="sampai Tanggal" name="sampai" autocomplete="off" value="{{ date('Y-m-d') }}">
               </div>
-            </form>
-      </div>
-
-      
+            </div>
+            
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
 
     </div>
   </div>
