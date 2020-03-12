@@ -105,10 +105,8 @@
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
 			Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
 			Route::get('/admin/cuti/create', 'Admin\CutiController@create');
-			Route::get('/admin/cuti/terima', 'Admin\CutiController@terima');
-			Route::get('/admin/cuti/tolak', 'Admin\CutiController@tolak');
-			Route::get('/admin/cuti/terima/{cuti}', 'Admin\CutiController@detailTerima');
-			Route::get('/admin/cuti/tolak/{cuti}', 'Admin\CutiController@detailTolak');
+			Route::get('/admin/cuti/status', 'Admin\CutiController@filterStatus');
+			Route::get('/admin/cuti/detail/{cuti}', 'Admin\CutiController@detailCuti');
 			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@show');
 			Route::post('/admin/cuti', 'Admin\CutiController@store');
       Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
