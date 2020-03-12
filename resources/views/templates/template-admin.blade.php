@@ -43,8 +43,8 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/admin') }}">
-          <i class="fas fa-fw fa-home"></i>
-          <span>Home</span></a>
+          <i class="fas fa-fw fa-home"></i> <span>Home</span>
+        </a>
       </li>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -55,42 +55,40 @@
         </a>
         <div id="admin" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{url('/admin/karyawan')}}">Karyawan</a>
             <a class="collapse-item" href="{{url('/admin/role')}}">Role</a>
             <a class="collapse-item" href="{{url('/admin/stream')}}">Stream</a>
             <a class="collapse-item" href="{{url('/admin/projek')}}">Projek</a>
             <a class="collapse-item" href="{{url('/admin/pendidikan')}}">Pendidikan</a>
+            <a class="collapse-item" href="{{url('/admin/karyawan')}}">Karyawan</a>
             <a class="collapse-item" href="{{url('/admin/jeniscuti')}}">Jenis Cuti</a>
           </div>
         </div>
       </li>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#absensi" aria-expanded="true" aria-controls="absensi">
-            <i class="fas fa-fw fa-clipboard"></i>
-            <span>Absensi</span>
+          <i class="fas fa-fw fa-clipboard"></i>
+          <span>Absensi</span>
         </a>
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
+          <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ url('/admin/absen') }}">Absen</a>
             <a class="collapse-item" href="{{ url('/admin/data-kehadiran') }}">Data Kehadiran</a>
-            </div>
+          </div>
         </div>
-        </li>
+      </li>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cuti" aria-expanded="true" aria-controls="cuti">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-file-invoice"></i>
           <span>Cuti</span>
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item bg-primary text-white" href="{{url('/admin/cuti/show')}}"><b>Data Cuti Anda</b></a>
-            <a class="collapse-item bg-warning text-white" href="{{url('/admin/cuti')}}"><b>Data Cuti Di Proses</b></a>
-            <a class="collapse-item bg-success text-white" href="{{url('/admin/cuti/terima')}}"><b>Data Cuti Di Terima</b></a>
-            <a class="collapse-item bg-danger text-white" href="{{url('/admin/cuti/tolak')}}"><b>Data Cuti Di Tolak</b></a>
+            <a class="collapse-item" href="{{ url('/admin/cuti/show') }}">Data Cuti Anda</a>
+            <a class="collapse-item" href="{{ url('/admin/cuti') }}">Data Cuti Karyawan</a>
           </div>
         </div>
       </li>
@@ -219,9 +217,24 @@
 
   {{-- Script Untuk Absen --}}
   <script>
-    $('.custom-file-input').on('change', function() {
-      let fileName = $(this).val().split('\\').pop();
-      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    $(document).ready(function () {
+      $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+      });
+
+      $("#keyword").change(function () {
+        const status = $("#keyword").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/admin/cuti/status')}}',
+          data: 'status=' + status,
+          success: function (response) {
+            $("#tampungan").html(response);
+          }
+        });
+      });
     });
   </script>
 
