@@ -24,6 +24,18 @@ class temporariController extends Controller
         return view('Invetaris.keranjang', (['temp' => $temp, 'barang' => $barang, 'kategori' => $kategori]));
     }
 
+    public function periode(Request $request)
+    {
+        try {
+            $dari = $request->dari;
+            $sampai = $request->sampai;
+            $data = Pinjam::whereDate('tgl_pinjam', '>=',$dari)->whereDate('tgl_pinjam', '<=',$sampai)->get();
+            return view('admin.Admin_invetaris.index', compact('data'));
+        } catch (\Exception $e) {
+            \Session::flash('gagal', $e->getMessage());
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
