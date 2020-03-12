@@ -9,7 +9,7 @@
       <div class="col-8">
       <h1 class="mt-3">Data Barang</h1>
       
- <form method="POST" action="/barang/store">
+      <form method="POST" action="{{url('/admin/barang/store')}}">
     {{csrf_field()}}
     <div class="form-group">
         <label for="nabar">Nama Barang </label>

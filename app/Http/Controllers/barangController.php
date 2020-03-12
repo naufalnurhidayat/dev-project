@@ -120,4 +120,13 @@ class barangController extends Controller
         return view('Invetaris.pengajuan', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
+    public function cobajax(Request $request)
+    {
+        if (empty($request->kategori_id)) {
+        $barang = Barang::orderBy('nama_barang', 'desc')->get();
+        } else {
+        $barang = Barang::where('id_kategori', $request->kategori_id)->get();
+        }
+        return view('Invetaris.filter', compact('barang'));
+    }
 }
