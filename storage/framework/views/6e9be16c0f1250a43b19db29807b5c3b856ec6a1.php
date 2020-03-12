@@ -26,7 +26,7 @@
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
-                      <th>Role</th>
+                      <th>Stream</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -37,7 +37,7 @@
                       <td><?php echo e($k->nip); ?></td>
                       <td><?php echo e($k->nama); ?></td>
                       <td><?php echo e($k->jenkel); ?></td>
-                      <td><?php echo e($k->Role['role']); ?></td>
+                      <td><?php echo e($k->Stream['stream']); ?></td>
                       <td>
                         <a href="<?php echo e(url('/admin/karyawan')); ?>/<?php echo e($k->id); ?>" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
                         <a href="<?php echo e(url('/admin/karyawan/edit')); ?>/<?php echo e($k->id); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>

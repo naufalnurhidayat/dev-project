@@ -12,9 +12,9 @@
 */
 
 // -------------------------------------------
-Route::group(['middleware' => 'auth'], function () {
+// Route::group(['middleware' => 'auth'], function () {
 	
-	Route::group(['middleware' => 'checkRole:Admin'], function () {
+	Route::group(['middleware' => ['auth', 'checkRole:Admin']], function () {
 		// ADMIN
 			// Home Admin
 			Route::get('/admin', 'Admin\HomeController@index')->name('admin');
@@ -105,10 +105,8 @@ Route::group(['middleware' => 'auth'], function () {
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
 			Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
 			Route::get('/admin/cuti/create', 'Admin\CutiController@create');
-			Route::get('/admin/cuti/terima', 'Admin\CutiController@terima');
-			Route::get('/admin/cuti/tolak', 'Admin\CutiController@tolak');
-			Route::get('/admin/cuti/terima/{cuti}', 'Admin\CutiController@detailTerima');
-			Route::get('/admin/cuti/tolak/{cuti}', 'Admin\CutiController@detailTolak');
+			Route::get('/admin/cuti/status', 'Admin\CutiController@filterStatus');
+			Route::get('/admin/cuti/detail/{cuti}', 'Admin\CutiController@detailCuti');
 			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@show');
 			Route::post('/admin/cuti', 'Admin\CutiController@store');
       Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
@@ -116,7 +114,7 @@ Route::group(['middleware' => 'auth'], function () {
 		// --------------------------------------------------------------------------------------		
 	});
 
-	Route::group(['middleware' => 'checkRole:Scrum Master'], function () {
+	Route::group(['middleware' => ['auth', 'checkRole:Scrum Master']], function () {
 		// SM
 			// Home SM
 			Route::get('/sm', 'SM\HomeController@index')->name('sm');
@@ -180,7 +178,7 @@ Route::group(['middleware' => 'auth'], function () {
 		// --------------------------------------------------------------------------------------
 	});
 
-	Route::group(['middleware' => 'checkRole:Product Owner'], function () {
+	Route::group(['middleware' => ['auth', 'checkRole:Product Owner']], function () {
 		// PO
 			// Home PO
 			Route::get('/po', 'PO\HomeController@index')->name('po');
@@ -247,7 +245,7 @@ Route::group(['middleware' => 'auth'], function () {
 		// --------------------------------------------------------------------------------------
 	});
 
-	Route::group(['middleware' => 'checkRole:User'], function () {
+	Route::group(['middleware' => ['auth', 'checkRole:User']], function () {
 		// USER
 			// Home User
 			Route::get('/', 'Home@index')->name('home');
@@ -278,11 +276,11 @@ Route::group(['middleware' => 'auth'], function () {
 		// --------------------------------------------------------------------------------------
 	});
 	
-	Route::group(['middleware' => ['checkRole:Admin,Product Owner,Scrum Master,User']], function () {
+	Route::group(['middleware' => ['auth','checkRole:Admin,Product Owner,Scrum Master,User']], function () {
 		Route::get('/logout', 'AuthController@logout');
 	});
 
-});
+// });
 
 
 // --------------------------------------------------------------------------------------
@@ -294,4 +292,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/login', 'AuthController@login');
 // Registrasi
     Route::get('/registrasi', 'AuthController@create');
-  	Route::post('/registrasi', 'AuthController@store');
+		Route::post('/registrasi', 'AuthController@store');

@@ -36,7 +36,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" name="jencut" id="jencut">
-                  <option selected value="">-- Pilih Jenis Cuti --</option>
+                  <option value="">-- Pilih Jenis Cuti --</option>
                 <?php $__currentLoopData = $jencut; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $j): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <option value="<?php echo e($j->id); ?>"><?php echo e($j->jenis_cuti); ?></option>  
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -53,7 +53,7 @@ unset($__errorArgs, $__bag); ?>
             <div class="form-group row">
               <div class="col-6">
                 <label for="awal">Awal Cuti</label>
-                <input type="date" class="form-control <?php $__errorArgs = ['awal'];
+                <input type="date" min="<?php echo e(date('Y-m-d')); ?>" class="form-control <?php $__errorArgs = ['awal'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -72,7 +72,7 @@ unset($__errorArgs, $__bag); ?>
               </div>
               <div class="col-6">
                 <label for="akhir">akhir Cuti</label>
-                <input type="date" class="form-control <?php $__errorArgs = ['akhir'];
+                <input type="date" min="<?php echo e(date('Y-m-d')); ?>" class="form-control <?php $__errorArgs = ['akhir'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

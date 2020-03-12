@@ -43,12 +43,12 @@ class CutiController extends Controller
     {
         date_default_timezone_set("Asia/Jakarta");
         if (auth()->user()->jatah_cuti == 0) {
-            return redirect('/cuti')->with('status', 'Jatah Cuti Anda Telah Habis');
+            return redirect('/cuti')->with('jatah', 'Sisa Cuti Anda Tidak Cukup');
         }
         $request->validate([
             'jencut' => 'required|numeric',
-            'awal' => 'required',
-            'akhir' => 'required',
+            'awal' => 'required|date|before:akhir',
+            'akhir' => 'required|date|after:awal',
             'alasan' => 'required'
         ]);
         Cuti::create([
@@ -60,7 +60,6 @@ class CutiController extends Controller
             'alasan_cuti' => $request->alasan,
             'status' => 'Diproses'
         ]);
-        
         return redirect('/cuti')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
     }
 

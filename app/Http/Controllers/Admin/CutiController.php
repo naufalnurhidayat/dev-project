@@ -18,7 +18,7 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $cuti = Cuti::where('status', 'Diproses')->orderBy('tgl_cuti', 'desc')->get();
+        $cuti = Cuti::orderBy('tgl_cuti', 'desc')->get();
         return view('admin/cuti/index', ['cuti' => $cuti]);
     }
 
@@ -70,26 +70,19 @@ class CutiController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function terima()
+    public function filterStatus(Request $request)
     {
-        $cuti = Cuti::where('status', 'Terima')->orderBy('tgl_cuti', 'desc')->get();
-        return view('admin/cuti/terima', compact('cuti'));
-    }
-
-    public function tolak()
-    {
-        $cuti = Cuti::where('status', 'Tolak')->orderBy('tgl_cuti', 'desc')->get();
-        return view('admin/cuti/tolak', compact('cuti'));
+        if (empty($request->status)) {
+            $cuti = Cuti::orderBy('tgl_cuti', 'desc')->get();
+        } else {
+            $cuti = Cuti::where('status', $request->status)->orderBy('tgl_cuti', 'desc')->get();
+        }
+        return view('admin/cuti/status', compact('cuti'));
     }
     
-    public function detailTerima(Cuti $cuti)
+    public function detailCuti(Cuti $cuti)
     {
-        return view('admin/cuti/detailTerima', compact('cuti'));
-    }
-
-    public function detailTolak(Cuti $cuti)
-    {
-        return view('admin/cuti/detailTolak', compact('cuti'));
+        return view('admin/cuti/detailCuti', compact('cuti'));
     }
 
     public function show(Cuti $cuti)
@@ -123,11 +116,18 @@ class CutiController extends Controller
      */
     public function update(Request $request, Cuti $cuti)
     {
-        Cuti::Where('id', $cuti->id)->Update(['status' => $request['status']]);
-        if ($request['status'] == "Terima") {
+        if ($request['status'] == "Ditolak") {
+            Cuti::Where('id', $cuti->id)->Update(['status' => $request['status']]);
+        } elseif ($request['status'] == "Diterima") {
+            Cuti::Where('id', $cuti->id)->Update(['status' => $request['status']]);
+            $awal = explode('-', $cuti->awal_cuti);
+            $akhir = explode('-', $cuti->akhir_cuti);
             $karyawan = User::where('id', $cuti->id_karyawan)->first();
-            $k = $karyawan->jatah_cuti -1;
+            $total_cuti = $awal[2]-$akhir[2];
+            $k = $karyawan->jatah_cuti - $total_cuti;
             User::Where('id', $cuti->id_karyawan)->update(['jatah_cuti' => $k]);
+        } else {
+            return redirect('/admin/cuti')->with('gagal', 'Status Gagal Di Edit');
         }
         return redirect('/admin/cuti')->with('status', 'Status Berhasil Di Edit');
     }
