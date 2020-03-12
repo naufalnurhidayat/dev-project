@@ -51,6 +51,7 @@
                     <form action="{{ url('/po/data-kehadiran/'. $da->id_absen) }}" method="POST">
                       @method('patch')
                       @csrf
+                      <a href="{{ url('/po/data-kehadiran/' . $da->id_absen) }}" class="badge badge-primary">Detail</a>
                       <button type="submit" class="badge badge-success" name="prove" value="Accepting" onclick="return confirm('Accept?')">Accept</button>
                       <button type="submit" class="badge badge-danger" name="prove" value="Rejecting" onclick="return confirm('Reject?')">Reject</button>
                     </form>

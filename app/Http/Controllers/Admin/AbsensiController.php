@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Absen;
 use App\User;
 use App\Stream;
+use App\Exports\AbsenExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class AbsensiController extends Controller
 {
@@ -56,7 +59,7 @@ class AbsensiController extends Controller
             
             $request->validate([
                 'catatan' => 'required',
-                'picture' => 'required'
+                'picture' => 'required|mimes:jpg,jpeg,png'
             ]);
             if($request->hasFile('picture')){
                 $request->file('picture')->move('img/absen', $request->file('picture')->getClientOriginalName());
@@ -146,5 +149,17 @@ class AbsensiController extends Controller
     public function destroy($id)
     {
         
+    }
+
+    public function exportExcel() 
+    {
+        return Excel::download(new AbsenExport, 'Absen.xlsx');
+    }
+
+    public function exportPdf()
+    {
+        $absen = Absen::all();
+        $pdf = PDF::loadView('admin/absen/export', ['absen' => $absen]);
+        return $pdf->download('Data Absensi.pdf');
     }
 }
