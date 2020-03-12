@@ -153,13 +153,13 @@ class AbsensiController extends Controller
 
     public function exportExcel() 
     {
-        return Excel::download(new AbsenExport, 'Absen.xlsx');
+        return Excel::download(new AbsenExport, 'Data Absen.xlsx');
     }
 
     public function exportPdf()
     {
         $absen = Absen::all();
         $pdf = PDF::loadView('admin/absen/export', ['absen' => $absen]);
-        return $pdf->download('Data Absensi.pdf');
+        return $pdf->stream('Data Absensi');
     }
 }
