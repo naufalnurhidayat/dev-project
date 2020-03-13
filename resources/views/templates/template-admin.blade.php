@@ -20,7 +20,9 @@
 
   <!-- Custom styles for this page -->
   <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  {{-- Select2 CSS --}}
+  <link rel="stylesheet" href="{{asset('dist/css/select2.min.css')}}">
 
 </head>
 
@@ -214,8 +216,9 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
+  <script src="{{ asset('dist/js/select2.min.js')}}"></script>
 
-  {{-- Script Untuk Absen --}}
+  {{-- Our Script --}}
   <script>
     $(document).ready(function () {
       $('.custom-file-input').on('change', function() {
@@ -234,6 +237,30 @@
             $("#tampungan").html(response);
           }
         });
+      });
+
+      // Script Absen
+      $('.js-example-basic-single').select2({
+        placeholder: 'Pilih Nama'
+      });
+      $("#filter-absen").click(function() {
+        const nama = $("#nama").val();
+        const tanggalAwalAbsen = $("#tanggal_awal-absen").val();
+        const tanggalAkhirAbsen = $("#tanggal_akhir-absen").val();
+        console.log(nama);
+        console.log(tanggalAwalAbsen);
+        console.log(tanggalAkhirAbsen);
+
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/admin/absen/filter')}}',
+          data: `nama=${nama}&tanggal_awal=${tanggalAwalAbsen}&tanggal_akhir=${tanggalAkhirAbsen}`,
+          success: function(response) {
+            $("#content").html(response);
+          }
+        });
+
       });
     });
   </script>

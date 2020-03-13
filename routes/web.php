@@ -104,6 +104,7 @@
 			Route::post('admin/absen', 'Admin\AbsensiController@store');
 			Route::get('admin/absen/exportexcel', 'Admin\AbsensiController@exportExcel');
 			Route::get('admin/absen/exportpdf', 'Admin\AbsensiController@exportPdf');
+			Route::get('admin/absen/filter', 'Admin\AbsensiController@filterAbsen');
 		
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');

@@ -21,7 +21,8 @@ class AbsensiController extends Controller
     public function index()
     {
         $data_absen = Absen::all();
-        return view('admin/absen/index', compact('data_absen'));
+        $data_karyawan = User::all();
+        return view('admin/absen/index', ['data_absen' => $data_absen, 'data_karyawan' => $data_karyawan]);
     }
 
     /**
@@ -161,5 +162,17 @@ class AbsensiController extends Controller
         $absen = Absen::all();
         $pdf = PDF::loadView('admin/absen/export', ['absen' => $absen]);
         return $pdf->stream('Data Absensi');
+    }
+
+    public function filterAbsen(Request $request)
+    {
+        if(empty($request->nama) && empty($request->tanggalAwalAbsen) && empty($request->tanggalAkhirAbsen)){
+            $data_absen = Absen::all();
+        } else if($request->nama) {
+            $data_absen = Absen::where('id_karyawan', $request->nama)->get();
+        } else if($request->tanggalAwalAbsen) {
+            $data_absen = Absen::where('tanggal');
+        }
+        return view('admin/absen/filter', compact('data_absen'));
     }
 }
