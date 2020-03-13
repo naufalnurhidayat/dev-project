@@ -20,7 +20,6 @@
 
   <!-- Custom styles for this page -->
   <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 </head>
 
@@ -169,6 +168,42 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
+  <!-- Filter Data Cuti Modal-->
+  <div class="modal fade" id="filterModalCuti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Filter Modal</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <select class="form-control" id="keywordStatusCuti">
+                  <option value="">-- Cari Berdasarkan Status --</option>
+                  <option value="Diterima">Diterima</option>
+                  <option value="Diproses">Diproses</option>
+                  <option value="Ditolak">Ditolak</option>
+                </select>
+            </div>
+            <div class="form-group row">
+              <div class="col-6">
+                <input type="date" id="keywordTglAwalCuti" class="form-control">
+              </div>
+              <div class="col-6">
+                <input type="date" id="keywordTglAkhirCuti" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" id="filterCuti" data-dismiss="modal">Filter Data</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -194,42 +229,46 @@
   <!-- Bootstrap core JavaScript-->
   <script src="{{ asset('sbadmin2') }}/vendor/jquery/jquery.min.js"></script>
   <script src="{{ asset('sbadmin2') }}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+  
   <!-- Core plugin JavaScript-->
   <script src="{{ asset('sbadmin2') }}/vendor/jquery-easing/jquery.easing.min.js"></script>
-
+  
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('sbadmin2') }}/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
   <script src="{{ asset('sbadmin2') }}/vendor/chart.js/Chart.min.js"></script>
-
+  
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script>
   <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script>
-
+  
   <!-- Page level plugins -->
   <script src="{{ asset('sbadmin2') }}/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+  
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
-
-  {{-- Script Untuk Absen --}}
+  
   <script>
     $(document).ready(function () {
+    // Script Untuk Absen
       $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
       });
 
-      $("#keyword").change(function () {
-        const status = $("#keyword").val();
+    // Script Untuk Filter Data Cuti
+      $("#filterCuti").click(function () {
+        const status = $("#keywordStatusCuti").val();
+        const tglAwal = $("#keywordTglAwalCuti").val();
+        const tglakhir = $("#keywordTglAkhirCuti").val();
+
         $.ajax({
           type: 'get',
           dataType: 'html',
-          url: '{{url('/admin/cuti/status')}}',
-          data: 'status=' + status,
+          url: '{{url('/admin/cuti/filter')}}',
+          data: 'status='+status+'&awal='+tglAwal+'&akhir='+tglakhir,
           success: function (response) {
             $("#tampungan").html(response);
           }

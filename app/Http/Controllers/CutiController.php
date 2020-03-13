@@ -51,6 +51,9 @@ class CutiController extends Controller
             'akhir' => 'required|date|after:awal',
             'alasan' => 'required'
         ]);
+        $awal_cuti = explode('-', $request->awal);
+        $akhir_cuti = explode('-', $request->akhir);
+
         Cuti::create([
             'id_karyawan' => auth()->user()->id,
             'id_jenis_cuti' => $request->jencut,
