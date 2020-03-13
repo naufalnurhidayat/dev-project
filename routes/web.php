@@ -110,11 +110,11 @@
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
 			Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
 			Route::get('/admin/cuti/create', 'Admin\CutiController@create');
-			Route::get('/admin/cuti/status', 'Admin\CutiController@filterStatus');
+			Route::get('/admin/cuti/filter', 'Admin\CutiController@filterData');
 			Route::get('/admin/cuti/detail/{cuti}', 'Admin\CutiController@detailCuti');
 			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@show');
 			Route::post('/admin/cuti', 'Admin\CutiController@store');
-      		Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
+			Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
 			
 		// --------------------------------------------------------------------------------------		
 	});

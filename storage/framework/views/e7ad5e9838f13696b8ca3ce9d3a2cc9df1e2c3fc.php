@@ -1,4 +1,4 @@
-<?php $__env->startSection('title', 'Daftar Role'); ?>
+<?php $__env->startSection('title', 'Data Role'); ?>
 
 <?php $__env->startSection('content'); ?>
 
@@ -42,7 +42,7 @@
                         <form action="<?php echo e(url('/admin/role')); ?>/<?php echo e($r->id); ?>" method="POST" class="d-inline">
                           <?php echo method_field('delete'); ?>
                           <?php echo csrf_field(); ?>
-                          <button type="submit" class="btn btn-danger btn-sm" name="hapus"><i class="fa fa-trash"></i> <b>Hapus</b></button>
+                          <button type="submit" class="btn btn-danger btn-sm" name="hapus" onclick="return confirm('Yakin Ingin Menghapus?');"><i class="fa fa-trash"></i> <b>Hapus</b></button>
                         </form>
                       </td>
                   </tr>
