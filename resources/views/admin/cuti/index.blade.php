@@ -26,16 +26,13 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-          <div class="form-group row">
-            <div class="col-md-4 mx-auto">
-              <select class="form-control" id="keyword">
-                <option value="">-- Cari Berdasarkan Status --</option>
-                <option value="Diterima">Diterima</option>
-                <option value="Diproses">Diproses</option>
-                <option value="Ditolak">Ditolak</option>
-              </select>
-            </div>
+        <div class="form-group row">
+          <div class="col-md-3 mx-auto">
+            <a class="btn btn-primary btn-block" href="" data-toggle="modal" data-target="#filterModalCuti">
+              <i class="fas fa-filter"></i> Filter Data
+            </a>
           </div>
+        </div>
         <div>
           <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
             <thead class="bg-dark text-white">

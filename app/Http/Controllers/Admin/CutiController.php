@@ -70,14 +70,23 @@ class CutiController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function filterStatus(Request $request)
+    public function filterData(Request $request)
     {
-        if (empty($request->status)) {
+        $cuti;
+        if (empty($request->status) && empty($request->awal) && empty($request->akhir)) {
             $cuti = Cuti::orderBy('tgl_cuti', 'desc')->get();
-        } else {
+        } elseif (empty($request->awal) || empty($request->akhir)) {
             $cuti = Cuti::where('status', $request->status)->orderBy('tgl_cuti', 'desc')->get();
+        } elseif (empty($request->status)) {
+            $cuti = Cuti::where('tgl_cuti', '>=', $request->awal)->where('tgl_cuti', '<=', $request->akhir)->orderBy('tgl_cuti', 'desc')->get();
+        } else {
+            $cuti = Cuti::whereDate('tgl_cuti', '>=', $request->awal)
+                        ->whereDate('tgl_cuti', '<=', $request->akhir)
+                        ->where('status', $request->status)
+                        ->orderBy('tgl_cuti', 'desc')
+                        ->get();
         }
-        return view('admin/cuti/status', compact('cuti'));
+        return view('admin/cuti/filter', compact('cuti'));
     }
     
     public function detailCuti(Cuti $cuti)
