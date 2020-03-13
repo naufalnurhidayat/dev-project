@@ -26,16 +26,13 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-          <div class="form-group row">
-            <div class="col-md-4 mx-auto">
-              <select class="form-control" id="keyword">
-                <option value="">-- Cari Berdasarkan Status --</option>
-                <option value="Diterima">Diterima</option>
-                <option value="Diproses">Diproses</option>
-                <option value="Ditolak">Ditolak</option>
-              </select>
-            </div>
+        <div class="form-group row">
+          <div class="col-md-3 mx-auto">
+            <a class="btn btn-primary btn-block" href="" data-toggle="modal" data-target="#filterModalCuti">
+              <i class="fas fa-filter"></i> Filter Data
+            </a>
           </div>
+        </div>
         <div>
           <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
             <thead class="bg-dark text-white">
@@ -53,7 +50,8 @@
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $c->User['nama'] }}</td>
-                <td>{{ $c->tgl_cuti }}</td>
+                @php $newTgl_cuti = explode(' ', $c->tgl_cuti); @endphp
+                <td>{{ $newTgl_cuti[0] }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                 <td>
                   @if ($c->status == "Diterima")
@@ -73,7 +71,7 @@
                       @method('patch')
                       <a href="{{url('/admin/cuti/detail/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
                       <button class="btn btn-success btn-sm" onclick="return confirm('Yakin ingin menerima?');" type="submit" name="status" value="Diterima"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Ditolak"><i class="fa fa-times-circle"></i></button>
+                      <button class="btn btn-danger btn-sm tombol" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Ditolak"><i class="fa fa-times-circle"></i></button>
                     </form>
                   @endif
                 </td>
