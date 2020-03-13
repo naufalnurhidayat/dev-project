@@ -268,7 +268,7 @@
           type: 'get',
           dataType: 'html',
           url: '{{url('/admin/cuti/filter')}}',
-          data: 'status='+status+ '&awal='+tglAwal+ '&akhir='+tglakhir,
+          data: 'status='+status+'&awal='+tglAwal+'&akhir='+tglakhir,
           success: function (response) {
             $("#tampungan").html(response);
           }
