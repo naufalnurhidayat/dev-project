@@ -61,7 +61,7 @@
            <td>
              @if($box->status == "Pending")
              @else
-             <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"></i></a>
+             <a href="{{ url('/user/barang/exportpdf') }}/{{$box->id_pinjam}}" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></a>
              <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Pengembalian</a>
       </div>
     </div>

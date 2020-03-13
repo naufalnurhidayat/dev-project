@@ -275,9 +275,11 @@
       Route::get('/barang', 'barangController@index');
       Route::get('/show/{id_pinjam}', 'barangController@show');
       Route::get('/tampil/table', 'barangController@tampil');
-      Route::post('/pengajuan/store', 'PinjamController@store');
+	  Route::post('/pengajuan/store', 'PinjamController@store');
+	  Route::post('/user/pengajuan/store', 'PinjamController@store');
 	  Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
 	  Route::get('/kategori', 'barangController@cobajax');
+	  Route::get('/user/barang/exportpdf/{id}', 'barangController@exportPdf');
 		
 		// --------------------------------------------------------------------------------------
 	});
