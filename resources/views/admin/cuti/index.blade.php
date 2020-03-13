@@ -50,7 +50,8 @@
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $c->User['nama'] }}</td>
-                <td>{{ $c->tgl_cuti }}</td>
+                @php $newTgl_cuti = explode(' ', $c->tgl_cuti); @endphp
+                <td>{{ $newTgl_cuti[0] }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                 <td>
                   @if ($c->status == "Diterima")
@@ -70,7 +71,7 @@
                       @method('patch')
                       <a href="{{url('/admin/cuti/detail/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
                       <button class="btn btn-success btn-sm" onclick="return confirm('Yakin ingin menerima?');" type="submit" name="status" value="Diterima"><i class="fa fa-check"></i></button>
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Ditolak"><i class="fa fa-times-circle"></i></button>
+                      <button class="btn btn-danger btn-sm tombol" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Ditolak"><i class="fa fa-times-circle"></i></button>
                     </form>
                   @endif
                 </td>
