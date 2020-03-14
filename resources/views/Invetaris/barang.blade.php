@@ -26,7 +26,7 @@
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" height="20px" cellspacing="0">
-          <thead>
+          <thead class="thead-dark">
             <tr align="center">
               {{-- <th>No</th> --}}
               <th>Nama Barang</th>
