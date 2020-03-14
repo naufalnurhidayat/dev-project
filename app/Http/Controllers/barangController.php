@@ -10,6 +10,7 @@ use App\Pinjam;
 use App\User;
 use App\Kembali;
 use App\Role;
+use PDF;
 
 class barangController extends Controller
 {
@@ -128,5 +129,12 @@ class barangController extends Controller
         $barang = Barang::where('id_kategori', $request->kategori_id)->get();
         }
         return view('Invetaris.filter', compact('barang'));
+    }
+
+    public function exportPdf($id)
+    {
+        $pinjam = Pinjam::where('id_pinjam', $id)->get();
+        $pdf = PDF::loadView('Invetaris/export', ['pinjam' => $pinjam]);
+        return $pdf->stream('Data Absensi');
     }
 }

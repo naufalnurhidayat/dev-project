@@ -274,6 +274,22 @@
           }
         });
       });
+
+      $("#submit").click( function(){
+      const tglAwal = $("#KeywordtglAwal").val();
+      const tglAkhir = $("#KeywordtglAkhir").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '{{url('/admin/transaksi-filter')}}',
+        data: 'Awal='+tglAwal+'&Akhir='+tglAkhir,
+        success: function(response){
+          $("#tampungan").html(response);
+        }
+      });
+    });
+
     });
   </script>
 
