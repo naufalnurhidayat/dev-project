@@ -282,9 +282,9 @@
       $.ajax({
         type: 'get',
         dataType: 'html',
-        url: '{{url('/transaksi-filter')}}',
+        url: '{{url('/admin/transaksi-filter')}}',
         data: 'Awal='+tglAwal+'&Akhir='+tglAkhir,
-        success:function(response){
+        success: function(response){
           $("#tampungan").html(response);
         }
       });

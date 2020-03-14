@@ -24,7 +24,7 @@
 			Route::patch('/admin/profile/edit/{id}', 'Admin\ProfileController@update');
 		  // Master
 			//inventaris
-			Route::get('/transaksi-filter', 'PinjamController@periode');
+			Route::get('/admin/transaksi-filter', 'PinjamController@periode');
 			Route::get('/transaksi-filter', 'kembaliController@periode');
 			Route::get('/barang/index', 'databoxController@index');
 			Route::get('/admin/create', 'databoxController@create');
