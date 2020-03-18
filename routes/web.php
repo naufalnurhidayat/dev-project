@@ -280,6 +280,7 @@
 	  Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
 	  Route::get('/kategori', 'barangController@cobajax');
 	  Route::get('/user/barang/exportpdf/{id}', 'barangController@exportPdf');
+	  Route::delete('/user/destroy/{id}', 'barangController@destroy');
 		
 		// --------------------------------------------------------------------------------------
 	});

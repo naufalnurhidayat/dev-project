@@ -60,9 +60,14 @@
            </td>
            <td>
              @if($box->status == "Pending")
+             <form class="d-inline" method="post" action="{{url('/user/destroy')}}/{{$box->id_pinjam}}">
+              {{ method_field('DELETE')}}
+              {{csrf_field()  }}
+              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm"><i class="fa fa-trash mr-2"></i>Delete</button>
+            </form>
              @else
              <a href="{{ url('/user/barang/exportpdf') }}/{{$box->id_pinjam}}" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></a>
-             <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Pengembalian</a>
+             <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Kembali</a>
       </div>
     </div>
   </div>
@@ -87,7 +92,7 @@
                 
               <input type="hidden" name="id_barang" value="{{$box->id_barang}}"> 
               <input type="hidden" name="id_kategori" value="{{$box->Kategori['id_kategori']}}">
-              {{-- <input type="hidden" name="id_pinjam" value="{{$box->Pinjam['id_pinjam']}}"> --}}
+              <input type="hidden" name="id_pinjam" value="{{$box->Pinjam['id_pinjam']}}">
               <div class="modal-body">Yakin ingin dikembalikan ?</div>
             </div>
           </div>
