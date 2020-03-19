@@ -1,5 +1,5 @@
 
-{{-- <t id="barang"> --}}
+ 
     @foreach($barang as $b)
         @if($b->stok == 0)
          @else
@@ -25,7 +25,7 @@
   <div class="row justify-content-center">
     <div class="col">
       
-      <form method="post" action="{{url('/pengajuan/store')}}">
+      <form method="post" action="{{url('/user/pengajuan/store')}}">
         {{csrf_field()}}
         
             <input type="hidden" name="id_barang" value="{{$b->id_barang}}"> 
@@ -44,7 +44,7 @@
 
 <div class="modal-footer">
     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-    <button type="submit" class="btn btn-primary">Ajukan</button>
+    <button class="btn btn-primary" type="submit">Ajukan</button>
   </form>
 </div>
         </div>
