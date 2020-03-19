@@ -15,12 +15,12 @@
         <td><span class="badge badge-warning">{{ $da->status }}</span></td>
         @endif
         <td>
-        <form action="{{ url('/admin/data-kehadiran/'. $da->id_absen) }}" method="POST">
+        <form action="{{ url('/admin/absen/data-kehadiran/'. $da->id_absen) }}" method="POST">
             @method('patch')
             @csrf
-            <a href="{{ url('/admin/data-kehadiran/' . $da->id_absen) }}" class="badge badge-primary">Detail</a>
-            <button type="submit" class="badge badge-success" name="prove" value="Accepting" onclick="return confirm('Accept?')">Accept</button>
-            <button type="submit" class="badge badge-danger" name="prove" value="Rejecting" onclick="return confirm('Reject?')">Reject</button>
+            <a href="{{ url('/admin/absen/data-kehadiran/' . $da->id_absen) }}" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></a>
+            <button type="submit" class="btn btn-success btn-sm" name="prove" value="Accepting" onclick="return confirm('Accept?')"><i class="fas fa-check-circle"></i></button>
+            <button type="submit" class="btn btn-danger btn-sm" name="prove" value="Rejecting" onclick="return confirm('Reject?')"><i class="fas fa-times-circle"></i></button>
         </form>
         </td>
     </tr>

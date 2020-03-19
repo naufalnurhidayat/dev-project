@@ -40,11 +40,11 @@
                       <td><?php echo e($k->Stream['stream']); ?></td>
                       <td>
                         <a href="<?php echo e(url('/admin/karyawan')); ?>/<?php echo e($k->id); ?>" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
-                        <a href="<?php echo e(url('/admin/karyawan/edit')); ?>/<?php echo e($k->id); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="<?php echo e(url('/admin/karyawan/edit/' . $k->id)); ?>" class="btn btn-success btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-edit"></i> Edit</a>
                         <form action="<?php echo e(url('/admin/karyawan')); ?>/<?php echo e($k->id); ?>" method="POST" class="d-inline">
                           <?php echo method_field('delete'); ?>
                           <?php echo csrf_field(); ?>
-                          <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-trash"></i> Hapus</button>
                         </form>
                       </td>
                     </tr>

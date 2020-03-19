@@ -18,13 +18,14 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        // $projek = Projek_Karyawan::where('id_karyawan', auth()->user()->id)->get();
-        // $user = Projek_Karyawan::where('id_projek', $projek[0]->id_projek)->get();
-        // foreach ($user as $u) {
-        //     $data_absen = Absen::where('id_karyawan', $u->id_karyawan)->get();
-        // }
-        $data_absen = Absen::all();
-        return view('po/absen/index', compact('data_absen'));
+        $projek = Projek_Karyawan::where('id_karyawan', auth()->user()->id)->first();
+        $data_karyawan = Projek_Karyawan::where('id_projek', $projek->id_projek)->get();
+        $data_absen = [];
+        foreach($data_karyawan as $dk) {
+            $data_absen[] = Absen::where('id_karyawan', $dk->id_karyawan)->get();
+        }
+        dd($data_absen);
+        return view('po/absen/index', compact(['data_absen', 'data_karyawan', 'projek']));
     }
 
     /**
@@ -125,14 +126,14 @@ class AbsensiController extends Controller
         $status = Absen::where('id_absen', $id)->first()->status;
         
         if($status != 'Pending') {
-            return redirect('/po/data-kehadiran')->with('danger', 'Data ini telah di prove');
+            return redirect('/po/absen/data-kehadiran')->with('danger', 'Data ini telah di prove');
         } else {
             Absen::where('id_absen', $id)->Update([
                 'status' => $request->prove
             ]);
         }
 
-        return redirect('/po/data-kehadiran')->with('status', 'berhasil di prove');
+        return redirect('/po/absen/data-kehadiran')->with('status', 'berhasil di prove');
     }
 
     /**
@@ -144,5 +145,23 @@ class AbsensiController extends Controller
     public function destroy($id)
     {
         
+    }
+
+    public function filterAbsen(Request $request)
+    {
+        if (empty($request->nama) && empty($request->tanggal_awal) && empty($request->tanggal_akhir)) {
+            $data_absen = Absen::orderBy('tanggal', 'desc')->get();
+        } elseif (empty($request->tanggal_awal) || empty($request->tanggal_akhir)) {
+            $data_absen = Absen::where('id_karyawan', $request->nama)->orderBy('tanggal', 'desc')->get();
+        } elseif (empty($request->nama)) {
+            $data_absen = Absen::where('tanggal', '>=', $request->tanggal_awal)->where('tanggal', '<=', $request->tanggal_akhir)->orderBy('tanggal', 'desc')->get();
+        } else {
+            $data_absen = Absen::whereDate('tanggal', '>=', $request->tanggal_awal)
+                        ->whereDate('tanggal', '<=', $request->tanggal_akhir)
+                        ->where('id_karyawan', $request->nama)
+                        ->orderBy('tanggal', 'desc')
+                        ->get();
+        }
+        return view('admin/absen/filter', compact('data_absen'));
     }
 }

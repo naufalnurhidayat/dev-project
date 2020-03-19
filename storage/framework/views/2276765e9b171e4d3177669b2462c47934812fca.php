@@ -14,7 +14,7 @@
       <div class="form-group row">
         <label for="nip" class="col-sm-2 col-form-label">NIP</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control <?php $__errorArgs = ['nip'];
+          <input type="number" class="form-control <?php $__errorArgs = ['nip'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -98,7 +98,7 @@ unset($__errorArgs, $__bag); ?>
       <div class="form-group row">
         <label for="email" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control <?php $__errorArgs = ['email'];
+          <input type="email" class="form-control <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -255,13 +255,13 @@ unset($__errorArgs, $__bag); ?>
       <div class="form-group row">
         <label for="thn_join" class="col-sm-2 col-form-label">Tahun Join</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="thn_join" name="thn_join" value="<?php echo e($user->thn_join); ?>">
+          <input type="number" class="form-control" id="thn_join" name="thn_join" value="<?php echo e($user->thn_join); ?>">
         </div>
       </div>
       <div class="form-group row">
         <label for="no_telp" class="col-sm-2 col-form-label">Nomor Telpon</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="no_telp" name="no_telp" value="<?php echo e($user->no_telp); ?>">
+          <input type="number" class="form-control" id="no_telp" name="no_telp" value="<?php echo e($user->no_telp); ?>">
         </div>
       </div>
       <div class="form-group row">
@@ -334,7 +334,8 @@ unset($__errorArgs, $__bag); ?>
     <div class="form-group row">
       <div class="col-sm-2"></div>
       <div class="col-sm-5">
-        <button type="submit" name="ubah" class="btn btn-primary btn-user">Edit Data</button>
+        <a href="<?php echo e(url('/admin/karyawan')); ?>" class="btn btn-primary btn-user">Kembali</a>
+        <button type="submit" name="ubah" class="btn btn-success btn-user" onclick="return confirm('Yakin?')">Edit Data</button>
       </div>
     </div>
   </form>

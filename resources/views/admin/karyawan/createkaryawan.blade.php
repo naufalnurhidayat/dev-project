@@ -18,7 +18,7 @@
                 @csrf
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('nip') is-invalid @enderror" value="{{ old('nip') }}" id="nip" placeholder="NIP" name="nip">
+                    <input type="number" class="form-control form-control-user @error('nip') is-invalid @enderror" value="{{ old('nip') }}" id="nip" placeholder="NIP" name="nip">
                     @error('nip') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ old('email') }}">
+                    <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ old('email') }}">
                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
@@ -76,7 +76,7 @@
                     @error('thn_join') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user @error('no_telp') is-invalid @enderror" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="{{ old('no_telp') }}">
+                    <input type="number" class="form-control form-control-user @error('no_telp') is-invalid @enderror" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="{{ old('no_telp') }}">
                     @error('no_telp') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
@@ -94,7 +94,7 @@
                     @error('agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <textarea name="alamat" id="alamat" class=" form-control @error('alamat') is-invalid @enderror" rows="2" placeholder="Alamat">{{ old('alamat') }}</textarea>
+                    <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="2" placeholder="Alamat">{{ old('alamat') }}</textarea>
                     @error('alamat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>

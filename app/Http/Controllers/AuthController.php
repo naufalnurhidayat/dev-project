@@ -85,7 +85,7 @@ class AuthController extends Controller
             'password' => 'required|min:6|same:password2',
             'password2' => 'required|min:6|same:password'
         ]);
-
+        
         $u = User::create([
             'nip' => $request->nip,
             'nama' => $request->nama,
@@ -105,9 +105,9 @@ class AuthController extends Controller
             'foto' => 'default.jpg'
         ]);
         
-            // $request->validate([
-            //     'id_projek[]' => 'required'
-            // ]);
+        // $request->validate([
+        //     'projek[]' => 'required'
+        // ]);
 
         $dataProjek = [];
         foreach ($request->id_projek as $projek) {

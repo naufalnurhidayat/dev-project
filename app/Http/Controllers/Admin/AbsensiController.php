@@ -20,7 +20,7 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $data_absen = Absen::all();
+        $data_absen = Absen::orderBy('tanggal', 'asc')->get();
         $data_karyawan = User::all();
         return view('admin/absen/index', ['data_absen' => $data_absen, 'data_karyawan' => $data_karyawan]);
     }
@@ -131,14 +131,14 @@ class AbsensiController extends Controller
         $data_absen = Absen::where('id_absen', $id)->first();
 
         if($data_absen->status != 'Pending') {
-            return redirect('/admin/data-kehadiran')->with('danger', 'Data ini telah di prove');
+            return redirect('/admin/absen/data-kehadiran')->with('danger', 'Data ini telah di prove');
         } else {
             Absen::where('id_absen', $id)->Update([
                 'status' => $request->prove
             ]);
         }
 
-        return redirect('/admin/data-kehadiran')->with('status', 'Berhasil di prove');
+        return redirect('/admin/absen/data-kehadiran')->with('status', 'Berhasil di prove');
     }
 
     /**
@@ -157,21 +157,40 @@ class AbsensiController extends Controller
         return Excel::download(new AbsenExport, 'Data Absen.xlsx');
     }
 
-    public function exportPdf()
+    public function exportPdf(Request $request)
     {
         $absen = Absen::all();
+        // if (empty($request->nama) && empty($request->tanggalawal) && empty($request->tanggalakhir)) {
+        //     $absen = Absen::orderBy('tanggal', 'desc')->get();
+        // } elseif (empty($request->tanggalawal) || empty($request->tanggalakhir)) {
+        //     $absen = Absen::where('id_karyawan', $request->nama)->orderBy('tanggal', 'desc')->get();
+        // } elseif (empty($request->nama)) {
+        //     $absen = Absen::where('tanggal', '>=', $request->tanggal)->where('tanggal', '<=', $request->tanggalakhir)->orderBy('tanggal', 'desc')->get();
+        // } else {
+        //     $absen = Absen::whereDate('tanggal', '>=', $request->tanggalawal)
+        //                 ->whereDate('tanggal', '<=', $request->tanggalakhir)
+        //                 ->where('nama', $request->nama)
+        //                 ->orderBy('tanggal', 'desc')
+        //                 ->get();
+        // }
         $pdf = PDF::loadView('admin/absen/export', ['absen' => $absen]);
         return $pdf->stream('Data Absensi');
     }
 
     public function filterAbsen(Request $request)
     {
-        if(empty($request->nama) && empty($request->tanggalAwalAbsen) && empty($request->tanggalAkhirAbsen)){
-            $data_absen = Absen::all();
-        } else if($request->nama) {
-            $data_absen = Absen::where('id_karyawan', $request->nama)->get();
-        } else if($request->tanggalAwalAbsen) {
-            $data_absen = Absen::where('tanggal');
+        if (empty($request->nama) && empty($request->tanggal_awal) && empty($request->tanggal_akhir)) {
+            $data_absen = Absen::orderBy('tanggal', 'desc')->get();
+        } elseif (empty($request->tanggal_awal) || empty($request->tanggal_akhir)) {
+            $data_absen = Absen::where('id_karyawan', $request->nama)->orderBy('tanggal', 'desc')->get();
+        } elseif (empty($request->nama)) {
+            $data_absen = Absen::where('tanggal', '>=', $request->tanggal_awal)->where('tanggal', '<=', $request->tanggal_akhir)->orderBy('tanggal', 'desc')->get();
+        } else {
+            $data_absen = Absen::whereDate('tanggal', '>=', $request->tanggal_awal)
+                        ->whereDate('tanggal', '<=', $request->tanggal_akhir)
+                        ->where('id_karyawan', $request->nama)
+                        ->orderBy('tanggal', 'desc')
+                        ->get();
         }
         return view('admin/absen/filter', compact('data_absen'));
     }

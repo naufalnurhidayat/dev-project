@@ -38,7 +38,7 @@
                       <td><?php echo e($loop->iteration); ?></td>
                       <td><?php echo e($education->pendidikan); ?></td>
                       <td>
-                        <a href="<?php echo e(url('/admin/pendidikan/edit/'.$education->id)); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> <b>Edit</b></a>
+                        <a href="<?php echo e(url('/admin/pendidikan/edit/'.$education->id)); ?>" class="btn btn-success btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-edit"></i> <b>Edit</b></a>
                         <form action="<?php echo e(url('/admin/pendidikan/'.$education->id)); ?>" method="POST" class="d-inline">
                           <?php echo method_field('delete'); ?>
                           <?php echo csrf_field(); ?>

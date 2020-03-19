@@ -76,7 +76,7 @@
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ url('/admin/absen') }}">Absen</a>
-            <a class="collapse-item" href="{{ url('/admin/data-kehadiran') }}">Data Kehadiran</a>
+            <a class="collapse-item" href="{{ url('/admin/absen/data-kehadiran') }}">Data Kehadiran</a>
           </div>
         </div>
       </li>
@@ -243,8 +243,9 @@
   <script src="{{ asset('sbadmin2') }}/vendor/chart.js/Chart.min.js"></script>
   
   <!-- Page level custom scripts -->
-  <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script>
-  <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script>
+  {{-- <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script> --}}
+  @yield('grafik')
+  {{-- <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script> --}}
   
   <!-- Page level plugins -->
   <script src="{{ asset('sbadmin2') }}/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -252,6 +253,8 @@
   
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
+
+  {{-- Select2 Script --}}
   <script src="{{ asset('dist/js/select2.min.js')}}"></script>
 
   {{-- Our Script --}}
@@ -279,33 +282,9 @@
           }
         });
       });
-
-      // Script Absen
-      $('.js-example-basic-single').select2({
-        placeholder: 'Pilih Nama'
-      });
-      $("#filter-absen").click(function() {
-        const nama = $("#nama").val();
-        const tanggalAwalAbsen = $("#tanggal_awal-absen").val();
-        const tanggalAkhirAbsen = $("#tanggal_akhir-absen").val();
-        console.log(nama);
-        console.log(tanggalAwalAbsen);
-        console.log(tanggalAkhirAbsen);
-
-        $.ajax({
-          type: 'get',
-          dataType: 'html',
-          url: '{{url('/admin/absen/filter')}}',
-          data: `nama=${nama}&tanggal_awal=${tanggalAwalAbsen}&tanggal_akhir=${tanggalAkhirAbsen}`,
-          success: function(response) {
-            $("#content").html(response);
-          }
-        });
-
-      });
     });
   </script>
-
+@yield('footer')
 </body>
 
 </html>

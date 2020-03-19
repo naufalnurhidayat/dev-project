@@ -21,6 +21,9 @@
   <!-- Custom styles for this page -->
   <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  {{-- Select2 CSS --}}
+  <link rel="stylesheet" href="{{asset('dist/css/select2.min.css')}}">
+
 </head>
 
 <body id="page-top">
@@ -68,7 +71,7 @@
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ url('/po/absen') }}">Absen</a>
-            <a class="collapse-item" href="{{ url('/po/data-kehadiran') }}">Data Kehadiran</a>
+            <a class="collapse-item" href="{{ url('/po/absen/data-kehadiran') }}">Data Kehadiran</a>
             </div>
         </div>
         </li>
@@ -218,6 +221,9 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
 
+  {{-- Select2 script --}}
+  <script src="{{ asset('dist/js/select2.min.js')}}"></script>
+
   {{-- Script Untuk Absen --}}
   <script>
     $('.custom-file-input').on('change', function() {
@@ -226,6 +232,7 @@
     });
   </script>
 
+@yield('footer')
 </body>
 
 </html>

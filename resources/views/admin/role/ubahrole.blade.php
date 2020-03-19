@@ -19,7 +19,7 @@
                     <label for="role">Role</label>
                     <input type="text" class="form-control @error('role') is-invalid @enderror" id="role" name="role" value="{{ $role->role }}" autofocus>
                     @error('role') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                <button type="submit" class="btn btn-primary mt-3">Edit</button>
+                <button type="submit" class="btn btn-primary mt-3" onclick="return confirm('Yakin?')">Edit</button>
             </form>
         </div>
     </div>

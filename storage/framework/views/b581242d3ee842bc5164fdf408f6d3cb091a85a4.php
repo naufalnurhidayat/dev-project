@@ -20,6 +20,7 @@
 
   <!-- Custom styles for this page -->
   <link href="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 </head>
 
@@ -35,10 +36,9 @@
         <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
             
             <div class="mr-3">
-              <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" class="rounded" width="15%">
+              <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" class="rounded mr" width="15%">
+              <a href="<?php echo e(url('/')); ?>" class="btn btn-danger btn-lg"><i class="fas fa-home"></i></a>
             </div>
-
-            
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -128,8 +128,25 @@
       let fileName = $(this).val().split('\\').pop();
       $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
+
+
+  $(document).ready(function (){
+
+    $("#kategori").on('change', function(){
+      const kategori = $("#kategori").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '<?php echo e(url('/kategori')); ?>',
+        data: 'kategori_id=' + kategori,
+        success:function(response){
+          console.log(response);
+          $("#barang").html(response);
+        }
+      })
+    })
+  })
   </script>
-
 </body>
-
 </html><?php /**PATH C:\xampp\htdocs\devProject\resources\views/templates/template-home.blade.php ENDPATH**/ ?>

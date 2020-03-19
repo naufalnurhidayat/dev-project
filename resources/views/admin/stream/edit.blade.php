@@ -19,7 +19,7 @@
 					<label for="stream">Stream</label>
 					<input type="text" class="form-control @error('stream') is-invalid @enderror" id="stream" name="stream" value="{{ $stream->stream }}">
 					@error('stream') <div class="invalid-feedback">{{ $message }}</div> @enderror
-				<button type="submit" class="btn btn-primary mt-3">Edit</button>
+				<button type="submit" class="btn btn-primary mt-3" onclick="return confirm('Yakin?')">Edit</button>
 			</form>
 		</div>
   </div>

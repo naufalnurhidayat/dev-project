@@ -97,14 +97,14 @@
 			
 		  // Transaksi
 			// Absen
-			Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
-			Route::get('admin/data-kehadiran/{id}', 'Admin\AbsensiController@show');
-			Route::patch('admin/data-kehadiran/{id}', 'Admin\AbsensiController@update');
-			Route::get('admin/absen', 'Admin\AbsensiController@create');
-			Route::post('admin/absen', 'Admin\AbsensiController@store');
-			Route::get('admin/absen/exportexcel', 'Admin\AbsensiController@exportExcel');
-			Route::get('admin/absen/exportpdf', 'Admin\AbsensiController@exportPdf');
-			Route::get('admin/absen/filter', 'Admin\AbsensiController@filterAbsen');
+			Route::get('/admin/absen/data-kehadiran', 'Admin\AbsensiController@index');
+			Route::get('/admin/absen/data-kehadiran/{id}', 'Admin\AbsensiController@show');
+			Route::patch('/admin/absen/data-kehadiran/{id}', 'Admin\AbsensiController@update');
+			Route::get('/admin/absen', 'Admin\AbsensiController@create');
+			Route::post('/admin/absen', 'Admin\AbsensiController@store');
+			Route::get('/admin/absen/exportexcel', 'Admin\AbsensiController@exportExcel');
+			Route::get('/admin/absen/exportpdf', 'Admin\AbsensiController@exportPdf');
+			Route::get('/admin/absen/filter', 'Admin\AbsensiController@filterAbsen');
 		
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
@@ -168,11 +168,11 @@
 			
 		  // Transaksi
 			// Absen
-			Route::get('sm/data-kehadiran', 'SM\AbsensiController@index');
-			Route::get('sm/data-kehadiran/{id}', 'SM\AbsensiController@show');
-			Route::patch('sm/data-kehadiran/{id}', 'SM\AbsensiController@update');
-			Route::get('sm/absen', 'SM\AbsensiController@create');
-			Route::post('sm/absen', 'SM\AbsensiController@store');
+			Route::get('/sm/absen/data-kehadiran', 'SM\AbsensiController@index');
+			Route::get('/sm/absen/data-kehadiran/{id}', 'SM\AbsensiController@show');
+			Route::patch('/sm/absen/data-kehadiran/{id}', 'SM\AbsensiController@update');
+			Route::get('/sm/absen', 'SM\AbsensiController@create');
+			Route::post('/sm/absen', 'SM\AbsensiController@store');
 		
 			//Cuti
 			Route::get('/sm/cuti', 'SM\CutiController@index');
@@ -225,17 +225,15 @@
 			// Karyawan
 			Route::get('/po/karyawan', 'PO\KaryawanController@index');
 			Route::get('/po/karyawan/{user}', 'PO\KaryawanController@show');
-			Route::delete('/po/karyawan/{user}', 'PO\KaryawanController@destroy');
-			Route::get('/po/karyawan/edit/{user}', 'PO\KaryawanController@edit');
-			Route::patch('/po/karyawan/{user}', 'PO\KaryawanController@update');
 			
 		  // Transaksi
 			// Absen
-			Route::get('po/data-kehadiran', 'PO\AbsensiController@index');
-			Route::get('po/data-kehadiran/{id}', 'PO\AbsensiController@show');
-			Route::patch('po/data-kehadiran/{id}', 'PO\AbsensiController@update');
-			Route::get('po/absen', 'PO\AbsensiController@create');
-			Route::post('po/absen', 'PO\AbsensiController@store');
+			Route::get('/po/absen/data-kehadiran', 'PO\AbsensiController@index');
+			Route::get('/po/absen/data-kehadiran/{id}', 'PO\AbsensiController@show');
+			Route::patch('/po/absen/data-kehadiran/{id}', 'PO\AbsensiController@update');
+			Route::get('/po/absen', 'PO\AbsensiController@create');
+			Route::post('/po/absen', 'PO\AbsensiController@store');
+			Route::get('/po/absen/filter', 'PO\AbsensiController@filterAbsen');
 		
 			//Cuti
 			Route::get('/po/cuti', 'PO\CutiController@index');

@@ -47,7 +47,7 @@
                 <th>NIP</th>
                 <th>Nama</th>
                 <th>Role</th>
-                <th>Pukul</th>
+                <th>Jam Masuk</th>
                 <th>Tanggal</th>
                 <th>Keterangan</th>
                 <th>Status</th>
