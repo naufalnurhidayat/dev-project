@@ -21,10 +21,10 @@ class AbsensiController extends Controller
         $projek = Projek_Karyawan::where('id_karyawan', auth()->user()->id)->first();
         $data_karyawan = Projek_Karyawan::where('id_projek', $projek->id_projek)->get();
         $data_absen = [];
-        foreach($data_karyawan as $dk) {
-            $data_absen[] = Absen::where('id_karyawan', $dk->id_karyawan)->get();
-        }
-        dd($data_absen);
+        // foreach($data_karyawan as $dk) {
+        //     $data_absen[] = Absen::where('id_karyawan', $dk->id_karyawan)->get();
+        // }
+        $data_absen = Absen::all();
         return view('po/absen/index', compact(['data_absen', 'data_karyawan', 'projek']));
     }
 

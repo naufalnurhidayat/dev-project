@@ -18,9 +18,9 @@
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h3 class="m-0 font-weight-bold text-primary d-inline">Data Kehadiran Karyawan</h3>
-        <h5 class="float-right">{{$projek[0]->projek->project}}</h5>
-        <a href="#" class="btn btn-primary btn-sm mt-2" data-target="#filter" data-toggle="modal"><i class="fas fa-filter mr-1"></i>Filter Data</a>
+      <h4 class="m-0 font-weight-bold text-primary d-inline">Data Kehadiran Karyawan</h4>
+      <h6 class="m-0 font-weight-bold text-dark float-right mt-2 d-inline-block"><span class="text-info">Projek:</span> <span class="badge badge-success">{{ $projek->projek->project }}</span></h6>
+      <a href="#" class="btn btn-primary btn-sm mt-2 d-block col-2" data-target="#filter" data-toggle="modal"><i class="fas fa-filter mr-1"></i>Filter Data</a>
     </div>
     <div class="card-body">
             <div class="table-responsive">
