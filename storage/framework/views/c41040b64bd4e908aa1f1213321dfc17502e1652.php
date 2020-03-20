@@ -13,6 +13,7 @@
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo e(asset('sbadmin2/vendor/fontawesome-free/css/all.min.css')); ?>" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="<?php echo e(asset('jquery-ui-1.12.1.custom/jquery-ui.min.css')); ?>">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -121,14 +122,34 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
 
+  <script src="<?php echo e(asset('jquery-ui-1.12.1.custom/jquery-ui.min.js')); ?>"></script>
   
   <script>
     $('.custom-file-input').on('change', function() {
       let fileName = $(this).val().split('\\').pop();
       $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
+
+
+  $(document).ready(function (){
+
+    $("#kategori").on('change', function(){
+      const kategori = $("#kategori").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '<?php echo e(url('/kategori')); ?>',
+        data: 'kategori_id=' + kategori,
+        success:function(response){
+          $("#barang").html(response);
+        }
+      })
+    })
+  })
   </script>
 
-</body>
+<?php echo $__env->yieldContent('footer'); ?>
 
+</body>
 </html><?php /**PATH D:\Folder_iqbal\Prakerin\projek_pkl\Program_Cuti\dev-project\resources\views/templates/template-home.blade.php ENDPATH**/ ?>

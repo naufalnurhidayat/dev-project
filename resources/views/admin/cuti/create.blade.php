@@ -4,6 +4,11 @@
 
 @section('content')
     <div class="container">
+      @if (session('status'))
+        <div class="alert alert-danger">
+          {{ session('status') }}
+        </div>
+      @endif
       <div class="row mx-auto">
         <div class="col">
           <h3 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h3>

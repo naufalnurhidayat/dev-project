@@ -4,6 +4,11 @@
 
 @section('content')
     <div class="container">
+      @if (session('status'))
+        <div class="alert alert-danger">
+          {{ session('status') }}
+        </div>
+      @endif
       <div class="row mx-auto">
         <div class="col">
           <h3 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h3>
@@ -27,7 +32,7 @@
             <div class="form-group row">
               <div class="col-6">
                 <label for="awal">Awal Cuti</label>
-                <input type="date" min="{{ date('Y-m-d') }}" class="form-control @error('awal') is-invalid @enderror" name="awal" id="awal" value="{{ old('awal') }}">
+                <input type="date" min="{{ date('Y-m-d') }}" class="form-control @error('awal') is-invalid @enderror" name="awal" id="datePickerAwalCuti" value="{{ old('awal') }}">
                 @error('awal')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
               <div class="col-6">

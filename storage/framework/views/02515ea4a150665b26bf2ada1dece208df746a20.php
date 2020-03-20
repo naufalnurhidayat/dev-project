@@ -2,6 +2,12 @@
 
 <?php $__env->startSection('content'); ?>
     <div class="container">
+      <?php if(session('status')): ?>
+        <div class="alert alert-danger">
+          <?php echo e(session('status')); ?>
+
+        </div>
+      <?php endif; ?>
       <div class="row mx-auto">
         <div class="col">
           <h3 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h3>
@@ -60,7 +66,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="awal" id="awal" value="<?php echo e(old('awal')); ?>">
+unset($__errorArgs, $__bag); ?>" name="awal" id="datePickerAwalCuti" value="<?php echo e(old('awal')); ?>">
                 <?php $__errorArgs = ['awal'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -115,5 +121,16 @@ unset($__errorArgs, $__bag); ?>
         </div>
       </div>
     </div>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('footer'); ?>
+<script>
+  $(document).ready(function(){
+    $("#datePickerAwalCuti").datepicker();
+      // $('#datePickerAwalCuti').datetimepicker({
+      //         daysOfWeekDisabled: [0, 6]
+      // });
+  });
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('templates/template-home', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Folder_iqbal\Prakerin\projek_pkl\Program_Cuti\dev-project\resources\views/cuti/create.blade.php ENDPATH**/ ?>

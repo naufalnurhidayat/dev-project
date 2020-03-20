@@ -252,6 +252,9 @@
   
   <script>
     $(document).ready(function () {
+      $("#datePickerAwalCuti").click(function () {
+        console.log("ok");
+      });
     // Script Untuk Absen
       $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
@@ -276,6 +279,8 @@
       });
     });
   </script>
+
+{{-- @yield('footer') --}}
 
 </body>
 

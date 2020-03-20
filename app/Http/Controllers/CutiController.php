@@ -29,6 +29,9 @@ class CutiController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->jatah_cuti == 0) {
+            return redirect('/cuti')->with('jatah', 'Sisa Cuti Anda Tidak Cukup');
+        }
         $jencut = JenisCuti::all();
         return view('cuti/create', ['jencut' => $jencut]);
     }
@@ -42,18 +45,17 @@ class CutiController extends Controller
     public function store(Request $request)
     {
         date_default_timezone_set("Asia/Jakarta");
-        if (auth()->user()->jatah_cuti == 0) {
-            return redirect('/cuti')->with('jatah', 'Sisa Cuti Anda Tidak Cukup');
-        }
         $request->validate([
             'jencut' => 'required|numeric',
             'awal' => 'required|date|before:akhir',
             'akhir' => 'required|date|after:awal',
             'alasan' => 'required'
         ]);
-        $awal_cuti = explode('-', $request->awal);
-        $akhir_cuti = explode('-', $request->akhir);
-
+        $date_diff = date_diff(date_create($request->awal), date_create($request->akhir))->d;
+        $total = $date_diff;
+        if (auth()->user()->jatah_cuti < $total) {
+            return redirect('/cuti/create')->with('status', 'Sisa Cuti anda tidak cukup');
+        }
         Cuti::create([
             'id_karyawan' => auth()->user()->id,
             'id_jenis_cuti' => $request->jencut,
