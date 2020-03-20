@@ -53,3 +53,20 @@
       </div>
     </div>
 @endsection
+
+@section('footer')
+<script>
+  $(document).ready(function(){
+    $("#datePickerAwalCuti").datepicker();
+      // $('#datePickerAwalCuti').datetimepicker({
+      //         daysOfWeekDisabled: [0, 6]
+      // });
+    $("jencut").change(function () {
+      const jencut = $("#jencut").val();
+      if (jencut == "Cuti Tahunan") {
+        console.log("ok");
+      }
+    });
+  });
+</script>
+@endsection
