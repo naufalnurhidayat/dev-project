@@ -16,7 +16,7 @@
       <div class="form-group row">
         <label for="nip" class="col-sm-3 col-form-label"><strong>NIP</strong></label>
         <div class="col-sm-5">
-          <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ auth()->user()->nip }}">
+          <input type="number" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ auth()->user()->nip }}">
           @error('nip') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>
@@ -41,7 +41,7 @@
       <div class="form-group row">
         <label for="email" class="col-sm-3 col-form-label"><strong>Email</strong></label>
         <div class="col-sm-5">
-          <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ auth()->user()->email }}">
+          <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ auth()->user()->email }}">
           @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>
@@ -69,7 +69,7 @@
         <label for="id_stream" class="col-sm-3 col-form-label"><strong>Stream</strong></label>
         <div class="col-sm-5">
           <select id="id_stream" name="id_stream" class="form-control @error('id_stream') is-invalid @enderror">
-            <option value="">--Pilih Role--</option>
+            <option value="">--Pilih Stream--</option>
             @foreach ($stream as $s)
                 @if ($s->id === auth()->user()->id_stream)
                     <option value="{{ $s->id }}" selected>{{ $s->stream }}</option>
@@ -85,7 +85,7 @@
         <label for="id_pendidikan" class="col-sm-3 col-form-label"><strong>Pendidikan</strong></label>
         <div class="col-sm-5">
           <select id="id_pendidikan" name="id_pendidikan" class="form-control @error('id_pendidikan') is-invalid @enderror">
-            <option value="">--Pilih Role--</option>
+            <option value="">--Pilih Pendidikan--</option>
             @foreach ($pendidikan as $p)
                 @if ($p->id === auth()->user()->id_pendidikan)
                     <option value="{{ $p->id }}" selected>{{ $p->pendidikan }}</option>
@@ -100,13 +100,15 @@
       <div class="form-group row">
         <label for="thn_join" class="col-sm-3 col-form-label"><strong>Tahun Join</strong></label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="thn_join" name="thn_join" value="{{ auth()->user()->thn_join }}">
+          <input type="number" class="form-control @error('thn_join') is-invalid @enderror" id="thn_join" name="thn_join" value="{{ auth()->user()->thn_join }}">
+          @error('thn_join') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>
       <div class="form-group row">
         <label for="no_telp" class="col-sm-3 col-form-label"><strong>No. Telpon</strong></label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ auth()->user()->no_telp }}">
+          <input type="number" class="form-control @error('no_telp') is-invalid @enderror" id="no_telp" name="no_telp" value="{{ auth()->user()->no_telp }}">
+          @error('no_telp') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>
       <div class="form-group row">
@@ -149,10 +151,10 @@
         </div>
     </div>
     <div class="form-group row">
-      <div class="col-sm-2"></div>
+      <div class="col-sm-3"></div>
       <div class="col-sm-5">
         <a href="{{ url('/po/profile/' . auth()->user()->nama) }}" class="btn btn-secondary btn-user">Kembali</a>
-        <button type="submit" name="ubah" class="btn btn-primary btn-user">Edit Data</button>
+        <button type="submit" name="ubah" class="btn btn-primary btn-user" onclick="return confirm('Yakin ubah profile?')">Edit Data</button>
       </div>
     </div>
   </form>

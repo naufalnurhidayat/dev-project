@@ -21,6 +21,9 @@
   <!-- Custom styles for this page -->
   <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  {{-- Select2 CSS --}}
+  <link rel="stylesheet" href="{{asset('dist/css/select2.min.css')}}">
+
 </head>
 
 <body id="page-top">
@@ -68,7 +71,7 @@
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ url('/po/absen') }}">Absen</a>
-            <a class="collapse-item" href="{{ url('/po/data-kehadiran') }}">Data Kehadiran</a>
+            <a class="collapse-item" href="{{ url('/po/absen/data-kehadiran') }}">Data Kehadiran</a>
             </div>
         </div>
         </li>
@@ -208,8 +211,9 @@
   <script src="{{ asset('sbadmin2') }}/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script>
-  <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script>
+  {{-- <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script> --}}
+  @yield('grafik')
+  {{-- <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script> --}}
 
   <!-- Page level plugins -->
   <script src="{{ asset('sbadmin2') }}/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -218,14 +222,37 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
 
-  {{-- Script Untuk Absen --}}
+  {{-- Select2 Script --}}
+  <script src="{{ asset('dist/js/select2.min.js')}}"></script>
+
+  {{-- Our Script --}}
   <script>
-    $('.custom-file-input').on('change', function() {
-      let fileName = $(this).val().split('\\').pop();
-      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    $(document).ready(function () {
+    // Script Untuk Absen
+      $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+      });
+
+    // Script Untuk Filter Data Cuti
+      $("#filterCuti").click(function () {
+        const status = $("#keywordStatusCuti").val();
+        const tglAwal = $("#keywordTglAwalCuti").val();
+        const tglakhir = $("#keywordTglAkhirCuti").val();
+
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/admin/cuti/filter')}}',
+          data: 'status='+status+'&awal='+tglAwal+'&akhir='+tglakhir,
+          success: function (response) {
+            $("#tampungan").html(response);
+          }
+        });
+      });
     });
   </script>
-
+  @yield('footer')
 </body>
 
 </html>
