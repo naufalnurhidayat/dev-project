@@ -25,9 +25,9 @@
 		  // Master
 			//inventaris
 			Route::get('/admin/transaksi-filter', 'PinjamController@periode');
-			Route::get('/admin/transaksi-filter/kembali', 'kembaliController@periode');
+			// Route::get('/admin/transaksi-filter/kembali', 'kembaliController@periode');
 			Route::get('/admin/barang/exportpdf', 'databoxController@exportPdf');
-			Route::get('/kembali/barang/exportpdf', 'kembaliController@exportPdf');
+			Route::get('/kembali/exportpdf', 'kembaliController@pdfKembali');
 			Route::get('/barang/index', 'databoxController@index');
 			Route::get('/admin/create', 'databoxController@create');
 			Route::post('/admin/barang/store', 'databoxController@store');
@@ -197,13 +197,15 @@
 		  // Master
 			//inventaris
 			Route::get('/po/transaksi-filter', 'PO\PinjamController@periode');
-			Route::get('/po/barang/exportpdf', 'databoxController@exportPdf');
-			Route::get('/po/barang/index', 'databoxController@index');
-			Route::get('/po/create', 'databoxController@create');
-			Route::post('/po/barang/store', 'databoxController@store');
-			Route::patch('/po/barang/update/{id_barang}', 'databoxController@update');
-			Route::get('/po/barang/edit/{id_barang}', 'databoxController@edit');
-			Route::delete('/po/destroy/{id_barang}', 'databoxController@destroy');
+			Route::get('/po/transaksi-filter/kembali', 'PO\kembaliController@periode');
+			Route::get('/po/barang/exportpdf', 'PO\databoxController@exportPdf');
+			Route::get('/kembali/barang/exportpdf', 'PO\kembaliController@exportPdf');
+			Route::get('/po/barang/index', 'PO\databoxController@index');
+			Route::get('/po/create', 'PO\databoxController@create');
+			Route::post('/po/barang/store', 'PO\databoxController@store');
+			Route::patch('/po/barang/update/{id_barang}', 'PO\databoxController@update');
+			Route::get('/po/barang/edit/{id_barang}', 'PO\databoxController@edit');
+			Route::delete('/po/destroy/{id_barang}', 'PO\databoxController@destroy');
 			Route::get('/po/kategori/index', 'KategoriController@index');
 			Route::get('/po/kategori/create', 'KategoriController@create');
 			Route::post('/po/kategori/store', 'KategoriController@store');

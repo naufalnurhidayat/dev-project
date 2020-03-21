@@ -20,7 +20,7 @@ class databoxController extends Controller
     {
         $barang = Barang::all();
         $kategori = Kategori::all();
-        return view('PO/data_barang/index', ['barang' => $barang, 'kategori' => $kategori]);
+        return view('po/data_barang/index', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
     /**
@@ -32,7 +32,7 @@ class databoxController extends Controller
     {
         $barang = Barang::all();
         $kategori = Kategori::all();
-        return view('PO/data_barang/create', ['barang' => $barang, 'kategori' => $kategori]);
+        return view('po/data_barang/create', ['barang' => $barang, 'kategori' => $kategori]);
     }
 
     /**
@@ -79,7 +79,7 @@ class databoxController extends Controller
         $barang = Barang::find($id_barang);
         $kategori = Kategori::all();
         // $kategori = Kategori::find($barang->id_kategori);
-        return view('PO/data_barang/edit', ['barang' => $barang, 'kategori' => $kategori]);   
+        return view('po/data_barang/edit', ['barang' => $barang, 'kategori' => $kategori]);   
     }
 
     /**
@@ -137,8 +137,8 @@ class databoxController extends Controller
 
     public function exportPdf()
     {
-        $pinjam = Pinjam::all();
-        $pdf = PDF::loadView('PO/Admin_invetaris/Print_Admin', ['pinjam' => $pinjam]);
+        $kembali = Kembali::all();
+        $pdf = PDF::loadView('po/Admin_invetaris/Print_Kembali', ['kembali' => $kembali]);
         return $pdf->stream('Data Absensi');
     }
 }

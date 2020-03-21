@@ -115,20 +115,11 @@ class kembaliController extends Controller
 
     public function periode(Request $request)
     {
-        // return $request;
-        // try {
-        //     $dari = $request->dari;
-        //     $sampai = $request->sampai;
-        //     $pinjam = Pinjam::whereDate('tgl_pinjam', '>=',$dari)->whereDate('tgl_pinjam', '<=',$sampai)->get();
-        //     return view('admin.Admin_invetaris.index', compact('pinjam'));
-        // } catch (\Exception $e) {
-        //     \Session::flash('gagal', $e->getMessage());
-        // }
-        $pinjam = Pinjam::where('tgl_pinjam', '>=', $request->Awal)->where('tgl_pinjam', '<=', $request->Akhir)->orderBy('tgl_pinjam', 'desc')->get();
-        return view('admin.Admin_invetaris.filter_kembali', compact('pinjam'));
+        $kembali = Kembali::where('tgl_kembali', '>=', $request->Awal)->where('tgl_kembali', '<=', $request->Akhir)->orderBy('tgl_kembali', 'desc')->get();
+        return view('admin.Admin_invetaris.filter_kembali', compact('kembali'));
     }
 
-    public function exportPdf()
+    public function pdfKembali()
     {
         $kembali = Kembali::all();
         $pdf = PDF::loadView('admin/Admin_invetaris/Print_Kembali', ['kembali' => $kembali]);

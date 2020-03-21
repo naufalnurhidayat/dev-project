@@ -19,7 +19,7 @@
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <a href="" class="btn btn-success"  data-toggle="modal" data-target="#filterTanggal"><i class="fas fa-filter"> Filter Tanggal</i></a>
-      <a href="{{ url('/kembali/barang/exportpdf') }}" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></a>
+      <a href="{{ url('/kembali/exportpdf') }}" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
