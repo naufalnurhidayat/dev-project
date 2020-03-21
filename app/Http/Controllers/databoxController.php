@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use App\Barang;
 use App\Kategori;
 use App\Kembali;
+use App\Pinjam;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use PDF;
 
 class databoxController extends Controller
 {
@@ -132,4 +134,14 @@ class databoxController extends Controller
         $barang->delete();
         return redirect('/barang/index')->with('status', 'Data Berhasil di Hapus!!!!');
     }
+
+    public function exportPdf()
+    {
+        $pinjam = Pinjam::all();
+        $pdf = PDF::loadView('admin/Admin_invetaris/Print_Admin', ['pinjam' => $pinjam]);
+        return $pdf->stream('Data Absensi');
+    }
 }
+
+
+

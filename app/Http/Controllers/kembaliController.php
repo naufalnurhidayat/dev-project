@@ -9,6 +9,7 @@ use App\Kategori;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use PDF;
 
 class kembaliController extends Controller
 {
@@ -114,13 +115,23 @@ class kembaliController extends Controller
 
     public function periode(Request $request)
     {
-        try {
-            $dari = $request->dari;
-            $sampai = $request->sampai;
-            $kembali = Kembali::whereDate('tgl_kembali', '>=',$dari)->whereDate('tgl_kembali', '<=',$sampai)->get();
-            return view('admin.Admin_invetaris.pengembalian', compact('kembali'));
-        } catch (\Exception $e) {
-            \Session::flash('gagal', $e->getMessage());
-        }
+        // return $request;
+        // try {
+        //     $dari = $request->dari;
+        //     $sampai = $request->sampai;
+        //     $pinjam = Pinjam::whereDate('tgl_pinjam', '>=',$dari)->whereDate('tgl_pinjam', '<=',$sampai)->get();
+        //     return view('admin.Admin_invetaris.index', compact('pinjam'));
+        // } catch (\Exception $e) {
+        //     \Session::flash('gagal', $e->getMessage());
+        // }
+        $pinjam = Pinjam::where('tgl_pinjam', '>=', $request->Awal)->where('tgl_pinjam', '<=', $request->Akhir)->orderBy('tgl_pinjam', 'desc')->get();
+        return view('admin.Admin_invetaris.filter_kembali', compact('pinjam'));
+    }
+
+    public function exportPdf()
+    {
+        $kembali = Kembali::all();
+        $pdf = PDF::loadView('admin/Admin_invetaris/Print_Kembali', ['kembali' => $kembali]);
+        return $pdf->stream('Data Absensi');
     }
 }

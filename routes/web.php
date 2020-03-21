@@ -25,7 +25,9 @@
 		  // Master
 			//inventaris
 			Route::get('/admin/transaksi-filter', 'PinjamController@periode');
-			Route::get('/transaksi-filter', 'kembaliController@periode');
+			Route::get('/admin/transaksi-filter/kembali', 'kembaliController@periode');
+			Route::get('/admin/barang/exportpdf', 'databoxController@exportPdf');
+			Route::get('/kembali/barang/exportpdf', 'kembaliController@exportPdf');
 			Route::get('/barang/index', 'databoxController@index');
 			Route::get('/admin/create', 'databoxController@create');
 			Route::post('/admin/barang/store', 'databoxController@store');
@@ -194,6 +196,8 @@
 			Route::patch('/po/profile/edit/{id}', 'PO\ProfileController@update');
 		  // Master
 			//inventaris
+			Route::get('/po/transaksi-filter', 'PO\PinjamController@periode');
+			Route::get('/po/barang/exportpdf', 'databoxController@exportPdf');
 			Route::get('/po/barang/index', 'databoxController@index');
 			Route::get('/po/create', 'databoxController@create');
 			Route::post('/po/barang/store', 'databoxController@store');
