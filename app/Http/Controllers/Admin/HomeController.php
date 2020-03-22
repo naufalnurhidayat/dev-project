@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
 use App\Absen;
@@ -21,7 +22,21 @@ class HomeController extends Controller
         ];
         $karyawan = count(User::all());
         $data_absen = count(Absen::where('tanggal', date('Y-m-d'))->get());
-        $data_absen_default = Absen::whereBetween('tanggal', [$tanggal[0], $tanggal[6]])->get();
-        return view('admin/home/index', ['karyawan' => $karyawan, 'data_absen' => $data_absen, 'tanggal' => $tanggal]);
+        $data_absen_default = DB::table('absensi')
+        ->select('tanggal', DB::raw('count(*) as total'))
+        ->groupBy('tanggal')
+        ->orderByRaw('tanggal ASC')
+        ->get()->toArray();
+        $values = [];
+        $ids = array_column($data_absen_default, 'tanggal');
+        foreach ($tanggal as $value) {
+            $get_idx = array_search($value, $ids);
+            if (!empty($get_idx)) {
+                $values[] = $data_absen_default[$get_idx]->total;
+            } else {
+                $values[] = 0;
+            }
+        }
+        return view('admin/home/index', ['values' => $values, 'karyawan' => $karyawan, 'data_absen' => $data_absen, 'tanggal' => $tanggal]);
     }
 }
