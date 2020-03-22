@@ -109,7 +109,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [20, 44, 87, 90, 76, 120, 55],
+      data: {!! json_encode($values) !!},
     }],
   },
   options: {
