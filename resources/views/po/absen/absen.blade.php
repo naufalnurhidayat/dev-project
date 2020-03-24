@@ -108,11 +108,11 @@
           @csrf
           <div class="modal-body">
             <div class="form-group">
-              <input type="text" name="catatan" placeholder="Keterangan..." class="form-control @error('catatan') is-invalid @enderror" id="izin">
+              <input type="text" name="catatan" placeholder="Keterangan..." class="form-control @error('catatan') is-invalid @enderror" id="izin" required>
               @error('catatan') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
             <div class="custom-file">
-              <input type="file" class="custom-file-input @error('picture')is-invalid @enderror" id="picture" name="picture">
+              <input type="file" class="custom-file-input @error('picture')is-invalid @enderror" id="picture" name="picture" required>
               <label class="custom-file-label" for="picture">Lampirkan surat keterangan</label>
               @error('picture') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
