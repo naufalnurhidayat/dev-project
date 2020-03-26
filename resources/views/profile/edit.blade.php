@@ -149,7 +149,7 @@
         </div>
     </div>
     <div class="form-group row">
-      <div class="col-sm-6"></div>
+      <div class="col-sm-3"></div>
       <div class="col-sm-5 mb-5 pb-5">
         <a href="{{ url('/profile/'.auth()->user()->nama) }}" class="btn btn-secondary btn-user">Kembali</a>
         <button type="submit" name="ubah" class="btn btn-primary btn-user" onclick="return confirm('Yakin?')">Edit Data</button>

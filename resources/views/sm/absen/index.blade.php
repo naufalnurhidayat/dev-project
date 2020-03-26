@@ -29,7 +29,7 @@
                   <th>NIP</th>
                   <th>Nama</th>
                   <th>Stream</th>
-                  <th>Pukul</th>
+                  <th>Jam Masuk</th>
                   <th>Tanggal</th>
                   <th>Keterangan</th>
                   <th>Status</th>
@@ -46,14 +46,20 @@
                   <td>{{ $da->jam_masuk }}</td>
                   <td>{{ $da->tanggal }}</td>
                   <td>{{ $da->catatan }}</td>
-                  <td>{{ $da->status }}</td>
+                  @if($da->status == 'Accepting')
+                    <td><span class="badge badge-success">{{ $da->status }}</span></td>
+                  @elseif($da->status == 'Rejecting')
+                    <td><span class="badge badge-danger">{{ $da->status }}</span></td>
+                  @else
+                    <td><span class="badge badge-warning">{{ $da->status }}</span></td>
+                  @endif
                   <td>
-                    <form action="{{ url('/sm/data-kehadiran/'. $da->id_absen) }}" method="POST">
+                    <form action="{{ url('/sm/absen/data-kehadiran/'. $da->id_absen) }}" method="POST">
                       @method('patch')
                       @csrf
-                      <a href="{{ url('/sm/data-kehadiran/' . $da->id_absen) }}" class="badge badge-primary">Detail</a>
-                      <button type="submit" class="badge badge-success" name="prove" value="Accepting" onclick="return confirm('Accept?')">Accept</button>
-                      <button type="submit" class="badge badge-danger" name="prove" value="Rejecting" onclick="return confirm('Reject?')">Reject</button>
+                      <a href="{{ url('/sm/absen/data-kehadiran/' . $da->id_absen) }}" class="btn btn-sm btn-primary"><i class="fas fa-search"></i></a>
+                      <button type="submit" class="btn btn-sm btn-success" name="prove" value="Accepting" onclick="return confirm('Accept?')"><i class="fas fa-check-circle"></i></button>
+                      <button type="submit" class="btn btn-sm btn-danger" name="prove" value="Rejecting" onclick="return confirm('Reject?')"><i class="fas fa-times-circle"></i></button>
                     </form>
                   </td>
                 </tr>
