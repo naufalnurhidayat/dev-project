@@ -137,8 +137,8 @@ class databoxController extends Controller
 
     public function exportPdf()
     {
-        $kembali = Kembali::all();
-        $pdf = PDF::loadView('po/Admin_invetaris/Print_Kembali', ['kembali' => $kembali]);
+        $pinjam = Pinjam::all();
+        $pdf = PDF::loadView('po/Admin_invetaris/Print_Admin', ['pinjam' => $pinjam]);
         return $pdf->stream('Data Absensi');
     }
 }

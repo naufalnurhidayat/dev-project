@@ -9,7 +9,7 @@
            @else
             <span class="badge badge-success btn-sm">Sudah Kembali</span>
            @endif
-       </td>
+          </td>
            <td>
             <form action="{{url('/admin/kembali/status/'. $k->id_kembali)}}" method="post">
               @method('patch')

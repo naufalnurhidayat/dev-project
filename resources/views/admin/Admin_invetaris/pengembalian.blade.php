@@ -35,7 +35,7 @@
             </tr>
           </thead>
       
-          <tbody id="tampungan">
+          <tbody id="tampungan_pengembalian">
             @foreach($kembali as $k)
            <tr align="center"> 
            <td>{{$k->User['nip']}}</td>
@@ -84,12 +84,12 @@
           <div class="box-body">
             <div class="form-group" data-provide="datepicker">
               <label for="exampleInputEmail1">Dari Tanggal</label>
-            <input type="date" class="form-control datepicker" id="KeywordtglAwal" placeholder="Dari Tanggal" name="dari" autocomplete="off" value="{{ date('Y-m-d') }}">
+            <input type="date" class="form-control datepicker" id="Tglawal" placeholder="Dari Tanggal" name="dari" autocomplete="off" value="{{ date('Y-m-d') }}">
             </div>
 
               <div class="form-group" data-provide="datepicker">
                 <label for="exampleInputEmail1">Sampai Tanggal</label>
-                <input type="date" class="form-control datepicker" id="KeywordtglAkhir" placeholder="sampai Tanggal" name="sampai" autocomplete="off" value="{{ date('Y-m-d') }}">
+                <input type="date" class="form-control datepicker" id="Tglakhir" placeholder="sampai Tanggal" name="sampai" autocomplete="off" value="{{ date('Y-m-d') }}">
               </div>
             </div>
             

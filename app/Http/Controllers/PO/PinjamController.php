@@ -123,6 +123,6 @@ class pinjamController extends Controller
     public function periode(Request $request)
     {
         $pinjam = Pinjam::where('tgl_pinjam', '>=', $request->Awal)->where('tgl_pinjam', '<=', $request->Akhir)->orderBy('tgl_pinjam', 'desc')->get();
-        return view('po.Admin_invetaris.filter', compact('pinjam'));
+        return view('po/Admin_invetaris/filter', compact('pinjam'));
     }
 }

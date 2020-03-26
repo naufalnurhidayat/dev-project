@@ -116,7 +116,7 @@ class kembaliController extends Controller
     public function periode(Request $request)
     {
         $kembali = Kembali::where('tgl_kembali', '>=', $request->Awal)->where('tgl_kembali', '<=', $request->Akhir)->orderBy('tgl_kembali', 'desc')->get();
-        return view('admin.Admin_invetaris.filter_kembali', compact('kembali'));
+        return view('admin/Admin_invetaris/filter_kembali', compact('kembali'));
     }
 
     public function pdfKembali()

@@ -11,34 +11,32 @@
     </div>
 @endif
 
-<div class="container-fluid">
-  
+<div class="container-fluid">  
   <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
   <a href="{{url('/invetaris')}}" class="btn btn-warning mb-2">Kembali</a>
-
-{{-- ----Select Option------ --}}
-<div class="row">
-  <div class="col-3">
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Categori</label>
-      </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Categori</label>
+        </div>
         <select class="custom-select" name="kategori" id="kategori">
           <option selected value="">Choose Kategori</option>
-            @foreach ($kategori as $item)
+          @foreach ($kategori as $item)
           <option value={{$item->id_kategori}}>{{$item->nama_kategori}}</option>
-            @endforeach
+          @endforeach
         </select>
       </div>
+    </div>
   </div>
-</div>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-
     </div>
     <div class="card-body">
-      <div class="table-responsive">
+      <div class="table-responsive">        
+          </div>
+        </div>
         <table class="table table-bordered" id="dataTable" width="100%" height="20px" cellspacing="0">
           <thead class="thead-dark">
             <tr align="center">
@@ -53,7 +51,7 @@
             @foreach($barang as $b)
             @if($b->stok == 0)
             @else
-           <tr align=""> 
+           <tr> 
            <td>{{$b->nama_barang}}</td> 
            <td>{{$b->Kategori['nama_kategori']}}</td>
            <td>{{$b->kondisi}}</td>
@@ -86,7 +84,7 @@
             
                 <div class="form-group">
                   <label for="keterangan">Keterangan </label>
-                <input type="text" class="form-control @error('keterangan') is-invalid @enderror" id="keterangan" placeholder="" name="keterangan" value="">
+                <input type="text" class="form-control @error('keterangan') is-invalid @enderror" placeholder="" name="keterangan" value="">
                   @error('keterangan')
                   <div class="invalid-feedback">{{$message}}</div>
                   @enderror
@@ -110,23 +108,4 @@
 </table>
 
 </div>
-<!-- /.container-fluid -->
-
-
-{{-- <script type="text/javascript">
-  $(document).ready(function(){
-      $('#kategori').on('change', function(e){
-          var id = e.target.value;
-          $.get('{{ url('kategori')}}/'+id, function(data){
-              console.log(id);
-              console.log(data);
-              $('#barang').empty();
-              $.each(data, function(index, element){
-                  $('#barang').append("<tr><td>"+element.nama_barang+"</td><td>"+element.nama_kategori+"</td>"+
-                  "<td>"+element.kondisi+"</td><td>"+"</td></tr>");
-              });
-          });
-      });
-  });
-</script> --}}
 @endsection

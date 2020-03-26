@@ -19,7 +19,8 @@
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <a href="" class="btn btn-success"  data-toggle="modal" data-target="#filterTanggal"><i class="fas fa-filter"> Filter Tanggal</i></a>
-      <a href="{{ url('/po/barang/exportpdf') }}" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></a>
+      <h6 class="m-0 font-weight-bold text-dark float-right mt-2 d-inline-block"><span class="text-info">Projek:</span> <span class="badge badge-success">{{ $projek->projek->project }}</span></h6>
+      <a href="{{ url('/po/exportpdf/pinjam') }}" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></a>
     </div>
     <div class="card-body">
       <div class="table-responsive">
