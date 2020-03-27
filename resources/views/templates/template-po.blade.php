@@ -250,6 +250,37 @@
           }
         });
       });
+
+      $("#submit").click( function(){
+      const tglAwal = $("#KeywordtglAwal").val();
+      const tglAkhir = $("#KeywordtglAkhir").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '{{url('/po/transaksi-filter/index')}}',
+        data: 'Awal='+tglAwal+'&Akhir='+tglAkhir,
+        success: function(response){
+          $("#tampungan").html(response);
+        }
+      });
+    });
+
+    $("#id_submit").click( function(){
+      const tglAwal = $("#Tglawal").val();
+      const tglAkhir = $("#Tglakhir").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '{{url('/po/transaksi-filter/kembali')}}',
+        data: 'Awal='+tglAwal+'&Akhir='+tglAkhir,
+        success: function(response){ 
+          $("#filter_kembali").html(response);
+        }
+      });
+    });
+
     });
   </script>
   @yield('footer')

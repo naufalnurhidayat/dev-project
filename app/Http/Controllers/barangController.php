@@ -24,7 +24,9 @@ class barangController extends Controller
         $barang = Barang::all();
         $kategori = Kategori::all();
         $kembali = Kembali::all();
+        // return $kembali;
         $pinjam = Pinjam::where('id', auth()->user()->id)->get();
+        // echo "<pre>"; print_r($pinjam); exit;
         return view('Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'barang' => $barang, 'kembali' => $kembali]);
     }
 
@@ -46,7 +48,7 @@ class barangController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         Pinjam::create([
             'id_barang' => $request->id_barang,
             'id_kategori' => $request->id_kategori,
@@ -101,9 +103,10 @@ class barangController extends Controller
      * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(barang $barang)
+    public function destroy($id)
     {
-        //
+        $pinjam = Pinjam::where('id_pinjam', $id)->delete();
+        return redirect('/invetaris')->with('status', 'Data Berhasil di Hapus!!!!');
     }
 
     public function showpinjam()
@@ -118,7 +121,8 @@ class barangController extends Controller
     {
         $barang = Barang::all();
         $kategori = Kategori::all();
-        return view('Invetaris.pengajuan', ['barang' => $barang, 'kategori' => $kategori]);
+        $kembali = Kembali::all();
+        return view('Invetaris.pengajuan', ['barang' => $barang, 'kategori' => $kategori, 'kembali' => $kembali]);
     }
 
     public function cobajax(Request $request)
@@ -137,4 +141,5 @@ class barangController extends Controller
         $pdf = PDF::loadView('Invetaris/export', ['pinjam' => $pinjam]);
         return $pdf->stream('Data Absensi');
     }
+
 }

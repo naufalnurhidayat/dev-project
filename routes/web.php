@@ -25,7 +25,9 @@
 		  // Master
 			//inventaris
 			Route::get('/admin/transaksi-filter', 'PinjamController@periode');
-			Route::get('/transaksi-filter', 'kembaliController@periode');
+			Route::get('/admin/transaksi-filter/kembali', 'kembaliController@periode');
+			Route::get('/admin/barang/exportpdf', 'databoxController@exportPdf');
+			Route::get('/kembali/exportpdf', 'kembaliController@pdfKembali');
 			Route::get('/barang/index', 'databoxController@index');
 			Route::get('/admin/create', 'databoxController@create');
 			Route::post('/admin/barang/store', 'databoxController@store');
@@ -194,12 +196,16 @@
 			Route::patch('/po/profile/edit/{id}', 'PO\ProfileController@update');
 		  // Master
 			//inventaris
-			Route::get('/po/barang/index', 'databoxController@index');
-			Route::get('/po/create', 'databoxController@create');
-			Route::post('/po/barang/store', 'databoxController@store');
-			Route::patch('/po/barang/update/{id_barang}', 'databoxController@update');
-			Route::get('/po/barang/edit/{id_barang}', 'databoxController@edit');
-			Route::delete('/po/destroy/{id_barang}', 'databoxController@destroy');
+			Route::get('/po/transaksi-filter/index', 'PO\PinjamController@periode');
+			Route::get('/po/transaksi-filter/kembali', 'PO\kembaliController@periode');
+			Route::get('/po/exportpdf/pinjam', 'PO\databoxController@exportPdf');
+			Route::get('/kembali/barang/exportpdf', 'PO\kembaliController@exportPdf');
+			Route::get('/po/barang/index', 'PO\databoxController@index');
+			Route::get('/po/create', 'PO\databoxController@create');
+			Route::post('/po/barang/store', 'PO\databoxController@store');
+			Route::patch('/po/barang/update/{id_barang}', 'PO\databoxController@update');
+			Route::get('/po/barang/edit/{id_barang}', 'PO\databoxController@edit');
+			Route::delete('/po/destroy/{id_barang}', 'PO\databoxController@destroy');
 			Route::get('/po/kategori/index', 'KategoriController@index');
 			Route::get('/po/kategori/create', 'KategoriController@create');
 			Route::post('/po/kategori/store', 'KategoriController@store');
@@ -214,13 +220,16 @@
 			Route::patch('/po/kembali/status/{kembali}', 'PO\kembaliController@update');
 			//Invetaris
 			Route::get('/po/invetaris', 'PO\barangController@index');
-			Route::post('/po/pengajuan/store', 'PO\PinjamController@store');
 			Route::post('/kembali/store', 'kembaliController@store');
 			Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
 			Route::get('/barang', 'barangController@index');
 			Route::get('/show/{id_pinjam}', 'barangController@show');
 			Route::get('/po/tampil/table', 'PO\barangController@tampil');
+			Route::post('po/pengajuan/store', 'PO\PinjamController@store');
 			Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
+			Route::get('/kategori', 'barangController@cobajax');
+			Route::get('/po/barang/exportpdf/{id}', 'PO\barangController@exportPdf');
+			Route::delete('/po/user/destroy/{id}', 'PO\barangController@destroy');
 		//---------------------------------------------------------------------------------------
 			// Karyawan
 			Route::get('/po/karyawan', 'PO\KaryawanController@index');
@@ -268,17 +277,17 @@
 			Route::post('/cuti', 'CutiController@store');
 		
 			//Invetaris
-      Route::get('/invetaris', 'barangController@index');
-      Route::post('/kembali/store', 'kembaliController@store');
-      Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
-      Route::get('/barang', 'barangController@index');
-      Route::get('/show/{id_pinjam}', 'barangController@show');
-      Route::get('/tampil/table', 'barangController@tampil');
-	  Route::post('/pengajuan/store', 'PinjamController@store');
-	  Route::post('/user/pengajuan/store', 'PinjamController@store');
-	  Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
-	  Route::get('/kategori', 'barangController@cobajax');
-	  Route::get('/user/barang/exportpdf/{id}', 'barangController@exportPdf');
+			Route::get('/invetaris', 'barangController@index');
+			Route::post('/kembali/store', 'kembaliController@store');
+			Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
+			Route::get('/barang', 'barangController@index');
+			Route::get('/show/{id_pinjam}', 'barangController@show');
+			Route::get('/tampil/table', 'barangController@tampil');
+			Route::post('/pengajuan/store', 'PinjamController@store');
+			Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
+			Route::get('/kategori', 'barangController@cobajax');
+			Route::get('/user/barang/exportpdf/{id}', 'barangController@exportPdf');
+			Route::delete('/user/destroy/{id}', 'barangController@destroy');
 		
 		// --------------------------------------------------------------------------------------
 	});

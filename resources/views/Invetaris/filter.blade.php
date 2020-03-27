@@ -1,9 +1,7 @@
-
- 
     @foreach($barang as $b)
         @if($b->stok == 0)
          @else
-   <tr align=""> 
+   <tr> 
     <td>{{$b->nama_barang}}</td> 
     <td>{{$b->Kategori['nama_kategori']}}</td>
     <td>{{$b->kondisi}}</td>
@@ -25,7 +23,7 @@
   <div class="row justify-content-center">
     <div class="col">
       
-      <form method="post" action="{{url('/user/pengajuan/store')}}">
+      <form method="post" action="{{url('/pengajuan/store')}}">
         {{csrf_field()}}
         
             <input type="hidden" name="id_barang" value="{{$b->id_barang}}"> 
