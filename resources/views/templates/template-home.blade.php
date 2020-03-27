@@ -132,9 +132,8 @@
 
   $(document).ready(function (){
 
-    $("#kategori").on('change', function(){
+    $("#kategori").click(function(){
       const kategori = $("#kategori").val();
-      // alert(kategori);
       $.ajax({
         type: 'get',
         dataType: 'html',
