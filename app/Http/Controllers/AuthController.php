@@ -8,6 +8,7 @@ use App\Stream;
 use App\Role;
 use App\Pendidikan;
 use App\Projek;
+use Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -34,14 +35,18 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         if(Auth::attempt($request->only('email', 'password'))) {
-            if (auth()->user()->role->role == "Admin") {
-                return redirect('/admin');
-            } elseif (auth()->user()->role->role == "Scrum Master") {
-                return redirect('/sm');
-            } elseif (auth()->user()->role->role == "Product Owner") {
-                return redirect('/po');
+            if(auth()->user()->is_active === 1) {
+                if (auth()->user()->role->role == "Admin") {
+                    return redirect('/admin');
+                } elseif (auth()->user()->role->role == "Scrum Master") {
+                    return redirect('/sm');
+                } elseif (auth()->user()->role->role == "Product Owner") {
+                    return redirect('/po');
+                } else {
+                    return redirect('/');
+                }
             } else {
-                return redirect('/');
+                return redirect('/login')->with('danger', 'Akun ini belum diaktivasi oleh Admin');
             }
         } else return redirect('/login');
     }
@@ -109,6 +114,16 @@ class AuthController extends Controller
         //     'projek[]' => 'required'
         // ]);
 
+        $roleAdmin = Role::where('role', 'Admin')->first();
+        $admin = User::where('id_role', $roleAdmin->id)->first();
+
+        $data = ['nama' => $request->nama, 'email' => $request->email];
+        Mail::send('admin/karyawan/email', $data, function ($message) use($admin){
+            $message->from('naufalnurhidayat510@gmail.com', 'Aplikasi Telkom');
+            $message->to($admin->email, $admin->nama);
+            $message->subject('Pendaftaran Karyawan Baru');
+        });
+
         $dataProjek = [];
         foreach ($request->id_projek as $projek) {
             $dataProjek[] = ['id_karyawan' => $u->id, 'id_projek' => $projek];
@@ -116,6 +131,7 @@ class AuthController extends Controller
         Projek_Karyawan::insert($dataProjek);
 
         return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan!');
+        
     }
 
     public function logout()

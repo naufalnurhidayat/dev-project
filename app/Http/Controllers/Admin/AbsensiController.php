@@ -107,7 +107,7 @@ class AbsensiController extends Controller
      */
     public function edit($id)
     {
-        //
+    
     }
 
     /**
@@ -120,14 +120,6 @@ class AbsensiController extends Controller
     public function update(Request $request, $id)
     {
         date_default_timezone_set("Asia/Jakarta");
-        
-        // $jam_awal = explode(':', $data_absen->jam_masuk);
-        // $satu_jam = $jam_awal[0] + 1;
-        // $waktu = $satu_jam . ':' . $jam_awal[1] . ':' . $jam_awal[2];
-    
-        // if($data_absen->jam_masuk != $waktu && $data_absen->status == 'Pending') {
-            
-        // }
         $data_absen = Absen::where('id_absen', $id)->first();
 
         if($data_absen->status != 'Pending') {
@@ -157,24 +149,11 @@ class AbsensiController extends Controller
         return Excel::download(new AbsenExport, 'Data Absen.xlsx');
     }
 
-    public function exportPdf(Request $request)
+    public function exportPdf()
     {
         $absen = Absen::all();
-        // if (empty($request->nama) && empty($request->tanggalawal) && empty($request->tanggalakhir)) {
-        //     $absen = Absen::orderBy('tanggal', 'desc')->get();
-        // } elseif (empty($request->tanggalawal) || empty($request->tanggalakhir)) {
-        //     $absen = Absen::where('id_karyawan', $request->nama)->orderBy('tanggal', 'desc')->get();
-        // } elseif (empty($request->nama)) {
-        //     $absen = Absen::where('tanggal', '>=', $request->tanggal)->where('tanggal', '<=', $request->tanggalakhir)->orderBy('tanggal', 'desc')->get();
-        // } else {
-        //     $absen = Absen::whereDate('tanggal', '>=', $request->tanggalawal)
-        //                 ->whereDate('tanggal', '<=', $request->tanggalakhir)
-        //                 ->where('nama', $request->nama)
-        //                 ->orderBy('tanggal', 'desc')
-        //                 ->get();
-        // }
         $pdf = PDF::loadView('admin/absen/export', ['absen' => $absen]);
-        return $pdf->stream('Data Absensi');
+        return $pdf->download('Data Absensi.pdf');
     }
 
     public function filterAbsen(Request $request)
@@ -193,5 +172,12 @@ class AbsensiController extends Controller
                         ->get();
         }
         return view('admin/absen/filter', compact('data_absen'));
+    }
+
+    public function cetakDataAbsen(Request $request)
+    {
+        $absen = Absen::all();
+        $pdf = PDF::loadView('admin/absen/cetak', compact('absen'));
+        return $pdf->stream('Data Absensi.pdf');
     }
 }

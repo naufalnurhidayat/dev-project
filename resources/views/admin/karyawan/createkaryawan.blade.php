@@ -18,34 +18,34 @@
                 @csrf
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="number" class="form-control form-control-user @error('nip') is-invalid @enderror" value="{{ old('nip') }}" id="nip" placeholder="NIP" name="nip">
+                    <input type="number" class="form-control form-control-user @error('nip') is-invalid @enderror" value="{{ old('nip') }}" id="nip" placeholder="NIP" name="nip" required>
                     @error('nip') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror" id="nama" placeholder="Nama" name="nama" value="{{ old('nama') }}">
+                    <input type="text" class="form-control form-control-user @error('nama') is-invalid @enderror" id="nama" placeholder="Nama" name="nama" value="{{ old('nama') }}" required>
                     @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('tmp_lahir') is-invalid @enderror" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="{{ old('tmp_lahir') }}">
+                    <input type="text" class="form-control form-control-user @error('tmp_lahir') is-invalid @enderror" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="{{ old('tmp_lahir') }}" required>
                     @error('tmp_lahir') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="date" class="form-control form-control-user @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="{{ old('tgl_lahir') }}">
+                    <input type="date" class="form-control form-control-user @error('tgl_lahir') is-invalid @enderror" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="{{ old('tgl_lahir') }}" required>
                     @error('tgl_lahir') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ old('email') }}">
+                    <input type="email" class="form-control form-control-user @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
                     @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="Laki-laki" name="jenkel" value="Laki-laki"{{old('jenkel') == 'Laki-laki' ? 'checked' : ''}}>
+                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="Laki-laki" name="jenkel" value="Laki-laki"{{old('jenkel') == 'Laki-laki' ? 'checked' : ''}} required>
                     <label for="Laki-laki" class="ml-4">Laki-laki</label>
                     @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="perempuan" name="jenkel" value="Perempuan"{{old('jenkel') == 'Perempuan' ? 'checked' : ''}}>
+                    <input type="radio" class="form-check-input ml-2 @error('jenkel') is-invalid @enderror" id="perempuan" name="jenkel" value="Perempuan"{{old('jenkel') == 'Perempuan' ? 'checked' : ''}} required>
                     <label for="perempuan" class="ml-4">Perempuan</label>
                     @error('jenkel') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
@@ -72,11 +72,11 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user @error('thn_join') is-invalid @enderror" id="thn_join" placeholder="Tahun Join" name="thn_join" value="{{ old('thn_join') }}">
+                    <input type="text" class="form-control form-control-user @error('thn_join') is-invalid @enderror" id="thn_join" placeholder="Tahun Join" name="thn_join" value="{{ old('thn_join') }}" required>
                     @error('thn_join') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="number" class="form-control form-control-user @error('no_telp') is-invalid @enderror" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="{{ old('no_telp') }}">
+                    <input type="number" class="form-control form-control-user @error('no_telp') is-invalid @enderror" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="{{ old('no_telp') }}" required>
                     @error('no_telp') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
@@ -94,17 +94,17 @@
                     @error('agama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="2" placeholder="Alamat">{{ old('alamat') }}</textarea>
+                    <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="2" placeholder="Alamat" required>{{ old('alamat') }}</textarea>
                     @error('alamat') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password">
+                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" required>
                     @error('password') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user @error('password2') is-invalid @enderror" id="password2" placeholder="Konfirmasi Password" name="password2">
+                    <input type="password" class="form-control form-control-user @error('password2') is-invalid @enderror" id="password2" placeholder="Konfirmasi Password" name="password2" required>
                     @error('password2') <div class="invalid-feedback">{{ $message }}</div> @enderror
                   </div>
                 </div>

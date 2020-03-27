@@ -23,7 +23,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('nip')); ?>" id="nip" placeholder="NIP" name="nip">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('nip')); ?>" id="nip" placeholder="NIP" name="nip" required>
                     <?php $__errorArgs = ['nip'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -41,7 +41,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="nama" placeholder="Nama" name="nama" value="<?php echo e(old('nama')); ?>">
+unset($__errorArgs, $__bag); ?>" id="nama" placeholder="Nama" name="nama" value="<?php echo e(old('nama')); ?>" required>
                     <?php $__errorArgs = ['nama'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -61,7 +61,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="<?php echo e(old('tmp_lahir')); ?>">
+unset($__errorArgs, $__bag); ?>" id="tmp_lahir" placeholder="Tempat Lahir" name="tmp_lahir" value="<?php echo e(old('tmp_lahir')); ?>" required>
                     <?php $__errorArgs = ['tmp_lahir'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -79,7 +79,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="<?php echo e(old('tgl_lahir')); ?>">
+unset($__errorArgs, $__bag); ?>" id="tgl_lahir" placeholder="Tanggal Lahir" name="tgl_lahir" value="<?php echo e(old('tgl_lahir')); ?>" required>
                     <?php $__errorArgs = ['tgl_lahir'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -99,7 +99,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="email" placeholder="Email" name="email" value="<?php echo e(old('email')); ?>">
+unset($__errorArgs, $__bag); ?>" id="email" placeholder="Email" name="email" value="<?php echo e(old('email')); ?>" required>
                     <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -117,7 +117,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="Laki-laki" name="jenkel" value="Laki-laki"<?php echo e(old('jenkel') == 'Laki-laki' ? 'checked' : ''); ?>>
+unset($__errorArgs, $__bag); ?>" id="Laki-laki" name="jenkel" value="Laki-laki"<?php echo e(old('jenkel') == 'Laki-laki' ? 'checked' : ''); ?> required>
                     <label for="Laki-laki" class="ml-4">Laki-laki</label>
                     <?php $__errorArgs = ['jenkel'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -134,7 +134,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="perempuan" name="jenkel" value="Perempuan"<?php echo e(old('jenkel') == 'Perempuan' ? 'checked' : ''); ?>>
+unset($__errorArgs, $__bag); ?>" id="perempuan" name="jenkel" value="Perempuan"<?php echo e(old('jenkel') == 'Perempuan' ? 'checked' : ''); ?> required>
                     <label for="perempuan" class="ml-4">Perempuan</label>
                     <?php $__errorArgs = ['jenkel'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -203,7 +203,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="thn_join" placeholder="Tahun Join" name="thn_join" value="<?php echo e(old('thn_join')); ?>">
+unset($__errorArgs, $__bag); ?>" id="thn_join" placeholder="Tahun Join" name="thn_join" value="<?php echo e(old('thn_join')); ?>" required>
                     <?php $__errorArgs = ['thn_join'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -221,7 +221,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="<?php echo e(old('no_telp')); ?>">
+unset($__errorArgs, $__bag); ?>" id="no_telp" placeholder="Nomor Telpon" name="no_telp" value="<?php echo e(old('no_telp')); ?>" required>
                     <?php $__errorArgs = ['no_telp'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -267,7 +267,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" rows="2" placeholder="Alamat"><?php echo e(old('alamat')); ?></textarea>
+unset($__errorArgs, $__bag); ?>" rows="2" placeholder="Alamat" required><?php echo e(old('alamat')); ?></textarea>
                     <?php $__errorArgs = ['alamat'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -287,7 +287,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="password" placeholder="Password" name="password">
+unset($__errorArgs, $__bag); ?>" id="password" placeholder="Password" name="password" required>
                     <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -305,7 +305,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="password2" placeholder="Konfirmasi Password" name="password2">
+unset($__errorArgs, $__bag); ?>" id="password2" placeholder="Konfirmasi Password" name="password2" required>
                     <?php $__errorArgs = ['password2'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

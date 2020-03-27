@@ -24,7 +24,7 @@
             <th>Keterangan</th>
           </tr>
         </thead>
-        <tbody id="tampunganExport">
+        <tbody>
           @foreach ($absen as $da)
           <tr align="center">
             <td>{{ $loop->iteration }}</td>
