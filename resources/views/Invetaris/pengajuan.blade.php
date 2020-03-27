@@ -81,6 +81,7 @@
                 
               <input type="hidden" name="id_barang" value="{{$b->id_barang}}"> 
               <input type="hidden" name="id_kategori" value="{{$b->Kategori['id_kategori']}}">
+              {{-- <input type="hidden" name="id_kembali" value="{{$b->Kembali['id_kembali']}}"> --}}
             
                 <div class="form-group">
                   <label for="keterangan">Keterangan </label>
