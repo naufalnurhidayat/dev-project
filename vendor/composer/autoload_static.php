@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
+class ComposerStaticInitb770510f82569ad4ebc9927baf49fbe3
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -569,7 +569,7 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
         'App\\Http\\Controllers\\barangController' => __DIR__ . '/../..' . '/app/Http/Controllers/barangController.php',
         'App\\Http\\Controllers\\databoxController' => __DIR__ . '/../..' . '/app/Http/Controllers/databoxController.php',
         'App\\Http\\Controllers\\kembaliController' => __DIR__ . '/../..' . '/app/Http/Controllers/kembaliController.php',
-        'App\\Http\\Controllers\\pinjamController' => __DIR__ . '/../..' . '/app/Http/Controllers/pinjamController.php',
+        'App\\Http\\Controllers\\pinjamController' => __DIR__ . '/../..' . '/app/Http/Controllers/PinjamController.php',
         'App\\Http\\Controllers\\temporariController' => __DIR__ . '/../..' . '/app/Http/Controllers/temporariController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -584,7 +584,7 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
         'App\\Kategori' => __DIR__ . '/../..' . '/app/Kategori.php',
         'App\\Kembali' => __DIR__ . '/../..' . '/app/Kembali.php',
         'App\\Pendidikan' => __DIR__ . '/../..' . '/app/Pendidikan.php',
-        'App\\Pinjam' => __DIR__ . '/../..' . '/app/pinjam.php',
+        'App\\Pinjam' => __DIR__ . '/../..' . '/app/Pinjam.php',
         'App\\Projek' => __DIR__ . '/../..' . '/app/Projek.php',
         'App\\Projek_Karyawan' => __DIR__ . '/../..' . '/app/Projek_Karyawan.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -5159,10 +5159,10 @@ class ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInite93bd92917fd6a8e989b6dad73b8c167::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb770510f82569ad4ebc9927baf49fbe3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb770510f82569ad4ebc9927baf49fbe3::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitb770510f82569ad4ebc9927baf49fbe3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitb770510f82569ad4ebc9927baf49fbe3::$classMap;
 
         }, null, ClassLoader::class);
     }

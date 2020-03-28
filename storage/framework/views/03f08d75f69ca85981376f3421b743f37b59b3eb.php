@@ -22,7 +22,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="role" name="role" value="<?php echo e($role->role); ?>">
+unset($__errorArgs, $__bag); ?>" id="role" name="role" value="<?php echo e($role->role); ?>" autofocus>
                     <?php $__errorArgs = ['role'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -31,7 +31,7 @@ $message = $__bag->first($__errorArgs[0]); ?> <div class="invalid-feedback"><?ph
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                <button type="submit" class="btn btn-primary mt-3">Edit</button>
+                <button type="submit" class="btn btn-primary mt-3" onclick="return confirm('Yakin?')">Edit</button>
             </form>
         </div>
     </div>

@@ -95,7 +95,7 @@ class ProfileController extends Controller
             'jenkel' => 'required',
             'id_stream' => 'required',
             'id_pendidikan' => 'required',
-            'thn_join' => 'required',
+            'thn_join' => 'required|numeric',
             'no_telp' => 'required|numeric',
             'agama' => 'required',
             'alamat' => 'required'

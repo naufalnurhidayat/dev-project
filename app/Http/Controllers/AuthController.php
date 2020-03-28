@@ -8,6 +8,9 @@ use App\Stream;
 use App\Role;
 use App\Pendidikan;
 use App\Projek;
+use Mail;
+use Session;
+use Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -34,14 +37,18 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         if(Auth::attempt($request->only('email', 'password'))) {
-            if (auth()->user()->role->role == "Admin") {
-                return redirect('/admin');
-            } elseif (auth()->user()->role->role == "Scrum Master") {
-                return redirect('/sm');
-            } elseif (auth()->user()->role->role == "Product Owner") {
-                return redirect('/po');
+            if(auth()->user()->is_active === 1) {
+                if (auth()->user()->role->role == "Admin") {
+                    return redirect('/admin');
+                } elseif (auth()->user()->role->role == "Scrum Master") {
+                    return redirect('/sm');
+                } elseif (auth()->user()->role->role == "Product Owner") {
+                    return redirect('/po');
+                } else {
+                    return redirect('/');
+                }
             } else {
-                return redirect('/');
+                return redirect('/login')->with('danger', 'Akun ini belum diaktivasi oleh Admin');
             }
         } else return redirect('/login');
     }
@@ -85,7 +92,7 @@ class AuthController extends Controller
             'password' => 'required|min:6|same:password2',
             'password2' => 'required|min:6|same:password'
         ]);
-
+        
         $u = User::create([
             'nip' => $request->nip,
             'nama' => $request->nama,
@@ -102,12 +109,13 @@ class AuthController extends Controller
             'agama' => $request->agama,
             'alamat' => $request->alamat,
             'password' => Hash::make($request->password),
-            'foto' => 'default.jpg'
+            'foto' => 'default.jpg',
+            'is_active' => 0
         ]);
         
-            // $request->validate([
-            //     'id_projek[]' => 'required'
-            // ]);
+        // $request->validate([
+        //     'projek[]' => 'required'
+        // ]);
 
         $dataProjek = [];
         foreach ($request->id_projek as $projek) {
@@ -115,7 +123,29 @@ class AuthController extends Controller
         }
         Projek_Karyawan::insert($dataProjek);
 
+        $roleAdmin = Role::where('role', 'Admin')->first();
+        $admin = User::where('id_role', $roleAdmin->id)->first();
+        $role = Role::where('id', $request->id_role)->first()->role;
+        $stream = Stream::where('id', $request->id_stream)->first()->stream;
+        
+        $data = [
+            'id' => $u->id,
+            'nip' => $request->nip,
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'jenkel' => $request->jenkel,
+            'role' => $role,
+            'stream' => $stream,
+            'no_telp' => $request->no_telp
+        ];
+        Mail::send('admin/karyawan/email', $data, function ($message) use($admin){
+            $message->from('naufalnurhidayat510@gmail.com', 'Aplikasi Telkom');
+            $message->to($admin->email, $admin->nama);
+            $message->subject('Pendaftaran Karyawan Baru');
+        });
+
         return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan!');
+        
     }
 
     public function logout()

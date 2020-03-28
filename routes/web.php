@@ -24,8 +24,10 @@
 			Route::patch('/admin/profile/edit/{id}', 'Admin\ProfileController@update');
 		  // Master
 			//inventaris
-			Route::get('/transaksi-filter', 'PinjamController@periode');
-			Route::get('/transaksi-filter', 'kembaliController@periode');
+			Route::get('/admin/transaksi-filter', 'PinjamController@periode');
+			Route::get('/admin/transaksi-filter/kembali', 'kembaliController@periode');
+			Route::get('/admin/barang/exportpdf', 'databoxController@exportPdf');
+			Route::get('/kembali/exportpdf', 'kembaliController@pdfKembali');
 			Route::get('/barang/index', 'databoxController@index');
 			Route::get('/admin/create', 'databoxController@create');
 			Route::post('/admin/barang/store', 'databoxController@store');
@@ -97,13 +99,15 @@
 			
 		  // Transaksi
 			// Absen
-			Route::get('admin/data-kehadiran', 'Admin\AbsensiController@index');
-			Route::get('admin/data-kehadiran/{id}', 'Admin\AbsensiController@show');
-			Route::patch('admin/data-kehadiran/{id}', 'Admin\AbsensiController@update');
-			Route::get('admin/absen', 'Admin\AbsensiController@create');
-			Route::post('admin/absen', 'Admin\AbsensiController@store');
-			Route::get('admin/absen/exportexcel', 'Admin\AbsensiController@exportExcel');
-			Route::get('admin/absen/exportpdf', 'Admin\AbsensiController@exportPdf');
+			Route::get('/admin/absen/data-kehadiran', 'Admin\AbsensiController@index');
+			Route::get('/admin/absen/data-kehadiran/{id}', 'Admin\AbsensiController@show');
+			Route::patch('/admin/absen/data-kehadiran/{id}', 'Admin\AbsensiController@update');
+			Route::get('/admin/absen', 'Admin\AbsensiController@create');
+			Route::post('/admin/absen', 'Admin\AbsensiController@store');
+			Route::get('/admin/absen/exportexcel', 'Admin\AbsensiController@exportExcel');
+			Route::get('/admin/absen/exportpdf', 'Admin\AbsensiController@exportPdf');
+			Route::get('/admin/absen/filter', 'Admin\AbsensiController@filterAbsen');
+			Route::get('/admin/absen/cetak', 'Admin\AbsensiController@cetakDataAbsen');
 		
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
@@ -167,11 +171,11 @@
 			
 		  // Transaksi
 			// Absen
-			Route::get('sm/data-kehadiran', 'SM\AbsensiController@index');
-			Route::get('sm/data-kehadiran/{id}', 'SM\AbsensiController@show');
-			Route::patch('sm/data-kehadiran/{id}', 'SM\AbsensiController@update');
-			Route::get('sm/absen', 'SM\AbsensiController@create');
-			Route::post('sm/absen', 'SM\AbsensiController@store');
+			Route::get('/sm/absen/data-kehadiran', 'SM\AbsensiController@index');
+			Route::get('/sm/absen/data-kehadiran/{id}', 'SM\AbsensiController@show');
+			Route::patch('/sm/absen/data-kehadiran/{id}', 'SM\AbsensiController@update');
+			Route::get('/sm/absen', 'SM\AbsensiController@create');
+			Route::post('/sm/absen', 'SM\AbsensiController@store');
 		
 			//Cuti
 			Route::get('/sm/cuti', 'SM\CutiController@index');
@@ -193,12 +197,16 @@
 			Route::patch('/po/profile/edit/{id}', 'PO\ProfileController@update');
 		  // Master
 			//inventaris
-			Route::get('/po/barang/index', 'databoxController@index');
-			Route::get('/po/create', 'databoxController@create');
-			Route::post('/po/barang/store', 'databoxController@store');
-			Route::patch('/po/barang/update/{id_barang}', 'databoxController@update');
-			Route::get('/po/barang/edit/{id_barang}', 'databoxController@edit');
-			Route::delete('/po/destroy/{id_barang}', 'databoxController@destroy');
+			Route::get('/po/transaksi-filter/index', 'PO\PinjamController@periode');
+			Route::get('/po/transaksi-filter/kembali', 'PO\kembaliController@periode');
+			Route::get('/po/exportpdf/pinjam', 'PO\databoxController@exportPdf');
+			Route::get('/kembali/barang/exportpdf', 'PO\kembaliController@exportPdf');
+			Route::get('/po/barang/index', 'PO\databoxController@index');
+			Route::get('/po/create', 'PO\databoxController@create');
+			Route::post('/po/barang/store', 'PO\databoxController@store');
+			Route::patch('/po/barang/update/{id_barang}', 'PO\databoxController@update');
+			Route::get('/po/barang/edit/{id_barang}', 'PO\databoxController@edit');
+			Route::delete('/po/destroy/{id_barang}', 'PO\databoxController@destroy');
 			Route::get('/po/kategori/index', 'KategoriController@index');
 			Route::get('/po/kategori/create', 'KategoriController@create');
 			Route::post('/po/kategori/store', 'KategoriController@store');
@@ -213,28 +221,29 @@
 			Route::patch('/po/kembali/status/{kembali}', 'PO\kembaliController@update');
 			//Invetaris
 			Route::get('/po/invetaris', 'PO\barangController@index');
-			Route::post('/po/pengajuan/store', 'PO\PinjamController@store');
 			Route::post('/kembali/store', 'kembaliController@store');
 			Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
 			Route::get('/barang', 'barangController@index');
 			Route::get('/show/{id_pinjam}', 'barangController@show');
 			Route::get('/po/tampil/table', 'PO\barangController@tampil');
+			Route::post('po/pengajuan/store', 'PO\PinjamController@store');
 			Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
+			Route::get('/kategori', 'barangController@cobajax');
+			Route::get('/po/barang/exportpdf/{id}', 'PO\barangController@exportPdf');
+			Route::delete('/po/user/destroy/{id}', 'PO\barangController@destroy');
 		//---------------------------------------------------------------------------------------
 			// Karyawan
 			Route::get('/po/karyawan', 'PO\KaryawanController@index');
 			Route::get('/po/karyawan/{user}', 'PO\KaryawanController@show');
-			Route::delete('/po/karyawan/{user}', 'PO\KaryawanController@destroy');
-			Route::get('/po/karyawan/edit/{user}', 'PO\KaryawanController@edit');
-			Route::patch('/po/karyawan/{user}', 'PO\KaryawanController@update');
 			
 		  // Transaksi
 			// Absen
-			Route::get('po/data-kehadiran', 'PO\AbsensiController@index');
-			Route::get('po/data-kehadiran/{id}', 'PO\AbsensiController@show');
-			Route::patch('po/data-kehadiran/{id}', 'PO\AbsensiController@update');
-			Route::get('po/absen', 'PO\AbsensiController@create');
-			Route::post('po/absen', 'PO\AbsensiController@store');
+			Route::get('/po/absen/data-kehadiran', 'PO\AbsensiController@index');
+			Route::get('/po/absen/data-kehadiran/{id}', 'PO\AbsensiController@show');
+			Route::patch('/po/absen/data-kehadiran/{id}', 'PO\AbsensiController@update');
+			Route::get('/po/absen', 'PO\AbsensiController@create');
+			Route::post('/po/absen', 'PO\AbsensiController@store');
+			Route::get('/po/absen/filter', 'PO\AbsensiController@filterAbsen');
 		
 			//Cuti
 			Route::get('/po/cuti', 'PO\CutiController@index');
@@ -270,15 +279,17 @@
 			Route::patch('/cuti/{cuti}', 'CutiController@tambahCuti');
 		
 			//Invetaris
-      Route::get('/invetaris', 'barangController@index');
-      Route::post('/kembali/store', 'kembaliController@store');
-      Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
-      Route::get('/barang', 'barangController@index');
-      Route::get('/show/{id_pinjam}', 'barangController@show');
-      Route::get('/tampil/table', 'barangController@tampil');
-      Route::post('/pengajuan/store', 'PinjamController@store');
+			Route::get('/invetaris', 'barangController@index');
+			Route::post('/kembali/store', 'kembaliController@store');
+			Route::get('/pinjam/create/{id_barang}', 'pinjamController@create');
+			Route::get('/barang', 'barangController@index');
+			Route::get('/show/{id_pinjam}', 'barangController@show');
+			Route::get('/tampil/table', 'barangController@tampil');
+			Route::post('/pengajuan/store', 'PinjamController@store');
 			Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
 			Route::get('/kategori', 'barangController@cobajax');
+			Route::get('/user/barang/exportpdf/{id}', 'barangController@exportPdf');
+			Route::delete('/user/destroy/{id}', 'barangController@destroy');
 		
 		// --------------------------------------------------------------------------------------
 	});

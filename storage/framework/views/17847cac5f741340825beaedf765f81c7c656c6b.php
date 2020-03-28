@@ -46,8 +46,8 @@
                 <th>No</th>
                 <th>NIP</th>
                 <th>Nama</th>
-                <th>Role</th>
-                <th>Pukul</th>
+                <th>Stream</th>
+                <th>Jam Masuk</th>
                 <th>Tanggal</th>
                 <th>Keterangan</th>
                 <th>Status</th>
@@ -115,7 +115,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="izin">
+unset($__errorArgs, $__bag); ?>" id="izin" required>
               <?php $__errorArgs = ['catatan'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -133,7 +133,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="picture" name="picture">
+unset($__errorArgs, $__bag); ?>" id="picture" name="picture" required>
               <label class="custom-file-label" for="picture">Lampirkan surat keterangan</label>
               <?php $__errorArgs = ['picture'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

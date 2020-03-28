@@ -68,7 +68,7 @@
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ url('/sm/absen') }}">Absen</a>
-            <a class="collapse-item" href="{{ url('/sm/data-kehadiran') }}">Data Kehadiran</a>
+            <a class="collapse-item" href="{{ url('/sm/absen/data-kehadiran') }}">Data Kehadiran</a>
             </div>
         </div>
         </li>

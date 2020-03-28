@@ -7,6 +7,8 @@ use App\Kategori;
 use App\Barang;
 use App\User;
 use App\Role;
+use App\Projek;
+use App\Projek_Karyawan;
 use Illuminate\Http\Request;
 
 class pinjamController extends Controller
@@ -18,9 +20,11 @@ class pinjamController extends Controller
      */
     public function index()
     { 
-        // $pinjam = Pinjam::all();
-        $pinjam = Pinjam::orderBy('tgl_pinjam', 'desc')->get();
-        return view('po.Admin_invetaris.index', compact('pinjam'));
+        $projek = Projek_Karyawan::where('id', auth()->user()->id)->first();
+        $data_karyawan = Projek_Karyawan::where('id_projek', $projek->id_projek)->get();
+        $get_id_by_projek = Projek_Karyawan::where('id_projek', $projek->id_projek)->pluck('id_karyawan')->toArray();
+        $pinjam = Pinjam::whereIn('id', $get_id_by_projek)->get();
+        return view('po.Admin_invetaris.index', compact(['pinjam', 'data_karyawan', 'projek']));
     }
 
     /**
@@ -114,5 +118,11 @@ class pinjamController extends Controller
     public function destroy(Pinjam $pinjam)
     {
         //
+    }
+
+    public function periode(Request $request)
+    {
+        $pinjam = Pinjam::where('tgl_pinjam', '>=', $request->Awal)->where('tgl_pinjam', '<=', $request->Akhir)->orderBy('tgl_pinjam', 'desc')->get();
+        return view('po/Admin_invetaris/filter', compact('pinjam'));
     }
 }

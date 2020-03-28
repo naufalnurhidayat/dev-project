@@ -41,11 +41,11 @@
                       <td>{{ $k->Stream['stream'] }}</td>
                       <td>
                         <a href="{{url('/admin/karyawan')}}/{{$k->id}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
-                        <a href="{{url('/admin/karyawan/edit')}}/{{$k->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="{{url('/admin/karyawan/edit/' . $k->id)}}" class="btn btn-success btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-edit"></i> Edit</a>
                         <form action="{{ url('/admin/karyawan') }}/{{$k->id}}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf
-                          <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Hapus</button>
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-trash"></i> Hapus</button>
                         </form>
                       </td>
                     </tr>

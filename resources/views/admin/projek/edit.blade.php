@@ -17,9 +17,9 @@
 				@csrf
 				<div class="form-group">
 					<label for="projek">Projek</label>
-					<input type="text" class="form-control @error('projek') is-invalid @enderror" id="projek" name="projek" value="{{ $projek->project }}" autofocus>
+					<input type="text" class="form-control @error('projek') is-invalid @enderror" id="projek" name="projek" value="{{ $projek->project }}" autofocus required>
 					@error('projek') <div class="invalid-feedback">{{ $message }}</div> @enderror
-				<button type="submit" class="btn btn-primary mt-3">Edit</button>
+				<button type="submit" class="btn btn-primary mt-3" onclick="return confirm('Yakin?')">Edit</button>
 			</form>
 		</div>
   </div>

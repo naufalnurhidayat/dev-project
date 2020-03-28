@@ -10,6 +10,8 @@ use App\Pinjam;
 use App\User;
 use App\Kembali;
 use App\Role;
+use PDF;
+
 
 class barangController extends Controller
 {
@@ -23,8 +25,10 @@ class barangController extends Controller
         $barang = Barang::all();
         $kategori = Kategori::all();
         $kembali = Kembali::all();
+        // return $kembali;
         $pinjam = Pinjam::where('id', auth()->user()->id)->get();
-        return view('po.Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'barang' => $barang, 'kembali' => $kembali]);
+        // echo "<pre>"; print_r($pinjam); exit;
+        return view('/po/Invetaris/barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'barang' => $barang, 'kembali' => $kembali]);
     }
 
     /**
@@ -100,9 +104,10 @@ class barangController extends Controller
      * @param  \App\barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(barang $barang)
+    public function destroy($id)
     {
-        //
+        $pinjam = Pinjam::where('id_pinjam', $id)->delete();
+        return redirect('/po/invetaris')->with('status', 'Data Berhasil di Hapus!!!!');
     }
 
     public function showpinjam()
@@ -118,6 +123,13 @@ class barangController extends Controller
         $barang = Barang::all();
         $kategori = Kategori::all();
         return view('po.Invetaris.pengajuan', ['barang' => $barang, 'kategori' => $kategori]);
+    }
+
+    public function exportPdf($id)
+    {
+        $pinjam = Pinjam::where('id_pinjam', $id)->get();
+        $pdf = PDF::loadView('/po/Invetaris/export', ['pinjam' => $pinjam]);
+        return $pdf->stream('Data Absensi');
     }
 
 }

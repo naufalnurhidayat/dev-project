@@ -38,7 +38,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $p->project }}</td>
                     <td>
-                      <a href="{{url('/admin/projek/edit')}}/{{$p->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> <b>Edit</b></a>
+                      <a href="{{url('/admin/projek/edit/' . $p->id)}}" class="btn btn-success btn-sm" onclick="return confirm('Yakin ingin mengubah?')"><i class="fa fa-edit"></i> <b>Edit</b></a>
                       <form action="{{ url('/admin/projek')}}/{{ $p->id }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
