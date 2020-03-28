@@ -24,7 +24,7 @@
               <select  class="form-control @error('jencut') is-invalid @enderror" name="jencut" id="jencut">
                   <option value="">-- Pilih Jenis Cuti --</option>
                 @foreach ($jencut as $j)
-                  <option value="{{$j->id}}">{{$j->jenis_cuti}}</option>  
+                  <option value="{{$j->id}}">{{$j->jenis_cuti}}</option>
                 @endforeach
               </select>
               @error('jencut')<div class="invalid-feedback">{{ $message }}</div>@enderror
@@ -32,14 +32,19 @@
             <div class="form-group row">
               <div class="col-6">
                 <label for="awal">Awal Cuti</label>
-                <input type="date" min="{{ date('Y-m-d') }}" class="form-control @error('awal') is-invalid @enderror" name="awal" id="datePickerAwalCuti" value="{{ old('awal') }}">
+                <input type="text" class="form-control @error('awal') is-invalid @enderror" name="awal" id="datePickerAwalCuti" value="{{ old('awal') }}">
                 @error('awal')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
               <div class="col-6">
                 <label for="akhir">akhir Cuti</label>
-                <input type="date" min="{{ date('Y-m-d') }}" class="form-control @error('akhir') is-invalid @enderror" name="akhir" id="akhir" value="{{ old('akhir') }}">
+                <input type="text" class="form-control @error('akhir') is-invalid @enderror" name="akhir" id="datePickerAkhirCuti" value="{{ old('akhir') }}">
                 @error('akhir')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
+            </div>
+            <div class="form-group">
+              <label for="totalCuti">Total Cuti</label>
+              <input type="number" min="1" max="90" class="form-control @error('totalCuti') is-invalid @enderror" name="totalCuti" value="{{ old('totalCuti') }}">
+              @error('totalCuti')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-group">
               <label for="alasan">Alasan Cuti</label>
@@ -52,4 +57,33 @@
         </div>
       </div>
     </div>
+@endsection
+
+@section('footer')
+<script>
+  $(document).ready(function(){
+    // $("#jencut").change(function () {
+    //   const jencut = $("#jencut").val();
+    //   if (jencut == 1) {
+    //     $.ajax({
+    //       type: 'get',
+    //       dataType: 'html',
+    //       success: function () {
+            
+    //       }
+    //     });
+    //   }
+    // });
+
+    const pickerAwalCuti = datepicker('#datePickerAwalCuti', {
+      minDate: new Date({{date('Y')}}, {{date('m')-1}}, {{date('d')}}),
+      noWeekends: true
+    });
+    const pickerAkhirCuti = datepicker('#datePickerAkhirCuti', {
+      minDate: new Date({{date('Y')}}, {{date('m')-1}}, {{date('d')}}),
+      noWeekends: true
+    });
+
+  });
+</script>
 @endsection

@@ -21,6 +21,12 @@
   <!-- Custom styles for this page -->
   <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  {{-- Select2 CSS --}}
+  <link rel="stylesheet" href="{{asset('dist/css/select2.min.css')}}">
+
+  {{-- CSS DatePicker --}}
+  <link href="{{ asset('datepicker.min.css')}}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -73,7 +79,7 @@
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ url('/admin/absen') }}">Absen</a>
-            <a class="collapse-item" href="{{ url('/admin/data-kehadiran') }}">Data Kehadiran</a>
+            <a class="collapse-item" href="{{ url('/admin/absen/data-kehadiran') }}">Data Kehadiran</a>
           </div>
         </div>
       </li>
@@ -240,8 +246,9 @@
   <script src="{{ asset('sbadmin2') }}/vendor/chart.js/Chart.min.js"></script>
   
   <!-- Page level custom scripts -->
-  <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script>
-  <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script>
+  {{-- <script src="{{ asset('sbadmin2') }}/js/demo/chart-area-demo.js"></script> --}}
+  @yield('grafik')
+  {{-- <script src="{{ asset('sbadmin2') }}/js/demo/chart-pie-demo.js"></script> --}}
   
   <!-- Page level plugins -->
   <script src="{{ asset('sbadmin2') }}/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -249,7 +256,14 @@
   
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
-  
+
+  {{-- Select2 Script --}}
+  <script src="{{ asset('dist/js/select2.min.js')}}"></script>
+
+  {{-- JS DatePicker --}}
+  <script src="{{ asset('datepicker.min.js') }}"></script>
+
+  {{-- Our Script --}}
   <script>
     $(document).ready(function () {
       $("#datePickerAwalCuti").click(function () {
@@ -277,10 +291,41 @@
           }
         });
       });
+
+      $("#submit").click( function(){
+      const tglAwal = $("#KeywordtglAwal").val();
+      const tglAkhir = $("#KeywordtglAkhir").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '{{url('/admin/transaksi-filter')}}',
+        data: 'Awal='+tglAwal+'&Akhir='+tglAkhir,
+        success: function(response){
+          $("#tampungan").html(response);
+        }
+      });
+    });
+
+    $("#submit").click( function(){
+      const tglAwal = $("#Tglawal").val();
+      const tglAkhir = $("#Tglakhir").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '{{url('/admin/transaksi-filter/kembali')}}',
+        data: 'Awal='+tglAwal+'&Akhir='+tglAkhir,
+        success: function(response){
+          $("#tampungan_pengembalian").html(response);
+        }
+      });
+    });
+
     });
   </script>
 
-{{-- @yield('footer') --}}
+@yield('footer')
 
 </body>
 

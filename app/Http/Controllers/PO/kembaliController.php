@@ -7,6 +7,11 @@ use App\Barang;
 use App\Pinjam;
 use App\Kategori;
 use App\User;
+use App\Role;
+use App\Projek;
+use App\Projek_Karyawan;
+use PDF;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -19,8 +24,11 @@ class kembaliController extends Controller
      */
     public function index()
     {
-        $kembali = Kembali::orderBy('tgl_kembali', 'desc')->get();
-        return view('po.Admin_invetaris.pengembalian', compact('kembali'));
+        $projek = Projek_Karyawan::where('id', auth()->user()->id)->first();
+        $data_karyawan = Projek_Karyawan::where('id_projek', $projek->id_projek)->get();
+        $get_id_by_projek = Projek_Karyawan::where('id_projek', $projek->id_projek)->pluck('id_karyawan')->toArray();
+        $kembali = Kembali::whereIn('id', $get_id_by_projek)->get();
+        return view('po/Admin_invetaris/pengembalian', compact('kembali','data_karyawan', 'projek'));
     }
 
     /**
@@ -110,5 +118,18 @@ class kembaliController extends Controller
     public function destroy(Kembali $kembali)
     {
         //
+    }
+
+    public function periode(Request $request)
+    {
+        $kembali = Kembali::where('tgl_kembali', '>=', $request->Awal)->where('tgl_kembali', '<=', $request->Akhir)->orderBy('tgl_kembali', 'desc')->get();
+        return view('po/Admin_invetaris/filter_kembali', compact('kembali'));
+    }
+
+    public function exportPdf()
+    {
+        $kembali = Kembali::all();
+        $pdf = PDF::loadView('po/Admin_invetaris/Print_Kembali', ['kembali' => $kembali]);
+        return $pdf->stream('Data Absensi');
     }
 }

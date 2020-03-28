@@ -5,20 +5,25 @@
 @section('content')
 
 <div class="container">
-@if(session('status'))
-  <div class="alert alert-success">
-    {{ session('status') }}
-  </div>
-@endif
 
 <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
   <div class="card-body p-0">
+    @if(session('status'))
+      <div class="alert alert-success mt-2">
+        {{ session('status') }}
+      </div>
+    @endif
+    @if(session('danger'))
+      <div class="alert alert-danger mt-2">
+        {{ session('danger') }}
+      </div>
+    @endif
     <!-- Nested Row within Card Body -->
     <div class="row">
       <div class="col">
         <div class="p-5">
           <div class="text-center">
-            <img src="{{ asset('img/logotelkom.jfif') }}" width="25%" class="mb-3">
+            <img src="{{ asset('img/logotelkom.jfif') }}" width="25%" class="mb-3 rounded">
             <h1 class="h4 text-gray-900 mb-4">Login</h1>
           </div>
           <form action="{{ url('/login') }}" method="POST">

@@ -16,7 +16,7 @@
       <div class="form-group row">
         <label for="nip" class="col-sm-3 col-form-label"><strong>NIP</strong></label>
         <div class="col-sm-5">
-          <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ auth()->user()->nip }}">
+          <input type="number" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ auth()->user()->nip }}">
           @error('nip') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>
@@ -41,7 +41,7 @@
       <div class="form-group row">
         <label for="email" class="col-sm-3 col-form-label"><strong>Email</strong></label>
         <div class="col-sm-5">
-          <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ auth()->user()->email }}">
+          <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ auth()->user()->email }}">
           @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>
@@ -100,13 +100,13 @@
       <div class="form-group row">
         <label for="thn_join" class="col-sm-3 col-form-label"><strong>Tahun Join</strong></label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="thn_join" name="thn_join" value="{{ auth()->user()->thn_join }}">
+          <input type="number" class="form-control" id="thn_join" name="thn_join" value="{{ auth()->user()->thn_join }}">
         </div>
       </div>
       <div class="form-group row">
         <label for="no_telp" class="col-sm-3 col-form-label"><strong>No. Telpon</strong></label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ auth()->user()->no_telp }}">
+          <input type="number" class="form-control" id="no_telp" name="no_telp" value="{{ auth()->user()->no_telp }}">
         </div>
       </div>
       <div class="form-group row">
@@ -149,10 +149,10 @@
         </div>
     </div>
     <div class="form-group row">
-      <div class="col-sm-6"></div>
+      <div class="col-sm-3"></div>
       <div class="col-sm-5 mb-5 pb-5">
         <a href="{{ url('/profile/'.auth()->user()->nama) }}" class="btn btn-secondary btn-user">Kembali</a>
-        <button type="submit" name="ubah" class="btn btn-primary btn-user">Edit Data</button>
+        <button type="submit" name="ubah" class="btn btn-primary btn-user" onclick="return confirm('Yakin?')">Edit Data</button>
       </div>
     </div>
   </form>

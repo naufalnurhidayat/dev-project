@@ -16,7 +16,7 @@
       <div class="form-group row">
         <label for="nip" class="col-sm-2 col-form-label">NIP</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ $user->nip }}">
+          <input type="number" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ $user->nip }}">
           @error('nip') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>
@@ -44,7 +44,7 @@
       <div class="form-group row">
         <label for="email" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ $user->email }}">
+          <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ $user->email }}">
           @error('email') <div class="invalid-feedback">{{ $message }}</div> @enderror
         </div>
       </div>
@@ -103,13 +103,13 @@
       <div class="form-group row">
         <label for="thn_join" class="col-sm-2 col-form-label">Tahun Join</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="thn_join" name="thn_join" value="{{ $user->thn_join }}">
+          <input type="number" class="form-control" id="thn_join" name="thn_join" value="{{ $user->thn_join }}">
         </div>
       </div>
       <div class="form-group row">
         <label for="no_telp" class="col-sm-2 col-form-label">Nomor Telpon</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="no_telp" name="no_telp" value="{{ $user->no_telp }}">
+          <input type="number" class="form-control" id="no_telp" name="no_telp" value="{{ $user->no_telp }}">
         </div>
       </div>
       <div class="form-group row">
@@ -154,7 +154,8 @@
     <div class="form-group row">
       <div class="col-sm-2"></div>
       <div class="col-sm-5">
-        <button type="submit" name="ubah" class="btn btn-primary btn-user">Edit Data</button>
+        <a href="{{ url('/admin/karyawan') }}" class="btn btn-primary btn-user">Kembali</a>
+        <button type="submit" name="ubah" class="btn btn-success btn-user" onclick="return confirm('Yakin?')">Edit Data</button>
       </div>
     </div>
   </form>

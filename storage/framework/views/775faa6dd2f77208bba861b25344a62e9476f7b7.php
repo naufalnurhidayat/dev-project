@@ -3,21 +3,27 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="container">
-<?php if(session('status')): ?>
-  <div class="alert alert-success">
-    <?php echo e(session('status')); ?>
-
-  </div>
-<?php endif; ?>
 
 <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
   <div class="card-body p-0">
+    <?php if(session('status')): ?>
+      <div class="alert alert-success">
+        <?php echo e(session('status')); ?>
+
+      </div>
+    <?php endif; ?>
+    <?php if(session('danger')): ?>
+      <div class="alert alert-danger">
+        <?php echo e(session('danger')); ?>
+
+      </div>
+    <?php endif; ?>
     <!-- Nested Row within Card Body -->
     <div class="row">
       <div class="col">
         <div class="p-5">
           <div class="text-center">
-            <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" width="25%" class="mb-3">
+            <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" width="25%" class="mb-3 rounded">
             <h1 class="h4 text-gray-900 mb-4">Login</h1>
           </div>
           <form action="<?php echo e(url('/login')); ?>" method="POST">

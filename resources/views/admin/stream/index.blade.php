@@ -38,7 +38,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $a->stream }}</td>
                     <td>
-                      <a href="{{url('/admin/stream/edit')}}/{{$a->id}}" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> <b>Edit</b></a>
+                      <a href="{{url('/admin/stream/edit')}}/{{$a->id}}" class="btn btn-success btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-edit"></i> <b>Edit</b></a>
                       <form action="{{ url('/admin/stream')}}/{{ $a->id }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf

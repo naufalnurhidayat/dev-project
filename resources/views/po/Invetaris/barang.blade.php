@@ -15,8 +15,7 @@
   <!-- Page Heading -->
   
   <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
-  {{-- <a href="/" class="btn btn-danger mb-2">Kembali</a> --}}
-  <a href="{{url('/po/tampil/table')}}" class="btn btn-primary mb-2">Pengajuan</a>
+  <a href="{{url('po/tampil/table')}}" class="btn btn-primary mb-2">Pengajuan</a>
   {{-- <a href="{{url('/invetaris/keranjang')}}" class="btn btn-warning mb-2"><i class="fa fa-shopping-cart"> Keranjang</i></a> --}}
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
@@ -26,8 +25,9 @@
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" height="20px" cellspacing="0">
-          <thead>
+          <thead class="thead-dark">
             <tr align="center">
+              {{-- <th>No</th> --}}
               <th>Nama Barang</th>
               <th>Nama Kategori</th>
               <th>Jumlah Pinjam</th>
@@ -39,13 +39,15 @@
           </thead>
       
           <tbody>
+            {{-- @php $i=1 @endphp --}}
             @foreach($pinjam as $box)
-           <tr align="center"> 
-           <td>{{$box->Barang['nama_barang']}}</td> 
+           <tr align="center">
+           {{-- <td>{{$i++}}</td> --}}
+           <td>{{$box->Barang['nama_barang']}}</td>
            <td>{{$box->Kategori->nama_kategori}}</td>
            <td>{{$box->jumlah_pinjam}}</td>
            <td>{{$box->tgl_pinjam}}</td>
-           <td>{{$box->Kembali['status_kembali']}}</td>
+           <td>{{$box->Kembali['tgl_kembali']}}</td>
            <td>
             @if( $box->status == "Pending" )
                 <span class="badge badge-warning btn-sm">Pending</span>
@@ -57,15 +59,14 @@
            </td>
            <td>
              @if($box->status == "Pending")
+             <form class="d-inline" method="post" action="{{url('/po/user/destroy')}}/{{$box->id_pinjam}}">
+              {{ method_field('DELETE')}}
+              {{csrf_field()  }}
+              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm"><i class="fa fa-trash mr-2"></i>Delete</button>
+            </form>
              @else
-             <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"> Print</i></a>
-             <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Pengembalian</a>
-           {{-- <a href="{{url('/pinjam/create')}}/{{$box->id_barang}}" class="btn btn-success btn-sm"><i class="fa fa-book"></i> Pinjam</a> --}}
-           {{-- </td>
-           </tr>
-           @endforeach
-          </tbody>
-        </table> --}}
+             <a href="{{ url('/po/barang/exportpdf') }}/{{$box->id_pinjam}}" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></a>
+             <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Kembali</a>
       </div>
     </div>
   </div>
@@ -85,12 +86,12 @@
           <div class="row justify-content-center">
             <div class="col">
               
-                <form method="post" action="{{url('/po/kembali/store')}}">
+                <form method="post" action="{{url('/kembali/store')}}">
                 {{csrf_field()}}
                 
               <input type="hidden" name="id_barang" value="{{$box->id_barang}}"> 
               <input type="hidden" name="id_kategori" value="{{$box->Kategori['id_kategori']}}">
-              {{-- <input type="hidden" name="id_pinjam" value="{{$box->Pinjam['id_pinjam']}}"> --}}
+              <input type="hidden" name="id_pinjam" value="{{$box->Pinjam['id_pinjam']}}">
               <div class="modal-body">Yakin ingin dikembalikan ?</div>
             </div>
           </div>

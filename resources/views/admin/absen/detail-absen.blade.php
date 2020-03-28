@@ -131,10 +131,10 @@
                     <div class="row">
                         <div class="col-md-5"></div>
                         <div class="col-md-5">
-                            <form action="{{ url('/admin/data-kehadiran/'. $user->id_absen) }}" method="POST">
+                            <form action="{{ url('/admin/absen/data-kehadiran/'. $user->id_absen) }}" method="POST">
                                 @method('patch')
                                 @csrf
-                                <a href="{{ url('/admin/data-kehadiran/') }}" class="btn btn-primary">Kembali</a>
+                                <a href="{{ url('/admin/absen/data-kehadiran/') }}" class="btn btn-primary">Kembali</a>
                                 <button type="submit" class="btn btn-success" name="prove" value="Accepting" onclick="return confirm('Accept?')">Accept</button>
                                 <button type="submit" class="btn btn-danger" name="prove" value="Rejecting" onclick="return confirm('Reject?')">Reject</button>
                               </form>

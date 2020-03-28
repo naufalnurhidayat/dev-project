@@ -8,6 +8,7 @@ use App\Stream;
 use App\Role;
 use App\Pendidikan;
 use App\Projek;
+use File;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -126,6 +127,12 @@ class KaryawanController extends Controller
      */
     public function destroy(User $user)
     {
+        $gambar = User::where('id', $user->id)->first()->foto;
+        
+        if($gambar !== 'default.jpg') {
+            File::delete('img/profile/' . $gambar);
+            User::destroy($user->id);  
+        }
         User::destroy($user->id);
         return redirect('/admin/karyawan')->with('status', 'Karyawan berhasil dihapus');
     }

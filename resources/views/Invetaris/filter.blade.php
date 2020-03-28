@@ -1,9 +1,7 @@
-
-{{-- <t id="barang"> --}}
     @foreach($barang as $b)
         @if($b->stok == 0)
          @else
-   <tr align=""> 
+   <tr> 
     <td>{{$b->nama_barang}}</td> 
     <td>{{$b->Kategori['nama_kategori']}}</td>
     <td>{{$b->kondisi}}</td>
@@ -44,7 +42,7 @@
 
 <div class="modal-footer">
     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-    <button type="submit" class="btn btn-primary">Ajukan</button>
+    <button class="btn btn-primary" type="submit">Ajukan</button>
   </form>
 </div>
         </div>
