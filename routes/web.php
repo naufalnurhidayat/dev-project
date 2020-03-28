@@ -267,6 +267,7 @@
 			Route::get('/cuti', 'CutiController@index');
 			Route::get('/cuti/create', 'CutiController@create');
 			Route::post('/cuti', 'CutiController@store');
+			Route::patch('/cuti/{cuti}', 'CutiController@tambahCuti');
 		
 			//Invetaris
       Route::get('/invetaris', 'barangController@index');
@@ -276,8 +277,8 @@
       Route::get('/show/{id_pinjam}', 'barangController@show');
       Route::get('/tampil/table', 'barangController@tampil');
       Route::post('/pengajuan/store', 'PinjamController@store');
-	  Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
-	  Route::get('/kategori', 'barangController@cobajax');
+			Route::post('/pengajuan/pinjam/{id_karyawan}', 'barangController@store');
+			Route::get('/kategori', 'barangController@cobajax');
 		
 		// --------------------------------------------------------------------------------------
 	});

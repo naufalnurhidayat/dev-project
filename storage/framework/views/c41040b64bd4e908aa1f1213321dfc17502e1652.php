@@ -13,7 +13,6 @@
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo e(asset('sbadmin2/vendor/fontawesome-free/css/all.min.css')); ?>" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="<?php echo e(asset('jquery-ui-1.12.1.custom/jquery-ui.min.css')); ?>">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -21,6 +20,9 @@
 
   <!-- Custom styles for this page -->
   <link href="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  
+  <link href="<?php echo e(asset('datepicker.min.css')); ?>" rel="stylesheet">
 
 </head>
 
@@ -122,31 +124,29 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
 
-  <script src="<?php echo e(asset('jquery-ui-1.12.1.custom/jquery-ui.min.js')); ?>"></script>
   
+  <script src="<?php echo e(asset('datepicker.min.js')); ?>"></script>
+
   <script>
-    $('.custom-file-input').on('change', function() {
-      let fileName = $(this).val().split('\\').pop();
-      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    $(document).ready(function (){
+      // Script Untuk Absen
+      $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+      });
+      $("#kategori").on('change', function(){
+        const kategori = $("#kategori").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '<?php echo e(url('/kategori')); ?>',
+          data: 'kategori_id=' + kategori,
+          success:function(response){
+            $("#barang").html(response);
+          }
+        });
+      });
     });
-
-
-  $(document).ready(function (){
-
-    $("#kategori").on('change', function(){
-      const kategori = $("#kategori").val();
-      // alert(kategori);
-      $.ajax({
-        type: 'get',
-        dataType: 'html',
-        url: '<?php echo e(url('/kategori')); ?>',
-        data: 'kategori_id=' + kategori,
-        success:function(response){
-          $("#barang").html(response);
-        }
-      })
-    })
-  })
   </script>
 
 <?php echo $__env->yieldContent('footer'); ?>

@@ -20,8 +20,9 @@ class CreateCutiTable extends Migration
             $table->dateTime('tgl_cuti');
             $table->date('awal_cuti');
             $table->date('akhir_cuti');
+            $table->integer('total_cuti');
             $table->string('alasan_cuti');
-            $table->string('status');
+            $table->enum('status', ['Diterima', 'Diproses', 'Ditolak']);
             $table->timestamps();
         });
     }
