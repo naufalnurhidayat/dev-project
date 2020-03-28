@@ -28,23 +28,6 @@ class HomeController extends Controller
         $get_id_by_projek = Projek_Karyawan::where('id_projek', $projek->id_projek)->pluck('id_karyawan')->toArray();
         $data_absen_karyawan = Absen::whereIn('id_karyawan', $get_id_by_projek)->get();
 
-        // Grafik
-        $data_absen_default = DB::table('absensi')
-        ->select('tanggal', DB::raw('count(' . $data_absen_karyawan . ') as total'))
-        ->groupBy('tanggal')
-        ->orderByRaw('tanggal ASC')
-        ->get()->toArray();
-        $values = [];
-        $ids = array_column($data_absen_default, 'tanggal');
-        foreach ($tanggal as $value) {
-            $get_idx = array_search($value, $ids);
-            if (!empty($get_idx)) {
-                $values[] = $data_absen_default[$get_idx]->total;
-            } else {
-                $values[] = 0;
-            }
-        }
-        return $values;
-        return view('po/home/index', compact(['data_karyawan', 'data_absen', 'tanggal']));
+        return view('po/home/index', compact(['data_karyawan', 'tanggal']));
     }
 }
