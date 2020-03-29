@@ -25,8 +25,9 @@
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" height="20px" cellspacing="0">
-          <thead>
+          <thead class="thead-dark">
             <tr align="center">
+              
               <th>Nama Barang</th>
               <th>Nama Kategori</th>
               <th>Jumlah Pinjam</th>
@@ -38,13 +39,15 @@
           </thead>
       
           <tbody>
+            
             <?php $__currentLoopData = $pinjam; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $box): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-           <tr align="center"> 
-           <td><?php echo e($box->Barang['nama_barang']); ?></td> 
+           <tr align="center">
+           
+           <td><?php echo e($box->Barang['nama_barang']); ?></td>
            <td><?php echo e($box->Kategori->nama_kategori); ?></td>
            <td><?php echo e($box->jumlah_pinjam); ?></td>
            <td><?php echo e($box->tgl_pinjam); ?></td>
-           <td><?php echo e($box->Kembali['status_kembali']); ?></td>
+           <td><?php echo e($box->Kembali['tgl_kembali']); ?></td>
            <td>
             <?php if( $box->status == "Pending" ): ?>
                 <span class="badge badge-warning btn-sm">Pending</span>
@@ -55,10 +58,17 @@
                <?php endif; ?>
            </td>
            <td>
-             <a href="" class="btn btn-primary btn-sm "><i class="fas fa-print"> Print</i></a>
              <?php if($box->status == "Pending"): ?>
+             <form class="d-inline" method="post" action="<?php echo e(url('/user/destroy')); ?>/<?php echo e($box->id_pinjam); ?>">
+              <?php echo e(method_field('DELETE')); ?>
+
+              <?php echo e(csrf_field()); ?>
+
+              <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm"><i class="fa fa-trash mr-2"></i>Delete</button>
+            </form>
              <?php else: ?>
-             <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_<?php echo e($box->id_barang); ?>" data-toggle="modal">Pengembalian</a>
+             <a href="<?php echo e(url('/user/barang/exportpdf')); ?>/<?php echo e($box->id_pinjam); ?>" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></a>
+             <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_<?php echo e($box->id_barang); ?>" data-toggle="modal">Kembali</a>
       </div>
     </div>
   </div>
@@ -84,7 +94,7 @@
                 
               <input type="hidden" name="id_barang" value="<?php echo e($box->id_barang); ?>"> 
               <input type="hidden" name="id_kategori" value="<?php echo e($box->Kategori['id_kategori']); ?>">
-              
+              <input type="hidden" name="id_pinjam" value="<?php echo e($box->Pinjam['id_pinjam']); ?>">
               <div class="modal-body">Yakin ingin dikembalikan ?</div>
             </div>
           </div>
