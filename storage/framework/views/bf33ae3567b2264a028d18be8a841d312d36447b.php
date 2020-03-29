@@ -298,6 +298,21 @@
       });
     });
 
+    $("#submit").click( function(){
+      const tglAwal = $("#Tglawal").val();
+      const tglAkhir = $("#Tglakhir").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '<?php echo e(url('/admin/transaksi-filter/kembali')); ?>',
+        data: 'Awal='+tglAwal+'&Akhir='+tglAkhir,
+        success: function(response){
+          $("#tampungan_pengembalian").html(response);
+        }
+      });
+    });
+
     });
   </script>
 <?php echo $__env->yieldContent('footer'); ?>
