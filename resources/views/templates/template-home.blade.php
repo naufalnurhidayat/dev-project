@@ -20,7 +20,9 @@
 
   <!-- Custom styles for this page -->
   <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  {{-- CSS DatePicker --}}
+  <link href="{{ asset('datepicker.min.css')}}" rel="stylesheet">
 
 </head>
 
@@ -122,30 +124,46 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
 
-  {{-- Script Untuk Absen --}}
+  {{-- JS DatePicker --}}
+  <script src="{{ asset('datepicker.min.js') }}"></script>
+
   <script>
-    $('.custom-file-input').on('change', function() {
-      let fileName = $(this).val().split('\\').pop();
-      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    $(document).ready(function (){
+      // Script Untuk Absen
+      $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+      });
+      $("#kategori").on('change', function(){
+        const kategori = $("#kategori").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/kategori')}}',
+          data: 'kategori_id=' + kategori,
+          success:function(response){
+            $("#barang").html(response);
+          }
+        });
+      });
+      
+      $("#kategori").click(function(){
+        const kategori = $("#kategori").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/kategori')}}',
+          data: 'kategori_id=' + kategori,
+          success:function(response){
+            console.log(response);
+            $("#barang").html(response);
+          }
+        });
+      });
     });
-
-
-  $(document).ready(function (){
-
-    $("#kategori").click(function(){
-      const kategori = $("#kategori").val();
-      $.ajax({
-        type: 'get',
-        dataType: 'html',
-        url: '{{url('/kategori')}}',
-        data: 'kategori_id=' + kategori,
-        success:function(response){
-          console.log(response);
-          $("#barang").html(response);
-        }
-      })
-    })
-  })
   </script>
+
+@yield('footer')
+
 </body>
 </html>
