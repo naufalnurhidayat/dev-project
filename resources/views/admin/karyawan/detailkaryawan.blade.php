@@ -22,13 +22,26 @@
                                 <li><strong>Email: </strong>{{ $user->email }}</li>
                                 <li><strong>Jenis Kelamin: </strong>{{ $user->jenkel }}</li>
                                 <li><strong>Stream: </strong>{{ $user->stream->stream }}</li>
+                                <li><strong>Role: </strong>{{ $user->role->role }}</li>
                                 <li><strong>Pendidikan: </strong>{{ $user->pendidikan->pendidikan }}</li>
                                 <li><strong>Tahun Join: </strong>{{ $user->thn_join }}</li>
                                 <li><strong>Nomor Telpon: </strong>{{ $user->no_telp }}</li>
                                 <li><strong>Agama: </strong>{{ $user->agama }}</li>
                                 <li><strong>Alamat: </strong>{{ $user->alamat }}</li>
+                                @if( $user->is_active == 0)
+                                <li><strong>Akun: </strong><span class="badge badge-danger">Tidak aktif</span></li>
+                                @else
+                                <li><strong>Akun: </strong><span class="badge badge-success">Aktif</span></li>
+                                @endif
                             </ul>
                             <a href="{{ url('/admin/karyawan') }}" class="btn btn-primary ml-4">Kembali</a>
+                            @if( $user->is_active == 0)
+                            <form action="{{ url('/admin/karyawan/aktivasi/' . $user->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('patch')
+                                <button name="aktivasi" class="btn btn-success" value="1" onclick="return confirm('Aktivasi akun ini?')">Aktivasi</button>
+                            </form>
+                            @endif
                         </div>
                     </div>
                 </div>

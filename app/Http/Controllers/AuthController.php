@@ -9,8 +9,6 @@ use App\Role;
 use App\Pendidikan;
 use App\Projek;
 use Mail;
-use Session;
-use Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -109,10 +107,6 @@ class AuthController extends Controller
             'is_active' => 0
         ]);
         
-        // $request->validate([
-        //     'projek[]' => 'required'
-        // ]);
-
         $dataProjek = [];
         foreach ($request->id_projek as $projek) {
             $dataProjek[] = ['id_karyawan' => $u->id, 'id_projek' => $projek];

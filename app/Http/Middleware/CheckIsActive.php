@@ -20,7 +20,7 @@ class CheckIsActive
             return $next($request);
         } else {
             Auth::logout();
-            return redirect('/login')->with('danger', 'Akun anda belum diverifikasi');
+            return redirect('/login')->with('danger', 'Akun anda belum diverifikasi oleh Admin');
         }
     }
 }

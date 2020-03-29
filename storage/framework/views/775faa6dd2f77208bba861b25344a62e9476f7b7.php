@@ -7,13 +7,13 @@
 <div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
   <div class="card-body p-0">
     <?php if(session('status')): ?>
-      <div class="alert alert-success">
+      <div class="alert alert-success mt-2">
         <?php echo e(session('status')); ?>
 
       </div>
     <?php endif; ?>
     <?php if(session('danger')): ?>
-      <div class="alert alert-danger">
+      <div class="alert alert-danger mt-2">
         <?php echo e(session('danger')); ?>
 
       </div>

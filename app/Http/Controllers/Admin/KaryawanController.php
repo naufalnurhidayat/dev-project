@@ -136,4 +136,16 @@ class KaryawanController extends Controller
         User::destroy($user->id);
         return redirect('/admin/karyawan')->with('status', 'Karyawan berhasil dihapus');
     }
+    public function aktivasi(Request $request, User $user)
+    {
+        $is_active = User::where('id', $user->id)->first()->is_active;
+        if($is_active == 1) {
+            return redirect('/admin/karyawan')->with('danger', 'Akun ini sudah diaktivasi');
+        }
+        User::where('id', $user->id)->Update([
+            'is_active' => $request->aktivasi
+        ]);
+
+        return redirect('/admin/karyawan')->with('status', 'Akun karyawan berhasil diaktivasi');
+    }
 }
