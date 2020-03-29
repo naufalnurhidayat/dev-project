@@ -78,7 +78,7 @@ class CutiController extends Controller
         } elseif (empty($request->awal) || empty($request->akhir)) {
             $cuti = Cuti::where('status', $request->status)->orderBy('tgl_cuti', 'desc')->get();
         } elseif (empty($request->status)) {
-            $cuti = Cuti::where('tgl_cuti', '>=', $request->awal)->where('tgl_cuti', '<=', $request->akhir)->orderBy('tgl_cuti', 'desc')->get();
+            $cuti = Cuti::whereDate('tgl_cuti', '>=', $request->awal)->whereDate('tgl_cuti', '<=', $request->akhir)->orderBy('tgl_cuti', 'desc')->get();
         } else {
             $cuti = Cuti::whereDate('tgl_cuti', '>=', $request->awal)
                         ->whereDate('tgl_cuti', '<=', $request->akhir)
