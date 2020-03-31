@@ -42,7 +42,7 @@ class kembaliController extends Controller
      */
     public function store(Request $request)
     {
-        Kembali::create([
+       $back = Kembali::create([
             'id_barang' => $request->id_barang,
             'id_kategori' => $request->id_kategori,
             'id_pinjam' => $request->id_pinjam,
@@ -54,6 +54,8 @@ class kembaliController extends Controller
             'status_kembali' => 'Belum',
             'keterangan' => $request->keterangan
         ]);
+        // return $back;
+        Pinjam::where('id_kembali', $back->Kembali['id_kembali'])->Update(['id_kembali' => $back->Kembali['id_kembali']]);
         return redirect('/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');
     }
 
