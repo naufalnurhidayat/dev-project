@@ -9,8 +9,6 @@ use App\Role;
 use App\Pendidikan;
 use App\Projek;
 use Mail;
-use Session;
-use Redirect;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -37,18 +35,14 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         if(Auth::attempt($request->only('email', 'password'))) {
-            if(auth()->user()->is_active === 1) {
-                if (auth()->user()->role->role == "Admin") {
-                    return redirect('/admin');
-                } elseif (auth()->user()->role->role == "Scrum Master") {
-                    return redirect('/sm');
-                } elseif (auth()->user()->role->role == "Product Owner") {
-                    return redirect('/po');
-                } else {
-                    return redirect('/');
-                }
+            if (auth()->user()->role->role == "Admin") {
+                return redirect('/admin');
+            } elseif (auth()->user()->role->role == "Scrum Master") {
+                return redirect('/sm');
+            } elseif (auth()->user()->role->role == "Product Owner") {
+                return redirect('/po');
             } else {
-                return redirect('/login')->with('danger', 'Akun ini belum diaktivasi oleh Admin');
+                return redirect('/');
             }
         } else return redirect('/login');
     }
@@ -113,10 +107,6 @@ class AuthController extends Controller
             'is_active' => 0
         ]);
         
-        // $request->validate([
-        //     'projek[]' => 'required'
-        // ]);
-
         $dataProjek = [];
         foreach ($request->id_projek as $projek) {
             $dataProjek[] = ['id_karyawan' => $u->id, 'id_projek' => $projek];
@@ -144,14 +134,14 @@ class AuthController extends Controller
             $message->subject('Pendaftaran Karyawan Baru');
         });
 
-        return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan!');
+        return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan');
         
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/login')->with('status', 'Anda berhasil logout');
     }
 
 }

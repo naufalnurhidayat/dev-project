@@ -11,6 +11,12 @@
 
     </div>
   <?php endif; ?>
+  <?php if(session('danger')): ?>
+    <div class="alert alert-danger">
+        <?php echo e(session('danger')); ?>
+
+    </div>
+  <?php endif; ?>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
@@ -27,6 +33,7 @@
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
                       <th>Stream</th>
+                      <th>Akun</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -38,13 +45,23 @@
                       <td><?php echo e($k->nama); ?></td>
                       <td><?php echo e($k->jenkel); ?></td>
                       <td><?php echo e($k->Stream['stream']); ?></td>
+                      <?php if($k->is_active == 0): ?>
+                      <td><span class="badge badge-danger">Tidak Aktif</span></td>
+                      <?php else: ?>
+                      <td><span class="badge badge-success">Aktif</span></td>
+                      <?php endif; ?>
                       <td>
-                        <a href="<?php echo e(url('/admin/karyawan')); ?>/<?php echo e($k->id); ?>" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> Detail</a>
-                        <a href="<?php echo e(url('/admin/karyawan/edit/' . $k->id)); ?>" class="btn btn-success btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-edit"></i> Edit</a>
-                        <form action="<?php echo e(url('/admin/karyawan')); ?>/<?php echo e($k->id); ?>" method="POST" class="d-inline">
+                        <form action="<?php echo e(url('/admin/karyawan/aktivasi/' . $k->id)); ?>" method="POST" class="d-inline">
+                          <?php echo csrf_field(); ?>
+                          <?php echo method_field('patch'); ?>
+                          <button name="aktivasi" class="btn btn-success btn-sm" value="1" onclick="return confirm('Aktivasi akun ini?')"><i class="fa fa-check-circle"></i></button>
+                        </form>
+                        <a href="<?php echo e(url('/admin/karyawan/' . $k->id)); ?>" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
+                        <a href="<?php echo e(url('/admin/karyawan/edit/' . $k->id)); ?>" class="btn btn-warning btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-edit"></i></a>
+                        <form action="<?php echo e(url('/admin/karyawan/' . $k->id)); ?>" method="POST" class="d-inline">
                           <?php echo method_field('delete'); ?>
                           <?php echo csrf_field(); ?>
-                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-trash"></i> Hapus</button>
+                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin?')"><i class="fa fa-trash"></i></button>
                         </form>
                       </td>
                     </tr>

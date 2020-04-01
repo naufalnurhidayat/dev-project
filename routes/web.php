@@ -12,9 +12,9 @@
 */
 
 // -------------------------------------------
-// Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 	
-	Route::group(['middleware' => ['auth', 'checkRole:Admin']], function () {
+	Route::group(['middleware' => 'checkRole:Admin'], function () {
 		// ADMIN
 			// Home Admin
 			Route::get('/admin', 'Admin\HomeController@index')->name('admin');
@@ -55,6 +55,7 @@
 			Route::delete('/admin/karyawan/{user}', 'Admin\KaryawanController@destroy');
 			Route::get('/admin/karyawan/edit/{user}', 'Admin\KaryawanController@edit');
 			Route::patch('/admin/karyawan/{user}', 'Admin\KaryawanController@update');
+			Route::patch('/admin/karyawan/aktivasi/{user}', 'Admin\KaryawanController@aktivasi');
 			
 			//Role
 			Route::get('/admin/role', 'Admin\RoleController@index');
@@ -122,7 +123,7 @@
 		// --------------------------------------------------------------------------------------		
 	});
 
-	Route::group(['middleware' => ['auth', 'checkRole:Scrum Master']], function () {
+	Route::group(['middleware' => 'checkRole:Scrum Master'], function () {
 		// SM
 			// Home SM
 			Route::get('/sm', 'SM\HomeController@index')->name('sm');
@@ -187,7 +188,7 @@
 		// --------------------------------------------------------------------------------------
 	});
 
-	Route::group(['middleware' => ['auth', 'checkRole:Product Owner']], function () {
+	Route::group(['middleware' => 'checkRole:Product Owner'], function () {
 		// PO
 			// Home PO
 			Route::get('/po', 'PO\HomeController@index')->name('po');
@@ -260,7 +261,7 @@
 		// --------------------------------------------------------------------------------------
 	});
 
-	Route::group(['middleware' => ['auth', 'checkRole:User']], function () {
+	Route::group(['middleware' => 'checkRole:User'], function () {
 		// USER
 			// Home User
 			Route::get('/', 'Home@index')->name('home');
@@ -276,6 +277,7 @@
 			Route::get('/cuti', 'CutiController@index');
 			Route::get('/cuti/create', 'CutiController@create');
 			Route::post('/cuti', 'CutiController@store');
+			Route::patch('/cuti/{cuti}', 'CutiController@tambahCuti');
 		
 			//Invetaris
 			Route::get('/invetaris', 'barangController@index');
@@ -293,11 +295,11 @@
 		// --------------------------------------------------------------------------------------
 	});
 	
-	Route::group(['middleware' => ['auth','checkRole:Admin,Product Owner,Scrum Master,User']], function () {
+	Route::group(['middleware' => 'checkRole:Admin,Product Owner,Scrum Master,User'], function () {
 		Route::get('/logout', 'AuthController@logout');
 	});
 
-// });
+});
 
 
 // --------------------------------------------------------------------------------------

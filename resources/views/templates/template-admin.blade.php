@@ -24,6 +24,9 @@
   {{-- Select2 CSS --}}
   <link rel="stylesheet" href="{{asset('dist/css/select2.min.css')}}">
 
+  {{-- CSS DatePicker --}}
+  <link href="{{ asset('datepicker.min.css')}}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -257,9 +260,15 @@
   {{-- Select2 Script --}}
   <script src="{{ asset('dist/js/select2.min.js')}}"></script>
 
+  {{-- JS DatePicker --}}
+  <script src="{{ asset('datepicker.min.js') }}"></script>
+
   {{-- Our Script --}}
   <script>
     $(document).ready(function () {
+      $("#datePickerAwalCuti").click(function () {
+        console.log("ok");
+      });
     // Script Untuk Absen
       $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
@@ -315,7 +324,9 @@
 
     });
   </script>
+
 @yield('footer')
+
 </body>
 
 </html>

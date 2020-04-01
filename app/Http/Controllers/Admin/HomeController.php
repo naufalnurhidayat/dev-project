@@ -37,6 +37,6 @@ class HomeController extends Controller
                 $values[] = 0;
             }
         }
-        return view('admin/home/index', ['values' => $values, 'karyawan' => $karyawan, 'data_absen' => $data_absen, 'tanggal' => $tanggal]);
+        return view('admin/home/index', compact(['values', 'karyawan', 'data_absen', 'tanggal']));
     }
 }

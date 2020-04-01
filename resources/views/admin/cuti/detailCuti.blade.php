@@ -99,8 +99,8 @@
         @csrf
         @method('patch')
         <a href="{{url('/admin/cuti/')}}" class="btn btn-primary">Kembali</a>
-        <button class="btn btn-success btn-sm" onclick="return confirm('Yakin ingin menerima?');" type="submit" name="status" value="Diterima"><i class="fa fa-check"></i></button>
-        <button class="btn btn-danger btn-sm tombol" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Ditolak"><i class="fa fa-times-circle"></i></button>
+        <button class="btn btn-success btn-sm" onclick="return confirm('Yakin ingin menerima?');" type="submit" name="status" value="Diterima"><i class="fa fa-check"></i> Terima</button>
+        <button class="btn btn-danger btn-sm tombol" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Ditolak"><i class="fa fa-times-circle"></i> Tolak</button>
       </form>
     @endif
   </div>

@@ -20,13 +20,26 @@
                                 <li><strong>Email: </strong><?php echo e($user->email); ?></li>
                                 <li><strong>Jenis Kelamin: </strong><?php echo e($user->jenkel); ?></li>
                                 <li><strong>Stream: </strong><?php echo e($user->stream->stream); ?></li>
+                                <li><strong>Role: </strong><?php echo e($user->role->role); ?></li>
                                 <li><strong>Pendidikan: </strong><?php echo e($user->pendidikan->pendidikan); ?></li>
                                 <li><strong>Tahun Join: </strong><?php echo e($user->thn_join); ?></li>
                                 <li><strong>Nomor Telpon: </strong><?php echo e($user->no_telp); ?></li>
                                 <li><strong>Agama: </strong><?php echo e($user->agama); ?></li>
                                 <li><strong>Alamat: </strong><?php echo e($user->alamat); ?></li>
+                                <?php if( $user->is_active == 0): ?>
+                                <li><strong>Akun: </strong><span class="badge badge-danger">Tidak aktif</span></li>
+                                <?php else: ?>
+                                <li><strong>Akun: </strong><span class="badge badge-success">Aktif</span></li>
+                                <?php endif; ?>
                             </ul>
                             <a href="<?php echo e(url('/admin/karyawan')); ?>" class="btn btn-primary ml-4">Kembali</a>
+                            <?php if( $user->is_active == 0): ?>
+                            <form action="<?php echo e(url('/admin/karyawan/aktivasi/' . $user->id)); ?>" method="POST" class="d-inline">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('patch'); ?>
+                                <button name="aktivasi" class="btn btn-success" value="1" onclick="return confirm('Aktivasi akun ini?')">Aktivasi</button>
+                            </form>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

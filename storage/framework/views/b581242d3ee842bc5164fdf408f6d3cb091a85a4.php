@@ -20,7 +20,9 @@
 
   <!-- Custom styles for this page -->
   <link href="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  
+  <link href="<?php echo e(asset('datepicker.min.css')); ?>" rel="stylesheet">
 
 </head>
 
@@ -123,30 +125,45 @@
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
 
   
+  <script src="<?php echo e(asset('datepicker.min.js')); ?>"></script>
+
   <script>
-    $('.custom-file-input').on('change', function() {
-      let fileName = $(this).val().split('\\').pop();
-      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    $(document).ready(function (){
+      // Script Untuk Absen
+      $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+      });
+      $("#kategori").on('change', function(){
+        const kategori = $("#kategori").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '<?php echo e(url('/kategori')); ?>',
+          data: 'kategori_id=' + kategori,
+          success:function(response){
+            $("#barang").html(response);
+          }
+        });
+      });
+      
+      $("#kategori").click(function(){
+        const kategori = $("#kategori").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '<?php echo e(url('/kategori')); ?>',
+          data: 'kategori_id=' + kategori,
+          success:function(response){
+            console.log(response);
+            $("#barang").html(response);
+          }
+        });
+      });
     });
-
-
-  $(document).ready(function (){
-
-    $("#kategori").on('change', function(){
-      const kategori = $("#kategori").val();
-      // alert(kategori);
-      $.ajax({
-        type: 'get',
-        dataType: 'html',
-        url: '<?php echo e(url('/kategori')); ?>',
-        data: 'kategori_id=' + kategori,
-        success:function(response){
-          console.log(response);
-          $("#barang").html(response);
-        }
-      })
-    })
-  })
   </script>
+
+<?php echo $__env->yieldContent('footer'); ?>
+
 </body>
 </html><?php /**PATH C:\xampp\htdocs\devProject\resources\views/templates/template-home.blade.php ENDPATH**/ ?>

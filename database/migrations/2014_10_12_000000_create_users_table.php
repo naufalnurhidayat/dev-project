@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('no_telp')->unique();
             $table->string('agama');
             $table->text('alamat');
-            $table->integer('is_active', 1);
+            $table->integer('is_active', 2);
             $table->timestamps();
         });
     }

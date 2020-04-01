@@ -68,7 +68,6 @@ class ProfileController extends Controller
         if ($id != auth()->user()->id) {
             return view('error/adminNotFound');
         }
-
         $role = Role::all();
         $stream = Stream::all();
         $pendidikan = Pendidikan::all();
