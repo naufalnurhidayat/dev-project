@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Absen;
 use App\Karyawan;
+use App\Projek_karyawan;
+use App\Projek;
+use App\User;
 
 class AbsensiController extends Controller
 {
@@ -16,7 +19,20 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $data_absen = Absen::all();
+        $projek = Projek_Karyawan::where('id_karyawan', auth()->user()->id)->get();
+        $get_id_project = [];
+        foreach ($projek as $value) {
+            $get_id_project[] = $value->id_projek;
+        }
+        $test = Projek_Karyawan::whereIn('id_projek', $get_id_project)->get();
+        $get_id_karyawan = [];
+        foreach ($test as $value) {
+            if (!in_array($value->id_karyawan, $get_id_karyawan)) {
+                $get_id_karyawan[] = $value->id_karyawan;
+            }
+        }
+        $user = User::whereIn('id', $get_id_karyawan)->get();
+        $data_absen = Absen::whereIn('id_karyawan', $get_id_karyawan)->get();
         return view('sm/absen/index', compact('data_absen'));
     }
 
