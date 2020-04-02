@@ -37,6 +37,8 @@ class HomeController extends Controller
                 $values[] = 0;
             }
         }
-        return view('admin/home/index', ['values' => $values, 'karyawan' => $karyawan, 'data_absen' => $data_absen, 'tanggal' => $tanggal]);
+        $data_akun_tidak_aktif = count(User::where('is_active', 0)->get());
+        $data_absen_pending = count(Absen::where('status', 'Pending')->get());
+        return view('admin/home/index', compact(['values', 'karyawan', 'data_absen', 'tanggal', 'data_akun_tidak_aktif', 'data_absen_pending']));
     }
 }

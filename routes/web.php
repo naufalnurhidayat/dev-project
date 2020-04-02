@@ -55,6 +55,7 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::delete('/admin/karyawan/{user}', 'Admin\KaryawanController@destroy');
 			Route::get('/admin/karyawan/edit/{user}', 'Admin\KaryawanController@edit');
 			Route::patch('/admin/karyawan/{user}', 'Admin\KaryawanController@update');
+			Route::patch('/admin/karyawan/aktivasi/{user}', 'Admin\KaryawanController@aktivasi');
 			
 			//Role
 			Route::get('/admin/role', 'Admin\RoleController@index');

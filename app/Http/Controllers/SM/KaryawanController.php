@@ -20,8 +20,21 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('sm/karyawan/index', compact('user'));
+        $projek = Projek_Karyawan::where('id_karyawan', auth()->user()->id)->get();
+        $get_id_project = [];
+        foreach ($projek as $value) {
+            $get_id_project[] = $value->id_projek;
+        }
+        $test = Projek_Karyawan::whereIn('id_projek', $get_id_project)->get();
+        $get_id_karyawan = [];
+        foreach ($test as $value) {
+            if (!in_array($value->id_karyawan, $get_id_karyawan)) {
+                $get_id_karyawan[] = $value->id_karyawan;
+            }
+        }
+        $user = User::whereIn('id', $get_id_karyawan)->get();
+        $projek_karyawan = Projek::whereIn('id', $get_id_project)->get();
+        return view('sm/karyawan/index', compact(['user', 'projek_karyawan']));
     }
 
     /**
@@ -53,7 +66,8 @@ class KaryawanController extends Controller
      */
     public function show(User $user)
     {
-        return view('sm/karyawan/detailkaryawan', compact('user'));
+        $projek_karyawan = Projek_Karyawan::where('id_karyawan', $user->id)->get();
+        return view('sm/karyawan/detailkaryawan', compact(['user', 'projek_karyawan']));
     }
 
     /**
@@ -64,7 +78,8 @@ class KaryawanController extends Controller
      */
     public function edit(User $user)
     {
-        return view('sm/karyawan/ubahkaryawan', compact('user'));
+
+        return view('sm/karyawan/ubahkaryawan', compact(['user', 'projek_karyawan']));
     }
 
     /**

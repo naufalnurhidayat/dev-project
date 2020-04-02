@@ -9,6 +9,7 @@ use App\Role;
 use App\Pendidikan;
 use App\Projek;
 use File;
+use Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -135,5 +136,31 @@ class KaryawanController extends Controller
         }
         User::destroy($user->id);
         return redirect('/admin/karyawan')->with('status', 'Karyawan berhasil dihapus');
+    }
+    public function aktivasi(Request $request, User $user)
+    {
+        $is_active = User::where('id', $user->id)->first()->is_active;
+        if($is_active == 1) {
+            return redirect('/admin/karyawan')->with('danger', 'Akun ini sudah diaktivasi');
+        }
+        User::where('id', $user->id)->Update([
+            'is_active' => $request->aktivasi
+        ]);
+        
+        $admin = Role::where('role', 'Admin')->first();
+        $emailAdmin = User::where('id_role', $admin->id)->first()->email;
+        $emailUser = $user->email;
+
+        $data = [
+           'emailAdmin' => $emailAdmin,
+           'emailUser' => $emailUser 
+        ];
+        Mail::send('admin/karyawan/email', $data, function ($message) use($emailUser){
+            $message->from('naufalnurhidayat510@gmail.com', 'Aplikasi Telkom');
+            $message->to($emailUser);
+            $message->subject('Aktivasi akun oleh Admin');
+        });
+
+        return redirect('/admin/karyawan')->with('status', 'Akun karyawan berhasil diaktivasi');
     }
 }

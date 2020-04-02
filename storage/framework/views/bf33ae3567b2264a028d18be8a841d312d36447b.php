@@ -24,6 +24,9 @@
   
   <link rel="stylesheet" href="<?php echo e(asset('dist/css/select2.min.css')); ?>">
 
+  
+  <link href="<?php echo e(asset('datepicker.min.css')); ?>" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -258,8 +261,14 @@
   <script src="<?php echo e(asset('dist/js/select2.min.js')); ?>"></script>
 
   
+  <script src="<?php echo e(asset('datepicker.min.js')); ?>"></script>
+
+  
   <script>
     $(document).ready(function () {
+      $("#datePickerAwalCuti").click(function () {
+        console.log("ok");
+      });
     // Script Untuk Absen
       $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
@@ -315,7 +324,9 @@
 
     });
   </script>
+
 <?php echo $__env->yieldContent('footer'); ?>
+
 </body>
 
 </html>

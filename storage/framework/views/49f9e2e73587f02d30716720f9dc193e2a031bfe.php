@@ -22,12 +22,10 @@
     </div>
     
     <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
-      <a href="" class="btn btn-success mb-2"><i class="fa fa-print"> Print</i></a>
 
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -42,35 +40,31 @@
               <th>Action</th>
             </tr>
           </thead>
-      
           <tbody>
             <?php $__currentLoopData = $barang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $box): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-           <tr> 
-           <td><?php echo e($box->nama_barang); ?></td> 
-           <td><?php echo e($box->Kategori->nama_kategori); ?></td>
-           <td><?php echo e($box->stok); ?></td>
-           <td><?php echo e($box->type); ?></td>
-           <td><?php echo e($box->kondisi); ?></td>
-           <td>
-           <a href="<?php echo e(url('/admin/barang/edit')); ?>/<?php echo e($box->id_barang); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
-           
-           <form class="d-inline" method="post" action="<?php echo e(url('/admin/destroy')); ?>/<?php echo e($box->id_barang); ?>">
-            <?php echo e(method_field('DELETE')); ?>
+            <tr> 
+              <td><?php echo e($box->nama_barang); ?></td> 
+              <td><?php echo e($box->Kategori->nama_kategori); ?></td>
+              <td><?php echo e($box->stok); ?></td>
+              <td><?php echo e($box->type); ?></td>
+              <td><?php echo e($box->kondisi); ?></td>
+              <td>
+              <a href="<?php echo e(url('/admin/barang/edit')); ?>/<?php echo e($box->id_barang); ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+              <form class="d-inline" method="post" action="<?php echo e(url('/admin/destroy')); ?>/<?php echo e($box->id_barang); ?>">
+                <?php echo e(method_field('DELETE')); ?>
 
-            <?php echo e(csrf_field()); ?>
+                <?php echo e(csrf_field()); ?>
 
-            <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm" onClick="return confirm('apakah anda yakin')"><i class="fa fa-trash mr-2"></i>Hapus</button>
-           </form>
-
-           </td>
-           </tr>
-           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" class="text-light btn-sm btn btn-danger btn-sm"><i class="fa fa-trash mr-2"></i>Hapus</button>
+              </form>
+              </td>
+            </tr>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-
 </div>
 <!-- /.container-fluid -->
 
