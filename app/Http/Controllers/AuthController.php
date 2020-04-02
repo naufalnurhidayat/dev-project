@@ -8,7 +8,6 @@ use App\Stream;
 use App\Role;
 use App\Pendidikan;
 use App\Projek;
-use Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -112,27 +111,6 @@ class AuthController extends Controller
             $dataProjek[] = ['id_karyawan' => $u->id, 'id_projek' => $projek];
         }
         Projek_Karyawan::insert($dataProjek);
-
-        $roleAdmin = Role::where('role', 'Admin')->first();
-        $admin = User::where('id_role', $roleAdmin->id)->first();
-        $role = Role::where('id', $request->id_role)->first()->role;
-        $stream = Stream::where('id', $request->id_stream)->first()->stream;
-        
-        $data = [
-            'id' => $u->id,
-            'nip' => $request->nip,
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'jenkel' => $request->jenkel,
-            'role' => $role,
-            'stream' => $stream,
-            'no_telp' => $request->no_telp
-        ];
-        Mail::send('admin/karyawan/email', $data, function ($message) use($admin){
-            $message->from('naufalnurhidayat510@gmail.com', 'Aplikasi Telkom');
-            $message->to($admin->email, $admin->nama);
-            $message->subject('Pendaftaran Karyawan Baru');
-        });
 
         return redirect('/login')->with('status', 'Karyawan berhasil ditambahkan');
         

@@ -6,15 +6,54 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
-            <div class="jumbotron text-center">
-                <h1 class="display-4">Hello, {{ auth()->user()->nama }}!</h1>
-                <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus quibusdam beatae, vero, reprehenderit sed quis recusandae cumque, odio earum voluptatibus esse! Consectetur nobis magni nihil debitis provident beatae incidunt? Delectus.</p>
-                <hr class="my-4">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam explicabo, itaque autem officia voluptatibus ipsum ipsam ullam fuga dolores aperiam rerum alias, facilis libero. Animi doloribus ut illo quos maxime!</p>
+        <!-- Karyawan Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Karyawan</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($karyawan) }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user-tie fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Absen Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Absen Hari Ini</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($data_absen_karyawan) }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Absen Pending Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Absen Pending</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($data_absen_pending) }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clock fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection
