@@ -8,6 +8,9 @@ use App\Kategori;
 use App\Barang;
 use App\User;
 use App\Role;
+use App\Projek_karyawan;
+use App\Projek;
+use App\Karyawan;
 use Illuminate\Http\Request;
 
 class pinjamController extends Controller
@@ -19,8 +22,20 @@ class pinjamController extends Controller
      */
     public function index()
     { 
-        // $pinjam = Pinjam::all();
-        $pinjam = Pinjam::orderBy('tgl_pinjam', 'desc')->get();
+        $projek = Projek_Karyawan::where('id_karyawan', auth()->user()->id)->get();
+        $get_id_project = [];
+        foreach ($projek as $value) {
+            $get_id_project[] = $value->id_projek;
+        }
+        $test = Projek_Karyawan::whereIn('id_projek', $get_id_project)->get();
+        $get_id_karyawan = [];
+        foreach ($test as $value) {
+            if (!in_array($value->id_karyawan, $get_id_karyawan)) {
+                $get_id_karyawan[] = $value->id_karyawan;
+            }
+        }
+        $user = User::whereIn('id', $get_id_karyawan)->get();
+        $pinjam = Pinjam::whereIn('id', $get_id_karyawan)->get();
         return view('sm.Admin_invetaris.index', compact('pinjam'));
     }
 
