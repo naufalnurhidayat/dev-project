@@ -21,29 +21,29 @@
             </div>
             <div class="form-group">
               <label for="jencut">Jenis Cuti</label>
-              <select  class="form-control @error('jencut') is-invalid @enderror" name="jencut" id="jencut">
-                  <option value="">-- Pilih Jenis Cuti --</option>
-                @foreach ($jencut as $j)
-                  <option value="{{$j->id}}">{{$j->jenis_cuti}}</option>
-                @endforeach
-              </select>
+              <input type="text" class="form-control @error('jencut') is-invalid @enderror" name="jencut" id="jencut" value="{{ $cuti->jenis_cuti['jenis_cuti'] }}" readonly>
               @error('jencut')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-group row">
               <div class="col-6">
                 <label for="awal">Awal Cuti</label>
-                <input type="text" class="form-control @error('awal') is-invalid @enderror" name="awal" id="datePickerAwalCuti" value="{{ old('awal') }}">
+                @php
+                  $explodeAwal = explode('-', $cuti->awal_cuti);
+                  $newAwal = [$explodeAwal[1], $explodeAwal[2], $explodeAwal[0]];
+                  $awal = implode('/', $newAwal);
+                @endphp
+                <input type="text" class="form-control @error('awal') is-invalid @enderror" name="awal" id="datePickerAwalCuti" value="{{ $awal }}" readonly autocomplete="off">
                 @error('awal')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
               <div class="col-6">
                 <label for="akhir">akhir Cuti</label>
-                <input type="text" class="form-control @error('akhir') is-invalid @enderror" name="akhir" id="datePickerAkhirCuti" value="{{ old('akhir') }}">
+                <input type="text" class="form-control @error('akhir') is-invalid @enderror" name="akhir" id="datePickerAkhirCuti" value="{{ $cuti->akhir_cuti }}" readonly autocomplete="off">
                 @error('akhir')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
             </div>
             <div class="form-group">
               <label for="totalCuti">Total Cuti</label>
-              <input type="number" min="1" max="90" class="form-control @error('totalCuti') is-invalid @enderror" name="totalCuti" value="{{ old('totalCuti') }}">
+              <input type="number" min="1" class="form-control @error('totalCuti') is-invalid @enderror" name="totalCuti" id="totalCuti" value="{{ $cuti->total_cuti }}">
               @error('totalCuti')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-group">
@@ -62,19 +62,60 @@
 @section('footer')
 <script>
   $(document).ready(function(){
-    $("#modalTambahCuti").click(function () {
-      const thnAkhirCuti = $("#thnAkhirCuti").val();
-      const blnAkhirCuti = $("#blnAkhirCuti").val();
-      const tglAkhirCuti = $("#tglAkhirCuti").val();
-      const pickerAwalCuti = datepicker('#datePickerAwalCuti', {
-        minDate: new Date(thnAkhirCuti, blnAkhirCuti-1, tglAkhirCuti),
-        noWeekends: true
-      });
-      const pickerAkhirCuti = datepicker('#datePickerAkhirCuti', {
-        minDate: new Date(thnAkhirCuti, blnAkhirCuti-1, tglAkhirCuti),
-        noWeekends: true
-      });
+
+    const pickerAwalCuti = datepicker('#datePickerAwalCuti', {
+      formatter: (input, date, instance) => {
+        input.value = date.toLocaleDateString()
+      },
+      minDate: new Date({{date('Y')}}, {{date('m')-1}}, {{date('d')}}),
+      noWeekends: true
     });
+    
+    const pickerAkhirCuti = datepicker('#datePickerAkhirCuti', {
+      formatter: (input, date, instance) => {
+        input.value = date.toLocaleDateString()
+      },
+      minDate: new Date({{date('Y')}}, {{date('m')-1}}, {{date('d')}}),
+      noWeekends: true
+    });
+
+    $("#totalCuti").click(function () {
+      const jencut = $("#jencut").val();
+      if (jencut == 'Cuti Tahunan') {
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          success: function () {
+            $("#totalCuti").attr('max', '12');
+          }
+        });
+      } else if (jencut == 'Cuti Melahirkan') {
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          success: function () {
+            $("#totalCuti").attr('max', '90');
+          }
+        });
+      } else if (jencut == 'Cuti Sakit') {
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          success: function () {
+            $("#totalCuti").attr('max', '3');
+          }
+        });
+      } else {
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          success: function () {
+            $("#totalCuti").removeAttr('max');
+          }
+        });
+      }
+    });
+
   });
 </script>
 @endsection

@@ -21,7 +21,11 @@
     <!-- Nested Row within Card Body -->
     <div class="row">
       <div class="col">
+      @if (session('danger'))
+        <div class="p-4">
+      @else
         <div class="p-5">
+      @endif
           <div class="text-center">
             <img src="{{ asset('img/logotelkom.jfif') }}" width="25%" class="mb-3 rounded">
             <h1 class="h4 text-gray-900 mb-4">Login</h1>

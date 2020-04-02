@@ -40,7 +40,8 @@
               <tr>
                 <td>Tanggal Cuti</td>
                 <td>:</td>
-                <td><strong>{{$cuti->tgl_cuti}}</strong></td>
+                @php $tgl = explode(' ', $cuti->tgl_cuti); @endphp
+                <td><strong>{{$tgl[0]}}</strong></td>
               </tr>
               <tr>
                 <td>Jenis Cuti</td>
@@ -48,9 +49,15 @@
                 <td><strong>{{$cuti->jenis_cuti['jenis_cuti']}}</strong></td>
               </tr>
               <tr>
-                <td>Jatah Cuti</td>
+              @if ($cuti->status == 'Diproses')
+                <td>Jatah Cuti Saat Mengajukan</td>
                 <td>:</td>
-                <td><strong>{{$cuti->user['jatah_cuti']}}</strong></td>
+                <td><strong>{{$cuti->jatah_cuti_terakhir}}</strong></td>
+              @else
+                <td>Jatah Cuti Sekarang</td>
+                <td>:</td>
+                <td><strong>{{$cuti->user->jatah_cuti}}</strong></td>
+              @endif
               </tr>
               <tr>
                 <td>Lama Cuti</td>
@@ -60,12 +67,7 @@
               <tr>
                 <td>Total Cuti</td>
                 <td>:</td>
-                @php
-                    $awal = explode('-', $cuti->awal_cuti);
-                    $akhir = explode('-', $cuti->akhir_cuti);
-                    $total = $akhir[2]-$awal[2];
-                @endphp
-                <td><strong>{{$total}}</strong></td>
+                <td><strong>{{$cuti->total_cuti}}</strong></td>
               </tr>
               <tr>
                 <td>Alasan Cuti</td>
@@ -82,9 +84,22 @@
                       <span class="badge badge-danger">{{ $cuti->status }}</span>
                   @else
                       <span class="badge badge-warning">{{ $cuti->status }}</span>
-                  @endif 
+                  @endif
                 </td>
               </tr>
+            @if ($cuti->status == "Ditolak" || $cuti->status == "Diterima")
+              <tr>
+                <td>
+                  @if ($cuti->status == "Ditolak")
+                    Alasan Ditolak
+                  @else
+                    Alasan Diterima
+                  @endif
+                </td>
+                <td>:</td>
+                <td><strong>{{$cuti->alasan_tolak_terima}}</strong></td>
+              </tr>
+            @endif
             </table>
           </div>
         </div>
@@ -95,13 +110,58 @@
     @if ($cuti->status == "Diterima" || $cuti->status == "Ditolak")
       <a href="{{url('/admin/cuti/')}}" class="btn btn-primary">Kembali</a>
     @else
-      <form action="{{url('/admin/cuti/'.$cuti->id)}}" method="post">
-        @csrf
-        @method('patch')
-        <a href="{{url('/admin/cuti/')}}" class="btn btn-primary">Kembali</a>
-        <button class="btn btn-success btn-sm" onclick="return confirm('Yakin ingin menerima?');" type="submit" name="status" value="Diterima"><i class="fa fa-check"></i> Terima</button>
-        <button class="btn btn-danger btn-sm tombol" onclick="return confirm('Yakin ingin menolak?');" type="submit" name="status" value="Ditolak"><i class="fa fa-times-circle"></i> Tolak</button>
-      </form>
+      <a href="{{url('/admin/cuti/')}}" class="btn btn-primary">Kembali</a>
+      <!-- Alasan Terima Modal-->
+      <a class="btn btn-success" href="" data-toggle="modal" data-target=".terima-cuti"><i class="fa fa-check"></i> Terima</a>
+      <div class="modal fade terima-cuti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Yakin Ingin Menerima</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <form action="{{url('/admin/cuti/'.$cuti->id)}}" method="post">
+              @csrf
+              @method('patch')
+              <div class="modal-body">
+                  <textarea class="form-control" name="alasan_terima" placeholder="Masukan Alasan Anda" cols="30" rows="3" autocomplete="off"></textarea> 
+              </div>
+              <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                  <button class="btn btn-success btn-sm" type="submit" name="status" value="Diterima">Terima</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <!-- Alasan TOlak Modal-->
+      <a class="btn btn-danger" href="" data-toggle="modal" data-target=".tolak-cuti"><i class="fa fa-times-circle"></i> Tolak</a>
+      <div class="modal fade tolak-cuti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Yakin Ingin Menolak</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <form action="{{url('/admin/cuti/'.$cuti->id)}}" method="post">
+              @csrf
+              @method('patch')
+              <div class="modal-body">
+                  <textarea class="form-control" name="alasan_tolak" placeholder="Masukan Alasan Anda" cols="30" rows="3" autocomplete="off"></textarea> 
+              </div>
+              <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                  <button class="btn btn-danger" type="submit" name="status" value="Ditolak">Tolak</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     @endif
   </div>
 </div>

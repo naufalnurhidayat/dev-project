@@ -276,6 +276,7 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::get('/cuti', 'CutiController@index');
 			Route::get('/cuti/create', 'CutiController@create');
 			Route::post('/cuti', 'CutiController@store');
+			Route::get('/cuti/tambah_cuti/{cuti}', 'CutiController@editCuti');
 			Route::patch('/cuti/{cuti}', 'CutiController@tambahCuti');
 		
 			//Invetaris
