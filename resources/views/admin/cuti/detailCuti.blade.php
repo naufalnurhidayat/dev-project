@@ -12,7 +12,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-md-3 my-auto pb-5">
-          <img src="{{asset('img/profile/'.$cuti->user['foto'])}}" class="card-img-bottom rounded-pill">	
+          <img src="{{asset('img/profile/'.$cuti->user['foto'])}}" class="card-img-bottom rounded-pill">
         </div>
         <div class="col-md-9 my-auto">
           <div class="table-responsive">
@@ -50,13 +50,13 @@
               </tr>
               <tr>
               @if ($cuti->status == 'Diproses')
-                <td>Jatah Cuti Saat Mengajukan</td>
-                <td>:</td>
-                <td><strong>{{$cuti->jatah_cuti_terakhir}}</strong></td>
-              @else
                 <td>Jatah Cuti Sekarang</td>
                 <td>:</td>
                 <td><strong>{{$cuti->user->jatah_cuti}}</strong></td>
+              @else
+                <td>Jatah Cuti Saat Mengajukan</td>
+                <td>:</td>
+                <td><strong>{{$cuti->jatah_cuti_terakhir}}</strong></td>
               @endif
               </tr>
               <tr>

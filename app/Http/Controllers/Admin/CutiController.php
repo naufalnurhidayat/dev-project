@@ -156,20 +156,7 @@ class CutiController extends Controller
                 'jatah_cuti_terakhir' => $cuti->user->jatah_cuti,
                 'alasan_tolak_terima' => $request['alasan_tolak']
             ]);
-            // $data = [
-            //     'id' => $cuti->id,
-            //     'nip' => $cuti->user->nip,
-            //     'nama' => $cuti->user->nama,
-            //     'email' => $cuti->user->email,
-            //     'jenkel' => $cuti->user->jenkel,
-            //     'stream' => $cuti->user->stream->stream,
-            //     'no_telp' => $cuti->user->no_telp
-            // ];
-            // Mail::send('admin/cuti/email', $data, function ($message) use($admin){
-            //     $message->from('naufalnurhidayat510@gmail.com', 'Aplikasi Telkom');
-            //     $message->to($admin->email, $admin->nama);
-            //     $message->subject('Penolakan Pengajuan Cuti');
-            // });
+            $pesan = 'Penolakan Pengajuan Cuti';
         } elseif ($request['status'] == "Diterima") {
             Cuti::Where('id', $cuti->id)->Update([
                 'status' => $request['status'],
@@ -181,7 +168,11 @@ class CutiController extends Controller
                 $newJatahCuti = $karyawan->jatah_cuti - $cuti->total_cuti;
                 User::Where('id', $cuti->id_karyawan)->update(['jatah_cuti' => $newJatahCuti]);
             }
-            // $data = [
+            $pesan = 'Penerimaan Pengajuan Cuti';
+        } else {
+            return redirect('/admin/cuti')->with('gagal', 'Status Gagal Di Edit');
+        }
+        // $data = [
             //     'id' => $cuti->id,
             //     'nip' => $cuti->user->nip,
             //     'nama' => $cuti->user->nama,
@@ -193,11 +184,8 @@ class CutiController extends Controller
             // Mail::send('admin/cuti/email', $data, function ($message) use($admin){
             //     $message->from('naufalnurhidayat510@gmail.com', 'Aplikasi Telkom');
             //     $message->to($admin->email, $admin->nama);
-            //     $message->subject('Penerimaan Pengajuan Cuti');
+            //     $message->subject($pesan);
             // });
-        } else {
-            return redirect('/admin/cuti')->with('gagal', 'Status Gagal Di Edit');
-        }
         return redirect('/admin/cuti')->with('status', 'Status Berhasil Di Edit');
     }
 
