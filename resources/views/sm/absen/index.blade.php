@@ -19,6 +19,10 @@
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h3 class="m-0 font-weight-bold text-primary">Data Kehadiran Karyawan</h3>
+      <h6 class="m-0 font-weight-bold text-dark mt-2 d-inline"><span class="text-info">Projek:</span>
+        @foreach($projek_karyawan as $projek)
+        <span class="badge badge-success">{{ $projek->project }}</span></h6>
+        @endforeach
     </div>
     <div class="card-body">
             <div class="table-responsive">

@@ -27,6 +27,14 @@
                                 <li><strong>Nomor Telpon: </strong>{{ $user->no_telp }}</li>
                                 <li><strong>Agama: </strong>{{ $user->agama }}</li>
                                 <li><strong>Alamat: </strong>{{ $user->alamat }}</li>
+                                <li>
+                                    <strong>Projek: </strong>
+                                    <ul>
+                                        @foreach($projek_karyawan as $projek)
+                                        <li>{{ $projek->Projek->project }}</li>
+                                        @endforeach
+                                    </ul>
+                                </li>
                             </ul>
                             <a href="{{ url('/sm/karyawan') }}" class="btn btn-primary ml-4">Kembali</a>
                         </div>

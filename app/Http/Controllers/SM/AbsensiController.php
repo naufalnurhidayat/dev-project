@@ -33,7 +33,8 @@ class AbsensiController extends Controller
         }
         $user = User::whereIn('id', $get_id_karyawan)->get();
         $data_absen = Absen::whereIn('id_karyawan', $get_id_karyawan)->get();
-        return view('sm/absen/index', compact('data_absen'));
+        $projek_karyawan = Projek::whereIn('id', $get_id_project)->get();
+        return view('sm/absen/index', compact(['data_absen', 'projek_karyawan']));
     }
 
     /**
