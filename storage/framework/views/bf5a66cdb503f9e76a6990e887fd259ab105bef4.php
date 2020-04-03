@@ -52,7 +52,8 @@
                 <td><?php echo e($c->User['nama']); ?></td>
                 <td><?php echo e($c->User['jenkel']); ?></td>
                 <td><?php echo e($c->User->Stream['stream']); ?></td>
-                <td><?php echo e($c->tgl_cuti); ?></td>
+                <?php $newTgl_cuti = explode(' ', $c->tgl_cuti); ?>
+                <td><?php echo e($newTgl_cuti[0]); ?></td>
                 <td><?php echo e($c->jenis_cuti['jenis_cuti']); ?></td>
                 <td>
                   <?php if($c->status == 'Diterima'): ?>
@@ -64,11 +65,8 @@
                   <?php endif; ?>
                 </td>
                 <td>
-                  <?php if($c->status === 'Diterima'): ?>
-                    <a class="btn btn-primary btn-block" href="<?php echo e(url('/cuti/tambah_cuti/'.$c->id)); ?>" id="modalTambahCuti">
-                      <i class="fas fa-calendar-plus"></i> Perpanjang Cuti
-                    </a>
-                  <?php endif; ?>
+                  <a href="<?php echo e(url('/cuti/'.$c->id)); ?>" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>    
+                  
                 </td>
               </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -88,12 +88,6 @@ class CutiController extends Controller
         return redirect('/cuti')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
     }
 
-    public function editCuti(Cuti $cuti)
-    {
-        return  view('cuti/tambah_cuti', ['cuti' => $cuti]);
-    }
-
-
     /**
      * Display the specified resource.
      *
@@ -102,7 +96,7 @@ class CutiController extends Controller
      */
     public function show(Cuti $cuti)
     {
-        //
+        return view('cuti/detailCuti', compact('cuti'));
     }
 
     /**
