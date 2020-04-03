@@ -42,6 +42,7 @@
               <th>Tanggal Pengajuan Cuti</th>
               <th>Jenis Cuti</th>
               <th>Status</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody class="table table-bordered">
@@ -54,12 +55,19 @@
                 <td><?php echo e($c->tgl_cuti); ?></td>
                 <td><?php echo e($c->jenis_cuti['jenis_cuti']); ?></td>
                 <td>
-                  <?php if($c->status === 'Terima'): ?>
+                  <?php if($c->status == 'Diterima'): ?>
                     <span class="badge badge-success"><?php echo e($c->status); ?></span>
-                  <?php elseif($c->status === 'Tolak'): ?>
+                  <?php elseif($c->status == 'Ditolak'): ?>
                     <span class="badge badge-danger"><?php echo e($c->status); ?></span>
                   <?php else: ?>                          
                     <span class="badge badge-warning"><?php echo e($c->status); ?></span>
+                  <?php endif; ?>
+                </td>
+                <td>
+                  <?php if($c->status === 'Diterima'): ?>
+                    <a class="btn btn-primary btn-block" href="<?php echo e(url('/cuti/tambah_cuti/'.$c->id)); ?>" id="modalTambahCuti">
+                      <i class="fas fa-calendar-plus"></i> Perpanjang Cuti
+                    </a>
                   <?php endif; ?>
                 </td>
               </tr>

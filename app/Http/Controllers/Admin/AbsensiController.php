@@ -176,6 +176,7 @@ class AbsensiController extends Controller
 
     public function cetakDataAbsen(Request $request)
     {
+        return $request;
         $absen = Absen::all();
         $pdf = PDF::loadView('admin/absen/cetak', compact('absen'));
         return $pdf->stream('Data Absensi.pdf');

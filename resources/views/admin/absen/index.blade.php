@@ -22,7 +22,7 @@
       <h3 class="m-0 font-weight-bold text-primary mb-2">Data Kehadiran Karyawan</h3>
       <a href="{{ url('/admin/absen/exportexcel') }}" class="btn btn-success btn-sm" onclick="return confirm('Download Excel?');"><i class="fas fa-file-download mr-1"></i>Export Execel</a>
       <a href="{{ url('/admin/absen/exportpdf') }}" class="btn btn-danger btn-sm" onclick="return confirm('Download PDF?');" id="exportPdf"><i class="fas fa-file-download mr-1"></i></i>Export PDF</a>
-      <a href="{{ url('/admin/absen/cetak') }}" class="btn btn-warning btn-sm" target="_blank" onclick="return confirm('Cetak Data?')"><i class="fas fa-print mr-1"></i>Cetak Data</a>
+      <a href="{{ url('/admin/absen/cetak') }}" id="cetak" class="btn btn-warning btn-sm" target="_blank"><i class="fas fa-print mr-1"></i>Cetak Data</a>
       <a href="#" class="btn btn-primary btn-sm" data-target="#filter" data-toggle="modal"><i class="fas fa-filter mr-1"></i>Filter Data</a>
     </div>
     <div class="card-body">
@@ -136,6 +136,7 @@
         data: `nama=${nama}&tanggal_awal=${tanggalAwalAbsen}&tanggal_akhir=${tanggalAkhirAbsen}`,
         success: function(response) {
           $("#tampunganAbsen").html(response);
+          $("#cetak").data(response);
         }
       });
     });
