@@ -42,19 +42,19 @@
               <th>No</th>
               <th>Nama</th>
               <th>Jenis Kelamin</th>
-              <th>Role</th>
+              <th>Stream</th>
               <th>Tanggal Pengajuan Cuti</th>
               <th>Jenis Cuti</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody class="table table-bordered">
-            @foreach ($ct as $c)
+            @foreach ($cuti as $c)
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $c->User['nama'] }}</td>
                 <td>{{ $c->User['jenkel'] }}</td>
-                <td>{{ $c->User->Role['role'] }}</td>
+                <td>{{ $c->User->Stream['stream'] }}</td>
                 <td>{{ $c->tgl_cuti }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                 <td>
