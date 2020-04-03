@@ -29,6 +29,9 @@ class CutiController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->jatah_cuti == 0) {
+            return redirect('/admin/cuti/show')->with('jatah', 'Sisa Cuti Andan Tidak Cukup');
+        }
         $jencut = JenisCuti::all();
         return view('admin/cuti/create', ['jencut' => $jencut]);
     }
@@ -42,21 +45,43 @@ class CutiController extends Controller
     public function store(Request $request)
     {
         date_default_timezone_set("Asia/Jakarta");
-        if (auth()->user()->jatah_cuti == 0) {
-            return redirect('/admin/cuti/show')->with('jatah', 'Jatah Cuti Anda Telah Habis');
+        if ($request->awal == $request->akhir) {
+            $request->validate([
+                'jencut' => 'required|numeric',
+                'awal' => 'required|date',
+                'akhir' => 'required|date',
+                'totalCuti' => 'required|numeric',
+                'alasan' => 'required'
+            ]);
+        } else {
+            $request->validate([
+                'jencut' => 'required|numeric',
+                'awal' => 'required|date|before:akhir',
+                'akhir' => 'required|date|after:awal',
+                'totalCuti' => 'required|numeric',
+                'alasan' => 'required'
+            ]);
         }
-        $request->validate([
-            'jencut' => 'required|numeric',
-            'awal' => 'required',
-            'akhir' => 'required',
-            'alasan' => 'required'
-        ]);
+    // Awal Cuti
+        $explodeAwal = explode('/', $request->awal);
+        $newAwal = [$explodeAwal[2], $explodeAwal[0], $explodeAwal[1]];
+        $awal = implode('-', $newAwal);
+    // Akhir Cuti
+        $explodeAkhir = explode('/', $request->akhir);
+        $newAkhir = [$explodeAkhir[2], $explodeAkhir[0], $explodeAkhir[1]];
+        $akhir = implode('-', $newAkhir);
+        // $date_diff = date_diff(date_create($request->awal), date_create($request->akhir))->d;
+        // $total = $date_diff;
+        if ($request->jencut == 1 && auth()->user()->jatah_cuti < $request->totalCuti) {
+            return redirect('/cuti/create')->with('status', 'Sisa Cuti anda tidak cukup');
+        }
         Cuti::create([
             'id_karyawan' => auth()->user()->id,
             'id_jenis_cuti' => $request->jencut,
             'tgl_cuti' => date("Y-m-d H:i:s"),
-            'awal_cuti' => $request->awal,
-            'akhir_cuti' => $request->akhir,
+            'awal_cuti' => $awal,
+            'akhir_cuti' => $akhir,
+            'total_cuti' => $request->totalCuti,
             'alasan_cuti' => $request->alasan,
             'status' => 'Diproses'
         ]);
@@ -126,18 +151,41 @@ class CutiController extends Controller
     public function update(Request $request, Cuti $cuti)
     {
         if ($request['status'] == "Ditolak") {
-            Cuti::Where('id', $cuti->id)->Update(['status' => $request['status']]);
+            Cuti::Where('id', $cuti->id)->Update([
+                'status' => $request['status'],
+                'jatah_cuti_terakhir' => $cuti->user->jatah_cuti,
+                'alasan_tolak_terima' => $request['alasan_tolak']
+            ]);
+            $pesan = 'Penolakan Pengajuan Cuti';
         } elseif ($request['status'] == "Diterima") {
-            Cuti::Where('id', $cuti->id)->Update(['status' => $request['status']]);
-            $awal = explode('-', $cuti->awal_cuti);
-            $akhir = explode('-', $cuti->akhir_cuti);
-            $karyawan = User::where('id', $cuti->id_karyawan)->first();
-            $total_cuti = $awal[2]-$akhir[2];
-            $k = $karyawan->jatah_cuti - $total_cuti;
-            User::Where('id', $cuti->id_karyawan)->update(['jatah_cuti' => $k]);
+            Cuti::Where('id', $cuti->id)->Update([
+                'status' => $request['status'],
+                'jatah_cuti_terakhir' => $cuti->user['jatah_cuti'],
+                'alasan_tolak_terima' => $request['alasan_terima']
+            ]);
+            if ($cuti->jenis_cuti->jenis_cuti == 'Cuti Tahunan') {
+                $karyawan = User::where('id', $cuti->id_karyawan)->first();
+                $newJatahCuti = $karyawan->jatah_cuti - $cuti->total_cuti;
+                User::Where('id', $cuti->id_karyawan)->update(['jatah_cuti' => $newJatahCuti]);
+            }
+            $pesan = 'Penerimaan Pengajuan Cuti';
         } else {
             return redirect('/admin/cuti')->with('gagal', 'Status Gagal Di Edit');
         }
+        // $data = [
+            //     'id' => $cuti->id,
+            //     'nip' => $cuti->user->nip,
+            //     'nama' => $cuti->user->nama,
+            //     'email' => $cuti->user->email,
+            //     'jenkel' => $cuti->user->jenkel,
+            //     'stream' => $cuti->user->stream->stream,
+            //     'no_telp' => $cuti->user->no_telp
+            // ];
+            // Mail::send('admin/cuti/email', $data, function ($message) use($admin){
+            //     $message->from('naufalnurhidayat510@gmail.com', 'Aplikasi Telkom');
+            //     $message->to($admin->email, $admin->nama);
+            //     $message->subject($pesan);
+            // });
         return redirect('/admin/cuti')->with('status', 'Status Berhasil Di Edit');
     }
 
