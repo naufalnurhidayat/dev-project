@@ -250,10 +250,7 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::get('/po/cuti', 'PO\CutiController@index');
 			Route::get('/po/cuti/show', 'PO\CutiController@cutiPo');
 			Route::get('/po/cuti/create', 'PO\CutiController@create');
-			Route::get('/po/cuti/terima', 'PO\CutiController@terima');
-			Route::get('/po/cuti/tolak', 'PO\CutiController@tolak');
-			Route::get('/po/cuti/terima/{cuti}', 'PO\CutiController@detailTerima');
-			Route::get('/po/cuti/tolak/{cuti}', 'PO\CutiController@detailTolak');
+			Route::get('/po/cuti/detail/{cuti}', 'PO\CutiController@detailCuti');
 			Route::get('/po/cuti/{cuti}', 'PO\CutiController@show');
 			Route::post('/po/cuti', 'PO\CutiController@store');
       Route::patch('/po/cuti/{cuti}', 'PO\CutiController@update');

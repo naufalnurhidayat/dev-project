@@ -42,25 +42,23 @@
               <th>No</th>
               <th>Nama</th>
               <th>Jenis Kelamin</th>
-              <th>Role</th>
               <th>Tanggal Pengajuan Cuti</th>
               <th>Jenis Cuti</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody class="table table-bordered">
-            @foreach ($ct as $c)
+            @foreach ($cuti as $c)
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $c->User['nama'] }}</td>
                 <td>{{ $c->User['jenkel'] }}</td>
-                <td>{{ $c->User->Role['role'] }}</td>
                 <td>{{ $c->tgl_cuti }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                 <td>
-                  @if ($c->status === 'Terima')
+                  @if ($c->status == 'Diterima')
                     <span class="badge badge-success">{{ $c->status }}</span>
-                  @elseif($c->status === 'Tolak')
+                  @elseif($c->status == 'Ditolak')
                     <span class="badge badge-danger">{{ $c->status }}</span>
                   @else                          
                     <span class="badge badge-warning">{{ $c->status }}</span>

@@ -24,6 +24,9 @@
   {{-- Select2 CSS --}}
   <link rel="stylesheet" href="{{asset('dist/css/select2.min.css')}}">
 
+  {{-- CSS DatePicker --}}
+  <link href="{{ asset('datepicker.min.css')}}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -84,10 +87,8 @@
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item bg-primary text-white" href="{{url('/po/cuti/show')}}"><b>Data Cuti Anda</b></a>
-            <a class="collapse-item bg-warning text-white" href="{{url('/po/cuti')}}"><b>Data Cuti Di Proses</b></a>
-            <a class="collapse-item bg-success text-white" href="{{url('/po/cuti/terima')}}"><b>Data Cuti Di Terima</b></a>
-            <a class="collapse-item bg-danger text-white" href="{{url('/po/cuti/tolak')}}"><b>Data Cuti Di Tolak</b></a>
+            <a class="collapse-item" href="{{url('/po/cuti/show')}}">Data Cuti Anda</a>
+            <a class="collapse-item" href="{{url('/po/cuti')}}">Data Cuti Karyawan</a>
           </div>
         </div>
       </li>
@@ -224,6 +225,9 @@
 
   {{-- Select2 Script --}}
   <script src="{{ asset('dist/js/select2.min.js')}}"></script>
+
+  {{-- JS DatePicker --}}
+  <script src="{{ asset('datepicker.min.js') }}"></script>
 
   {{-- Our Script --}}
   <script>

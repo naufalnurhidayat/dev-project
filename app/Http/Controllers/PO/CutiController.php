@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PO;
 use App\Cuti;
 use App\JenisCuti;
 use App\User;
+use App\Projek;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -18,7 +19,17 @@ class CutiController extends Controller
      */
     public function index()
     {
-        $cuti = Cuti::where('status', 'Diproses')->orderBy('tgl_cuti', 'desc')->get();
+        $u = User::where('id', auth()->user()->id)->with('projek')->get();
+        $projek;
+        foreach ($u[0]->projek as $p) {
+            $projek = $p->id;
+        }
+        $projek_karyawan = Projek::where('id', $projek)->with('user')->get();
+        $data_cuti = [];
+        foreach ($projek_karyawan[0]->user as $pk) {
+            $data_cuti[] = $pk->id;
+        }
+        $cuti = Cuti::whereIn('id_karyawan', $data_cuti)->orderBy('tgl_cuti', 'desc')->get();
         return view('po/cuti/index', ['cuti' => $cuti]);
     }
 
@@ -29,6 +40,9 @@ class CutiController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->jatah_cuti == 0) {
+            return redirect('/po/cuti/show')->with('jatah', 'Sisa Cuti Andan Tidak Cukup');
+        }
         $jencut = JenisCuti::all();
         return view('po/cuti/create', ['jencut' => $jencut]);
     }
@@ -42,21 +56,43 @@ class CutiController extends Controller
     public function store(Request $request)
     {
         date_default_timezone_set("Asia/Jakarta");
-        if (auth()->user()->jatah_cuti == 0) {
-            return redirect('/po/cuti/show')->with('jatah', 'Jatah Cuti Anda Telah Habis');
+        if ($request->awal == $request->akhir) {
+            $request->validate([
+                'jencut' => 'required|numeric',
+                'awal' => 'required|date',
+                'akhir' => 'required|date',
+                'totalCuti' => 'required|numeric',
+                'alasan' => 'required'
+            ]);
+        } else {
+            $request->validate([
+                'jencut' => 'required|numeric',
+                'awal' => 'required|date|before:akhir',
+                'akhir' => 'required|date|after:awal',
+                'totalCuti' => 'required|numeric',
+                'alasan' => 'required'
+            ]);
         }
-        $request->validate([
-            'jencut' => 'required|numeric',
-            'awal' => 'required',
-            'akhir' => 'required',
-            'alasan' => 'required'
-        ]);
+    // Awal Cuti
+        $explodeAwal = explode('/', $request->awal);
+        $newAwal = [$explodeAwal[2], $explodeAwal[0], $explodeAwal[1]];
+        $awal = implode('-', $newAwal);
+    // Akhir Cuti
+        $explodeAkhir = explode('/', $request->akhir);
+        $newAkhir = [$explodeAkhir[2], $explodeAkhir[0], $explodeAkhir[1]];
+        $akhir = implode('-', $newAkhir);
+        // $date_diff = date_diff(date_create($request->awal), date_create($request->akhir))->d;
+        // $total = $date_diff;
+        if ($request->jencut == 1 && auth()->user()->jatah_cuti < $request->totalCuti) {
+            return redirect('/po/cuti/create')->with('status', 'Sisa Cuti anda tidak cukup');
+        }
         Cuti::create([
             'id_karyawan' => auth()->user()->id,
             'id_jenis_cuti' => $request->jencut,
             'tgl_cuti' => date("Y-m-d H:i:s"),
-            'awal_cuti' => $request->awal,
-            'akhir_cuti' => $request->akhir,
+            'awal_cuti' => $awal,
+            'akhir_cuti' => $akhir,
+            'total_cuti' => $request->totalCuti,
             'alasan_cuti' => $request->alasan,
             'status' => 'Diproses'
         ]);
@@ -70,26 +106,9 @@ class CutiController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function terima()
+    public function detailCuti(Cuti $cuti)
     {
-        $cuti = Cuti::where('status', 'Terima')->orderBy('tgl_cuti', 'desc')->get();
-        return view('po/cuti/terima', compact('cuti'));
-    }
-
-    public function tolak()
-    {
-        $cuti = Cuti::where('status', 'Tolak')->orderBy('tgl_cuti', 'desc')->get();
-        return view('po/cuti/tolak', compact('cuti'));
-    }
-
-    public function detailTerima(Cuti $cuti)
-    {
-        return view('po/cuti/detailTerima', compact('cuti'));
-    }
-
-    public function detailTolak(Cuti $cuti)
-    {
-        return view('po/cuti/detailTolak', compact('cuti'));
+        return view('po/cuti/detailCuti', compact('cuti'));
     }
     
     public function show(Cuti $cuti)
@@ -99,8 +118,8 @@ class CutiController extends Controller
 
     public function cutiPo()
     {
-        $ct = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
-        return view('po/cuti/show', ['ct' => $ct]);
+        $cuti = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
+        return view('po/cuti/show', ['cuti' => $cuti]);
     }
 
     /**

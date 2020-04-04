@@ -81,9 +81,8 @@
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item bg-warning text-white" href="{{url('/sm/cuti')}}"><b>Data Cuti</b></a>
-            <a class="collapse-item bg-success text-white" href="{{url('/sm/cuti/terima')}}"><b>Data Cuti Di Terima</b></a>
-            <a class="collapse-item bg-danger text-white" href="{{url('/sm/cuti/tolak')}}"><b>Data Cuti Di Tolak</b></a>
+            <a class="collapse-item" href="{{url('/sm/cuti/show')}}">Data Cuti Anda</a>
+            <a class="collapse-item" href="{{url('/sm/cuti')}}">Data Cuti Karyawan</a>
           </div>
         </div>
       </li>

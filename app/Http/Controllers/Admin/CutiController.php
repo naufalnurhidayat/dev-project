@@ -73,7 +73,7 @@ class CutiController extends Controller
         // $date_diff = date_diff(date_create($request->awal), date_create($request->akhir))->d;
         // $total = $date_diff;
         if ($request->jencut == 1 && auth()->user()->jatah_cuti < $request->totalCuti) {
-            return redirect('/cuti/create')->with('status', 'Sisa Cuti anda tidak cukup');
+            return redirect('/admin/cuti/create')->with('status', 'Sisa Cuti anda tidak cukup');
         }
         Cuti::create([
             'id_karyawan' => auth()->user()->id,
@@ -126,8 +126,8 @@ class CutiController extends Controller
 
     public function cutiAdmin()
     {
-        $ct = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
-        return view('admin/cuti/show', ['ct' => $ct]);
+        $cuti = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
+        return view('admin/cuti/show', ['cuti' => $cuti]);
     }
 
     /**
