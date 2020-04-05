@@ -113,15 +113,40 @@ class CutiController extends Controller
         }
         return view('admin/cuti/filter', compact('cuti'));
     }
+
+    public function filterDataAnda(Request $request)
+    {
+        $cuti;
+        if (empty($request->status) && empty($request->awal) && empty($request->akhir)) {
+            $cuti = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
+        } elseif (empty($request->awal) || empty($request->akhir)) {
+            $cuti = Cuti::where('id_karyawan', auth()->user()->id)->where('status', $request->status)->orderBy('tgl_cuti', 'desc')->get();
+        } elseif (empty($request->status)) {
+            $cuti = Cuti::where('id_karyawan', auth()->user()->id)->whereDate('tgl_cuti', '>=', $request->awal)->whereDate('tgl_cuti', '<=', $request->akhir)->orderBy('tgl_cuti', 'desc')->get();
+        } else {
+            $cuti = Cuti::where('id_karyawan', auth()->user()->id)
+                        ->whereDate('tgl_cuti', '>=', $request->awal)
+                        ->whereDate('tgl_cuti', '<=', $request->akhir)
+                        ->where('status', $request->status)
+                        ->orderBy('tgl_cuti', 'desc')
+                        ->get();
+        }
+        return view('admin/cuti/filterAnda', compact('cuti'));
+    }
     
     public function detailCuti(Cuti $cuti)
     {
         return view('admin/cuti/detailCuti', compact('cuti'));
     }
 
+    public function detailCutiAnda(Cuti $cuti)
+    {
+        return view('admin/cuti/detailCutiAnda', compact('cuti'));
+    }
+
     public function show(Cuti $cuti)
     {
-        return view('admin/cuti/detailCuti', compact('cuti'));
+        //
     }
 
     public function cutiAdmin()

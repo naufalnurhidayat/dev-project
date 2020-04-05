@@ -64,9 +64,9 @@
                 </td>
                 <td>
                   @if ($c->status == "Diterima" || $c->status == "Ditolak")
-                    <a href="{{url('/admin/cuti/detail/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>    
+                    <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>    
                   @else
-                    <a href="{{url('/admin/cuti/detail/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
+                    <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
                     <!-- Alasan Terima Modal-->
                       <a class="btn btn-success btn-sm" href="" data-toggle="modal" data-target=".terima-cuti-{{$c->id}}"><i class="fa fa-check"></i></a>
                       <div class="modal fade terima-cuti-{{$c->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -107,62 +107,7 @@
     </div>
   </div>
   <div class="text-center mt-3 mb-5 pb-5">
-    @if ($cuti->status == "Diterima" || $cuti->status == "Ditolak")
-      <a href="{{url('/admin/cuti/')}}" class="btn btn-primary">Kembali</a>
-    @else
-      <a href="{{url('/admin/cuti/')}}" class="btn btn-primary">Kembali</a>
-        <!-- Alasan Terima Modal-->
-      <a class="btn btn-success" href="" data-toggle="modal" data-target=".terima-cuti"><i class="fa fa-check"></i> Terima</a>
-      <div class="modal fade terima-cuti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Yakin Ingin Menerima</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <form action="{{url('/admin/cuti/'.$cuti->id)}}" method="post">
-              @csrf
-              @method('patch')
-              <div class="modal-body">
-                  <textarea class="form-control" name="alasan_terima" placeholder="Masukan Alasan Anda" cols="30" rows="3" autocomplete="off"></textarea> 
-              </div>
-              <div class="modal-footer">
-                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                  <button class="btn btn-success btn-sm" type="submit" name="status" value="Diterima">Terima</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-        <!-- Alasan TOlak Modal-->
-      <a class="btn btn-danger" href="" data-toggle="modal" data-target=".tolak-cuti"><i class="fa fa-times-circle"></i> Tolak</a>
-      <div class="modal fade tolak-cuti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Yakin Ingin Menolak</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <form action="{{url('/admin/cuti/'.$cuti->id)}}" method="post">
-              @csrf
-              @method('patch')
-              <div class="modal-body">
-                  <textarea class="form-control" name="alasan_tolak" placeholder="Masukan Alasan Anda" cols="30" rows="3" autocomplete="off"></textarea> 
-              </div>
-              <div class="modal-footer">
-                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                  <button class="btn btn-danger" type="submit" name="status" value="Ditolak">Tolak</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    @endif
+      <a href="{{url('/admin/cuti/show')}}" class="btn btn-primary">Kembali</a>
   </div>
 </div>
 <!-- /.container-fluid -->

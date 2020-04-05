@@ -12,7 +12,7 @@
       <div class="row mx-auto">
         <div class="col">
           <h3 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h3>
-          <form action="{{ url('/admin/cuti') }}" method="post">
+          <form action="{{ url('/admin/cuti/show') }}" method="post">
             @csrf
             <div class="form-group">
               <label for="karyawan">Karyawan</label>

@@ -87,7 +87,7 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cuti" aria-expanded="true" aria-controls="cuti">
-          <i class="fas fa-fw fa-file-invoice"></i>
+          <i class="fas fa-fw fa-calendar-week"></i>
           <span>Cuti</span>
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
