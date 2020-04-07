@@ -112,16 +112,15 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 		
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
-			Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
-			Route::get('/admin/cuti/create', 'Admin\CutiController@create');
 			Route::get('/admin/cuti/filter', 'Admin\CutiController@filterData');
-			Route::get('/admin/cuti/filterAnda', 'Admin\CutiController@filterDataAnda');
 			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@detailCuti');
-			Route::get('/admin/cuti/detail/{cuti}', 'Admin\CutiController@detailCutiAnda');
-			// Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@show');
-			Route::post('/admin/cuti/show', 'Admin\CutiController@store');
 			Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
-			
+			Route::delete('/admin/cuti/{cuti}', 'Admin\CutiController@destroy');
+			// Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
+			// Route::get('/admin/cuti/create', 'Admin\CutiController@create');
+			// Route::get('/admin/cuti/filterAnda', 'Admin\CutiController@filterDataAnda');
+			// Route::get('/admin/cuti/detail/{cuti}', 'Admin\CutiController@detailCutiAnda');
+			// Route::post('/admin/cuti/show', 'Admin\CutiController@store');
 		// --------------------------------------------------------------------------------------		
 	});
 
@@ -252,7 +251,7 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::get('/po/cuti', 'PO\CutiController@index');
 			Route::get('/po/cuti/show', 'PO\CutiController@cutiPo');
 			Route::get('/po/cuti/create', 'PO\CutiController@create');
-			Route::get('/admin/cuti/filter', 'Admin\CutiController@filterData');
+			Route::get('/po/cuti/filter', 'Admin\CutiController@filterData');
 			Route::get('/po/cuti/{cuti}', 'PO\CutiController@show');
 			Route::get('/po/cuti/detail/{cuti}', 'PO\CutiController@detailCuti');
 			Route::post('/po/cuti', 'PO\CutiController@store');

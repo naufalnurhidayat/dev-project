@@ -222,6 +222,7 @@ class CutiController extends Controller
      */
     public function destroy(Cuti $cuti)
     {
-        //
+        Cuti::destroy($cuti->id);
+        return redirect('/admin/cuti')->with('status', 'Data Berhasil di Hapus');
     }
 }

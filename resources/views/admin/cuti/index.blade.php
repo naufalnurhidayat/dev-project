@@ -34,7 +34,7 @@
           </div>
         </div>
         <div>
-          <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+          <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
             <thead class="bg-dark text-white">
               <tr>
                 <th>No</th>
@@ -45,7 +45,7 @@
                 <th>Aksi</th>
               </tr>
             </thead>
-            <tbody id="tampungan">
+            <tbody class="table table-bordered" id="tampunganIndexCuti">
               @foreach($cuti as $c)
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
@@ -64,7 +64,12 @@
                 </td>
                 <td>
                   @if ($c->status == "Diterima" || $c->status == "Ditolak")
-                    <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>    
+                    <form action="{{url('/admin/cuti/'.$c->id)}}" method="post">
+                      @csrf
+                      @method('delete')
+                      <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>
+                      <button class="btn btn-danger btn-sm" type="submit" name="status"><i class="fa fa-trash"></i> Hapus</button>
+                    </form>
                   @else
                     <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
                     <!-- Alasan Terima Modal-->
@@ -86,7 +91,7 @@
                               </div>
                               <div class="modal-footer">
                                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                  <button class="btn btn-success btn-sm" type="submit" name="status" value="Diterima">Terima</button>
+                                  <button class="btn btn-success" type="submit" name="status" value="Diterima">Terima</button>
                               </div>
                             </form>
                           </div>
@@ -130,7 +135,6 @@
   </div>
 </div>
 <!-- /.container-fluid -->
-
 @endsection
 
 @section('footer')
@@ -169,6 +173,7 @@
       </div>
     </div>
   </div>
+
 <script>
 $(document).ready(function(){
     // Script Untuk Filter Data Cuti
@@ -183,7 +188,7 @@ $(document).ready(function(){
       url: '{{url('/admin/cuti/filter')}}',
       data: 'status='+status+'&awal='+tglAwal+'&akhir='+tglakhir,
       success: function (response) {
-        $("#tampungan").html(response);
+        $("#tampunganIndexCuti").html(response);
       }
     });
   });

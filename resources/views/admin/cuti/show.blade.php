@@ -82,7 +82,7 @@
   </div>
 
 </div>
-        <!-- /.container-fluid -->
+  <!-- /.container-fluid -->
 @endsection
 
 @section('footer')

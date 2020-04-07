@@ -92,7 +92,6 @@
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="<?php echo e(url('/admin/cuti/show')); ?>">Data Cuti Anda</a>
             <a class="collapse-item" href="<?php echo e(url('/admin/cuti')); ?>">Data Cuti Karyawan</a>
           </div>
         </div>
