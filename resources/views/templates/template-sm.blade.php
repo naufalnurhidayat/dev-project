@@ -222,8 +222,21 @@
       let fileName = $(this).val().split('\\').pop();
       $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
-  </script>
 
+    $("#kategori_name").on('change', function(){
+        const kategori = $("#kategori_name").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '{{url('/sm/kategori')}}',
+          data: 'kategori_id=' + kategori,
+          success:function(response){
+            $("#barang").html(response);
+          }
+        });
+      });
+  </script>
+@yield('footer')
 </body>
 
 </html>

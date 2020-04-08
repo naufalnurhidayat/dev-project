@@ -60,9 +60,6 @@ class pinjamController extends Controller
     public function store(Request $request)
     {
         // dd($request->id_barang);
-        $request->validate([
-            'keterangan' => 'required'
-        ]);
 
         Pinjam::create([
             'id_barang' => $request->id_barang,
@@ -73,7 +70,7 @@ class pinjamController extends Controller
             'jumlah_pinjam' => 1,
             'tgl_pinjam' => date("Y-m-d"),
             'status' => 'Pending',
-            'keterangan' => $request->keterangan
+            'keterangan' => 'Saya meminjam ini untuk memudahkan dalam bekerja'
         ]);
         return redirect('/sm/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');
     }
