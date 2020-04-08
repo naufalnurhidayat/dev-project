@@ -59,7 +59,7 @@
                 <button type="submit" onclick="return confirm('Apakah Anda Yakin ?')" name="status" class="btn btn-danger rounded-circle btn-sm" value="Rejected"><i class="fa fa-times-circle"></i></button>
               @elseif ($p->status == "Accept")
                 {{-- <button type="button" class="btn btn-success rounded-circle btn-sm"><i class="fa fa-check"></i></button> --}}
-                <a href="" class="btn btn-info"><i class="fas fa-mail-bulk"></i></a>
+                <a href="{{ url('/admin/peminjaman/aktivasi/' . $p->id) }}" class="btn btn-info"><i class="fas fa-mail-bulk"></i></a>
               @else
                 <button type="button" class="btn btn-danger rounded-circle btn-sm"><i class="fa fa-times-circle"></i></button>
               @endif
