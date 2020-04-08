@@ -21,6 +21,12 @@
   <!-- Custom styles for this page -->
   <link href="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  
+  <link rel="stylesheet" href="<?php echo e(asset('dist/css/select2.min.css')); ?>">
+
+  
+  <link href="<?php echo e(asset('datepicker.min.css')); ?>" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -73,7 +79,7 @@
         <div id="absensi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="<?php echo e(url('/admin/absen')); ?>">Absen</a>
-            <a class="collapse-item" href="<?php echo e(url('/admin/data-kehadiran')); ?>">Data Kehadiran</a>
+            <a class="collapse-item" href="<?php echo e(url('/admin/absen/data-kehadiran')); ?>">Data Kehadiran</a>
           </div>
         </div>
       </li>
@@ -168,42 +174,6 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <!-- Filter Data Cuti Modal-->
-  <div class="modal fade" id="filterModalCuti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Filter Modal</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-          <div class="modal-body">
-            <div class="form-group">
-                <select class="form-control" id="keywordStatusCuti">
-                  <option value="">-- Cari Berdasarkan Status --</option>
-                  <option value="Diterima">Diterima</option>
-                  <option value="Diproses">Diproses</option>
-                  <option value="Ditolak">Ditolak</option>
-                </select>
-            </div>
-            <div class="form-group row">
-              <div class="col-6">
-                <input type="date" id="keywordTglAwalCuti" class="form-control">
-              </div>
-              <div class="col-6">
-                <input type="date" id="keywordTglAkhirCuti" class="form-control">
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <button class="btn btn-primary" id="filterCuti" data-dismiss="modal">Filter Data</button>
-          </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -240,8 +210,9 @@
   <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/chart.js/Chart.min.js"></script>
   
   <!-- Page level custom scripts -->
-  <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/chart-area-demo.js"></script>
-  <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/chart-pie-demo.js"></script>
+  
+  <?php echo $__env->yieldContent('grafik'); ?>
+  
   
   <!-- Page level plugins -->
   <script src="<?php echo e(asset('sbadmin2')); ?>/vendor/datatables/jquery.dataTables.min.js"></script>
@@ -249,33 +220,58 @@
   
   <!-- Page level custom scripts -->
   <script src="<?php echo e(asset('sbadmin2')); ?>/js/demo/datatables-demo.js"></script>
+
+  
+  <script src="<?php echo e(asset('dist/js/select2.min.js')); ?>"></script>
+
+  
+  <script src="<?php echo e(asset('datepicker.min.js')); ?>"></script>
+
   
   <script>
     $(document).ready(function () {
+      $("#a").hide();
+      $("#c").hide();
     // Script Untuk Absen
       $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
       });
 
-    // Script Untuk Filter Data Cuti
-      $("#filterCuti").click(function () {
-        const status = $("#keywordStatusCuti").val();
-        const tglAwal = $("#keywordTglAwalCuti").val();
-        const tglakhir = $("#keywordTglAkhirCuti").val();
-
-        $.ajax({
-          type: 'get',
-          dataType: 'html',
-          url: '<?php echo e(url('/admin/cuti/filter')); ?>',
-          data: 'status='+status+'&awal='+tglAwal+'&akhir='+tglakhir,
-          success: function (response) {
-            $("#tampungan").html(response);
-          }
-        });
+      $("#submit").click( function(){
+      const tglAwal = $("#KeywordtglAwal").val();
+      const tglAkhir = $("#KeywordtglAkhir").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '<?php echo e(url('/admin/transaksi-filter')); ?>',
+        data: 'Awal='+tglAwal+'&Akhir='+tglAkhir,
+        success: function(response){
+          $("#tampungan").html(response);
+        }
       });
     });
+
+    $("#submit").click( function(){
+      const tglAwal = $("#Tglawal").val();
+      const tglAkhir = $("#Tglakhir").val();
+      // alert(kategori);
+      $.ajax({
+        type: 'get',
+        dataType: 'html',
+        url: '<?php echo e(url('/admin/transaksi-filter/kembali')); ?>',
+        data: 'Awal='+tglAwal+'&Akhir='+tglAkhir,
+        success: function(response){
+          $("#tampungan_pengembalian").html(response);
+        }
+      });
+    });
+
+    });
   </script>
+
+<?php echo $__env->yieldContent('footer'); ?>
 
 </body>
 

@@ -43,7 +43,7 @@ class AuthController extends Controller
             } else {
                 return redirect('/');
             }
-        } else return redirect('/login');
+        } else return redirect('/login')->with('danger', 'Email atau Password anda salah');
     }
 
     /**

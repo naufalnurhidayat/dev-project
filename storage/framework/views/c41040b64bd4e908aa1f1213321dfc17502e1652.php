@@ -146,6 +146,20 @@
           }
         });
       });
+      
+      $("#kategori").click(function(){
+        const kategori = $("#kategori").val();
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          url: '<?php echo e(url('/kategori')); ?>',
+          data: 'kategori_id=' + kategori,
+          success:function(response){
+            console.log(response);
+            $("#barang").html(response);
+          }
+        });
+      });
     });
   </script>
 

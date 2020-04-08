@@ -52,7 +52,8 @@
                 <td>{{ $c->User['nama'] }}</td>
                 <td>{{ $c->User['jenkel'] }}</td>
                 <td>{{ $c->User->Stream['stream'] }}</td>
-                <td>{{ $c->tgl_cuti }}</td>
+                @php $newTgl_cuti = explode(' ', $c->tgl_cuti); @endphp
+                <td>{{ $newTgl_cuti[0] }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                 <td>
                   @if ($c->status == 'Diterima')
@@ -64,11 +65,12 @@
                   @endif
                 </td>
                 <td>
-                  @if ($c->status === 'Diterima')
+                  <a href="{{url('/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>    
+                  {{-- @if ($c->status === 'Diterima')
                     <a class="btn btn-primary btn-block" href="{{url('/cuti/tambah_cuti/'.$c->id)}}" id="modalTambahCuti">
                       <i class="fas fa-calendar-plus"></i> Perpanjang Cuti
                     </a>
-                  @endif
+                  @endif --}}
                 </td>
               </tr>
             @endforeach
