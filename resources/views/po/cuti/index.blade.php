@@ -88,7 +88,7 @@
                                   </div>
                                   <div class="modal-footer">
                                       <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                      <button class="btn btn-success btn-sm" type="submit" name="status" value="Diterima">Terima</button>
+                                      <button class="btn btn-success" type="submit" name="status" value="Diterima">Terima</button>
                                   </div>
                                 </form>
                               </div>

@@ -253,7 +253,7 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::get('/po/cuti/create', 'PO\CutiController@create');
 			Route::get('/po/cuti/filterPo', 'PO\CutiController@filterPo');
 			Route::get('/po/cuti/filter', 'PO\CutiController@filterData');
-			Route::get('/po/cuti/{cuti}', 'PO\CutiController@show');
+			Route::get('/po/cuti/{cuti}', 'PO\CutiController@detailCutiPo');
 			Route::get('/po/cuti/detail/{cuti}', 'PO\CutiController@detailCuti');
 			Route::post('/po/cuti', 'PO\CutiController@store');
       Route::patch('/po/cuti/{cuti}', 'PO\CutiController@update');

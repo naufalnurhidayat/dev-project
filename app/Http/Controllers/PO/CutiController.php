@@ -116,6 +116,24 @@ class CutiController extends Controller
         return redirect('/po/cuti/show')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
     }
 
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Cuti  $cuti
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function detailCutiPo(Cuti $cuti)
+    {
+        return view('po/cuti/detailCutiPo', compact('cuti'));
+    }
+    
+    public function detailCuti(Cuti $cuti)
+    {
+        return view('po/cuti/detailCuti', compact('cuti'));
+    }
+
     public function filterPo(Request $request)
     {
         $cuti;
@@ -154,23 +172,6 @@ class CutiController extends Controller
         //                 ->get();
         // }
         // return view('/cuti/filter', compact('cuti'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Cuti  $cuti
-     * @return \Illuminate\Http\Response
-     */
-
-    public function detailCuti(Cuti $cuti)
-    {
-        return view('po/cuti/detailCuti', compact('cuti'));
-    }
-    
-    public function detailCutiPo(Cuti $cuti)
-    {
-        return view('po/cuti/detailCutiPo', compact('cuti'));
     }
 
     /**
