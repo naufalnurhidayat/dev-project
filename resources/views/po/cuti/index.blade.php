@@ -39,19 +39,21 @@
               <tr>
                 <th>No</th>
                 <th>Karyawan</th>
+                <th>Stream</th>
                 <th>Tanggal Cuti</th>
                 <th>Jenis Cuti</th>
                 <th>Status</th> 
                 <th>Aksi</th>
               </tr>
             </thead>
-            <tbody id="tampungan">
+            <tbody id="tampunganIndexCuti">
               @php $i=1; @endphp
               @foreach($cuti as $c)
                 @if ($c->id_karyawan != auth()->user()->id)                  
                   <tr align="center">
                     <td>{{ $i++ }}</td>
                     <td>{{ $c->User['nama'] }}</td>
+                    <td>{{ $c->User->stream['stream'] }}</td>
                     @php $newTgl_cuti = explode(' ', $c->tgl_cuti); @endphp
                     <td>{{ $newTgl_cuti[0] }}</td>
                     <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
@@ -65,7 +67,7 @@
                       @endif
                     </td>
                     <td>
-                      @if ($c->status == "Diterima" || $c->status == "Ditolak")
+                      @if ($c->user->role->role == 'Admin' || $c->user->role->role == 'Scrum Master' || $c->status == "Diterima" || $c->status == "Ditolak")
                         <a href="{{url('/po/cuti/detail/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>    
                       @else
                         <a href="{{url('/po/cuti/detail/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
@@ -183,10 +185,10 @@ $(document).ready(function(){
     $.ajax({
       type: 'get',
       dataType: 'html',
-      url: '{{url('/admin/cuti/filter')}}',
+      url: '{{url('/po/cuti/filter')}}',
       data: 'status='+status+'&awal='+tglAwal+'&akhir='+tglakhir,
       success: function (response) {
-        $("#tampungan").html(response);
+        $("#tampunganIndexCuti").html(response);
       }
     });
   });

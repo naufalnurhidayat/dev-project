@@ -80,7 +80,8 @@ class CutiController extends Controller
         // Mengecek tanggal yg diajukan, apakah sudah dicutikan
         foreach ($cutiTerakhir as $c) {
             if (strtotime($awal) >= strtotime($c->awal_cuti) && strtotime($awal) <= strtotime($c->akhir_cuti) || strtotime($akhir) >= strtotime($c->awal_cuti) && strtotime($akhir) <= strtotime($c->akhir_cuti)) {
-                return redirect('/cuti/create')->with('status', 'Anda sudah mengajukan cuti ditanggal '.$c->awal_cuti.' sampai '.$c->akhir_cuti.', Silahkan pilih tanggal awal cuti atau akhir cuti lain');
+                $status = ($c->status == 'Diterima') ? 'sudah Diterima' : 'masih Diproses' ;
+                return redirect('/cuti/create')->with('status', 'Anda sudah mengajukan cuti ditanggal '.$c->awal_cuti.' sampai '.$c->akhir_cuti.' dan statusnya '. $status .', Silahkan pilih tanggal awal cuti atau akhir cuti setelah tanggal itu');
             }
         }
         // $date_diff = date_diff(date_create($request->awal), date_create($request->akhir))->d;

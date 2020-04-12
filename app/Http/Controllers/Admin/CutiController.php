@@ -22,6 +22,12 @@ class CutiController extends Controller
         return view('admin/cuti/index', ['cuti' => $cuti]);
     }
 
+    public function cutiAdmin()
+    {
+        $cuti = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
+        return view('admin/cuti/show', ['cuti' => $cuti]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,11 +35,11 @@ class CutiController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->jatah_cuti == 0) {
-            return redirect('/admin/cuti/show')->with('jatah', 'Sisa Cuti Andan Tidak Cukup');
-        }
-        $jencut = JenisCuti::all();
-        return view('admin/cuti/create', ['jencut' => $jencut]);
+        // if (auth()->user()->jatah_cuti == 0) {
+        //     return redirect('/admin/cuti/show')->with('jatah', 'Sisa Cuti Andan Tidak Cukup');
+        // }
+        // $jencut = JenisCuti::all();
+        // return view('admin/cuti/create', ['jencut' => $jencut]);
     }
 
     /**
@@ -44,48 +50,48 @@ class CutiController extends Controller
      */
     public function store(Request $request)
     {
-        date_default_timezone_set("Asia/Jakarta");
-        if ($request->awal == $request->akhir) {
-            $request->validate([
-                'jencut' => 'required|numeric',
-                'awal' => 'required|date',
-                'akhir' => 'required|date',
-                'totalCuti' => 'required|numeric',
-                'alasan' => 'required'
-            ]);
-        } else {
-            $request->validate([
-                'jencut' => 'required|numeric',
-                'awal' => 'required|date|before:akhir',
-                'akhir' => 'required|date|after:awal',
-                'totalCuti' => 'required|numeric',
-                'alasan' => 'required'
-            ]);
-        }
-    // Awal Cuti
-        $explodeAwal = explode('/', $request->awal);
-        $newAwal = [$explodeAwal[2], $explodeAwal[0], $explodeAwal[1]];
-        $awal = implode('-', $newAwal);
-    // Akhir Cuti
-        $explodeAkhir = explode('/', $request->akhir);
-        $newAkhir = [$explodeAkhir[2], $explodeAkhir[0], $explodeAkhir[1]];
-        $akhir = implode('-', $newAkhir);
-        // $date_diff = date_diff(date_create($request->awal), date_create($request->akhir))->d;
-        // $total = $date_diff;
-        if ($request->jencut == 1 && auth()->user()->jatah_cuti < $request->totalCuti) {
-            return redirect('/admin/cuti/create')->with('status', 'Sisa Cuti anda tidak cukup');
-        }
-        Cuti::create([
-            'id_karyawan' => auth()->user()->id,
-            'id_jenis_cuti' => $request->jencut,
-            'tgl_cuti' => date("Y-m-d H:i:s"),
-            'awal_cuti' => $awal,
-            'akhir_cuti' => $akhir,
-            'total_cuti' => $request->totalCuti,
-            'alasan_cuti' => $request->alasan,
-            'status' => 'Diproses'
-        ]);
-        return redirect('/admin/cuti/show')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
+    //     date_default_timezone_set("Asia/Jakarta");
+    //     if ($request->awal == $request->akhir) {
+    //         $request->validate([
+    //             'jencut' => 'required|numeric',
+    //             'awal' => 'required|date',
+    //             'akhir' => 'required|date',
+    //             'totalCuti' => 'required|numeric',
+    //             'alasan' => 'required'
+    //         ]);
+    //     } else {
+    //         $request->validate([
+    //             'jencut' => 'required|numeric',
+    //             'awal' => 'required|date|before:akhir',
+    //             'akhir' => 'required|date|after:awal',
+    //             'totalCuti' => 'required|numeric',
+    //             'alasan' => 'required'
+    //         ]);
+    //     }
+    // // Awal Cuti
+    //     $explodeAwal = explode('/', $request->awal);
+    //     $newAwal = [$explodeAwal[2], $explodeAwal[0], $explodeAwal[1]];
+    //     $awal = implode('-', $newAwal);
+    // // Akhir Cuti
+    //     $explodeAkhir = explode('/', $request->akhir);
+    //     $newAkhir = [$explodeAkhir[2], $explodeAkhir[0], $explodeAkhir[1]];
+    //     $akhir = implode('-', $newAkhir);
+    //     // $date_diff = date_diff(date_create($request->awal), date_create($request->akhir))->d;
+    //     // $total = $date_diff;
+    //     if ($request->jencut == 1 && auth()->user()->jatah_cuti < $request->totalCuti) {
+    //         return redirect('/admin/cuti/create')->with('status', 'Sisa Cuti anda tidak cukup');
+    //     }
+    //     Cuti::create([
+    //         'id_karyawan' => auth()->user()->id,
+    //         'id_jenis_cuti' => $request->jencut,
+    //         'tgl_cuti' => date("Y-m-d H:i:s"),
+    //         'awal_cuti' => $awal,
+    //         'akhir_cuti' => $akhir,
+    //         'total_cuti' => $request->totalCuti,
+    //         'alasan_cuti' => $request->alasan,
+    //         'status' => 'Diproses'
+    //     ]);
+    //     return redirect('/admin/cuti/show')->with('status', 'Pengajuan Cuti Berhasil Dibuat');
     }
 
     /**
@@ -113,46 +119,10 @@ class CutiController extends Controller
         }
         return view('admin/cuti/filter', compact('cuti'));
     }
-
-    public function filterDataAnda(Request $request)
-    {
-        $cuti;
-        if (empty($request->status) && empty($request->awal) && empty($request->akhir)) {
-            $cuti = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
-        } elseif (empty($request->awal) || empty($request->akhir)) {
-            $cuti = Cuti::where('id_karyawan', auth()->user()->id)->where('status', $request->status)->orderBy('tgl_cuti', 'desc')->get();
-        } elseif (empty($request->status)) {
-            $cuti = Cuti::where('id_karyawan', auth()->user()->id)->whereDate('tgl_cuti', '>=', $request->awal)->whereDate('tgl_cuti', '<=', $request->akhir)->orderBy('tgl_cuti', 'desc')->get();
-        } else {
-            $cuti = Cuti::where('id_karyawan', auth()->user()->id)
-                        ->whereDate('tgl_cuti', '>=', $request->awal)
-                        ->whereDate('tgl_cuti', '<=', $request->akhir)
-                        ->where('status', $request->status)
-                        ->orderBy('tgl_cuti', 'desc')
-                        ->get();
-        }
-        return view('admin/cuti/filterAnda', compact('cuti'));
-    }
     
     public function detailCuti(Cuti $cuti)
     {
         return view('admin/cuti/detailCuti', compact('cuti'));
-    }
-
-    public function detailCutiAnda(Cuti $cuti)
-    {
-        return view('admin/cuti/detailCutiAnda', compact('cuti'));
-    }
-
-    public function show(Cuti $cuti)
-    {
-        //
-    }
-
-    public function cutiAdmin()
-    {
-        $cuti = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
-        return view('admin/cuti/show', ['cuti' => $cuti]);
     }
 
     /**

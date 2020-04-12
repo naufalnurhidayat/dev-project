@@ -128,7 +128,7 @@ class CutiController extends Controller
     {
         return view('po/cuti/detailCutiPo', compact('cuti'));
     }
-    
+
     public function detailCuti(Cuti $cuti)
     {
         return view('po/cuti/detailCuti', compact('cuti'));
@@ -156,22 +156,32 @@ class CutiController extends Controller
 
     public function filterData(Request $request)
     {
-        // $cuti;
-        // if (empty($request->status) && empty($request->awal) && empty($request->akhir)) {
-        //     $cuti = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
-        // } elseif (empty($request->awal) || empty($request->akhir)) {
-        //     $cuti = Cuti::where('id_karyawan', auth()->user()->id)->where('status', $request->status)->orderBy('tgl_cuti', 'desc')->get();
-        // } elseif (empty($request->status)) {
-        //     $cuti = Cuti::where('id_karyawan', auth()->user()->id)->whereDate('tgl_cuti', '>=', $request->awal)->whereDate('tgl_cuti', '<=', $request->akhir)->orderBy('tgl_cuti', 'desc')->get();
-        // } else {
-        //     $cuti = Cuti::where('id_karyawan', auth()->user()->id)
-        //                 ->whereDate('tgl_cuti', '>=', $request->awal)
-        //                 ->whereDate('tgl_cuti', '<=', $request->akhir)
-        //                 ->where('status', $request->status)
-        //                 ->orderBy('tgl_cuti', 'desc')
-        //                 ->get();
-        // }
-        // return view('/cuti/filter', compact('cuti'));
+        $cuti;
+        $u = User::where('id', auth()->user()->id)->with('projek')->get();
+        $projek;
+        foreach ($u[0]->projek as $p) {
+            $projek = $p->id;
+        }
+        $projek_karyawan = Projek::where('id', $projek)->with('user')->get();
+        $data_cuti = [];
+        foreach ($projek_karyawan[0]->user as $pk) {
+            $data_cuti[] = $pk->id;
+        }
+        if (empty($request->status) && empty($request->awal) && empty($request->akhir)) {
+            $cuti = Cuti::whereIn('id_karyawan', $data_cuti)->orderBy('tgl_cuti', 'desc')->get();
+        } elseif (empty($request->awal) || empty($request->akhir)) {
+            $cuti = Cuti::whereIn('id_karyawan', $data_cuti)->where('status', $request->status)->orderBy('tgl_cuti', 'desc')->get();
+        } elseif (empty($request->status)) {
+            $cuti = Cuti::whereIn('id_karyawan', $data_cuti)->whereDate('tgl_cuti', '>=', $request->awal)->whereDate('tgl_cuti', '<=', $request->akhir)->orderBy('tgl_cuti', 'desc')->get();
+        } else {
+            $cuti = Cuti::whereIn('id_karyawan', $data_cuti)
+                        ->whereDate('tgl_cuti', '>=', $request->awal)
+                        ->whereDate('tgl_cuti', '<=', $request->akhir)
+                        ->where('status', $request->status)
+                        ->orderBy('tgl_cuti', 'desc')
+                        ->get();
+        }
+        return view('/po/cuti/filter', compact('cuti'));
     }
 
     /**
