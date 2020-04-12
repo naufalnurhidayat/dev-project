@@ -18,6 +18,11 @@
           <div class="table-responsive">
             <table class="table table-striped" cellspacing="0">
               <tr>
+                <td>NIP</td>
+                <td>:</td>
+                <td><strong>{{$cuti->User['nip']}}</strong></td>
+              </tr>
+              <tr>
                 <td>Nama Karyawan</td>
                 <td>:</td>
                 <td><strong>{{$cuti->User['nama']}}</strong></td>
@@ -33,9 +38,19 @@
                 <td><strong>{{$cuti->user->jenkel}}</strong></td>
               </tr>
               <tr>
+                <td>Pendidikan</td>
+                <td>:</td>
+                <td><strong>{{$cuti->user->pendidikan['pendidikan']}}</strong></td>
+              </tr>
+              <tr>
                 <td>Stream</td>
                 <td>:</td>
                 <td><strong>{{$cuti->user->stream['stream']}}</strong></td>
+              </tr>
+              <tr>
+                <td>Agama</td>
+                <td>:</td>
+                <td><strong>{{$cuti->user->agama}}</strong></td>
               </tr>
               <tr>
                 <td>Tanggal Cuti</td>
@@ -130,7 +145,7 @@
               </div>
               <div class="modal-footer">
                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                  <button class="btn btn-success btn-sm" type="submit" name="status" value="Diterima">Terima</button>
+                  <button class="btn btn-success" type="submit" name="status" value="Diterima">Terima</button>
               </div>
             </form>
           </div>

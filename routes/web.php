@@ -247,11 +247,12 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::post('/po/absen', 'PO\AbsensiController@store');
 			Route::get('/po/absen/filter', 'PO\AbsensiController@filterAbsen');
 		
-			//Cuti
+			// Cuti
 			Route::get('/po/cuti', 'PO\CutiController@index');
 			Route::get('/po/cuti/show', 'PO\CutiController@cutiPo');
 			Route::get('/po/cuti/create', 'PO\CutiController@create');
-			Route::get('/po/cuti/filter', 'Admin\CutiController@filterData');
+			Route::get('/po/cuti/filterPo', 'PO\CutiController@filterPo');
+			Route::get('/po/cuti/filter', 'PO\CutiController@filterData');
 			Route::get('/po/cuti/{cuti}', 'PO\CutiController@show');
 			Route::get('/po/cuti/detail/{cuti}', 'PO\CutiController@detailCuti');
 			Route::post('/po/cuti', 'PO\CutiController@store');
@@ -276,9 +277,8 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::get('/cuti', 'CutiController@index');
 			Route::get('/cuti/create', 'CutiController@create');
 			Route::get('/cuti/{cuti}', 'CutiController@show');
+			Route::get('/user/cuti/filter', 'CutiController@filterData');
 			Route::post('/cuti', 'CutiController@store');
-			Route::get('/cuti/tambah_cuti/{cuti}', 'CutiController@editCuti');
-			Route::patch('/cuti/{cuti}', 'CutiController@tambahCuti');
 		
 			//Invetaris
 			Route::get('/invetaris', 'barangController@index');

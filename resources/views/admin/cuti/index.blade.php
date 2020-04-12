@@ -39,6 +39,7 @@
               <tr>
                 <th>No</th>
                 <th>Karyawan</th>
+                <th>Stream</th>
                 <th>Tanggal Cuti</th>
                 <th>Jenis Cuti</th>
                 <th>Status</th> 
@@ -50,6 +51,7 @@
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $c->User['nama'] }}</td>
+                <td>{{ $c->User->Stream['stream'] }}</td>
                 @php $newTgl_cuti = explode(' ', $c->tgl_cuti); @endphp
                 <td>{{ $newTgl_cuti[0] }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
@@ -67,8 +69,8 @@
                     <form action="{{url('/admin/cuti/'.$c->id)}}" method="post">
                       @csrf
                       @method('delete')
-                      <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>
-                      <button class="btn btn-danger btn-sm" type="submit" name="status"><i class="fa fa-trash"></i> Hapus</button>
+                      <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
+                      <button class="btn btn-secondary btn-sm" type="submit" name="status" onclick="return confirm('Yakin Ingin Menghapus?');"><i class="fa fa-trash"></i></button>
                     </form>
                   @else
                     <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>

@@ -3,7 +3,7 @@
 @section('title', 'Form Pengajuan Cuti')
 
 @section('content')
-    <div class="container">
+    <div class="container mb-5">
       @if (session('status'))
         <div class="alert alert-danger">
           {{ session('status') }}
@@ -11,7 +11,7 @@
       @endif
       <div class="row mx-auto">
         <div class="col">
-          <h3 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h3>
+          <h4 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h4>
           <form action="{{ url('/po/cuti') }}" method="post">
             @csrf
             <div class="form-group">
@@ -21,35 +21,35 @@
             </div>
             <div class="form-group">
               <label for="jencut">Jenis Cuti</label>
-              <select  class="form-control @error('jencut') is-invalid @enderror" name="jencut" id="jencut">
+              <select  class="form-control @error('Jenis_Cuti') is-invalid @enderror" name="Jenis_Cuti" id="jencut">
                   <option value="">-- Pilih Jenis Cuti --</option>
                 @foreach ($jencut as $j)
                   <option value="{{$j->id}}">{{$j->jenis_cuti}}</option>
                 @endforeach
               </select>
-              @error('jencut')<div class="invalid-feedback">{{ $message }}</div>@enderror
+              @error('Jenis_Cuti')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-group row">
               <div class="col-6">
-                <label for="awal">Awal Cuti</label>
-                <input type="text" autocomplete="off" readonly class="form-control @error('awal') is-invalid @enderror" name="awal" id="datePickerAwalCuti" value="{{ old('awal') }}">
-                @error('awal')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                <label for="datePickerAwalCuti">Awal Cuti</label>
+                <input type="text" autocomplete="off" readonly class="form-control @error('Awal_Cuti') is-invalid @enderror" name="Awal_Cuti" id="datePickerAwalCuti" value="{{ old('Awal_Cuti') }}">
+                @error('Awal_Cuti')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
               <div class="col-6">
-                <label for="akhir">akhir Cuti</label>
-                <input type="text" autocomplete="off" readonly class="form-control @error('akhir') is-invalid @enderror" name="akhir" id="datePickerAkhirCuti" value="{{ old('akhir') }}">
-                @error('akhir')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                <label for="datePickerAkhirCuti">Akhir Cuti</label>
+                <input type="text" autocomplete="off" readonly class="form-control @error('Akhir_Cuti') is-invalid @enderror" name="Akhir_Cuti" id="datePickerAkhirCuti" value="{{ old('Akhir_Cuti') }}">
+                @error('Akhir_Cuti')<div class="invalid-feedback">{{ $message }}</div>@enderror
               </div>
             </div>
             <div class="form-group">
               <label for="totalCuti">Total Cuti</label>
-              <input type="number" min="1" class="form-control @error('totalCuti') is-invalid @enderror" name="totalCuti" id="totalCuti" value="{{ old('totalCuti') }}">
-              @error('totalCuti')<div class="invalid-feedback">{{ $message }}</div>@enderror
+              <input type="number" min="1" class="form-control @error('Total_Cuti') is-invalid @enderror" name="Total_Cuti" id="totalCuti" value="{{ old('Total_Cuti') }}">
+              @error('Total_Cuti')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-group">
               <label for="alasan">Alasan Cuti</label>
-              <textarea class="form-control @error('alasan') is-invalid @enderror" name="alasan" id="alasan" rows="3">{{ old('alasan') }}</textarea>
-                @error('alasan')<div class="invalid-feedback">{{ $message }}</div>@enderror
+              <textarea class="form-control @error('Alasan_Cuti') is-invalid @enderror" name="Alasan_Cuti" id="alasan" rows="3">{{ old('Alasan_Cuti') }}</textarea>
+                @error('Alasan_Cuti')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <button type="submit" class="btn btn-success float-right">Submit</button>
             <a href="{{url('/cuti')}}" class="btn btn-danger float-right mr-2">Kembali</a>
