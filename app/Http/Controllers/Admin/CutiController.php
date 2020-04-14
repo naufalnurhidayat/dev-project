@@ -126,8 +126,8 @@ class CutiController extends Controller
 
     public function cutiAdmin()
     {
-        $ct = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
-        return view('admin/cuti/show', ['ct' => $ct]);
+        $cuti = Cuti::where('id_karyawan', auth()->user()->id)->orderBy('tgl_cuti', 'desc')->get();
+        return view('admin/cuti/show', compact('cuti'));
     }
 
     /**

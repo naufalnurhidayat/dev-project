@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Absen;
 use App\User;
 use App\Stream;
+use App\Cuti;
 use Illuminate\Http\Request;
 
 class AbsenController extends Controller
@@ -42,7 +43,6 @@ class AbsenController extends Controller
         date_default_timezone_set("Asia/Jakarta");
 
         $buttonIzin = $request->izin;
-
         $user = Absen::where([
             ['id_karyawan', '=', auth()->user()->id],
             ['tanggal', '=', date('Y-m-d')]

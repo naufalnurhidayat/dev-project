@@ -59,7 +59,7 @@ unset($__errorArgs, $__bag); ?>
             <div class="form-group row">
               <div class="col-6">
                 <label for="awal">Awal Cuti</label>
-                <input type="text" class="form-control <?php $__errorArgs = ['awal'];
+                <input type="text" autocomplete="off" readonly class="form-control <?php $__errorArgs = ['awal'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -78,7 +78,7 @@ unset($__errorArgs, $__bag); ?>
               </div>
               <div class="col-6">
                 <label for="akhir">akhir Cuti</label>
-                <input type="text" class="form-control <?php $__errorArgs = ['akhir'];
+                <input type="text" autocomplete="off" readonly class="form-control <?php $__errorArgs = ['akhir'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -98,14 +98,14 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <div class="form-group">
               <label for="totalCuti">Total Cuti</label>
-              <input type="number" min="1" max="90" class="form-control <?php $__errorArgs = ['totalCuti'];
+              <input type="number" min="1" class="form-control <?php $__errorArgs = ['totalCuti'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="totalCuti" value="<?php echo e(old('totalCuti')); ?>">
+unset($__errorArgs, $__bag); ?>" name="totalCuti" id="totalCuti" value="<?php echo e(old('totalCuti')); ?>">
               <?php $__errorArgs = ['totalCuti'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -145,26 +145,58 @@ unset($__errorArgs, $__bag); ?>
 <?php $__env->startSection('footer'); ?>
 <script>
   $(document).ready(function(){
-    // $("#jencut").change(function () {
-    //   const jencut = $("#jencut").val();
-    //   if (jencut == 1) {
-    //     $.ajax({
-    //       type: 'get',
-    //       dataType: 'html',
-    //       success: function () {
-            
-    //       }
-    //     });
-    //   }
-    // });
 
     const pickerAwalCuti = datepicker('#datePickerAwalCuti', {
+      formatter: (input, date, instance) => {
+        input.value = date.toLocaleDateString()
+      },
       minDate: new Date(<?php echo e(date('Y')); ?>, <?php echo e(date('m')-1); ?>, <?php echo e(date('d')); ?>),
       noWeekends: true
     });
+    
     const pickerAkhirCuti = datepicker('#datePickerAkhirCuti', {
+      formatter: (input, date, instance) => {
+        input.value = date.toLocaleDateString()
+      },
       minDate: new Date(<?php echo e(date('Y')); ?>, <?php echo e(date('m')-1); ?>, <?php echo e(date('d')); ?>),
       noWeekends: true
+    });
+
+    $("#jencut").change(function () {
+      const jencut = $("#jencut").val();
+      if (jencut == 1) {
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          success: function () {
+            $("#totalCuti").attr('max', '12');
+          }
+        });
+      } else if (jencut == 2) {
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          success: function () {
+            $("#totalCuti").attr('max', '90');
+          }
+        });
+      } else if (jencut == 3) {
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          success: function () {
+            $("#totalCuti").attr('max', '3');
+          }
+        });
+      } else {
+        $.ajax({
+          type: 'get',
+          dataType: 'html',
+          success: function () {
+            $("#totalCuti").removeAttr('max');
+          }
+        });
+      }
     });
 
   });

@@ -20,9 +20,6 @@
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h3 class="m-0 font-weight-bold text-primary mb-2">Data Kehadiran Karyawan</h3>
-      <a href="{{ url('/admin/absen/exportexcel') }}" class="btn btn-success btn-sm" onclick="return confirm('Download Excel?');"><i class="fas fa-file-download mr-1"></i>Export Execel</a>
-      <a href="{{ url('/admin/absen/exportpdf') }}" class="btn btn-danger btn-sm" onclick="return confirm('Download PDF?');" id="exportPdf"><i class="fas fa-file-download mr-1"></i></i>Export PDF</a>
-      <a href="{{ url('/admin/absen/cetak') }}" id="cetak" class="btn btn-warning btn-sm" target="_blank"><i class="fas fa-print mr-1"></i>Cetak Data</a>
       <a href="#" class="btn btn-primary btn-sm" data-target="#filter" data-toggle="modal"><i class="fas fa-filter mr-1"></i>Filter Data</a>
     </div>
     <div class="card-body">
@@ -91,7 +88,7 @@
           <div class="row mb-3">
             <div class="col">
               <select id="nama" class="form-control js-example-basic-single" name="nama">
-                <option value="">Pilih Nama</option>
+                <option value="">--Pilih Nama--</option>
                 @foreach($data_karyawan as $dk)
                 <option value="{{$dk->id}}">{{$dk->nama}}</option>
                 @endforeach

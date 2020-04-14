@@ -174,11 +174,38 @@ class AbsensiController extends Controller
         return view('admin/absen/filter', compact('data_absen'));
     }
 
-    public function cetakDataAbsen(Request $request)
+    public function cetak()
     {
-        return $request;
+        $data_absen = Absen::all();
+        return view('admin/absen/cetak', compact('data_absen'));
+    }
+
+    public function cetakAll()
+    {
         $absen = Absen::all();
-        $pdf = PDF::loadView('admin/absen/cetak', compact('absen'));
+        $pdf = PDF::loadView('admin/absen/cetak_data', compact('absen'));
         return $pdf->stream('Data Absensi.pdf');
+    }
+
+    public function cetakBulan()
+    {
+        $tanggal_awal = date('Y-m-d', time()-60*60*24*30);
+        $tanggal_akhir = date('Y-m-d');
+        $absen = Absen::whereBetween('tanggal', [$tanggal_awal, $tanggal_akhir])->get();
+        $pdf = PDF::loadView('admin/absen/cetak_data', compact('absen'));
+        return $pdf->stream('Data Absensi.pdf');
+    }
+    
+    public function cetakNama($id)
+    {
+        $absen = Absen::where('id_karyawan', $id)->get();
+        $pdf = PDF::loadView('admin/absen/cetak_data', compact('absen'));
+        return $pdf->stream('Data Absensi.pdf');
+    }
+    
+    public function detailCetak($id)
+    {
+        $data_absen = Absen::where('id_absen', $id)->first();
+        return view('admin/absen/detail_cetak', compact('data_absen'));
     }
 }
