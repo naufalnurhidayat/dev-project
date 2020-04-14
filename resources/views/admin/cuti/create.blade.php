@@ -12,7 +12,7 @@
       <div class="row mx-auto">
         <div class="col">
           <h3 class="mb-4"><i class="fas fa-calendar-alt"></i> Form Pengajuan Cuti</h3>
-          <form action="{{ url('/cuti') }}" method="post">
+          <form action="{{ url('/admin/cuti/show') }}" method="post">
             @csrf
             <div class="form-group">
               <label for="karyawan">Karyawan</label>
@@ -52,7 +52,7 @@
                 @error('alasan')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <button type="submit" class="btn btn-success float-right">Submit</button>
-            <a href="{{url('/cuti')}}" class="btn btn-danger float-right mr-2">Kembali</a>
+            <a href="{{url('/admin/cuti')}}" class="btn btn-danger float-right mr-2">Kembali</a>
           </form>
         </div>
       </div>
