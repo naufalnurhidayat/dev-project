@@ -34,39 +34,46 @@
           </div>
         </div>
         <div>
-          <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+          <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
             <thead class="bg-dark text-white">
               <tr>
                 <th>No</th>
                 <th>Karyawan</th>
+                <th>Stream</th>
                 <th>Tanggal Cuti</th>
                 <th>Jenis Cuti</th>
                 <th>Status</th> 
                 <th>Aksi</th>
               </tr>
             </thead>
-            <tbody id="tampungan">
+            <tbody class="table table-bordered" id="tampunganIndexCuti">
               @foreach($cuti as $c)
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $c->User['nama'] }}</td>
+                <td>{{ $c->User->Stream['stream'] }}</td>
                 @php $newTgl_cuti = explode(' ', $c->tgl_cuti); @endphp
                 <td>{{ $newTgl_cuti[0] }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                 <td>
                   @if ($c->status == "Diterima")
-                      <span class="badge badge-success">{{ $c->status }}</span>
+                    <span class="badge badge-success">{{ $c->status }}</span>
                   @elseif ($c->status == "Ditolak")
-                      <span class="badge badge-danger">{{ $c->status }}</span>
+                    <span class="badge badge-danger">{{ $c->status }}</span>
                   @else
-                      <span class="badge badge-warning">{{ $c->status }}</span>
+                    <span class="badge badge-warning">{{ $c->status }}</span>
                   @endif
                 </td>
                 <td>
                   @if ($c->status == "Diterima" || $c->status == "Ditolak")
-                    <a href="{{url('/admin/cuti/detail/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a>    
+                    <form action="{{url('/admin/cuti/'.$c->id)}}" method="post">
+                      @csrf
+                      @method('delete')
+                      <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
+                      <button class="btn btn-secondary btn-sm" type="submit" name="status" onclick="return confirm('Yakin Ingin Menghapus?');"><i class="fa fa-trash"></i></button>
+                    </form>
                   @else
-                    <a href="{{url('/admin/cuti/detail/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
+                    <a href="{{url('/admin/cuti/'.$c->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i></a>
                     <!-- Alasan Terima Modal-->
                       <a class="btn btn-success btn-sm" href="" data-toggle="modal" data-target=".terima-cuti-{{$c->id}}"><i class="fa fa-check"></i></a>
                       <div class="modal fade terima-cuti-{{$c->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -86,7 +93,7 @@
                               </div>
                               <div class="modal-footer">
                                   <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                  <button class="btn btn-success btn-sm" type="submit" name="status" value="Diterima">Terima</button>
+                                  <button class="btn btn-success" type="submit" name="status" value="Diterima">Terima</button>
                               </div>
                             </form>
                           </div>
@@ -130,7 +137,6 @@
   </div>
 </div>
 <!-- /.container-fluid -->
-
 @endsection
 
 @section('footer')
@@ -169,6 +175,7 @@
       </div>
     </div>
   </div>
+
 <script>
 $(document).ready(function(){
     // Script Untuk Filter Data Cuti
@@ -183,7 +190,7 @@ $(document).ready(function(){
       url: '{{url('/admin/cuti/filter')}}',
       data: 'status='+status+'&awal='+tglAwal+'&akhir='+tglakhir,
       success: function (response) {
-        $("#tampungan").html(response);
+        $("#tampunganIndexCuti").html(response);
       }
     });
   });

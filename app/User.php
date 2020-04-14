@@ -74,4 +74,8 @@ class User extends Authenticatable
     public function projek_karyawan() {
         return $this->hasMany('App\Projek_Karyawan', 'id');
     }
+
+    public function projek() {
+        return $this->belongsToMany('App\Projek', 'projek_karyawan', 'id_karyawan', 'id_projek');
+    }
 }
