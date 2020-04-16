@@ -41,7 +41,7 @@ class AbsenController extends Controller
     public function store(Request $request)
     {
         date_default_timezone_set("Asia/Jakarta");
-
+        
         $buttonIzin = $request->izin;
         $user = Absen::where([
             ['id_karyawan', '=', auth()->user()->id],
