@@ -18,6 +18,11 @@
           <div class="table-responsive">
             <table class="table table-striped" cellspacing="0">
               <tr>
+                <td>NIP</td>
+                <td>:</td>
+                <td><strong>{{$cuti->User['nip']}}</strong></td>
+              </tr>
+              <tr>
                 <td>Nama Karyawan</td>
                 <td>:</td>
                 <td><strong>{{$cuti->User['nama']}}</strong></td>
@@ -105,6 +110,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="text-center mt-3 mb-5 pb-5">
+    <a href="{{url('/cuti/')}}" class="btn btn-primary">Kembali</a>
   </div>
 </div>
 <!-- /.container-fluid -->

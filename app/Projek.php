@@ -12,4 +12,8 @@ class Projek extends Model
     public function projek_karyawan() {
         return $this->hasMany('App\Projek_Karyawan', 'id');
     }
+
+    public function user() {
+        return $this->belongsToMany('App\User', 'projek_karyawan', 'id_projek', 'id_karyawan');
+    }
 }

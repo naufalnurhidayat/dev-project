@@ -109,18 +109,23 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::get('/admin/absen/exportexcel', 'Admin\AbsensiController@exportExcel');
 			Route::get('/admin/absen/exportpdf', 'Admin\AbsensiController@exportPdf');
 			Route::get('/admin/absen/filter', 'Admin\AbsensiController@filterAbsen');
-			Route::get('/admin/absen/cetak', 'Admin\AbsensiController@cetakDataAbsen');
+			Route::get('/admin/absen/cetak', 'Admin\AbsensiController@cetak');
+			Route::get('/admin/absen/cetak/all', 'Admin\AbsensiController@cetakAll');
+			Route::get('/admin/absen/cetak/bulan', 'Admin\AbsensiController@cetakBulan');
+			Route::get('/admin/absen/cetak/{id}', 'Admin\AbsensiController@cetakNama');
+			Route::get('/admin/absen/cetak/detail/{id}', 'Admin\AbsensiController@detailCetak');
 		
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
-			Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
-			Route::get('/admin/cuti/create', 'Admin\CutiController@create');
 			Route::get('/admin/cuti/filter', 'Admin\CutiController@filterData');
-			Route::get('/admin/cuti/detail/{cuti}', 'Admin\CutiController@detailCuti');
-			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@show');
-			Route::post('/admin/cuti', 'Admin\CutiController@store');
+			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@detailCuti');
 			Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
-			
+			Route::delete('/admin/cuti/{cuti}', 'Admin\CutiController@destroy');
+			// Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
+			// Route::get('/admin/cuti/create', 'Admin\CutiController@create');
+			// Route::get('/admin/cuti/filterAnda', 'Admin\CutiController@filterDataAnda');
+			// Route::get('/admin/cuti/detail/{cuti}', 'Admin\CutiController@detailCutiAnda');
+			// Route::post('/admin/cuti/show', 'Admin\CutiController@store');
 		// --------------------------------------------------------------------------------------		
 	});
 
@@ -250,15 +255,14 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::post('/po/absen', 'PO\AbsensiController@store');
 			Route::get('/po/absen/filter', 'PO\AbsensiController@filterAbsen');
 		
-			//Cuti
+			// Cuti
 			Route::get('/po/cuti', 'PO\CutiController@index');
 			Route::get('/po/cuti/show', 'PO\CutiController@cutiPo');
 			Route::get('/po/cuti/create', 'PO\CutiController@create');
-			Route::get('/po/cuti/terima', 'PO\CutiController@terima');
-			Route::get('/po/cuti/tolak', 'PO\CutiController@tolak');
-			Route::get('/po/cuti/terima/{cuti}', 'PO\CutiController@detailTerima');
-			Route::get('/po/cuti/tolak/{cuti}', 'PO\CutiController@detailTolak');
-			Route::get('/po/cuti/{cuti}', 'PO\CutiController@show');
+			Route::get('/po/cuti/filterPo', 'PO\CutiController@filterPo');
+			Route::get('/po/cuti/filter', 'PO\CutiController@filterData');
+			Route::get('/po/cuti/{cuti}', 'PO\CutiController@detailCutiPo');
+			Route::get('/po/cuti/detail/{cuti}', 'PO\CutiController@detailCuti');
 			Route::post('/po/cuti', 'PO\CutiController@store');
       Route::patch('/po/cuti/{cuti}', 'PO\CutiController@update');
 			
@@ -281,9 +285,8 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::get('/cuti', 'CutiController@index');
 			Route::get('/cuti/create', 'CutiController@create');
 			Route::get('/cuti/{cuti}', 'CutiController@show');
+			Route::get('/user/cuti/filter', 'CutiController@filterData');
 			Route::post('/cuti', 'CutiController@store');
-			Route::get('/cuti/tambah_cuti/{cuti}', 'CutiController@editCuti');
-			Route::patch('/cuti/{cuti}', 'CutiController@tambahCuti');
 		
 			//Invetaris
 			Route::get('/invetaris', 'barangController@index');

@@ -80,6 +80,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ url('/admin/absen') }}">Absen</a>
             <a class="collapse-item" href="{{ url('/admin/absen/data-kehadiran') }}">Data Kehadiran</a>
+            <a class="collapse-item" href="{{ url('/admin/absen/cetak') }}">Laporan</a>
           </div>
         </div>
       </li>
@@ -87,12 +88,11 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cuti" aria-expanded="true" aria-controls="cuti">
-          <i class="fas fa-fw fa-file-invoice"></i>
+          <i class="fas fa-fw fa-calendar-week"></i>
           <span>Cuti</span>
         </a>
         <div id="cuti" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ url('/admin/cuti/show') }}">Data Cuti Anda</a>
             <a class="collapse-item" href="{{ url('/admin/cuti') }}">Data Cuti Karyawan</a>
           </div>
         </div>

@@ -21,7 +21,11 @@
     <!-- Nested Row within Card Body -->
     <div class="row">
       <div class="col">
+      <?php if(session('danger')): ?>
+        <div class="p-4">
+      <?php else: ?>
         <div class="p-5">
+      <?php endif; ?>
           <div class="text-center">
             <img src="<?php echo e(asset('img/logotelkom.jfif')); ?>" width="25%" class="mb-3 rounded">
             <h1 class="h4 text-gray-900 mb-4">Login</h1>

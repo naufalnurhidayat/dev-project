@@ -22,7 +22,7 @@
                 <h1 class="display-3">Hallo, <?php echo e(auth()->user()->nama); ?>!</h1>
                 <p class="lead">Selamat datang di fitur absensi (Divisi Digital Service) PT Telekomunikasi Indonesia</p>
                 <hr class="my-4">
-                <p>Silahkan klik tombol ceklist jika anda ingin absen. Silahkan klik tanda seru jika tidak hadir. Silahkan klik tombol 'i' jika ingin kembali ke home.</p>
+                <p>Silahkan klik tombol ceklist jika anda ingin absen. Silahkan klik tanda seru jika tidak hadir. Silahkan klik tombol 'home' jika ingin kembali ke home.</p>
                 <a href="" class="btn btn-success btn-circle btn-lg" data-toggle="modal" data-target="#absenmodal">
                     <i class="fas fa-check"></i>
                 </a>
@@ -30,7 +30,7 @@
                     <i class="fas fa-exclamation-triangle"></i>
                 </a>
                 <a href="<?php echo e(url('/')); ?>" class="btn btn-info btn-circle btn-lg">
-                    <i class="fas fa-info-circle"></i>
+                    <i class="fas fa-home"></i>
                 </a>
             </div>
         </div>
@@ -46,8 +46,8 @@
                 <th>No</th>
                 <th>NIP</th>
                 <th>Nama</th>
-                <th>Role</th>
-                <th>Pukul</th>
+                <th>Stream</th>
+                <th>Jam Masuk</th>
                 <th>Tanggal</th>
                 <th>Keterangan</th>
                 <th>Status</th>
@@ -57,9 +57,9 @@
             <?php $__currentLoopData = $absen; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $a): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <tr align="center">
                 <td><?php echo e($loop->iteration); ?></td>
-                <td><?php echo e($a->Karyawan['nip']); ?></td>
-                <td><?php echo e($a->Karyawan['nama']); ?></td>
-                <td><?php echo e($a->Karyawan->Role['role']); ?></td>
+                <td><?php echo e($a->User['nip']); ?></td>
+                <td><?php echo e($a->User['nama']); ?></td>
+                <td><?php echo e($a->User->Stream['stream']); ?></td>
                 <td><?php echo e($a->jam_masuk); ?></td>
                 <td><?php echo e($a->tanggal); ?></td>
                 <td><?php echo e($a->catatan); ?></td>
@@ -88,7 +88,7 @@
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
           <form action="<?php echo e(url('/absen')); ?>" method="POST">
             <?php echo csrf_field(); ?>
-            <button class="btn btn-primary" type="submit">Absen</button>
+            <button class="btn btn-primary" type="submit" name="absen">Absen</button>
           </form>
         </div>
       </div>
@@ -104,7 +104,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form action="<?php echo e(url('/absen')); ?>" method="POST">
+        <form action="<?php echo e(url('/absen')); ?>" method="POST" enctype="multipart/form-data">
           <?php echo csrf_field(); ?>
           <div class="modal-body">
             <div class="form-group">
@@ -115,7 +115,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="izin">
+unset($__errorArgs, $__bag); ?>" id="izin" required>
               <?php $__errorArgs = ['catatan'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -133,7 +133,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" id="picture" name="picture">
+unset($__errorArgs, $__bag); ?>" id="picture" name="picture" required>
               <label class="custom-file-label" for="picture">Lampirkan surat keterangan</label>
               <?php $__errorArgs = ['picture'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

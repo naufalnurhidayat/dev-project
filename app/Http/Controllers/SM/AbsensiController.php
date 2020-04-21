@@ -142,7 +142,7 @@ class AbsensiController extends Controller
             ]);
         }
 
-        return redirect('/sm/absen/data-kehadiran')->with('status', 'berhasil di prove');
+        return redirect('/sm/absen/data-kehadiran')->with('status', 'Berhasil di prove');
     }
 
     /**

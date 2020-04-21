@@ -36,25 +36,31 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
+        <div class="form-group row">
+          <div class="col-md-3 mx-auto">
+            <a class="btn btn-primary btn-block" href="" data-toggle="modal" data-target="#filterModalCuti">
+              <i class="fas fa-filter"></i> Filter Data
+            </a>
+          </div>
+        </div>
         <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
           <thead class="bg-dark text-white">
             <tr>
               <th>No</th>
               <th>Nama</th>
               <th>Jenis Kelamin</th>
-              <th>Stream</th>
               <th>Tanggal Pengajuan Cuti</th>
               <th>Jenis Cuti</th>
               <th>Status</th>
+              <th>Aksi</th>
             </tr>
           </thead>
-          <tbody class="table table-bordered">
+          <tbody class="table table-bordered" id="tampungan">
             @foreach ($cuti as $c)
               <tr align="center">
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $c->User['nama'] }}</td>
                 <td>{{ $c->User['jenkel'] }}</td>
-                <td>{{ $c->User->Stream['stream'] }}</td>
                 <td>{{ $c->tgl_cuti }}</td>
                 <td>{{ $c->jenis_cuti['jenis_cuti'] }}</td>
                 <td>
@@ -66,6 +72,7 @@
                     <span class="badge badge-warning">{{ $c->status }}</span>
                   @endif
                 </td>
+                <td><a href="{{url('/admin/cuti/detail/'.$c->id )}}" class="btn btn-primary btn-sm"><i class="fa fa-search-plus"></i> <b>Detail</b></a></td>
               </tr>
             @endforeach
           </tbody>
@@ -75,5 +82,64 @@
   </div>
 
 </div>
-        <!-- /.container-fluid -->
+  <!-- /.container-fluid -->
+@endsection
+
+@section('footer')
+<!-- Filter Data Cuti Modal-->
+  <div class="modal fade" id="filterModalCuti" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Filter Modal</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <select class="form-control" id="keywordStatusCuti">
+                  <option value="">-- Cari Berdasarkan Status --</option>
+                  <option value="Diterima">Diterima</option>
+                  <option value="Diproses">Diproses</option>
+                  <option value="Ditolak">Ditolak</option>
+                </select>
+            </div>
+            <div class="form-group row">
+              <div class="col-6">
+                <input type="date" id="keywordTglAwalCuti" class="form-control">
+              </div>
+              <div class="col-6">
+                <input type="date" id="keywordTglAkhirCuti" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+            <button class="btn btn-primary" id="filterCuti" data-dismiss="modal">Filter Data</button>
+          </div>
+      </div>
+    </div>
+  </div>
+<script>
+$(document).ready(function(){
+    // Script Untuk Filter Data Cuti
+  $("#filterCuti").click(function () {
+    const status = $("#keywordStatusCuti").val();
+    const tglAwal = $("#keywordTglAwalCuti").val();
+    const tglakhir = $("#keywordTglAkhirCuti").val();
+
+    $.ajax({
+      type: 'get',
+      dataType: 'html',
+      url: '{{url('/admin/cuti/filterAnda')}}',
+      data: 'status='+status+'&awal='+tglAwal+'&akhir='+tglakhir,
+      success: function (response) {
+        $("#tampungan").html(response);
+      }
+    });
+  });
+
+});
+</script>
 @endsection
