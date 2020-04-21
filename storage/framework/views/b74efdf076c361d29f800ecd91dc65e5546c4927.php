@@ -196,7 +196,7 @@ unset($__errorArgs, $__bag); ?>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user <?php $__errorArgs = ['thn_join'];
+                    <input type="number" class="form-control form-control-user <?php $__errorArgs = ['thn_join'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

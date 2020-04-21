@@ -134,6 +134,7 @@
         let fileName = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(fileName);
       });
+      
       $("#kategori").on('change', function(){
         const kategori = $("#kategori").val();
         $.ajax({
@@ -155,7 +156,6 @@
           url: '<?php echo e(url('/kategori')); ?>',
           data: 'kategori_id=' + kategori,
           success:function(response){
-            console.log(response);
             $("#barang").html(response);
           }
         });

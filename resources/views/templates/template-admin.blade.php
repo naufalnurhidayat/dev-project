@@ -80,6 +80,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{ url('/admin/absen') }}">Absen</a>
             <a class="collapse-item" href="{{ url('/admin/absen/data-kehadiran') }}">Data Kehadiran</a>
+            <a class="collapse-item" href="{{ url('/admin/absen/cetak') }}">Laporan</a>
           </div>
         </div>
       </li>

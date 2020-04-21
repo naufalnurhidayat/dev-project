@@ -108,7 +108,11 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::get('/admin/absen/exportexcel', 'Admin\AbsensiController@exportExcel');
 			Route::get('/admin/absen/exportpdf', 'Admin\AbsensiController@exportPdf');
 			Route::get('/admin/absen/filter', 'Admin\AbsensiController@filterAbsen');
-			Route::get('/admin/absen/cetak', 'Admin\AbsensiController@cetakDataAbsen');
+			Route::get('/admin/absen/cetak', 'Admin\AbsensiController@cetak');
+			Route::get('/admin/absen/cetak/all', 'Admin\AbsensiController@cetakAll');
+			Route::get('/admin/absen/cetak/bulan', 'Admin\AbsensiController@cetakBulan');
+			Route::get('/admin/absen/cetak/{id}', 'Admin\AbsensiController@cetakNama');
+			Route::get('/admin/absen/cetak/detail/{id}', 'Admin\AbsensiController@detailCetak');
 		
 			//Cuti
 			Route::get('/admin/cuti', 'Admin\CutiController@index');

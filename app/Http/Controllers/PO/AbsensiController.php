@@ -130,7 +130,7 @@ class AbsensiController extends Controller
             ]);
         }
 
-        return redirect('/po/absen/data-kehadiran')->with('status', 'berhasil di prove');
+        return redirect('/po/absen/data-kehadiran')->with('status', 'Berhasil di prove');
     }
 
     /**
