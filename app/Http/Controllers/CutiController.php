@@ -30,9 +30,6 @@ class CutiController extends Controller
     public function create()
     {
         date_default_timezone_set("Asia/Jakarta");
-        if (auth()->user()->jatah_cuti == 0) {
-            return redirect('/cuti')->with('jatah', 'Sisa Cuti Anda Tidak Cukup');
-        }
         $jencut = JenisCuti::all();
         return view('cuti/create', ['jencut' => $jencut]);
     }

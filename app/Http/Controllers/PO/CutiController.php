@@ -47,9 +47,6 @@ class CutiController extends Controller
     public function create()
     {
         date_default_timezone_set("Asia/Jakarta");
-        if (auth()->user()->jatah_cuti == 0) {
-            return redirect('/po/cuti/show')->with('jatah', 'Sisa Cuti Andan Tidak Cukup');
-        }
         $jencut = JenisCuti::all();
         return view('po/cuti/create', ['jencut' => $jencut]);
     }
@@ -185,17 +182,6 @@ class CutiController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Cuti  $cuti
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cuti $cuti)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -241,16 +227,5 @@ class CutiController extends Controller
             //     $message->subject($pesan);
             // });
         return redirect('/po/cuti')->with('status', 'Status Berhasil Di Edit');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Cuti  $cuti
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Cuti $cuti)
-    {
-        //
     }
 }
