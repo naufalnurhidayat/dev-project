@@ -52,7 +52,7 @@
                 @error('Alasan_Cuti')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <button type="submit" class="btn btn-success float-right">Submit</button>
-            <a href="{{url('/cuti')}}" class="btn btn-danger float-right mr-2">Kembali</a>
+            <a href="{{url('/po/cuti')}}" class="btn btn-danger float-right mr-2">Kembali</a>
           </form>
         </div>
       </div>

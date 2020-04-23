@@ -118,13 +118,10 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 			Route::get('/admin/cuti', 'Admin\CutiController@index');
 			Route::get('/admin/cuti/filter', 'Admin\CutiController@filterData');
 			Route::get('/admin/cuti/{cuti}', 'Admin\CutiController@detailCuti');
+			Route::get('/admin/cuti', 'Admin\CutiController@editJatahCuti');
+			Route::patch('/admin/cuti/reset/jatah_cuti', 'Admin\CutiController@updateJatahCuti');
 			Route::patch('/admin/cuti/{cuti}', 'Admin\CutiController@update');
 			Route::delete('/admin/cuti/{cuti}', 'Admin\CutiController@destroy');
-			// Route::get('/admin/cuti/show', 'Admin\CutiController@cutiAdmin');
-			// Route::get('/admin/cuti/create', 'Admin\CutiController@create');
-			// Route::get('/admin/cuti/filterAnda', 'Admin\CutiController@filterDataAnda');
-			// Route::get('/admin/cuti/detail/{cuti}', 'Admin\CutiController@detailCutiAnda');
-			// Route::post('/admin/cuti/show', 'Admin\CutiController@store');
 		// --------------------------------------------------------------------------------------		
 	});
 
@@ -185,10 +182,14 @@ Route::group(['middleware' => ['checkIsActive', 'auth']], function () {
 		
 			//Cuti
 			Route::get('/sm/cuti', 'SM\CutiController@index');
-			Route::get('/sm/cuti/terima', 'SM\CutiController@terima');
-			Route::get('/sm/cuti/tolak', 'SM\CutiController@tolak');
+			Route::get('/sm/cuti/show', 'SM\CutiController@cutiSm');
+			Route::get('/sm/cuti/create', 'SM\CutiController@create');
+			Route::get('/sm/cuti/filterSm', 'SM\CutiController@filterSm');
+			Route::get('/sm/cuti/filter', 'SM\CutiController@filterData');
+			Route::get('/sm/cuti/{cuti}', 'SM\CutiController@detailCutiSm');
+			Route::get('/sm/cuti/detail/{cuti}', 'SM\CutiController@detailCuti');
+			Route::post('/sm/cuti', 'SM\CutiController@store');
       Route::patch('/sm/cuti/{cuti}', 'SM\CutiController@update');
-      
 			
 		// --------------------------------------------------------------------------------------
 	});

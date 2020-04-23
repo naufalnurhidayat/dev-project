@@ -21,6 +21,9 @@
   <!-- Custom styles for this page -->
   <link href="{{ asset('sbadmin2') }}/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  {{-- CSS DatePicker --}}
+  <link href="{{ asset('datepicker.min.css')}}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -215,6 +218,9 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('sbadmin2') }}/js/demo/datatables-demo.js"></script>
 
+  {{-- JS DatePicker --}}
+  <script src="{{ asset('datepicker.min.js') }}"></script>
+
   {{-- Script Untuk Absen --}}
   <script>
     $('.custom-file-input').on('change', function() {
@@ -222,7 +228,7 @@
       $(this).next('.custom-file-label').addClass("selected").html(fileName);
     });
   </script>
-
+  @yield('footer')
 </body>
 
 </html>
