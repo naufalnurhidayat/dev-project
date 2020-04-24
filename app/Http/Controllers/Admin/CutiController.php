@@ -126,14 +126,16 @@ class CutiController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for updating the specified resource.
      *
      * @param  \App\Cuti  $cuti
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cuti $cuti)
+
+    public function updateJatahCuti()
     {
-        //
+        User::whereIn('is_active', [0, 1])->Update(['jatah_cuti' => 12]);
+        return redirect('/admin/cuti')->with('status', 'Semua Jatah Cuti Karyawan telah Direset menjadi 12');
     }
 
     /**
